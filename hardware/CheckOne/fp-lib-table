@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name "CheckOne")(type "KiCad")(uri "${KIPRJMOD}/CheckOne.pretty")(options "")(descr "Footprints do projeto CheckOne"))
+)

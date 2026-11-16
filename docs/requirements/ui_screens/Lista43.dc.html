@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>4,3" · Lista de canais por lado</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;family=Roboto+Mono:wght@500;700&amp;display=swap">
+<style>
+body{margin:0}
+@keyframes ckblink{to{visibility:hidden}}
+a{color:#3394D2}a:hover{color:#66AFDD}
+</style>
+</helmet>
+<div style="width: 480px; height: 800px; box-sizing: border-box; background: #0F141A; color: #E8ECF1; font-family: Roboto, 'Helvetica Neue', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+  <div style="height: 66px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; gap: 4.5px; padding: 0 12px; background: #1A2230; border-bottom: 1px solid #2A3445">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <span style="font-size: 19.5px; font-weight: 700">CheckOne3</span>
+      <span style="font-family: 'Roboto Mono', monospace; font-size: 16.5px; color: #E8ECF1">13/11/2026 14:32:07</span>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; font-family: 'Roboto Mono', monospace; font-size: 16.5px; color: #9FB3C8">
+      <span style="display: flex; align-items: center; gap: 6px"><span style="width: 12px; height: 12px; border-radius: 50%; background: #66CD66"></span>24,1 V · {{supplymA}} mA</span>
+      <span>T1 32,5 · T2 28,1 °C</span>
+    </div>
+  </div>
+  <div style="flex: 1; display: flex; flex-direction: column; padding: 3px 12px 6px">
+    <sc-for list="{{rows}}" as="c" hint-placeholder-count="8">
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 0 9px; border-bottom: 1px solid #1A2230; background: {{c.rowBg}}">
+        <div style="display: flex; align-items: baseline; gap: 9px">
+          <span style="width: 51px; font-size: 19.5px; font-weight: 700">CH{{c.n}}</span>
+          <span style="width: 96px; font-size: 16.5px; color: #9FB3C8">{{c.model}}</span>
+          <span style="display: {{c.showVal}}; flex: 1; justify-content: flex-end; align-items: baseline; gap: 6px; font-family: 'Roboto Mono', monospace; font-size: 25.5px; font-weight: 700; color: {{c.valueColor}}">{{c.value}} <span style="font-size: 16.5px; font-weight: 500; color: #9FB3C8">{{c.unit}}</span></span>
+          <span style="display: {{c.showRev}}; flex: 1; text-align: right; font-size: 21px; font-weight: 700; color: #E27373; animation: ckblink 1s steps(2, start) infinite">4–20 mA invertido</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px">
+          <span style="width: 90px; font-family: 'Roboto Mono', monospace; font-size: 18px">{{c.mA}} <span style="color: #9FB3C8">mA</span></span>
+          <div style="flex: 1; height: 9px; background: #232C3B; border-radius: 3px; overflow: hidden">
+            <div style="height: 9px; width: {{c.barPct}}; background: {{c.color}}"></div>
+          </div>
+          <span style="width: 105px; text-align: right; font-size: 16.5px; font-weight: 500; color: #9FB3C8">{{c.status}}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <nav style="height: 66px; flex-shrink: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #2A3445; background: #1A2230">
+    <a href="Main43.dc.html" style="display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; color: #9FB3C8; text-decoration: none; border-top: 3px solid transparent">Visão geral</a>
+    <a href="Lista43.dc.html" style="display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; color: #3394D2; text-decoration: none; border-top: 3px solid #3394D2">Lista</a>
+    <a href="Config43.dc.html" style="display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; color: #9FB3C8; text-decoration: none; border-top: 3px solid transparent">Configuração</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":480,"height":800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var MODELS = {
+      G15: { short: 'GapOne-15', min: 3, max: 15, unit: 'mm', dec: 2 },
+      G25: { short: 'GapOne-25', min: 5, max: 25, unit: 'mm', dec: 2 },
+      G50: { short: 'GapOne-50', min: 10, max: 50, unit: 'mm', dec: 2 },
+      FLX: { short: 'FluxOne', min: -2000, max: 2000, unit: 'mT', dec: 0 },
+      I20: { short: '0\u201320 mA', raw: true, unit: 'mA', dec: 2 }
+    };
+    var raw = [
+      { n: 1, m: 'G25', mA: 11.73 }, { n: 2, m: 'G25', mA: 11.90 },
+      { n: 3, m: 'G15', mA: 8.42 },  { n: 4, m: 'G50', mA: 14.06 },
+      { n: 5, m: 'FLX', mA: 9.15 },  { n: 6, m: 'G15', mA: -2.08 },
+      { n: 7, m: 'G50', mA: 20.45 }, { n: 8, m: 'I20', mA: 0.00 }
+    ];
+    var fmt = function (v, d) { return v.toFixed(d).replace('.', ',').replace('-', '\u2212'); };
+    var list = raw.map(function (r) {
+      var md = MODELS[r.m];
+      var st = 'OK', col = '#66CD66', valid, k, val;
+      if (r.mA <= -0.42) {
+        // loop invertido: Iin abaixo de ~-50 mV (leitura negativa do ADS1115)
+        return {
+          n: r.n, model: md.short, value: '', unit: '', mA: fmt(r.mA, 2), barPct: '0%', status: '',
+          color: '#E27373', valueColor: '#E27373', border: '#E27373', rowBg: 'rgba(226,115,115,0.08)',
+          showVal: 'none', showRev: 'inline'
+        };
+      }
+      if (md.raw) {
+        // 0–20 mA: mostra a corrente do loop, sem convers\u00e3o
+        if (r.mA > 21) { st = 'Curto'; col = '#E27373'; }
+        valid = r.mA <= 21;
+        k = Math.max(0, Math.min(1, r.mA / 20));
+        val = r.mA;
+      } else {
+        if (r.mA < 3.6) { st = 'Aberto'; col = '#E27373'; }
+        else if (r.mA > 21) { st = 'Curto'; col = '#E27373'; }
+        else if (r.mA < 4 || r.mA > 20) { st = 'Fora de faixa'; col = '#ECD225'; }
+        valid = r.mA >= 3.6 && r.mA <= 21;
+        k = Math.max(0, Math.min(1, (r.mA - 4) / 16));
+        val = md.min + k * (md.max - md.min);
+      }
+      return {
+        n: r.n,
+        model: md.short,
+        value: valid ? fmt(val, md.dec) : '\u2014',
+        unit: valid ? md.unit : '',
+        mA: fmt(r.mA, 2),
+        barPct: Math.round(k * 100) + '%',
+        status: '',
+        color: col,
+        valueColor: valid ? '#E8ECF1' : '#9FB3C8',
+        border: st === 'OK' ? '#2A3445' : col,
+        rowBg: st === 'OK' ? 'transparent' : 'rgba(226,115,115,0.08)',
+        showVal: 'flex', showRev: 'none'
+      };
+    });
+    var supply = raw.filter(function (r) { return r.mA >= 3.6; }).length * 75;
+    return { rows: list, supplymA: String(supply) };
+  }
+}
+</script>
+</body>
+</html>

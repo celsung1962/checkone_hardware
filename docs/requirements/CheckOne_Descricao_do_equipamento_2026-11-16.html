@@ -1,0 +1,866 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name=claude:viewport-fit-sides content=cover><style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-right:env(safe-area-inset-right,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}</style><style>.md-table{overflow-x:auto}@media print{.md-table{overflow-x:visible}}</style><style>:root{color-scheme:light dark;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}}:root[data-theme="dark"]{color-scheme:dark;--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}:root[data-theme="light"]{color-scheme:light}@media print{:root,:root[data-theme="dark"]{color-scheme:light;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}}body{background:var(--md-bg);color:var(--md-text);max-width:720px;margin:0 auto;padding:32px;display:flex;flex-direction:column;gap:10px;font:14px/1.55 -apple-system,BlinkMacSystemFont,'SF Pro','Segoe UI',sans-serif;overflow-wrap:break-word}body>:first-child{margin-top:0}h1,h2,h3,h4,h5,h6{margin:6px 0 0;line-height:1.25;font-weight:600;text-wrap:balance}h1{font-size:1.35em}h2{font-size:1.15em;color:var(--md-muted)}h3,h4,h5,h6{font-size:1em}p,ul,ol,blockquote,table,pre,hr{margin:0}strong{font-weight:600}a{color:var(--md-link);text-decoration:none}a:hover{text-decoration:underline}ul,ol{display:flex;flex-direction:column;gap:6px;padding-left:22px}ul{list-style:disc}ol{list-style:decimal}:is(li,td,th)>*+:is(p,ul,ol,blockquote){margin-top:6px}blockquote{display:flex;flex-direction:column;gap:10px;border-left:2px solid var(--md-rule);padding-left:10px;color:var(--md-muted)}:not(pre)>code{background:var(--md-fill);padding:1px 3px;border-radius:4px;font:.92em 'SF Mono',ui-monospace,Menlo,Consolas,monospace}a>code{background:none;color:inherit}pre{background:var(--md-fill);padding:10px 12px;border-radius:6px;overflow-x:auto;font:12px/1.5 'SF Mono',ui-monospace,Menlo,Consolas,monospace;margin-block:4px}pre code{background:none;padding:0;font:inherit}table{width:100%;border-collapse:separate;border-spacing:2px;font:inherit}th,td{padding:6px 8px;border-radius:3px;text-align:left;vertical-align:top}th{background:var(--md-fill-strong);font-weight:600}td{background:var(--md-fill)}:is(th,td) :not(pre)>code{background:transparent}hr{border:0;border-top:1px solid var(--md-rule-strong);margin-block:10px}img{max-width:100%;height:auto;border-radius:4px}</style>
+</head><body>
+<h1>CheckOne — Descrição do equipamento</h1>
+<p><strong>AQTech Power Prognostics · Jiga de produção para sensores GapOne e FluxOne</strong></p>
+<h2>1. Finalidade</h2>
+<p>O CheckOne é uma jiga de bancada usada na produção para alimentar e verificar até oito sensores ao mesmo tempo. Cada saída fornece 24 V ao sensor e mede a corrente do loop de 4–20 mA que ele devolve. O equipamento converte essa corrente na grandeza física do sensor (distância em milímetros para o GapOne, fluxo magnético em militesla para o FluxOne) e mostra o resultado num display de 3,5&quot; e numa página web servida pelo próprio equipamento.</p>
+<p>Além das medidas dos canais, o CheckOne monitora a tensão e a corrente da alimentação dos sensores e a temperatura de dois termistores NTC: um externo, que permite acompanhar ensaios com a probe aquecida até 150 °C, e um ligado a um conector interno da caixa. Todas as grandezas são registradas com data e hora num histórico em memória, que pode ser consultado e exportado pela página web.</p>
+<h2>2. Sensores suportados</h2>
+<p>Cada um dos oito canais pode ser configurado, pelo display ou pela página web, para um dos tipos abaixo. A conversão é linear em toda a faixa de 4–20 mA.</p>
+<div class="md-table" role="group" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Faixa</th>
+<th>Unidade</th>
+<th>Conversão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GapOne-15</td>
+<td>3 a 15</td>
+<td>mm</td>
+<td>4 mA = 3 mm; 20 mA = 15 mm</td>
+</tr>
+<tr>
+<td>GapOne-25</td>
+<td>5 a 25</td>
+<td>mm</td>
+<td>4 mA = 5 mm; 20 mA = 25 mm</td>
+</tr>
+<tr>
+<td>GapOne-50</td>
+<td>10 a 50</td>
+<td>mm</td>
+<td>4 mA = 10 mm; 20 mA = 50 mm</td>
+</tr>
+<tr>
+<td>FluxOne</td>
+<td>−2000 a +2000</td>
+<td>mT (sem casa decimal)</td>
+<td>B(mT) = (I_mA − 12) × 250</td>
+</tr>
+<tr>
+<td>0–20 mA</td>
+<td>0 a 20</td>
+<td>mA</td>
+<td>mostra a corrente do loop, sem conversão</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A condição do loop é avaliada pelos limites da NAMUR NE43 e indicada por cor na borda do cartão e na barra de cada canal: corrente abaixo de 3,6 mA indica sensor aberto ou desconectado, acima de 21 mA indica curto, e as faixas de 3,6 a 4 mA e de 20 a 21 mA indicam sinal fora da faixa nominal. No modo 0–20 mA, qualquer corrente de 0 a 21 mA é válida e só a corrente acima de 21 mA é indicada como curto. Se o loop for ligado invertido (Iin e Iout trocados), a jiga não sofre dano: o TVS da entrada conduz como diodo e segura o Iin em cerca de −0,7 V, e o BAT54S protege o conversor. O ADS1115 lê uma tensão negativa, e o canal mostra &quot;4–20 mA invertido&quot; piscando no lugar da medida. As telas não exibem texto de status. A saída de 24 V de todos os canais fica sempre ligada.</p>
+<h2>3. Características principais</h2>
+<div class="md-table" role="group" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Canais</td>
+<td>8 saídas de 24 V com medição de 4–20 mA</td>
+</tr>
+<tr>
+<td>Alimentação</td>
+<td>Fonte externa de 24 V CC, tipo CFTV, 2 A ou mais, plugue 5,5 × 2,1 mm</td>
+</tr>
+<tr>
+<td>Proteção por canal</td>
+<td>Fusível rearmável de 200 mA (disparo em 500 mA)</td>
+</tr>
+<tr>
+<td>Medição dos loops</td>
+<td>Shunt de 120 Ω 0,1 %, conversor de 16 bits, resolução de ~1 µA</td>
+</tr>
+<tr>
+<td>Monitoração da alimentação</td>
+<td>Tensão e corrente do barramento de 24 V dos sensores</td>
+</tr>
+<tr>
+<td>Temperatura</td>
+<td>2 termistores NTC 100 kΩ / B3950 (externo até 150 °C e interno)</td>
+</tr>
+<tr>
+<td>Relógio</td>
+<td>RTC com bateria CR2032, horário de Brasília, acerto por NTP ou pela página web</td>
+</tr>
+<tr>
+<td>Registro</td>
+<td>1 amostra a cada 5 s, até 48 h de histórico</td>
+</tr>
+<tr>
+<td>Display</td>
+<td>3,5&quot;, 480 × 320 px, toque resistivo, interface em retrato</td>
+</tr>
+<tr>
+<td>Conectividade</td>
+<td>Wi-Fi: ponto de acesso próprio ou rede da fábrica</td>
+</tr>
+<tr>
+<td>Gabinete</td>
+<td>AK-P-08A, ABS, 145 × 90 × 38,8 mm, fixação em trilho DIN</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2>4. Interface com o operador</h2>
+<h3>4.1 Display</h3>
+<p>O display é um módulo CYD ESP32-3248S035R, com tela de 3,5&quot; (controlador ST7796) e toque resistivo (XPT2046), operado com a caneta que acompanha o módulo. A interface é desenhada em retrato, 320 × 480 px, e o equipamento é usado girado 90° na bancada. Nessa posição, a coluna da esquerda da tela mostra os canais CH1–CH4, que ficam na lateral esquerda do gabinete, e a coluna da direita mostra CH5–CH8, na lateral direita. Cada canal aparece na tela do mesmo lado do seu borne.</p>
+<p>O cabeçalho de todas as telas principais mostra a data e a hora, a tensão e a corrente de 24 V e as temperaturas dos dois NTC (T1 e T2). O equipamento tem cinco telas:</p>
+<ul>
+<li><strong>Visão geral:</strong> um cartão por canal, com o tipo de sensor, a medida, a corrente do loop e uma barra com a posição na faixa de 4–20 mA. Tocar num cartão abre o detalhe daquele canal.</li>
+<li><strong>Lista:</strong> os oito canais em dois blocos (CH1–4 e CH5–8), com medida, corrente e barra em cada linha.</li>
+<li><strong>Detalhe do canal:</strong> a medida em destaque, a corrente, a barra com escala dupla (mA e unidade de engenharia), mínimo, máximo, média, ruído pico a pico e a tendência dos últimos 60 s. Botões levam ao canal anterior ou ao seguinte e zeram o mínimo e o máximo.</li>
+<li><strong>Configuração:</strong> seleção do tipo de sensor de cada canal (GapOne-15, -25, -50, FluxOne ou 0–20 mA), com opção de aplicar o mesmo tipo a todos e de salvar a configuração, e acesso à tela de calibração. A tela mostra também a rede em uso (modo, nome da rede, IP e endereço checkone.local) e tem o botão &quot;Restaurar rede&quot;, que, após confirmação, apaga a rede salva, volta ao ponto de acesso CheckOne e restaura a senha de configuração padrão, mantendo os tipos de sensor.</li>
+<li><strong>Calibração:</strong> zero de todos os canais com um toque e ajuste do ganho com 20,00 mA injetados, com a situação de cada canal (seção 5.7).</li>
+</ul>
+<h3>4.2 Página web</h3>
+<p>O CheckOne serve uma página no padrão visual da AQTech, acessível pelo navegador de um computador ou celular conectado ao Wi-Fi da jiga. A página é um arquivo único, sem dependências externas, e funciona mesmo sem acesso à internet. Ela tem três seções:</p>
+<ul>
+<li><strong>Painel:</strong> os oito canais em tempo real, com a mesma informação do display, mais a tensão e a corrente de 24 V, a temperatura, a data e a hora e o tempo de histórico disponível.</li>
+<li><strong>Histórico:</strong> gráfico dos canais escolhidos, em mA ou na unidade da medida, com janelas de 15 min, 1 h ou todo o buffer; gráficos da corrente de 24 V e da temperatura; exportação em CSV.</li>
+<li><strong>Configuração:</strong> nome do equipamento (CheckOne1 a CheckOne5), tipo de sensor por canal, acerto do relógio com a hora do computador e rede Wi-Fi (ponto de acesso próprio ou rede da fábrica). A configuração não pede senha, e as alterações valem também para o display.</li>
+</ul>
+<p>O acesso pela rede foi pensado para que a jiga nunca fique inacessível e para que várias jigas convivam na mesma rede. Cada jiga recebe um nome de CheckOne1 a CheckOne5, escolhido no display (botão &quot;Nome&quot; da tela de Configuração) ou na página web. O nome aparece no cabeçalho das telas, é o nome do ponto de acesso Wi-Fi próprio (aberto, sem senha) e forma o endereço da página na rede da fábrica (checkone1.local a checkone5.local, por mDNS). Quando configurada para a rede da fábrica, a jiga mantém o ponto de acesso ativo ao mesmo tempo (modo AP + STA); se não conseguir entrar na rede em cerca de 30 s, continua acessível pelo ponto de acesso. O botão &quot;Restaurar&quot; do display apaga a rede salva e volta ao ponto de acesso, mantendo o nome e os tipos de sensor.</p>
+<h2>5. Arquitetura eletrônica</h2>
+<h3>5.1 Alimentação</h3>
+<p>A entrada de 24 V passa, nessa ordem, por um fusível rearmável de 1,6 A, por um supressor de transientes SMBJ24A (grampeamento em 38,9 V) e por um diodo Schottky SS34 de proteção contra inversão de polaridade. Um LED verde indica a presença dos 24 V depois dessa proteção. A fonte precisa ser de 24 V ±5% (no máximo 25,2 V): acima disso o TVS começa a conduzir.</p>
+<p>Logo depois vem um circuito de partida suave com um P-MOSFET AO4485 (40 V, 13 mΩ, SOP-8), que combina um atraso e uma rampa. O gate é polarizado por um divisor de 4,7 kΩ (gate-source) e 10 kΩ (gate-terra), que limita a tensão gate-source a cerca de −7,7 V com 24 V e −12,4 V no grampeamento do TVS, dentro dos ±20 V do MOSFET, sem precisar de zener. Um eletrolítico de 220 µF entre gate e source (positivo no source) mantém o gate junto do source no instante em que o plugue encaixa: pelo divisor capacitivo com os 2 µF entre gate e dreno, a tensão gate-source inicial fica em ~−0,2 V, e o MOSFET permanece desligado enquanto os contatos do conector se estabilizam. Esse capacitor carrega pelos resistores e, depois de ~0,2 s, o MOSFET começa a conduzir. Dois capacitores de 1 µF entre gate e dreno, em série com um resistor de 1 kΩ, controlam então a subida da tensão: a alimentação chega a 24 V em ~20 ms, e o pico de corrente para carregar os ~1,3 mF da placa e dos sensores fica entre ~1 e 1,8 A. Assim, no encaixe não passa corrente pelos contatos, e o faiscamento no conector desaparece. O resistor de 1 kΩ em série com os capacitores gate-dreno é essencial: sem ele, a subida rápida da tensão no encaixe (~2 µs, pela oscilação do cabo da fonte) seria acoplada ao gate pelos capacitores gate-dreno, e o MOSFET conduziria um pulso de ~10 A logo no contato. A simulação do circuito completo no ngspice confirmou o comportamento: no encaixe com a fonte ligada, a tensão gate-source fica em ~0 V, o pico no conector é de ~5,8 A por poucos microssegundos (carga do cerâmico de entrada, com o TVS grampeando a oscilação do cabo em ~31,5 V), o MOSFET começa a conduzir depois de ~0,2 s, a corrente de partida fica em 1,34 A e o barramento chega a 22 V em ~0,27 s. Num surto de 10/1000 µs de 300 V com 4 Ω, com uma fonte de apenas 100 µF na saída, o TVS conduz 5,2 A (o limite dele é 15,4 A), a entrada fica abaixo de 31,5 V e o barramento dos sensores não passa de 28,8 V. A energia dissipada no MOSFET a cada partida (~0,4 J) é absorvida com folga pelo encapsulamento SOP-8. Em funcionamento, a perda no MOSFET é desprezível (~10 mW). Depois de desligar, os capacitores do gate descarregam em ~1 s. O SS34 continua responsável pela proteção contra inversão, porque o diodo interno de um P-MOSFET de partida suave fica no sentido que não protege. Os eletrolíticos do filtro ficam todos depois do MOSFET; só o cerâmico de 100 nF da entrada fica antes dele.</p>
+<p>Em seguida vem um filtro π LC contra o ruído da fonte: 220 µF + 1 µF + 100 nF, indutor de 68 µH (FCH1040-680M) e mais 220 µF + 1 µF + 100 nF. A frequência de corte fica em torno de 41 Hz, o que atenua a ondulação de chaveamento da fonte e impede que o chaveamento do regulador de 5 V volte para a linha dos sensores. A queda no indutor é de ~0,16 V com a jiga carregada.</p>
+<p>A partir daí, a alimentação se divide em dois ramos. O primeiro alimenta um regulador chaveado XL1509-5.0, que gera os 5 V (até 2 A), sinalizados por um LED verde. O 5 V chega ao display através de uma posição para diodo SS34 (proteção contra retorno quando o USB do módulo é ligado junto) ou resistor de 0 Ω, e de dois ferrite beads GZ2012D601TF em paralelo (600 Ω a 100 MHz, 500 mA cada), que bloqueiam o ruído de alta frequência.</p>
+<p>Os 3,3 V da jiga são gerados na própria placa por um regulador linear XC6206P332MR (200 mA, corrente de repouso de ~1 µA), alimentado pelo 5 V, com capacitores cerâmicos de 1 µF na entrada e na saída. Os pinos de 3,3 V dos conectores dos displays ficam sem ligação: a medição não depende mais do regulador do display, e os chips da jiga não recebem alimentação indevida pelas entradas quando o display está desconectado. Os pull-ups do I²C e o RTC ficam ligados direto à saída do regulador; os ADS1115, o INA226 e os divisores dos NTC passam por um filtro RC (10 Ω e 1 µF) e formam o 3,3 V analógico (3V3A). Um terceiro LED verde indica a presença dos 3,3 V da jiga. Um quarto LED verde (&quot;3V3D&quot;) indica o 3,3 V do display: ele é alimentado, por um resistor de 1 kΩ, pelos pinos de 3,3 V dos conectores J_I2C_CYD e J_I2C_JC, que não alimentam mais nada na jiga. O display de 4,3&quot;, ligado pelo J_EXT, não acende esse LED, porque o J_EXT não tem pino de 3,3 V.</p>
+<p>O segundo ramo é o barramento de 24 V dos sensores. Ele passa pelo shunt de 50 mΩ (dois resistores de 100 mΩ em paralelo) do monitor INA226, que mede apenas a corrente consumida pelos sensores, sem a influência do display e da eletrônica de medição. Em seguida, cada uma das oito saídas tem o seu próprio fusível rearmável de 200 mA, de modo que um curto num cabo ou num sensor desliga só aquele canal. Depois do fusível, cada saída tem um ferrite bead GZ2012D601TF em série e um capacitor de 100 nF para o terra junto ao borne. Esse filtro LC por canal impede que o ruído de chaveamento de um sensor passe para os outros pelo barramento comum e desvia para o terra a interferência captada pelos cabos.</p>
+<h3>5.2 Medição dos loops de 4–20 mA</h3>
+<p>As saídas de corrente dos sensores são isoladas. A corrente entra na jiga pelo pino Iin, passa pelo shunt de 120 Ω 0,1 % para o terra e retorna ao sensor pelo pino Iout, ligado ao terra da jiga. A tensão no shunt (2,4 V a 20 mA) é lida em modo single-ended por dois conversores ADS1115 de 16 bits, quatro canais cada, com fundo de escala de ±4,096 V e 128 amostras por segundo. Esse arranjo cobre com folga a faixa de falha acima de 21 mA, mantendo a tensão abaixo da alimentação do conversor.</p>
+<p>Cada entrada tem um TVS SMAJ5.0A do Iin para o terra, um resistor série de 1 kΩ, um diodo duplo BAT54S de grampeamento para 3,3 V e para o terra e um capacitor de 10 nF. O TVS protege o shunt num erro de fiação com o +24 ligado ao Iin: ele grampeia a tensão em ~6,4 V e a corrente alta faz desarmar o fusível de 200 mA da saída do próprio canal em fração de segundo. Esse conjunto protege o conversor contra descargas eletrostáticas e contra contato acidental com os 24 V, e forma um filtro passa-baixa de ~16 kHz contra o ruído de chaveamento.</p>
+<h3>5.3 Temperatura</h3>
+<p>A jiga tem duas entradas de NTC (100 kΩ a 25 °C, B = 3950, conector XH): NTC1, na janela frontal, para a probe com cabo de 1,35 m, e NTC2, num conector interno da caixa. Cada termistor forma um divisor com um resistor de 10 kΩ, dimensionado para a faixa de até 150 °C, com a mesma proteção das entradas de corrente (1 kΩ, BAT54S e 10 nF) e mais um capacitor de 1 µF em paralelo com o NTC, junto ao conector. Esse capacitor forma, com a impedância do divisor (~9 kΩ a 25 °C), um filtro de ~17 Hz contra o ruído captado pelo cabo do termistor, inclusive o de 60 Hz da rede. A constante de tempo (~10 ms) é muito menor que o tempo de resposta do próprio termistor, de alguns segundos, então a medida não é afetada. As tensões dos dois divisores (AIN0 e AIN2) e a tensão de 3,3 V que os alimenta (AIN1) são lidas por um terceiro ADS1115, o que torna a medida ratiométrica e independente da tolerância do regulador. A conversão usa a equação Beta. Para validar probes a 140 °C, recomenda-se calibrar em dois ou três pontos e usar a equação de Steinhart-Hart com os coeficientes ajustados.</p>
+<h3>5.4 Relógio</h3>
+<p>Um RTC PCF8563 com cristal de 32,768 kHz mantém a data e a hora. Com o equipamento desligado, ele é alimentado por uma bateria CR2032, selecionada automaticamente por dois diodos BAT54W. O relógio trabalha no horário de Brasília (UTC−3, sem horário de verão) e é acertado por NTP quando a jiga está numa rede com internet (servidores pool.ntp.br), ou pela página web, com a hora do computador.</p>
+<h3>5.5 Barramento I²C</h3>
+<p>Todos os periféricos de medição compartilham um barramento I²C a 400 kHz, ligado ao conector CN1 do CYD (GPIO21 = SDA, GPIO22 = SCL), com pull-ups de 4,7 kΩ. As leituras são feitas por varredura, sem uso de linhas de interrupção.</p>
+<div class="md-table" role="group" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Endereço</th>
+<th>Componente</th>
+<th>Função</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x40</td>
+<td>INA226</td>
+<td>Tensão e corrente do barramento de 24 V dos sensores</td>
+</tr>
+<tr>
+<td>0x48</td>
+<td>ADS1115 U1</td>
+<td>Canais CH1–CH4</td>
+</tr>
+<tr>
+<td>0x49</td>
+<td>ADS1115 U2</td>
+<td>Canais CH5–CH8</td>
+</tr>
+<tr>
+<td>0x4A</td>
+<td>ADS1115 U3</td>
+<td>NTC1 (AIN0), referência de 3,3 V (AIN1), NTC2 (AIN2)</td>
+</tr>
+<tr>
+<td>0x51</td>
+<td>PCF8563</td>
+<td>Relógio de tempo real</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>5.6 Processamento e firmware</h3>
+<p>O processamento é feito pelo ESP32 do módulo CYD (4 MB de flash, sem PSRAM). O firmware é desenvolvido em ESP-IDF v5.5 com a biblioteca gráfica LVGL. A página web é embutida no firmware, compactada, e servida pelo servidor HTTP do ESP-IDF. Todas as configurações (tipo de sensor de cada canal, rede Wi-Fi, senha de configuração, calibração das entradas e dos NTC) são gravadas na flash do ESP32, na partição NVS, e mantidas após desligar o equipamento. A gravação acontece apenas quando o operador salva uma alteração, o que preserva a vida útil da flash. O histórico de medidas, por outro lado, fica só na RAM (seção 6).</p>
+<p>Para robustez, o firmware inclui: watchdog de tarefas, detecção de queda de tensão, recuperação automática do barramento I²C travado, detecção de ADS1115 ou INA226 ausentes ou sem resposta (com aviso na tela) e atualização de firmware pela página web (OTA), com duas partições de aplicação.</p>
+<h3>5.7 Calibração das entradas de corrente</h3>
+<p>A tela de calibração (acessada pela Configuração) ajusta o zero e o ganho de cada canal. Os resultados são gravados na flash e aplicados a todas as leituras: I = (leitura − offset) × ganho.</p>
+<ol>
+<li><strong>Zero:</strong> com todos os sensores desconectados (entradas em 0 mA), o operador toca em &quot;Calibrar zero&quot;. O firmware faz a média de cerca de 2 s de leituras em cada canal e grava esse valor como offset dos 8 canais de uma vez.</li>
+<li><strong>Ganho:</strong> o operador injeta 20,00 mA no Iin e toca em &quot;Calibrar 20 mA&quot;. O firmware calibra todos os canais que estiverem medindo entre 18 e 22 mA, com ganho = 20,000 / (leitura − offset), e marca cada um como calibrado. Como os oito shunts vão para o terra, uma única fonte não pode ser ligada em série pelos oito canais: com uma fonte, ela é passada de canal em canal e o botão é tocado em cada um; com várias fontes, os canais são calibrados de uma vez.</li>
+<li><strong>Salvar</strong> grava os coeficientes; <strong>Restaurar padrão</strong> volta para offset 0 e ganho 1,0000.</li>
+</ol>
+<p>Recomenda-se usar um calibrador de corrente com exatidão de 0,05 % ou melhor e repetir a calibração periodicamente.</p>
+<h2>6. Registro de dados</h2>
+<p>O CheckOne grava uma amostra a cada 5 segundos, com a média das leituras do intervalo. Cada registro ocupa cerca de 28 bytes: hora, as oito correntes, a tensão e a corrente de 24 V e as duas temperaturas. O histórico guarda até 48 horas (34 560 registros, ~1 MB). No JC3248W535 e no JC4880P443C, o buffer circular fica na PSRAM. No CYD, que não tem PSRAM, o histórico fica numa partição própria da flash, gravada em páginas pequenas a cada ~1 minuto (os setores de 4 KB são apagados à medida que o anel avança); com o anel de 48 h, cada setor é regravado uma vez a cada dois dias, muito abaixo do limite de regravações da flash. Num desligamento abrupto perde-se no máximo o último minuto. Na flash, o histórico também sobrevive a um desligamento. Quando cheio, os registros mais antigos são substituídos, e a exportação em CSV da página web baixa o histórico completo.</p>
+<h2>7. Mecânica e conexões</h2>
+<h3>7.1 Gabinete e montagem</h3>
+<p>O equipamento é montado no gabinete AK-P-08A, de ABS, com 145 × 90 × 38,8 mm e fixação em trilho DIN. A placa principal mede 122 × 87 mm e é fixada pelos quatro furos a 115 × 80 mm, alinhados com os parafusos da tampa. O CYD é parafusado sobre a placa principal com espaçadores M3 de ~21 mm, com a tela rente à tampa, através de um recorte de 86 × 56 mm no rebaixo de 101 × 68 mm.</p>
+<p>Os componentes mais altos (regulador, indutor e capacitores eletrolíticos) ficam numa das pontas da placa, fora da área do display. O RTC e a bateria ficam na outra ponta, longe do regulador chaveado.</p>
+<h3>7.2 Disposição dos conectores</h3>
+<p>As duas laterais longas do gabinete têm janelas de 100 mm para os conectores. Na posição de uso, com o equipamento girado 90°:</p>
+<ul>
+<li><strong>Lateral esquerda:</strong> saídas CH1–CH4 e entrada de 24 V.</li>
+<li><strong>Lateral direita:</strong> saídas CH5–CH8, conector NTC1 e LEDs verdes de 24 V, 5 V, 3,3 V da jiga e 3,3 V do display, visíveis de cima.</li>
+<li><strong>Interno:</strong> conector NTC2, na ponta esquerda da placa.</li>
+</ul>
+<p>Cada borne fechado de 4 vias tem 21,92 mm de comprimento. A lateral esquerda ocupa 96,7 mm e a direita cerca de 97 mm, dos 100 mm de cada janela.</p>
+<h3>7.3 Conectores das saídas</h3>
+<p>Cada saída usa um borne plugável de 4 vias, passo de 5,08 mm, com corpo fechado nas laterais (KF2EDGRC-5.08-4P), e o plugue de parafuso correspondente no cabo (KF2EDGK-5.08-4P). A pinagem é a mesma nos oito canais, de modo que qualquer cabo de teste serve em qualquer saída.</p>
+<div class="md-table" role="group" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Pino</th>
+<th>Serigrafia</th>
+<th>Função</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>+24</td>
+<td>Alimentação de 24 V do sensor (após o fusível do canal)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GND</td>
+<td>Retorno da alimentação</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Iin</td>
+<td>Entrada da corrente do loop (para o shunt)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Iout</td>
+<td>Retorno do loop para o sensor (ligado ao terra da jiga)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>7.4 Conexões internas com o display</h3>
+<p>A placa principal liga-se ao display por cabos de 1,25 mm e 4 vias (padrão MX1.25, compatível com PicoBlade), montados em conectores SMD verticais.</p>
+<div class="md-table" role="group" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Conector</th>
+<th>Destino no CYD</th>
+<th>Sinais</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>J_PWR</td>
+<td>P1 do CYD ou do JC3248W535</td>
+<td>5 V, TX, RX, GND (TX e RX sem ligação)</td>
+</tr>
+<tr>
+<td>J_I2C_CYD</td>
+<td>CN1 do CYD</td>
+<td>GND, GPIO22 (SCL), GPIO21 (SDA), 3,3 V só para o LED 3V3D</td>
+</tr>
+<tr>
+<td>J_I2C_JC</td>
+<td>P4 do JC3248W535 (JST 1,25 mm)</td>
+<td>GND, 3,3 V só para o LED 3V3D, IO17 (SDA), IO18 (SCL)</td>
+</tr>
+<tr>
+<td>J_EXT (barra de pinos 1 × 4, 2,54 mm)</td>
+<td>Conector de 26 pinos do JC4880P443C, por cabo externo</td>
+<td>5V, GND, SDA, SCL</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>7.5 Displays suportados</h3>
+<p>A placa aceita três módulos de display, um de cada vez. Os dois de 3,5&quot; (320 × 480) ficam dentro da caixa e usam o mesmo conjunto de telas. O de 4,3&quot; (480 × 800) fica fora da caixa, ligado por cabo, e tem um conjunto de telas próprio, com o mesmo conteúdo em escala 1,5×.</p>
+<div class="md-table" role="group" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th></th>
+<th>CYD ESP32-3248S035R</th>
+<th>Guition JC3248W535</th>
+<th>Guition JC4880P443C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Montagem</td>
+<td>Dentro da caixa</td>
+<td>Dentro da caixa</td>
+<td>Fora da caixa, por cabo</td>
+</tr>
+<tr>
+<td>Processador</td>
+<td>ESP32, 4 MB de flash, sem PSRAM</td>
+<td>ESP32-S3, 16 MB de flash, 8 MB de PSRAM</td>
+<td>ESP32-P4 + ESP32-C6 (Wi-Fi), 16 MB de flash, 32 MB de PSRAM</td>
+</tr>
+<tr>
+<td>Tela</td>
+<td>3,5&quot;, 320 × 480, ST7796, SPI</td>
+<td>3,5&quot;, 320 × 480, AXS15231B, QSPI</td>
+<td>4,3&quot;, 480 × 800, ST7701S, MIPI-DSI</td>
+</tr>
+<tr>
+<td>Toque</td>
+<td>Resistivo (XPT2046), com caneta</td>
+<td>Capacitivo (I²C interno, GPIO4/8)</td>
+<td>Capacitivo (GT911, I²C GPIO7/8)</td>
+</tr>
+<tr>
+<td>Alimentação</td>
+<td>P1: 5V, TX, RX, GND</td>
+<td>P1: 5V, TX, RX, GND (mesma pinagem)</td>
+<td>Pinos de 5 V e GND do conector de 26 pinos</td>
+</tr>
+<tr>
+<td>I²C da jiga</td>
+<td>CN1: GND, IO22, IO21, 3V3</td>
+<td>P4: GND, 3V3, IO17, IO18</td>
+<td>Pinos de I²C do conector de 26 pinos (barramento GPIO7/8, compartilhado com o toque)</td>
+</tr>
+<tr>
+<td>Conector na jiga</td>
+<td>J_PWR + J_I2C_CYD</td>
+<td>J_PWR + J_I2C_JC</td>
+<td>J_EXT</td>
+</tr>
+<tr>
+<td>Tamanho do módulo</td>
+<td>~93 × 55 mm (a confirmar)</td>
+<td>94,5 × 62,0 mm</td>
+<td>114,4 × 66,8 mm</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>O J_PWR serve aos dois. Cada display tem o seu conector de I²C, ligados em paralelo ao mesmo barramento da jiga. Os pinos de 3,3 V dos dois conectores só alimentam o LED 3V3D (e ficam ligados entre si nesse ponto), e os dois displays seriam mestres no mesmo barramento I²C, então <strong>conecte só um display de cada vez</strong>. O JC3248W535 tem proteção própria na entrada de 5 V (MOSFET e TVS de 6 V) e gera os 3,3 V com um conversor chaveado, então tolera bem a queda no diodo SS34. O CYD gera os 3,3 V com um regulador linear que precisa de ~4,4 V na entrada; com o SS34 e os beads, o CYD recebe ~4,5 V (4,3 V no pior caso de tolerância do XL1509). Por isso a posição do SS34 aceita um resistor de 0 Ω: com o CYD, monte o 0 Ω e não ligue o USB do display com a jiga energizada. O firmware tem uma versão para cada módulo, com os pinos de I²C, o driver de tela e o de toque correspondentes. O JC3248W535 tem vidro frontal de 94,5 × 62,0 mm e furos de fixação diferentes, então pede uma tampa com recorte próprio e outra posição de espaçadores.</p>
+<p><strong>Display externo de 4,3&quot; (JC4880P443C).</strong> O módulo não cabe na caixa (66,8 mm de largura contra ~66 mm entre as janelas) e fica fora dela, ligado à jiga por um cabo de 4 vias que sai pela ponta esquerda da caixa, sem prensa-cabo. Na jiga, o cabo encaixa no J_EXT, uma barra de pinos 1 × 4 de 2,54 mm (PZ254V-11-04P, PTH: 5V, GND, SDA, SCL). No display, as quatro vias vão aos pinos de 5 V, GND, SDA e SCL do conector de 26 pinos (2,54 mm). O cabo pode ter conectores fêmea de 2,54 mm (tipo Dupont) nas duas pontas. O consumo do módulo, de algumas centenas de mA, cabe nos 3 A por pino da barra e nos dois beads do 5 V.</p>
+<p>Com um cabo de 10 cm, a capacitância que ele acrescenta ao I²C é desprezível: o barramento funciona a 400 kHz, como nos displays de 3,5&quot;, com os mesmos pull-ups de 4,7 kΩ da placa, e não precisa de fios trançados. Os endereços da jiga (0x40, 0x48–0x4A, 0x51) não conflitam com o toque GT911 (0x5D ou 0x14) nem com o codec de áudio (0x18), que estão no mesmo barramento do display.</p>
+<p>O firmware do JC4880P443C é uma terceira versão: ESP32-P4 com Wi-Fi pelo ESP32-C6 (ESP-Hosted), tela por MIPI-DSI e interface em 480 × 800. A placa usa um ESP32-P4 em amostra de engenharia (revisão v1.3), que exige uma configuração específica das ferramentas de compilação.</p>
+<h3>7.6 Serigrafia</h3>
+<p>Todos os conectores têm identificação e marca do pino 1 na serigrafia da placa.</p>
+<div class="md-table" role="group" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Conector</th>
+<th>Serigrafia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bornes CH1–CH8</td>
+<td>&quot;CH1&quot; … &quot;CH8&quot; e, sob cada pino, &quot;+24&quot;, &quot;GND&quot;, &quot;Iin&quot;, &quot;Iout&quot;</td>
+</tr>
+<tr>
+<td>Entrada DC</td>
+<td>&quot;24V DC&quot; e &quot;(+) centro&quot;</td>
+</tr>
+<tr>
+<td>Conectores dos NTC</td>
+<td>&quot;NTC1&quot; e &quot;NTC2&quot;</td>
+</tr>
+<tr>
+<td>Ilhas de teste (verso)</td>
+<td>&quot;24V&quot;, &quot;5V&quot;, &quot;3V3&quot;, &quot;3V3A&quot;, &quot;SDA&quot;, &quot;SCL&quot;, &quot;GND&quot;</td>
+</tr>
+<tr>
+<td>LEDs</td>
+<td>&quot;24V&quot;, &quot;5V&quot;, &quot;3V3&quot; e &quot;3V3D&quot;</td>
+</tr>
+<tr>
+<td>J_PWR</td>
+<td>&quot;DISPLAY 5V&quot; e &quot;5V TX RX GND&quot;</td>
+</tr>
+<tr>
+<td>J_I2C_CYD</td>
+<td>&quot;I2C CYD&quot; e &quot;GND SCL SDA 3V3&quot;</td>
+</tr>
+<tr>
+<td>J_I2C_JC</td>
+<td>&quot;I2C JC3248&quot; e &quot;GND 3V3 SDA SCL&quot;</td>
+</tr>
+<tr>
+<td>J_EXT</td>
+<td>&quot;DISPLAY EXT&quot; e &quot;5V GND SDA SCL&quot;</td>
+</tr>
+<tr>
+<td>Bateria</td>
+<td>&quot;CR2032&quot; e &quot;+&quot; do lado da torre do contato positivo</td>
+</tr>
+<tr>
+<td>Placa</td>
+<td>&quot;CheckOne · AQTech&quot;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>7.7 Ilhas de teste</h3>
+<p>O verso da placa tem ilhas SMD de Ø1,8 mm, sem componente, para medição na bancada: 24V, 5V, 3V3, 3V3A (analógico, depois do filtro RC), SDA, SCL e duas de GND.</p>
+<h2>8. Lista de componentes</h2>
+<p>A JLCPCB monta apenas os componentes SMD (seção 8.1). Os componentes PTH (bornes, entrada DC, conectores dos NTC e suporte da bateria) são comprados à parte na LCSC e soldados à mão, junto com os demais itens avulsos (seção 8.2). Peças compradas no estoque da JLCPCB não são enviadas soltas, por isso os itens avulsos vêm da LCSC.</p>
+<h3>8.1 Componentes SMD (montados pela JLCPCB)</h3>
+<div class="md-table" role="group" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Componente</th>
+<th>Código JLCPCB</th>
+<th>Qtd</th>
+<th>Classe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversores dos loops e dos NTC</td>
+<td>ADS1115IDGSR</td>
+<td>C37593</td>
+<td>3</td>
+<td>Extended</td>
+</tr>
+<tr>
+<td>Monitor de 24 V</td>
+<td>INA226AIDGSR</td>
+<td>C49851</td>
+<td>1</td>
+<td>Extended</td>
+</tr>
+<tr>
+<td>RTC</td>
+<td>PCF8563T/5,518</td>
+<td>C7440</td>
+<td>1</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Cristal do RTC (32,768 kHz, 12,5 pF)</td>
+<td>Q13FC13500004</td>
+<td>C32346</td>
+<td>1</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Regulador 24 → 5 V</td>
+<td>XL1509-5.0E1</td>
+<td>C61063</td>
+<td>1</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Indutor do regulador e do filtro de entrada (68 µH)</td>
+<td>FCH1040-680M</td>
+<td>C20415548</td>
+<td>2</td>
+<td>Extended</td>
+</tr>
+<tr>
+<td>Eletrolítico 220 µF / 50 V (filtro de entrada, buck, barramento e atraso da partida suave)</td>
+<td>JVJ50V220M10x10</td>
+<td>C46550417</td>
+<td>6</td>
+<td>Extended</td>
+</tr>
+<tr>
+<td>Cerâmico 1 µF / 50 V (filtro de entrada, buck, LDO, RC do 3,3 V, rampa da partida suave e NTC)</td>
+<td>CL21B105KBFNNNE</td>
+<td>C28323</td>
+<td>10</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Regulador 5 → 3,3 V (200 mA)</td>
+<td>XC6206P332MR</td>
+<td>C5446</td>
+<td>1</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Cerâmico 10 nF / 50 V (filtro das entradas)</td>
+<td>0603B103K500NT</td>
+<td>C57112</td>
+<td>10</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Cerâmico 100 nF / 50 V (desacoplamento, filtro de entrada e saídas)</td>
+<td>CC0603KRX7R9BB104</td>
+<td>C14663</td>
+<td>16</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Cerâmico 22 pF C0G (oscilador do RTC)</td>
+<td>CL10C220JB8NNNC</td>
+<td>C1653</td>
+<td>1</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Shunt de 24 V (2 × 100 mΩ em paralelo = 50 mΩ, 1206)</td>
+<td>1206W4F100LT5E (Uniroyal)</td>
+<td>C25334</td>
+<td>2</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Shunts dos loops (120 Ω 0,1 %, 1206)</td>
+<td>RT1206BRD07120RL</td>
+<td>C870389</td>
+<td>8</td>
+<td>Extended</td>
+</tr>
+<tr>
+<td>Resistor 10 kΩ (NTC1, NTC2, LED de 24 V e gate da partida suave)</td>
+<td>0603WAF1002T5E</td>
+<td>C25804</td>
+<td>4</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Resistor 1,5 kΩ (LED de 5 V)</td>
+<td>0603WAF1501T5E</td>
+<td>C22843</td>
+<td>1</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Resistor 1 kΩ (série das entradas, LEDs de 3,3 V e gate-dreno da partida suave)</td>
+<td>0603WAF1001T5E</td>
+<td>C21190</td>
+<td>13</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Resistor 0 Ω (alternativa ao SS34 do 5 V do display)</td>
+<td>0603WAF0000T5E</td>
+<td>C21189</td>
+<td>1</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Resistor 10 Ω (filtro RC do 3,3 V)</td>
+<td>0603WAF100JT5E</td>
+<td>C22859</td>
+<td>1</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Ferrite bead 600 Ω, 500 mA (5 V do display e saídas de 24 V)</td>
+<td>GZ2012D601TF</td>
+<td>C1017</td>
+<td>10</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Resistor 4,7 kΩ (pull-up I²C e gate da partida suave)</td>
+<td>0603WAF4701T5E</td>
+<td>C23162</td>
+<td>3</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Fusível rearmável da entrada (1,6 A)</td>
+<td>1812L160/30GR</td>
+<td>C18198337</td>
+<td>1</td>
+<td>Extended</td>
+</tr>
+<tr>
+<td>Fusíveis rearmáveis das saídas (200 mA)</td>
+<td>JK-SMD0805-020-30V</td>
+<td>C516070</td>
+<td>8</td>
+<td>Extended</td>
+</tr>
+<tr>
+<td>Supressor de transientes</td>
+<td>SMBJ24A (hongjiacheng)</td>
+<td>C19077578</td>
+<td>1</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Chave de partida suave (P-MOSFET 40 V)</td>
+<td>AO4485 (ElecSuper ou UMW)</td>
+<td>C5334068 ou C5125949</td>
+<td>1</td>
+<td>Extended</td>
+</tr>
+<tr>
+<td>Diodo Schottky (inversão, buck, 5 V do display)</td>
+<td>SS34 (MDD)</td>
+<td>C8678</td>
+<td>3</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Clamp das entradas</td>
+<td>BAT54S (hongjiacheng)</td>
+<td>C7420333</td>
+<td>10</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>TVS das entradas Iin</td>
+<td>SMAJ5.0A (Liown)</td>
+<td>C2925443</td>
+<td>8</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Seleção 3,3 V / bateria do RTC</td>
+<td>BAT54W (hongjiacheng)</td>
+<td>C7502705</td>
+<td>2</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>LEDs 24 V, 5 V, 3,3 V da jiga e 3,3 V do display (verdes)</td>
+<td>KT-0805G</td>
+<td>C2297</td>
+<td>4</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Conectores dos displays (MX1.25, vertical)</td>
+<td>1.25-4P LT (SHOU HAN)</td>
+<td>C668611</td>
+<td>3</td>
+<td>Extended</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>8.2 Compra avulsa e montagem manual</h3>
+<p><strong>Componentes PTH, soldados à mão na placa</strong></p>
+<div class="md-table" role="group" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Componente</th>
+<th>Código LCSC</th>
+<th>Qtd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bornes das saídas (fechados, 5,08 mm)</td>
+<td>KF2EDGRC-5.08-4P (Kefa)</td>
+<td>C441238</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Entrada de alimentação (5,5 × 2,1 mm)</td>
+<td>DC-005-A200 (XUNPU)</td>
+<td>C720557</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Conectores NTC1 e NTC2 (XH, vertical)</td>
+<td>B2B-XH-A(LF)(SN) (JST)</td>
+<td>C158012</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Conector do display externo (barra de pinos 1 × 4, 2,54 mm)</td>
+<td>PZ254V-11-04P (XFCN)</td>
+<td>C2691448</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Suporte da bateria CR2032</td>
+<td>BS-02-A1AJ006 (MYOUNG)</td>
+<td>C964745</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Itens avulsos, não soldados na placa</strong></p>
+<div class="md-table" role="group" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Componente</th>
+<th>Código</th>
+<th>Qtd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plugues dos cabos dos sensores</td>
+<td>KF2EDGK-5.08-4P (Kefa)</td>
+<td>C440882</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Bateria</td>
+<td>CR2032</td>
+<td>—</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Termistores</td>
+<td>NTC 100 kΩ B3950 com plugue XH</td>
+<td>—</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Cabos do display</td>
+<td>1,25 mm (MX1.25), 4 vias, &quot;mesmo lado&quot;</td>
+<td>—</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Display</td>
+<td>CYD ESP32-3248S035R, Guition JC3248W535 ou Guition JC4880P443C</td>
+<td>—</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Cabo do display externo (só JC4880P443C)</td>
+<td>4 vias, 10 cm, conectores fêmea de 2,54 mm (tipo Dupont) nas duas pontas</td>
+<td>—</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Gabinete</td>
+<td>AK-P-08A</td>
+<td>—</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Fonte</td>
+<td>24 V CC, 2 A ou mais, plugue 5,5 × 2,1 mm</td>
+<td>—</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2>9. Verificação por simulação</h2>
+<p>O circuito de potência e das entradas foi simulado no ngspice, da entrada de 24 V até os 8 sensores, com parâmetros de pior caso dos datasheets (por exemplo, limiar de gate do AO4485 de −1,0 V e ruptura do SMBJ24A de 26,7 V) e o canal 1 com o loop de corrente completo (shunt, TVS, 1 kΩ, BAT54S, 10 nF e entrada do ADS1115). Os netlists, os resultados e os gráficos estão em <code>docs/simulacao/</code> no pacote do projeto.</p>
+<div class="md-table" role="group" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Situação</th>
+<th>Resultado</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fonte ligada na tomada com o plugue encaixado</td>
+<td>Pico de 1,30 A; barramento em 22 V em ~0,17 s</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Plugue encaixado com a fonte ligada</td>
+<td>MOSFET não conduz no contato (Vgs 0,1 V); pico de 5,8 A por ~3 µs no cerâmico de entrada; TVS grampeia em ~30 V</td>
+<td>OK, sem faiscamento relevante</td>
+</tr>
+<tr>
+<td>Surto de 10/1000 µs, 300 V / 4 Ω, fonte com 100 µF</td>
+<td>TVS com 6,2 A (limite 15,4 A); barramento ≤ 28,7 V; leitura do ADS inalterada</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Sensor encaixado com a jiga ligada</td>
+<td>Pico de 12 A por ~0,1 ms no canal; barramento cai para 22,4 V; outros canais não percebem</td>
+<td>OK, PTC não desarma</td>
+</tr>
+<tr>
+<td>Curto na saída de um canal</td>
+<td>~10 A até o PTC do canal desarmar; barramento cai para 18 V nesse intervalo</td>
+<td>OK, com ressalva (abaixo)</td>
+</tr>
+<tr>
+<td>+24 V ligado no Iin</td>
+<td>TVS do Iin grampeia em ~7,4 V; pino do ADS limitado a 3,6 V pelo BAT54S; PTC do canal desarma</td>
+<td>OK, com ressalva (abaixo)</td>
+</tr>
+<tr>
+<td>Loop invertido (20 mA)</td>
+<td>Iin em −0,84 V; pino do ADS em −0,24 V (limite −0,3 V)</td>
+<td>OK; firmware detecta pela leitura negativa</td>
+</tr>
+<tr>
+<td>Fonte com polaridade invertida</td>
+<td>TVS conduz direto, SS34 bloqueia; nada da jiga recebe tensão negativa</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Fonte desconectada com a jiga ligada</td>
+<td>Sensores perdem alimentação em ~15 ms; buck desliga em ~46 ms</td>
+<td>OK, com ressalva (abaixo)</td>
+</tr>
+<tr>
+<td>Fonte em 28 V</td>
+<td>TVS conduz ~1 A continuamente (~30 W)</td>
+<td>Não admissível: fonte limitada a 25,2 V</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Ressalvas e decisões resultantes:</strong></p>
+<ul>
+<li><strong>Tensão da fonte:</strong> o SMBJ24A começa a conduzir a partir de 26,7 V. A fonte precisa ser de 24 V ±5% (no máximo 25,2 V). Fontes de CFTV com trimpot de ajuste não devem ser reguladas acima disso; vale conferir a tensão de cada fonte antes do uso.</li>
+<li><strong>Curto com fonte de 2 A:</strong> com uma fonte real, o limite de corrente dela (~2–2,5 A) atua antes do PTC do canal, e o barramento cai enquanto o PTC não desarma (de frações de segundo a ~1 s). Durante esse tempo os outros sensores e o display podem reiniciar; depois do desarme, a jiga volta sozinha.</li>
+<li><strong>+24 V no Iin com fonte de 2 A:</strong> pelo mesmo motivo, a corrente no TVS do Iin fica em ~2 A (~13 W) até o PTC do canal desarmar, o que pode levar ~1 s. É o limite do que um TVS em SMA suporta; se esse erro de fiação for frequente, trocar o SMAJ5.0A pelo SMBJ5.0A (encapsulamento SMB, 600 W) dá mais margem.</li>
+<li><strong>Desligamento abrupto:</strong> a jiga tem ~46 ms de energia depois que a fonte é retirada. Isso não basta para gravar um bloco de 4 KB na flash. O firmware deve gravar o histórico do CYD em páginas pequenas e frequentes (por exemplo, a cada minuto), para perder no máximo o último minuto num desligamento.</li>
+<li><strong>Partida:</strong> nos primeiros ~0,5 s, os sensores ainda estão alimentando; o firmware ignora as leituras dos canais por 2 a 3 s depois de ligar e enquanto a tensão do barramento estiver abaixo de 20 V.</li>
+</ul>
+<h2>10. Comparação com a prática da indústria</h2>
+<p>As soluções comerciais e as recomendações de bancada para teste de transmissores de 4–20 mA seguem o mesmo princípio usado no CheckOne: fonte de 24 V, resistor de medição de precisão e leitura de tensão. O CheckOne fica alinhado ou acima da prática comum nos pontos principais:</p>
+<ul>
+<li><strong>Resistor de medição:</strong> a prática usual é 250 Ω (1–5 V) ou 125 Ω em cartões de PLC, com ±0,1 %. O CheckOne usa 120 Ω ±0,1 %, o que dá uma queda de só 2,4 V a 20 mA e deixa mais tensão para o sensor.</li>
+<li><strong>Alimentação:</strong> 24 V CC é o padrão para loops de 4–20 mA, e o CheckOne monitora tensão e corrente dessa alimentação, o que bancadas simples não fazem.</li>
+<li><strong>Proteção:</strong> a prática recomenda proteção contra surto na entrada e limitação de corrente nas saídas. O CheckOne tem TVS, fusível e partida suave na entrada, fusível rearmável e filtro por saída, e proteção individual de cada entrada contra erro de fiação, loop invertido e descarga eletrostática.</li>
+<li><strong>Calibração:</strong> bancadas profissionais usam calibradores de processo (como o Fluke 725) para verificar as entradas. O CheckOne tem um procedimento de calibração de zero e ganho por canal, que usa exatamente esse tipo de instrumento.</li>
+<li><strong>Isolamento:</strong> cartões de entrada industriais costumam ter isolamento entre canais. No CheckOne, as saídas dos sensores já são isoladas, e o Iout vai ao terra da jiga, o que dispensa isolamento na própria jiga.</li>
+<li><strong>Registro e acesso remoto:</strong> a maioria das bancadas de teste não registra nada. O CheckOne grava 48 h de histórico com data e hora e oferece página web e exportação em CSV, com várias jigas na mesma rede.</li>
+</ul>
+<p>O que as soluções comerciais têm e o CheckOne não tem, por decisão de projeto: chaveamento de alimentação por canal, critério de aprovação automático e isolamento galvânico entre canais.</p>
+<h2>11. Itens a confirmar</h2>
+<p>Antes de liberar o projeto da placa, quatro pontos ainda dependem de verificação na peça real:</p>
+<ul>
+<li>as medidas e a furação do módulo CYD, modelado com 93 × 55 mm (o corpo do gabinete aceita no máximo ~96 mm de comprimento);</li>
+<li>até onde desce a parede interna das janelas dos conectores, que precisa deixar passar o corpo dos bornes (12,5 mm acima da placa);</li>
+<li>se as duas nervuras desenhadas dentro de cada janela de 100 mm interferem com algum borne;</li>
+<li>o pico de corrente de partida dos sensores, para confirmar que os fusíveis de 200 mA por canal não desarmam ao ligar;</li>
+<li>o controlador de tela do CYD (ST7796 ou ILI9488, conforme o lote): o firmware lê o ID do controlador na inicialização;</li>
+<li>o logotipo da AQTech em SVG (versão para fundo azul escuro) para a página web;</li>
+<li>a pinagem do conector de 26 pinos do JC4880P443C (pinos de 5 V, GND, SDA e SCL), para fechar o cabo do display externo;</li>
+<li>a corrente de fuga do SMAJ5.0A com 2,5 V aplicados (o datasheet especifica até 800 µA em 5 V); uma fuga estável é absorvida pela calibração.</li>
+</ul>
+<h2>12. Ideias para versões futuras</h2>
+<p>As ideias abaixo foram avaliadas e ficam registradas apenas para referência. Elas não fazem parte da placa nem do firmware atuais, e não há decisão de implementá-las.</p>
+<h3>12.1 Controle individual das saídas de 24 V</h3>
+<ul>
+<li><strong>Expansor de I/O:</strong> PCA9539 (UMW, C42420610, TSSOP-24, 16 I/O, saídas push-pull, sem pull-ups internos, endereço 0x74), com pull-down em cada pino para os canais começarem desligados. O pino de RESET vai a um GPIO do display ou a um pull-up de 10 kΩ. Conferir no datasheet da UMW a ausência de pull-ups internos.</li>
+<li><strong>Chave por canal, a definir:</strong> (A) P-MOSFET AO3401A (Basic, 30 V) no lado positivo, com divisor de gate (10 kΩ / 4,7 kΩ) e diodo de roda livre na saída; margem de ~4% no pior surto simulado; ou (B) N-MOSFET 2N7002 (Basic, 60 V) no lado negativo, acionado direto pelo expansor com pull-down de 10 kΩ, desde que o GND de alimentação dos sensores seja isolado do corpo e da blindagem.</li>
+<li><strong>Ganhos:</strong> desligamento rápido por firmware em curto ou com +24 V no Iin (sem esperar o PTC); volta da opção &quot;Desligado&quot;; partida sequencial dos sensores; medição da corrente de cada sensor pela diferença no INA226; religar um sensor pela tela ou pela web.</li>
+<li><strong>Firmware:</strong> na inicialização, escrever o registrador de saída com todos os canais desligados antes de configurar os pinos como saída; ligar os canais um a cada ~100 ms.</li>
+</ul>
+<h3>12.2 Entrada genérica: corrente ou tensão (proxímetros com saída positiva)</h3>
+<ul>
+<li><strong>Circuito por canal:</strong> divisor de 33 kΩ / 10 kΩ (0,1 %) do Iin para o ADC, mais o shunt de 120 Ω ligado ao terra por um N-MOSFET AO3400A (Basic) comandado pelos outros 8 pinos do PCA9539. Shunt ligado no modo corrente e desligado no modo tensão.</li>
+<li><strong>Faixas:</strong> tensão de 0 a ~13 V (impedância de 43 kΩ, suporta 24 V sem dano); corrente com o ganho do ADS1115 em ±1,024 V e resolução de ~1 µA.</li>
+<li><strong>Proteção:</strong> TVS SMAJ15A no lugar do SMAJ5.0A (menor fuga e grampeamento abaixo dos 30 V do AO3400A); no modo corrente, o firmware desliga o shunt em ~10 ms se a leitura passar de 21 mA.</li>
+<li><strong>Firmware e telas:</strong> novo tipo &quot;Proxímetro (tensão)&quot; com sensibilidade (V/mm) e offset configuráveis; calibração também em tensão (por exemplo, 10,000 V); indicação clara do modo de cada canal.</li>
+<li><strong>Pendente:</strong> faixa de saída, tensão de alimentação e sensibilidade do proxímetro a ser usado.</li>
+</ul>
+<h3>12.3 Conversor ADS131M08 e acelerômetros IEPE</h3>
+<ul>
+<li><strong>Conversor:</strong> TI ADS131M08 (C2862610): 8 canais diferenciais, 24 bits, amostragem simultânea, até 32 kSPS, referência interna de 1,2 V, entrada de AGND − 1,3 V a AVDD (lê sinais negativos). Substitui os dois ADS1115 dos loops; o ADS1115 U3 continua para os NTC e para o diagnóstico dos sensores IEPE.</li>
+<li><strong>Shunts:</strong> trocar os de 120 Ω por 56 Ω, 0,1 % (1,18 V a 21 mA, dentro da faixa de ±1,2 V). O loop invertido passa a ser medido com o valor real, negativo.</li>
+<li><strong>Modo tensão (proxímetro):</strong> a entrada tem 330 kΩ nos ganhos 1 a 4; usar divisor de baixa impedância (ex.: 100 kΩ / 10 kΩ) ou um buffer.</li>
+<li><strong>Clock:</strong> 8 MHz pelo LEDC do ESP32 (80 MHz ÷ 10) ou 8,192 MHz pelo MCLK do I²S; alternativa sem GPIO e com menos jitter: cristal de 8,192 MHz nos pinos XTAL1/XTAL2.</li>
+<li><strong>Leitura:</strong> interrupção na borda de descida do DRDY acordando uma tarefa de alta prioridade que lê o quadro por SPI. Loops a 1–4 kSPS; acelerômetros a até 32 kSPS, com a leitura fixada num núcleo dedicado.</li>
+<li><strong>Displays:</strong> precisa de 5 a 7 GPIOs (SPI, DRDY, clock, SYNC/RESET). Funciona com o JC3248W535 (conector P2) e com o JC4880P443C; o CYD não tem pinos livres suficientes.</li>
+<li><strong>IEPE:</strong> reservar 2 dos 8 canais, com fonte de corrente constante de ~4 mA a partir dos 24 V, acoplamento AC (corte de ~0,5 Hz), divisor para ±1,2 V e leitura da tensão de polarização no ADS1115 para diagnóstico (aberto ~22 V, curto ~0 V, normal 8–12 V). Banda útil de ~8 kHz a 32 kSPS.</li>
+</ul>
+
+</body></html>

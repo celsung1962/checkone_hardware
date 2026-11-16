@@ -34,3 +34,6 @@ hardware/**/production/
 hardware/**/gerbers/
 # Freerouting session log (written next to the working directory)
 freerouting.log
+
+# temporary hand-over folder (copied to reference/import_2026-11-16, outside git)
+/import/

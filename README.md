@@ -1,25 +1,29 @@
 # CheckOne hardware
 
-AQTech Power Prognostics · hardware of the CheckOne product. The repository was created on 2026-11-16 with the
-FluxOne_hardware / GapOne_V2 layout and repository policy (kicad-schematic skill 1.6.0, `init_repo.py`). There is no board yet: each
-board gets its own folder, named after the board, under `hardware/`, `bom/` and `reports/`, as in GapOne
-(`hardware/GapOne_CON/`, `hardware/GapOne_AMP/`).
+AQTech Power Prognostics · hardware of the CheckOne production test fixture: powers up to eight GapOne / FluxOne
+sensors with 24 V, measures their 4–20 mA loops (3 × ADS1115, INA226), two NTC temperatures and the time (PCF8563),
+with a 3.5" ESP32 display module and a web page; AK-P-08A DIN-rail enclosure. One board, **CheckOne**
+(`hardware/CheckOne/`).
+
+The repository was created on 2026-11-16 with the FluxOne_hardware / GapOne_V2 layout and repository policy
+(kicad-schematic skill 1.6.0). It holds the v1 schematic and placement by S. Zimath, imported on 2026-11-16
+(`reports/import_2026-11-16.md`), the project documents and all later work.
 
 ```
 checkone_hardware/
-|-- CLAUDE.md                       design brief for Claude Code (skeleton, to fill from the requirements)
+|-- CLAUDE.md                       design brief for Claude Code (v1 baseline, decisions, open items O1-O8)
 |-- OUTSIDE_GIT.md                  what is kept outside git (OneDrive store CheckOne_Hardware) and how it gets there
 |-- bitbucket-pipelines.yml         CI for Bitbucket: hardware checks, release build on <board>-v<version> tags, skill updates
-|-- hw_checks.json                  config of tools/hw_checks (boards, checks, release); no board yet
+|-- hw_checks.json                  config of tools/hw_checks (board CheckOne, checks, release prefix checkone)
 |-- .claude/skills/                 kicad-schematic 1.6.0, kicad-placement 1.3.0, kicad-routing 1.29.0 (versioned with the project)
-|-- docs/requirements/              specs, architecture, meeting notes, decision_register.md
-|-- docs/datasheets/                PDFs + .txt + manifest.csv (fetch_datasheets.py)
-|-- reference/reference_project/    reference KiCad project - READ-ONLY, outside git (store)
-|-- hardware/<Board>/               KiCad project of each board (.kicad_pro/.kicad_sch/.kicad_pcb), generator scripts in hardware/
-|-- calc/                           design calculations and netlist rules (every number comes from here)
-|-- bom/<Board>/                    parts.csv (catalog data), jlc_summary.md, bom_summary.md
+|-- docs/requirements/              CheckOne_requirements.md (consolidated), equipment description, web page, screen designs
+|-- docs/datasheets/                PDFs + .txt + manifest.csv (fetch_datasheets.py) - empty yet (CLAUDE.md O3)
+|-- reference/import_2026-11-16/    the hand-over (v1 zip, production files, large artifacts) - READ-ONLY, outside git (store)
+|-- hardware/CheckOne/              v1 KiCad project (KiCad 7 files) and its generator gerador/design.py
+|-- calc/                           checkone_budget.py (measurement, NTC, fault current, power budget)
+|-- bom/                            parts.csv (catalog data), jlc_summary.md, bom_summary.md
 |-- DOC/                            deliverables (generated, outside git); DOC/source/ holds their sources
-|-- reports/<Board>/                ERC/DRC, stops, design reviews, placement and routing reports (Markdown in git)
+|-- reports/                        import report; reports/CheckOne/ for board work (Markdown in git)
 `-- tools/                          hw_checks/ (checks, release), update_skills.py, filter_history.py (Bitbucket move)
 ```
 
@@ -28,19 +32,13 @@ checkone_hardware/
 | Tag | Meaning |
 |---|---|
 | `<BOARD>_V<version>_fab_<date>` | the design as sent for fabrication (date of the production files) |
-| `<board>-v<version>` | a board release: `tools/hw_checks/hw_release.py` builds and gates the package; the Bitbucket pipeline runs it on push |
-
-## Starting a board
-
-1. Requirements in `docs/requirements/`; the reference project in `reference/reference_project/` (and in the store).
-2. Fill `CLAUDE.md` with `.claude/skills/kicad-schematic/references/brief_template.md`.
-3. Create `hardware/<Board>/` from the reference `.kicad_pro`; add the board to `hw_checks.json` (`boards`, and
-   `release.boards`), then `python tools/hw_checks/hw_checks.py --update-baseline` and commit the baseline.
+| `checkone-v<version>` | a board release: `tools/hw_checks/hw_release.py` builds and gates the package; the Bitbucket pipeline runs it on push |
 
 ## Checks
 
 ```
 python tools/hw_checks/hw_checks.py                 ERC / DRC against tools/hw_checks/baseline, datasheet manifest
-python tools/hw_checks/hw_release.py <board>-v1.0   release package and gate (build/release/<tag>/)
+python tools/hw_checks/hw_release.py checkone-v1.1  release package and gate (build/release/<tag>/)
+python calc/checkone_budget.py                      measurement, NTC, fault current and power budget of v1
 python tools/update_skills.py                       newer skill releases (skills_hardware)
 ```

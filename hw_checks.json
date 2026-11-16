@@ -5,16 +5,24 @@
     {"type": "text_thickness", "check": "drc",
      "reason": "TrueType board texts: the stroke-width estimate differs between Windows and the Linux CI image; cosmetic silkscreen rule"}
   ],
-  "boards": [],
+  "boards": [
+    {"name": "CheckOne", "project": "hardware/CheckOne/CheckOne.kicad_pro"}
+  ],
   "commands": [
     {"name": "datasheets",
      "cmd": ["{python}", "-X", "utf8", ".claude/skills/kicad-schematic/scripts/fetch_datasheets.py", "check",
-             "docs/datasheets/manifest.csv", "--kicad", "hardware"]}
+             "docs/datasheets/manifest.csv", "--kicad", "hardware"],
+     "known_failure": {
+       "problem_line": "^\\s+- ",
+       "match": "^- .+: in the schematic but no datasheet in the manifest$",
+       "reason": "no datasheet fetched yet at the import of the v1 project (2026-11-16): CLAUDE.md O3; replace this pattern by the list of parts still missing once docs/datasheets is filled, then remove it"}}
   ],
   "release": {
     "_doc": "tools/hw_checks/hw_release.py: tag <prefix>-v<version>[-rcN] -> board and documents ({version} = tag version). Add one entry per board under boards, e.g. \"wind\": {\"board\": \"CheckOne\", \"documents\": [...]}",
     "store": "{OneDrive}/CheckOne_Hardware",
     "not_assembled": ["^MountingHole", "^SolderWirePad", "^TestPoint"],
-    "boards": {}
+    "boards": {
+      "checkone": {"board": "CheckOne", "documents": []}
+    }
   }
 }

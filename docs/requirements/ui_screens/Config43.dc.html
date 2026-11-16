@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>4,3" · Configuração dos canais</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;family=Roboto+Mono:wght@500;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#3394D2}a:hover{color:#66AFDD}
+</style>
+</helmet>
+<div style="position: relative; width: 480px; height: 800px; box-sizing: border-box; background: #0F141A; color: #E8ECF1; font-family: Roboto, 'Helvetica Neue', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+  <div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; background: #1A2230; border-bottom: 1px solid #2A3445">
+    <a href="Main43.dc.html" style="font-size: 18px; font-weight: 500; text-decoration: none; color: #3394D2">‹ Voltar</a>
+    <span style="font-size: 19.5px; font-weight: 700">Configuração</span>
+    <span style="font-size: 16.5px; color: #9FB3C8">Lote padrão</span>
+  </div>
+  <div style="flex: 1; display: flex; flex-direction: column; gap: 9px; padding: 9px 12px">
+    <div style="height: 252px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(4, minmax(0, 1fr)); grid-auto-flow: column; gap: 9px">
+      <sc-for list="{{channels}}" as="c" hint-placeholder-count="8">
+        <button type="button" onClick="{{c.pick}}" style="border: 1px solid {{c.border}}; border-radius: 6px; background: {{c.bg}}; color: #E8ECF1; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; cursor: pointer; font-family: Roboto, sans-serif">
+          <span style="font-size: 19.5px; font-weight: 700">CH{{c.n}}</span>
+          <span style="font-size: 16.5px; color: {{c.sub}}">{{c.label}}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; height: 27px; margin-top: 6px">
+      <span style="font-size: 15px; font-weight: 500; letter-spacing: 0.1666em; text-transform: uppercase; color: #9FB3C8">Sensor no CH{{selN}}</span>
+    </div>
+    <div style="flex: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 9px">
+      <sc-for list="{{options}}" as="o" hint-placeholder-count="5">
+        <button type="button" onClick="{{o.pick}}" style="grid-column: {{o.span}}; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 1px; padding: 0 15px; border: 1px solid {{o.border}}; border-radius: 6px; background: {{o.bg}}; color: #E8ECF1; cursor: pointer; font-family: Roboto, sans-serif">
+          <span style="font-size: 19.5px; font-weight: 500">{{o.label}}</span>
+          <span style="font-family: 'Roboto Mono', monospace; font-size: 15px; color: #9FB3C8">{{o.range}}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="height: 66px; flex-shrink: 0; display: flex; align-items: center; gap: 12px; padding: 0 0 0 15px; background: #1A2230; border: 1px solid #2A3445; border-radius: 6px">
+      <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+        <span style="font-size: 16.5px; color: #E8ECF1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{devName}} · Rede da fábrica</span>
+        <span style="font-family: 'Roboto Mono', monospace; font-size: 15px; color: #9FB3C8; white-space: nowrap">10.0.12.57 · {{mdns}}</span>
+      </div>
+      <button type="button" onClick="{{openName}}" style="height: 66px; padding: 0 15px; border: 0; border-left: 1px solid #2A3445; background: #232C3B; color: #E8ECF1; font: 500 18px Roboto, sans-serif; cursor: pointer">Nome</button>
+      <button type="button" onClick="{{openConfirm}}" style="height: 66px; padding: 0 15px; border: 0; border-left: 1px solid #2A3445; border-radius: 0 6px 6px 0; background: #232C3B; color: #E8ECF1; font: 500 18px Roboto, sans-serif; cursor: pointer">Restaurar</button>
+    </div>
+  </div>
+  <div style="display: {{confirmDisplay}}; position: absolute; inset: 0; background: rgba(15,20,26,0.82); align-items: center; justify-content: center; padding: 24px">
+    <div style="width: 100%; background: #1A2230; border: 1px solid #3F4D62; border-radius: 9px; padding: 24px; display: flex; flex-direction: column; gap: 15px">
+      <span style="font-size: 22.5px; font-weight: 700">Restaurar rede?</span>
+      <span style="font-size: 18px; color: #9FB3C8; line-height: 1.45">Apaga a rede da fábrica salva e volta ao ponto de acesso próprio ({{devName}}). O nome do equipamento e os tipos de sensor são mantidos.</span>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin-top: 6px">
+        <button type="button" onClick="{{closeConfirm}}" style="height: 66px; border: 1px solid #3F4D62; border-radius: 6px; background: #232C3B; color: #E8ECF1; font: 500 19.5px Roboto, sans-serif; cursor: pointer">Cancelar</button>
+        <button type="button" onClick="{{closeConfirm}}" style="height: 66px; border: 0; border-radius: 6px; background: #E27373; color: #2A0E0E; font: 700 19.5px Roboto, sans-serif; cursor: pointer">Restaurar</button>
+      </div>
+    </div>
+  </div>
+  <div style="display: {{nameDisplay}}; position: absolute; inset: 0; background: rgba(15,20,26,0.82); align-items: center; justify-content: center; padding: 24px">
+    <div style="width: 100%; background: #1A2230; border: 1px solid #3F4D62; border-radius: 9px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+      <span style="font-size: 22.5px; font-weight: 700">Nome do equipamento</span>
+      <span style="font-size: 18px; color: #9FB3C8; line-height: 1.45">Usado no cabeçalho, no ponto de acesso Wi-Fi e no endereço .local. Use um nome diferente para cada jiga na mesma rede.</span>
+      <div style="display: flex; flex-direction: column; gap: 9px; margin-top: 6px">
+        <sc-for list="{{names}}" as="nm" hint-placeholder-count="5">
+          <button type="button" onClick="{{nm.pick}}" style="height: 60px; border: 1px solid {{nm.border}}; border-radius: 6px; background: {{nm.bg}}; color: #E8ECF1; font: 500 21px Roboto, sans-serif; cursor: pointer">{{nm.label}}</button>
+        </sc-for>
+        <button type="button" onClick="{{closeName}}" style="height: 60px; border: 1px solid #3F4D62; border-radius: 6px; background: transparent; color: #9FB3C8; font: 500 19.5px Roboto, sans-serif; cursor: pointer">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  <div style="height: 78px; flex-shrink: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; padding: 0 12px 9px">
+    <button type="button" style="height: 66px; border: 1px solid #3F4D62; border-radius: 6px; background: #232C3B; color: #E8ECF1; font: 500 18px Roboto, sans-serif">Aplicar a todos</button>
+    <a href="Calibracao43.dc.html" style="height: 66px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 1px solid #3394D2; border-radius: 6px; background: #232C3B; color: #E8ECF1; font: 500 18px Roboto, sans-serif; text-decoration: none">Calibração</a>
+    <button type="button" style="height: 66px; border: 0; border-radius: 6px; background: #33BC33; color: #003E00; font: 700 19.5px Roboto, sans-serif">Salvar</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":480,"height":800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sel: 4, cfg: ['G25', 'G25', 'G15', 'G50', 'FLX', 'G15', 'G50', 'I20'], confirm: false, name: 3, nameOpen: false };
+  }
+  renderVals() {
+    var self = this;
+    var OPTS = [
+      { id: 'G15', label: 'GapOne-15', range: '3–15 mm' },
+      { id: 'G25', label: 'GapOne-25', range: '5–25 mm' },
+      { id: 'G50', label: 'GapOne-50', range: '10–50 mm' },
+      { id: 'FLX', label: 'FluxOne', range: '±2000 mT' },
+      { id: 'I20', label: '0–20 mA', range: 'mostra a corrente, sem conversão' }
+    ];
+    var name = {};
+    OPTS.forEach(function (o) { name[o.id] = o.label; });
+    var sel = this.state.sel, cfg = this.state.cfg;
+    var cur = cfg[sel - 1];
+    return {
+      confirmDisplay: this.state.confirm ? 'flex' : 'none',
+      nameDisplay: this.state.nameOpen ? 'flex' : 'none',
+      devName: 'CheckOne' + this.state.name,
+      mdns: 'checkone' + this.state.name + '.local',
+      openName: function () { self.setState({ nameOpen: true }); },
+      closeName: function () { self.setState({ nameOpen: false }); },
+      names: [1, 2, 3, 4, 5].map(function (k) {
+        var on = k === self.state.name;
+        return { label: 'CheckOne' + k, bg: on ? 'rgba(51,148,210,0.18)' : '#232C3B', border: on ? '#3394D2' : '#3F4D62',
+          pick: function () { self.setState({ name: k, nameOpen: false }); } };
+      }),
+      openConfirm: function () { self.setState({ confirm: true }); },
+      closeConfirm: function () { self.setState({ confirm: false }); },
+      selN: sel,
+      channels: cfg.map(function (m, i) {
+        var on = i + 1 === sel;
+        return {
+          n: i + 1,
+          label: name[m],
+          bg: on ? 'rgba(51,148,210,0.18)' : '#1A2230',
+          border: on ? '#3394D2' : '#2A3445',
+          sub: '#E8ECF1',
+          pick: function () { self.setState({ sel: i + 1 }); }
+        };
+      }),
+      options: OPTS.map(function (o) {
+        var on = o.id === cur;
+        return {
+          label: o.label,
+          range: o.range,
+          span: o.id === 'I20' ? 'span 2' : 'auto',
+          bg: on ? 'rgba(51,148,210,0.18)' : '#1A2230',
+          border: on ? '#3394D2' : '#2A3445',
+          pick: function () {
+            var next = self.state.cfg.slice();
+            next[self.state.sel - 1] = o.id;
+            self.setState({ cfg: next });
+          }
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

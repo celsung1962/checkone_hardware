@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Detalhe do canal</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;family=Roboto+Mono:wght@500;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#3394D2}a:hover{color:#66AFDD}
+</style>
+</helmet>
+<div style="width: 320px; height: 480px; box-sizing: border-box; background: #0F141A; color: #E8ECF1; font-family: Roboto, 'Helvetica Neue', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+  <div style="height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; background: #1A2230; border-bottom: 1px solid #2A3445">
+    <a href="Main.dc.html" style="font-size: 12px; font-weight: 500; text-decoration: none; color: #3394D2">‹ Visão geral</a>
+  </div>
+  <div style="flex: 1; display: flex; flex-direction: column; gap: 10px; padding: 10px">
+    <div style="display: flex; flex-direction: column">
+      <span style="font-size: 18px; font-weight: 700">CH4</span>
+      <span style="font-size: 12px; color: #9FB3C8">GapOne-50 · 10–50 mm</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 0">
+      <span style="font-size: 10px; font-weight: 500; letter-spacing: 0.1666em; text-transform: uppercase; color: #9FB3C8">Distância</span>
+      <div style="display: flex; align-items: baseline; gap: 6px">
+        <span style="font-family: 'Roboto Mono', monospace; font-size: 60px; font-weight: 700; line-height: 1">{{value}}</span>
+        <span style="font-size: 20px; color: #9FB3C8">mm</span>
+      </div>
+      <span style="font-family: 'Roboto Mono', monospace; font-size: 20px; font-weight: 500">{{mA}} <span style="font-size: 14px; color: #9FB3C8">mA</span></span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 3px">
+      <div style="display: flex; justify-content: space-between; font-family: 'Roboto Mono', monospace; font-size: 10px; color: #9FB3C8">
+        <span>4</span><span>8</span><span>12</span><span>16</span><span>20 mA</span>
+      </div>
+      <div style="height: 12px; background: #232C3B; border-radius: 2px; overflow: hidden">
+        <div style="height: 12px; width: {{barPct}}; background: #3394D2"></div>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-family: 'Roboto Mono', monospace; font-size: 10px; color: #9FB3C8">
+        <span>10</span><span>20</span><span>30</span><span>40</span><span>50 mm</span>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px">
+      <sc-for list="{{stats}}" as="s" hint-placeholder-count="4">
+        <div style="background: #1A2230; border: 1px solid #2A3445; border-radius: 4px; padding: 4px 6px; display: flex; flex-direction: column">
+          <span style="font-size: 10px; color: #9FB3C8">{{s.label}}</span>
+          <span style="font-family: 'Roboto Mono', monospace; font-size: 13px; font-weight: 700">{{s.val}}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="flex: 1; background: #1A2230; border: 1px solid #2A3445; border-radius: 4px; position: relative; overflow: hidden">
+      <span style="position: absolute; left: 6px; top: 3px; font-size: 10px; color: #9FB3C8">Últimos 60 s</span>
+      <svg width="298" height="64" viewBox="0 0 298 64" role="img" aria-label="Tendência da distância nos últimos 60 segundos" style="display: block; position: absolute; left: 0; bottom: 4px">
+        <polyline points="{{trend}}" fill="none" stroke="#3394D2" stroke-width="1.5"></polyline>
+      </svg>
+    </div>
+  </div>
+  <div style="height: 50px; flex-shrink: 0; display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 6px; padding: 0 10px 6px">
+    <button type="button" style="height: 44px; border: 1px solid #3F4D62; border-radius: 4px; background: #232C3B; color: #E8ECF1; font: 500 12px Roboto, sans-serif">‹ CH3</button>
+    <button type="button" style="height: 44px; border: 1px solid #3F4D62; border-radius: 4px; background: #232C3B; color: #E8ECF1; font: 500 12px Roboto, sans-serif">Zerar mín/máx</button>
+    <button type="button" style="height: 44px; border: 1px solid #3F4D62; border-radius: 4px; background: #232C3B; color: #E8ECF1; font: 500 12px Roboto, sans-serif">CH5 ›</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":320,"height":480}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var fmt = function (v, d) { return v.toFixed(d).replace('.', ','); };
+    var mA = 14.06, min = 10, max = 50;
+    var k = (mA - 4) / 16;
+    var pts = [];
+    for (var i = 0; i <= 60; i++) {
+      var y = 34 + Math.sin(i * 0.45) * 8 + Math.sin(i * 1.7) * 4;
+      pts.push((i * 4.95).toFixed(1) + ',' + y.toFixed(1));
+    }
+    return {
+      value: fmt(min + k * (max - min), 2),
+      mA: fmt(mA, 2),
+      barPct: Math.round(k * 100) + '%',
+      trend: pts.join(' '),
+      stats: [
+        { label: 'Mín', val: '35,08' }, { label: 'Máx', val: '35,22' },
+        { label: 'Média', val: '35,15' }, { label: 'Ruído', val: '0,14' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
