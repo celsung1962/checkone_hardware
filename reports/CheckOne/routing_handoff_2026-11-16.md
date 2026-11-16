@@ -75,7 +75,8 @@ separation fails. Nothing committed yet.
 10. ~~3D models~~ — done 2026-11-16 (owner: every component in the 3D view). EasyEDA models by LCSC code
     (easyeda2kicad 1.0.1, .wrl as the skill advises) in `hardware/CheckOne/CheckOne.3dshapes/`, aligned to the project
     footprints from the pad positions and checked on `kicad-cli pcb render`: KF2EDGRC C441238 (rot 180, x +7.62),
-    DC-005-A200 C720557 (rot -90, offset 2.33 / -3.0), BS-02-A1AJ006 C964745 (x +2.275), FCH1040 C20415548 (LCSC
+    DC-005-A200 C720557 (rot -90, offset 2.33 / -3.0), BS-02-A1AJ006 C964745 (x +4.56: the EasyEDA model's origin is not the body centre, the
+    circle centre sits at x -4.56 mm in the model; corrected after the designer saw the holder shifted in 3D), FCH1040 C20415548 (LCSC
     package model MJC-1040T, 11.5 x 10.5 x 3.8 mm), F1 1812 C18198337. Set in the project library footprints and on
     the board; `sync_board.py` now keeps a board model with a `${KIPRJMOD}` path (F1 uses a KiCad-library
     footprint). Without a model: the mounting holes H1-H8 and the test pads TP1-TP8 (no physical part).
