@@ -1,0 +1,20 @@
+{
+  "_doc": "Config of tools/hw_checks/hw_checks.py (local run and bitbucket-pipelines.yml). See the script docstring. Add one entry to boards per KiCad project when it exists (hardware/<Board>/<Board>.kicad_pro), then write the baseline: python tools/hw_checks/hw_checks.py --update-baseline",
+  "baseline_dir": "tools/hw_checks/baseline",
+  "ignore": [
+    {"type": "text_thickness", "check": "drc",
+     "reason": "TrueType board texts: the stroke-width estimate differs between Windows and the Linux CI image; cosmetic silkscreen rule"}
+  ],
+  "boards": [],
+  "commands": [
+    {"name": "datasheets",
+     "cmd": ["{python}", "-X", "utf8", ".claude/skills/kicad-schematic/scripts/fetch_datasheets.py", "check",
+             "docs/datasheets/manifest.csv", "--kicad", "hardware"]}
+  ],
+  "release": {
+    "_doc": "tools/hw_checks/hw_release.py: tag <prefix>-v<version>[-rcN] -> board and documents ({version} = tag version). Add one entry per board under boards, e.g. \"wind\": {\"board\": \"CheckOne\", \"documents\": [...]}",
+    "store": "{OneDrive}/CheckOne_Hardware",
+    "not_assembled": ["^MountingHole", "^SolderWirePad", "^TestPoint"],
+    "boards": {}
+  }
+}

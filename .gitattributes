@@ -1,0 +1,23 @@
+# KiCad files are stored byte-exact: no line-ending conversion on any machine (Windows, Linux CI), so a
+# checkout never shows a whole-file diff. git still diffs them as text.
+*.kicad_pcb -text
+*.kicad_sch -text
+*.kicad_pro -text
+*.kicad_sym -text
+*.kicad_mod -text
+*.kicad_dru -text
+*.kicad_wks -text
+fp-lib-table -text
+sym-lib-table -text
+# binaries (the few that are allowed in git: datasheets, 3D models, logos)
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.zip binary
+*.step binary
+*.stp binary
+*.stpZ binary
+*.wrl binary
+*.xlsx binary
+*.docx binary

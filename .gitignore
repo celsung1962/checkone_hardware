@@ -1,0 +1,36 @@
+# KiCad
+*-backups/
+*.kicad_prl
+fp-info-cache
+*.lck
+\#auto_saved_files\#
+_autosave-*
+.history/
+# Python
+__pycache__/
+*.pyc
+# OS
+.DS_Store
+Thumbs.db
+# Office lock files
+~$*
+# ---- Kept OUTSIDE git (repository policy: git holds the source only; see OUTSIDE_GIT.md) ----
+# script work folders: scratch boards, logs, renders - never stored
+build/
+# reference projects: read-only copies of other projects, kept in the store
+reference/
+# generated deliverables (rebuilt from the source; published per release tag)
+/DOC/*.xlsx
+/DOC/*.docx
+/DOC/*.pdf
+reports/**/*.png
+reports/**/*.pdf
+reports/**/*.docx
+reports/**/*.zip
+reports/**/*.xlsx
+reports/**/*.kicad_pcb
+# fabrication packages (Gerber / drill / BOM / CPL), rebuilt per release
+hardware/**/production/
+hardware/**/gerbers/
+# Freerouting session log (written next to the working directory)
+freerouting.log

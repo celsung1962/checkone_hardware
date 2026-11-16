@@ -1,0 +1,121 @@
+{
+  "_doc": "Per-project parameters. Copy next to the board as kicad_golden.project.json (or <board>.golden.json) and fill in. EVERY LIST HERE STARTS EMPTY ON PURPOSE: a length group or via-budget pattern inherited from another design matches zero nets and then reports a clean pass while auditing nothing. The audit warns when a pattern matches no nets. scripts/init_project.py seeds this file from a real board.",
+  "project": "",
+  "fabricator": {
+    "_doc": "Fabricator capability. The audit prefers the values in the project's .kicad_pro rules; these are only used to cross-check them. Manufacturer limits always win over the golden defaults (Q-11, Q-12). economical_via_drill_mm (written by apply_settings.js / init_project.py): smallest via drill at the standard price (JLCPCB 4L/6L 0.2 mm); fine_vias_approved: true only when the project accepts the extra charge for smaller drills.",
+    "name": ""
+  },
+  "stackup_reference": {
+    "_doc": "Controlled-impedance stackup this board was designed on, if any (Q-13). Free text; echoed in the report.",
+    "name": "",
+    "diff_pair_target_ohm": null,
+    "single_ended_target_ohm": null
+  },
+  "length_groups": [],
+  "diff_pairs": {
+    "_doc": "Intra-pair length mismatch limits by regex on the pair base name (net name without _P/_N or P/N suffix).",
+    "rules": []
+  },
+  "via_budget": {
+    "_doc": "Max vias per signal net (Q-09). 'fast_patterns' get max_vias_fast; other signal nets get max_vias_default; power nets are never counted. Set a value to null to disable.",
+    "fast_patterns": [],
+    "max_vias_fast": null,
+    "max_vias_default": null
+  },
+  "keepouts": {
+    "_doc": "Q-10: crossing a track keepout on its layer is always FAIL. Whether a layer change to pass under a keepout is acceptable is a per-project decision; when false the audit reports via pairs adjacent to keepouts as WARN.",
+    "layer_change_allowed": false
+  },
+  "silkscreen": {
+    "_doc": "Q-14: references hidden is the default; set false for boards assembled or debugged by third parties.",
+    "references_hidden": true
+  },
+  "teardrops": {
+    "_doc": "Q-15: teardrops off by default; list net regexes where they are wanted.",
+    "allowed": false,
+    "allowed_patterns": []
+  },
+  "via_in_pad": {
+    "_doc": "Q-05: same-net thermal vias in exposed/heatsink pads are allowed only for the listed reference designators (assessed per chip against its datasheet).",
+    "allowed_refs": []
+  },
+  "shared_pad_gaps": {
+    "_doc": "Q-16 (improvements entry 6): may the router narrow two or more tracks to pass them through the same gap between two adjacent pads? Default is no - ask the user this alongside the layer/copper questions in section 0. false: every gap carrying 2+ tracks is FAIL. true: it is WARN instead, and still listed in the report.",
+    "allowed": false
+  },
+  "plane_net_exceptions": {
+    "_doc": "Q-17 (improvements entry 7): pads of a plane net (GND/+3.3V-style net with its own inner-layer zone) that are allowed to reach their plane through a same-net via elsewhere instead of their own via, because there is no room for one at the pad itself. Each entry needs a reason; audited as INFO instead of FAIL.",
+    "allowed": []
+  },
+  "pad_entry": {
+    "_doc": "1.29.0: last bend before a pad (review issue 18, L11). bend_min_mm = minimum distance from the pad edge to the last bend (default 0.5); bend_check false switches that one check off for the project (audited as INFO). Change only on an owner decision, recorded in the decision register; the other pad-entry checks are not affected.",
+    "bend_check": true,
+    "bend_min_mm": 0.5
+  },
+  "detour_limits": {
+    "_doc": "Q-18 (improvements entry 10): a track may go around a component instead of passing under it only while the detour stays within these two limits AND adds no via. Both must be satisfied.",
+    "max_length_increase_pct": 50,
+    "max_length_increase_mm": 10
+  },
+  "priority_routing": {
+    "_doc": "OPT-IN phased routing. Empty means the default single pass, which is what most boards want. List the nets to route FIRST, before anything else claims a channel; they are then locked and the rest of the board is routed around them. Measured trade on one 4-layer board: critical-net vias halved (24 -> 10), at the cost of about 10 more unrouted connections out of 350. That cost did NOT shrink when the set was halved, so choose the smallest set you genuinely care about and expect to finish the remainder by hand.",
+    "critical_nets": [],
+    "_selection_hint": "Good candidates: current-carrying rails routed as tracks, multi-drop buses, clocks, anything whose via count matters. Poor candidates: 2-pad point-to-point nets - they route identically either way and only consume channels early."
+  },
+  "router_costs": {
+    "_doc": "Freerouting autorouter costs, written to a .rules file by rules_writer.py and passed with -dr. These are GUI settings by default, so they live in whoever ran the router rather than in the project; putting them here makes a run reproducible. via_cost is the lever worth knowing: vias on power and long-haul nets are inductance and return-path discontinuities, and raising the cost makes the router avoid them. Freerouting default is 50.",
+    "via_cost": 50,
+    "plane_via_cost": 5,
+    "ripup_cost": 100,
+    "pref_cost": 1.0,
+    "against_cost": 2.0,
+    "preferred_direction": {},
+    "_not_settable": "automatic neckdown, vias-snap-to-SMD-pad-centers and drag-components are interactive-editor state, absent from the rules vocabulary and unreachable from any script. Turn them off in the Freerouting GUI; the audit catches their effects regardless (via-in-pad FAILs, neckdowns are stripped, footprint identity is verified)."
+  },
+  "layout_checks": {
+    "_doc": "1.19.0: datasheet layout rules turned into measurable checks, run by layout_measure.py check (references/10_datasheet_layout_review.md). kelvin: SENSE pad of a current monitor, SHUNT pad on that net, LOAD pad the load current reaches through the shunt - PASS when no copper is shared and the sense pad cannot reach the load except through the shunt pad. decoupling: routed length from an IC pin to its capacitor pad, surface: true to forbid the plane hop. separation: minimum same-layer gap between two net groups (clock vs analog inputs), exempt [x, y, r] around the IC pins. Every list starts EMPTY - each entry is a design decision taken from a datasheet.",
+    "kelvin": [],
+    "decoupling": [],
+    "separation": []
+  },
+  "approved_rule_deviations": {
+    "_doc": "Board review rev. 0.2 (D110 on ServiceOne): approved deviations from the template / fabricator rules, keyed by the .kicad_pro board.design_settings.rules name: {\"min_hole_clearance\": {\"value\": 0.2, \"reason\": \"D110: ...\"}}. apply_settings.js applies the fabricator profile and then puts these values back (printing each one); it refuses a value below the fabricator absolute minimum (profile absolute_min, else its kicad_rules value). Starts EMPTY - every entry is a recorded decision of this project."
+  },
+  "plane_plan": {
+    "_doc": "1.21.0 (L23, references/11): the inner power planes are planned after placement and before routing. plane_plan.py map proposes islands per rail with a trade-off table; the designer decides or draws each outline and records it here; plane_plan.py apply writes the zones, plane_plan.py check and audit section 30 check them. main_planes: the net of each inner plane layer (default: the largest zone). never_split: nets whose plane layer takes no island. gap_by_voltage: island clearance by rail voltage. min_neck_mm: thinnest island / main-plane copper accepted. islands: {name, rail, layer, voltage_v, gap_mm, outline [[x, y], ...] mm, pads, decided_by, note}; a zone matches by name = island name, else by (net, layer). islands starts EMPTY - every island is a design decision.",
+    "main_planes": {},
+    "never_split": [
+      "GND"
+    ],
+    "gap_by_voltage": [
+      {
+        "max_v": 5,
+        "gap_mm": 0.3
+      },
+      {
+        "max_v": 30,
+        "gap_mm": 0.5
+      },
+      {
+        "max_v": 60,
+        "gap_mm": 1.0
+      },
+      {
+        "max_v": 1000,
+        "gap_mm": 2.0
+      }
+    ],
+    "min_neck_mm": 1.0,
+    "islands": []
+  },
+  "routing_style": {
+    "_doc": "1.28.0 (L41, references/11, Vladimir's rule): orthogonal-first routing. Tracks run horizontal or vertical; a 45-degree segment is a corner chamfer or a link of at most diagonal_max_mm (audit section 33 WARNs a longer one outside the fan-out zone of an IC: its pad bounding box grown by fanout_zone_mm). diagonal_exceptions lists the nets allowed longer diagonals, each with its reason: {\"net\": \"/CLK\", \"reason\": \"clock, length matters\"} (fan-out escape, datasheet loop, clock / analog line). layer_direction is the soft preference for the router (F.Cu horizontal, B.Cu vertical); rules_writer.py uses it in stage 3. diagonal_exceptions starts EMPTY - every entry is a decision of this project.",
+    "diagonal_max_mm": 3,
+    "fanout_zone_mm": 1.5,
+    "layer_direction": {
+      "F.Cu": "H",
+      "B.Cu": "V"
+    },
+    "diagonal_exceptions": []
+  }
+}

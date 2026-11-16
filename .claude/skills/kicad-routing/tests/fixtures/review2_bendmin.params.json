@@ -1,0 +1,33 @@
+{
+  "fabricator": {
+    "name": "JLCPCB 4-layer 1oz",
+    "profile": "4L-1oz",
+    "layers": 4
+  },
+  "shared_pad_gaps": {
+    "allowed_parts": [
+      "J5"
+    ]
+  },
+  "mechanical_keepouts": [
+    {
+      "refs": [
+        "H30"
+      ],
+      "radius_mm": 3,
+      "layers": "all"
+    }
+  ],
+  "routing_style": {
+    "diagonal_max_mm": 3,
+    "diagonal_exceptions": [
+      {
+        "net": "DIAGX",
+        "reason": "test: length-critical line"
+      }
+    ]
+  },
+  "pad_entry": {
+    "bend_min_mm": 0.1
+  }
+}

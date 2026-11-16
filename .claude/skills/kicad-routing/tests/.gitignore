@@ -1,0 +1,4 @@
+# Audit reports written by the suites on every run (they carry the run date): outputs, not fixtures.
+*.audit.json
+# Backups written by apply_settings.js when a suite saves a .kicad_pro
+*.bak-*

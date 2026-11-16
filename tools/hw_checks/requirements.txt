@@ -1,0 +1,3 @@
+# Python packages the checked scripts need (kicad-schematic skill scripts); installed by .github/workflows/hw-checks.yml
+sexpdata
+pymupdf

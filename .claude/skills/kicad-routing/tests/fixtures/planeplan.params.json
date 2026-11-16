@@ -1,0 +1,99 @@
+{
+  "fabricator": {
+    "name": "JLCPCB 4-layer 1oz",
+    "profile": "4L-1oz",
+    "layers": 4
+  },
+  "plane_plan": {
+    "main_planes": {
+      "In1.Cu": "GND",
+      "In2.Cu": "+3.3V"
+    },
+    "never_split": [
+      "GND"
+    ],
+    "min_neck_mm": 1,
+    "islands": [
+      {
+        "name": "PP_24V_BAD",
+        "rail": "+24V",
+        "layer": "In2.Cu",
+        "voltage_v": 24,
+        "outline": [
+          [
+            40,
+            5
+          ],
+          [
+            60,
+            5
+          ],
+          [
+            60,
+            25
+          ],
+          [
+            40,
+            25
+          ]
+        ],
+        "pads": [
+          "R60.1",
+          "R60.2"
+        ]
+      },
+      {
+        "name": "PP_15V_OK",
+        "rail": "+15V",
+        "layer": "In2.Cu",
+        "voltage_v": 15,
+        "outline": [
+          [
+            70,
+            5
+          ],
+          [
+            90,
+            5
+          ],
+          [
+            90,
+            25
+          ],
+          [
+            70,
+            25
+          ]
+        ],
+        "pads": [
+          "R61.1",
+          "R61.2"
+        ]
+      },
+      {
+        "name": "PP_MISSING",
+        "rail": "+24V",
+        "layer": "In2.Cu",
+        "gap_mm": 0.5,
+        "outline": [
+          [
+            5,
+            40
+          ],
+          [
+            15,
+            40
+          ],
+          [
+            15,
+            50
+          ],
+          [
+            5,
+            50
+          ]
+        ]
+      }
+    ]
+  }
+}

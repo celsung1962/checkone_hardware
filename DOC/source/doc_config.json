@@ -1,0 +1,53 @@
+{
+  "product": "CheckOne",
+  "doc_title": "Board technical documentation",
+  "subtitle": "<one-line description of the product>",
+  "cover_lines": [
+    "Main board, revision A · <MCU> + <converters> · <n> inputs",
+    "Hardware reference for firmware development, assembly and test"
+  ],
+  "metadata": [
+    [
+      "Document no.",
+      "TBD"
+    ],
+    [
+      "Product",
+      "CheckOne — main board"
+    ],
+    [
+      "Board revision",
+      "A (schematic in progress)"
+    ],
+    [
+      "Schematic",
+      "KiCad <version>, <pages>, commit <hash> (<date>)"
+    ],
+    [
+      "Design contract",
+      "CLAUDE.md rev. <n>"
+    ],
+    [
+      "Hardware",
+      "Celso Souza"
+    ],
+    [
+      "Data source",
+      "KiCad netlist and calc/ scripts"
+    ],
+    [
+      "Date",
+      "2026-11-15"
+    ]
+  ],
+  "company": "AQTech Power Prognostics",
+  "date": "2026-11-15",
+  "logo": null,
+  "primary": "1F4E79",
+  "accent": "2E75B6",
+  "zebra": "F7F9FA",
+  "text": "292929",
+  "muted": "6D6D6D",
+  "font": "Calibri",
+  "page": "A4"
+}

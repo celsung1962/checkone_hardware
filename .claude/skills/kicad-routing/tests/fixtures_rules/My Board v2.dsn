@@ -1,0 +1,22 @@
+(pcb "C:\somewhere\My Board v2.dsn"
+  (parser
+    (string_quote ")
+    (space_in_quoted_tokens on)
+  )
+  (structure
+    (layer F.Cu
+      (type signal)
+    )
+    (layer GND
+      (type power)
+    )
+    (layer POWER
+      (type power)
+    )
+    (layer B.Cu
+      (type signal)
+    )
+  )
+  (network
+  )
+)

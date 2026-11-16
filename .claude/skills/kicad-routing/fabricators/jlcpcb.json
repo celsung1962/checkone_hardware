@@ -1,0 +1,63 @@
+{
+  "_doc": "JLCPCB standard PCB capabilities mapped to KiCad Board Setup rules, keyed by layer count and outer copper weight. economical_via_drill_mm (board review rev. 0.2, issue 11, 2026-10-20): the smallest via drill at the standard price - on 4/6 layers 0.15 mm is manufacturable but charged extra, so apply_settings.js makes 0.45 / 0.2 (economical_via_diameter_mm / economical_via_drill_mm) the small predefined via unless --fine-vias (netclass drills below it are reported); 2-layer omits the key because its minimum drill (0.3) is already above it. Values captured from jlcpcb.com/capabilities (standard FR-4 service) on 2026-09-17. They are limits, not targets: the standard's own values apply whenever they are stricter. Before every fabrication order re-check the live page and update 'captured' and any changed value. All lengths in mm.",
+  "fabricator": "JLCPCB",
+  "captured": "2026-09-17",
+  "source": "https://jlcpcb.com/capabilities/pcb-capabilities",
+  "copper_weights": {
+    "1oz": { "outer_um": 35, "inner_um": 17.5, "_doc": "Standard: 1 oz outer, 0.5 oz inner on multilayer" },
+    "2oz": { "outer_um": 70, "inner_um": 35, "_doc": "Heavy copper outer; inner 1 oz on multilayer. Larger min track/clearance." }
+  },
+  "profiles": {
+    "2L-1oz": {
+      "layers": 2, "copper": "1oz",
+      "kicad_rules": { "min_track_width": 0.127, "min_clearance": 0.127, "min_through_hole_diameter": 0.3, "min_via_diameter": 0.5, "min_via_annular_width": 0.1, "min_hole_clearance": 0.254, "min_hole_to_hole": 0.254, "min_copper_edge_clearance": 0.3, "min_text_height": 1.0, "min_text_thickness": 0.15, "solder_mask_to_copper_clearance": 0.0, "min_silk_clearance": 0.0, "min_connection": 0.127 },
+      "notes": ["Via hole 0.3 mm minimum on 2-layer.", "Edge clearance 0.3 mm routed, 0.4 mm for V-cut panels."]
+    },
+    "2L-2oz": {
+      "layers": 2, "copper": "2oz",
+      "kicad_rules": { "min_track_width": 0.2, "min_clearance": 0.2, "min_through_hole_diameter": 0.3, "min_via_diameter": 0.5, "min_via_annular_width": 0.1, "min_hole_clearance": 0.254, "min_hole_to_hole": 0.254, "min_copper_edge_clearance": 0.3, "min_text_height": 1.0, "min_text_thickness": 0.15, "solder_mask_to_copper_clearance": 0.0, "min_silk_clearance": 0.0, "min_connection": 0.2 },
+      "notes": ["2 oz outer copper: 0.2 mm track and clearance minimum."]
+    },
+    "4L-1oz": {
+      "layers": 4, "copper": "1oz",
+      "economical_via_drill_mm": 0.2, "economical_via_diameter_mm": 0.45,
+      "absolute_min": { "min_hole_clearance": 0.2, "_doc": "Hard floors an approved project deviation may go down to (kicad_golden.project.json approved_rule_deviations). min_hole_clearance 0.2 = JLCPCB via hole to track (ServiceOne D110, 2026-10-20); the profile keeps 0.254 as the default rule." },
+      "kicad_rules": { "min_track_width": 0.09, "min_clearance": 0.09, "min_through_hole_diameter": 0.15, "min_via_diameter": 0.25, "min_via_annular_width": 0.05, "min_hole_clearance": 0.254, "min_hole_to_hole": 0.254, "min_copper_edge_clearance": 0.3, "min_text_height": 1.0, "min_text_thickness": 0.15, "solder_mask_to_copper_clearance": 0.0, "min_silk_clearance": 0.0, "min_connection": 0.09 },
+      "stackup": { "order": ["F.Cu:signal", "In1.Cu:GND plane", "In2.Cu:POWER plane", "B.Cu:signal"], "outer_copper_um": 35, "inner_copper_um": 17.5, "_doc": "JLC standard 4-layer (JLC04161H-7628 class): 1 oz outer, 0.5 oz inner. The golden file declares 35 µm on all four layers — correct the inner copper in the stackup editor to 0.0175 mm when using this profile." },
+      "notes": ["Via hole 0.15 mm / diameter 0.25 mm minimum on 4-6 layer.", "Inner layer track/spacing 0.09 mm (3.5 mil).", "This is the profile the golden standard was built for. The reviewer's netclass via drill of 0.15 mm is within this limit; the golden rule min_through_hole_diameter 0.20 is stricter and may be relaxed to 0.15 under this profile."]
+    },
+    "4L-2oz": {
+      "layers": 4, "copper": "2oz",
+      "economical_via_drill_mm": 0.2, "economical_via_diameter_mm": 0.45,
+      "absolute_min": { "min_hole_clearance": 0.2, "_doc": "Hard floors an approved project deviation may go down to (kicad_golden.project.json approved_rule_deviations). min_hole_clearance 0.2 = JLCPCB via hole to track (ServiceOne D110, 2026-10-20); the profile keeps 0.254 as the default rule." },
+      "kicad_rules": { "min_track_width": 0.2, "min_clearance": 0.2, "min_through_hole_diameter": 0.15, "min_via_diameter": 0.25, "min_via_annular_width": 0.05, "min_hole_clearance": 0.254, "min_hole_to_hole": 0.254, "min_copper_edge_clearance": 0.3, "min_text_height": 1.0, "min_text_thickness": 0.15, "solder_mask_to_copper_clearance": 0.0, "min_silk_clearance": 0.0, "min_connection": 0.2 },
+      "stackup": { "order": ["F.Cu:signal", "In1.Cu:GND plane", "In2.Cu:POWER plane", "B.Cu:signal"], "outer_copper_um": 70, "inner_copper_um": 35 },
+      "notes": ["2 oz outer copper: 0.2 mm track and clearance minimum on outer layers."]
+    },
+    "6L-1oz": {
+      "layers": 6, "copper": "1oz",
+      "economical_via_drill_mm": 0.2, "economical_via_diameter_mm": 0.45,
+      "absolute_min": { "min_hole_clearance": 0.2, "_doc": "Hard floors an approved project deviation may go down to (kicad_golden.project.json approved_rule_deviations). min_hole_clearance 0.2 = JLCPCB via hole to track (ServiceOne D110, 2026-10-20); the profile keeps 0.254 as the default rule." },
+      "kicad_rules": { "min_track_width": 0.09, "min_clearance": 0.09, "min_through_hole_diameter": 0.15, "min_via_diameter": 0.25, "min_via_annular_width": 0.05, "min_hole_clearance": 0.254, "min_hole_to_hole": 0.254, "min_copper_edge_clearance": 0.3, "min_text_height": 1.0, "min_text_thickness": 0.15, "solder_mask_to_copper_clearance": 0.0, "min_silk_clearance": 0.0, "min_connection": 0.09 },
+      "stackup": { "order": ["F.Cu:signal", "In1.Cu:GND plane", "In2.Cu:signal", "In3.Cu:signal", "In4.Cu:POWER plane", "B.Cu:signal"], "outer_copper_um": 35, "inner_copper_um": 17.5, "_doc": "Suggested order only; the immutable order in the standard is defined for 4 layers. Confirm with the user for 6 layers." },
+      "notes": ["Same drill/track limits as 4-layer."]
+    },
+    "6L-2oz": {
+      "layers": 6, "copper": "2oz",
+      "economical_via_drill_mm": 0.2, "economical_via_diameter_mm": 0.45,
+      "absolute_min": { "min_hole_clearance": 0.2, "_doc": "Hard floors an approved project deviation may go down to (kicad_golden.project.json approved_rule_deviations). min_hole_clearance 0.2 = JLCPCB via hole to track (ServiceOne D110, 2026-10-20); the profile keeps 0.254 as the default rule." },
+      "kicad_rules": { "min_track_width": 0.2, "min_clearance": 0.2, "min_through_hole_diameter": 0.15, "min_via_diameter": 0.25, "min_via_annular_width": 0.05, "min_hole_clearance": 0.254, "min_hole_to_hole": 0.254, "min_copper_edge_clearance": 0.3, "min_text_height": 1.0, "min_text_thickness": 0.15, "solder_mask_to_copper_clearance": 0.0, "min_silk_clearance": 0.0, "min_connection": 0.2 },
+      "notes": []
+    }
+  },
+  "common": {
+    "min_pth_drill": 0.2,
+    "min_pth_annular_ring": 0.13,
+    "max_board_size_mm": [400, 500],
+    "solder_mask_dam_min": 0.1,
+    "silkscreen_min_line": 0.15,
+    "silkscreen_min_text_height": 1.0,
+    "hole_to_hole_different_nets_pth": 0.5,
+    "_doc": "Board-level limits not expressed as KiCad rules; checked by hand or by the fabricator's DFM."
+  }
+}

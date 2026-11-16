@@ -1,0 +1,94 @@
+# Bitbucket Pipelines for CheckOne (proposed bitbucket.org/aqtechengenharia/checkone_hardware, as gapone_hardware and fluxone_hardware). Today
+# the repository is on GitHub (celsung1962/checkone_hardware), where this file does nothing; it is here so the move needs
+# no CI change. Copied from FluxOne_hardware (2026-11-15) via PsOne_Wind_hardware (2026-11-16). Same tools, same KiCad image, same commands as locally.
+#
+#   every push to a branch     hardware checks (ERC / DRC against the committed baseline, verify scripts,
+#                              datasheet manifest): python3 tools/hw_checks/hw_checks.py
+#   tag <prefix>-v<version>    release build and gate: tools/hw_checks/hw_release.py, run with --no-documents
+#                              because the generated documents live outside git (OUTSIDE_GIT.md). The package is
+#                              kept as the step's artifact (14 days). With the secured variable
+#                              BB_DOWNLOADS_TOKEN set, it is also uploaded to the repository's Downloads.
+#                              The official release, with its documents, is published to the store from a
+#                              design machine: python tools/hw_checks/hw_release.py <tag> --publish
+#   custom: update-baseline    run by hand (Pipelines > Run pipeline): writes the current ERC / DRC as the new
+#                              baseline, as the artifact tools/hw_checks/baseline/; commit it after review
+#   custom: update-skills      scheduled (weekly) or by hand: tools/update_skills.py opens one PR per skill with a newer
+#                              release in the Downloads of skills_hardware (replaces the GitHub update-skills.yml)
+#
+# Repository settings, once:
+#   - Settings > Pipelines > Settings: enable Pipelines.
+#   - Optional: secured repository variable BB_DOWNLOADS_TOKEN, a repository access token with the scope
+#     "repository:write", for the Downloads upload.
+#   - For update-skills: repository variables SKILLS_REPO (default aqtechengenharia/skills_hardware), secured SKILLS_TOKEN
+#     (reads skills_hardware) and PROJECT_TOKEN (pullrequest:write here); Pipelines > Schedules: update-skills, weekly, main.
+
+image:
+  name: kicad/kicad:10.0.8              # same KiCad version as the design machines; change together
+  run-as-user: 0
+
+definitions:
+  steps:
+    - step: &checks
+        name: Hardware checks
+        max-time: 30
+        condition:
+          changesets:
+            includePaths:
+              - "hardware/**"
+              - "calc/**"
+              - "docs/datasheets/**"
+              - "hw_checks.json"
+              - "tools/hw_checks/**"
+              - ".claude/skills/kicad-schematic/scripts/**"
+              - "bitbucket-pipelines.yml"
+        script:
+          - . tools/hw_checks/ci_setup.sh
+          - python3 tools/hw_checks/hw_checks.py
+
+pipelines:
+  branches:
+    '**':
+      - step: *checks
+
+  tags:
+    '*-v*':
+      - step:
+          name: Release build and gate
+          max-time: 30
+          script:
+            - . tools/hw_checks/ci_setup.sh
+            - python3 tools/hw_checks/hw_release.py "$BITBUCKET_TAG" --no-documents --out "release/$BITBUCKET_TAG"
+            - |
+              if [ -n "${BB_DOWNLOADS_TOKEN:-}" ]; then
+                for f in release/"$BITBUCKET_TAG"/*; do
+                  name="${BITBUCKET_TAG}__$(basename "$f")"
+                  curl -sS --fail -X POST -H "Authorization: Bearer $BB_DOWNLOADS_TOKEN" \
+                    "https://api.bitbucket.org/2.0/repositories/$BITBUCKET_REPO_FULL_NAME/downloads" \
+                    -F "files=@$f;filename=$name"
+                  echo "uploaded $name"
+                done
+              else
+                echo "BB_DOWNLOADS_TOKEN not set: the package stays as this step's artifact only"
+              fi
+          artifacts:
+            - release/**
+
+  custom:
+    update-baseline:
+      - step:
+          name: Hardware checks, new baseline
+          max-time: 30
+          script:
+            - . tools/hw_checks/ci_setup.sh
+            - python3 tools/hw_checks/hw_checks.py --update-baseline
+          artifacts:
+            - tools/hw_checks/baseline/**
+
+    update-skills:
+      - step:
+          name: Newer skill releases -> one PR per skill
+          image: python:3.12
+          script:
+            - git config user.name "update-skills" && git config user.email "update-skills@pipelines"
+            - export SKILLS_REPO="${SKILLS_REPO:-aqtechengenharia/skills_hardware}"
+            - python tools/update_skills.py

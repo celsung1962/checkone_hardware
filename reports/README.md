@@ -1,0 +1,3 @@
+# reports
+
+One Markdown report per STOP: stop_0.md, stop_1.md, ...

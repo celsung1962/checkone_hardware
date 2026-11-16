@@ -1,0 +1,32 @@
+(pcb "C:\Users\someone\board.dsn"
+  (parser
+    (string_quote ")
+    (space_in_quoted_tokens on)
+    (host_cad "KiCad's Pcbnew")
+  )
+  (structure
+    (layer F.Cu (type signal))
+    (layer B.Cu (type signal))
+  )
+  (network
+    (net "Net-(U7-EN)"
+      (pins R37-1 U7-6)
+    )
+    (net "/Solar MPPT  - Power/REGN"
+      (pins U6-9 C7-1)
+    )
+    (net GND
+      (pins U6-1 C7-2)
+    )
+    (class kicad_default "/Solar MPPT  - Power/REGN" "Net-(U7-EN)" GND
+      (circuit (use_via Via_450))
+      (rule (width 200) (clearance 150))
+    )
+    (class POWER_DC
+      (circuit (use_via Via_600))
+      (rule (width 600) (clearance 150))
+    )
+  )
+  (wiring
+  )
+)

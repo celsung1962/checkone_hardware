@@ -1,0 +1,69 @@
+{
+  "project": "fixture",
+  "length_groups": [
+    {
+      "name": "BUS",
+      "pattern": "^BUS_(D\\d|CLK)$",
+      "max_spread_mm": 1,
+      "clock_pattern": "^BUS_CLK$",
+      "clock_rule": "shorter_or_equal"
+    }
+  ],
+  "via_budget": {
+    "fast_patterns": [
+      "^BUS_"
+    ],
+    "max_vias_fast": 2,
+    "max_vias_default": null
+  },
+  "silkscreen": {
+    "references_hidden": true
+  },
+  "teardrops": {
+    "allowed": false
+  },
+  "via_in_pad": {
+    "allowed_refs": []
+  },
+  "fabricator": {
+    "name": "JLCPCB 4-layer 1oz",
+    "profile": "4L-1oz",
+    "layers": 4,
+    "copper": "1oz",
+    "captured": "2026-09-17",
+    "min_hole_to_hole_mm": 0.254,
+    "min_via_drill_mm": 0.15,
+    "min_copper_to_edge_mm": 0.3,
+    "inner_copper_um": 17.5,
+    "outer_copper_um": 35,
+    "kicad_rules": {
+      "min_track_width": 0.09,
+      "min_clearance": 0.09,
+      "min_through_hole_diameter": 0.15,
+      "min_via_diameter": 0.25,
+      "min_via_annular_width": 0.05,
+      "min_hole_clearance": 0.254,
+      "min_hole_to_hole": 0.254,
+      "min_copper_edge_clearance": 0.3,
+      "min_text_height": 1,
+      "min_text_thickness": 0.15,
+      "solder_mask_to_copper_clearance": 0,
+      "min_silk_clearance": 0,
+      "min_connection": 0.09
+    },
+    "stackup_order": [
+      "F.Cu:signal",
+      "In1.Cu:GND plane",
+      "In2.Cu:POWER plane",
+      "B.Cu:signal"
+    ],
+    "economical_via_drill_mm": 0.2,
+    "fine_vias_approved": false,
+    "absolute_min": {
+      "min_hole_clearance": 0.2
+    }
+  },
+  "approved_rule_deviations": {
+    "_doc": "Approved deviations from the template / fabricator rules (board review rev. 0.2, D110): {\"<design_settings.rules key>\": {\"value\": <mm>, \"reason\": \"<decision id and why>\"}}. apply_settings.js puts them back after applying the profile and refuses any below the fabricator absolute minimum. Starts empty."
+  }
+}
