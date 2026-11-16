@@ -43,7 +43,11 @@ separation fails. Nothing committed yet.
 1. **J5 pin 1 (GND) unconnected**, pad at (117.12, 115.75) F.Cu. Its axis is boxed in: +3.3V runs on F.Cu under J5,
    +3.3VA on B.Cu just above it, SCL / SDA from pins 2-3. The audit also FAILs the gap J5-1 / J5-MP, which carries
    +3.3V and SCL. Re-route +3.3V away from under J5 and give pin 1 its own GND via.
-2. **CH4_AIN vs SDA** separation (above).
+2. ~~CH4_AIN vs SDA separation~~ — done 2026-11-16. The SDA via at (144.19, 87.64) sat between CH4_AIN (B.Cu,
+   x 144.74) and CH3_AIN (F.Cu): CH4_AIN vertical moved 0.35 mm right (ends kept on their 45° lines), CH3_AIN
+   corner moved 0.43 mm down, and the SCL B.Cu stretch under the CH4_AIN via 0.3 mm down (CH4_AIN vs SCL was
+   0.44 mm there, hidden behind the larger finding). All three separation checks pass (min 0.50 / 0.52 / 2.15 mm);
+   DRC clean; audit_gate 0 new FAIL.
 3. **Vias between the pads of two-pad parts** (audit `via`, 34 FAIL): R13 (V24_F), C5 (V24_D), D2 / D1 (VIN_F),
    R170 (CH7_IIN), C2 (VIN_S), C12 (+5V), LED4 (GND), and vias closer than 0.15 mm to SMD pads: move each via
    out on the pad axis with a short stub.
