@@ -55,7 +55,13 @@ separation fails. Nothing committed yet.
    has no stray field worth keeping clear of; move the tracks, or record a project exception for FB* parts.
 7. **Geometry**: 2 acute joints (+3.3VA at 117.22, 125.75 B.Cu; V24_D at 200.15, 88.16 B.Cu), 1 off-lattice segment
    (+3.3VA 116.95, 125.48), 1 GND self-crossing (149.60, 114.17 F.Cu), 5 GND track ends up to 0.16 mm off via centres.
-8. **Thermal reliefs** starved (DRC): U2 pin 1 and J16 pin 2 (GND); acceptable or add a spoke.
+8. ~~Thermal reliefs starved~~ — done 2026-11-16 after the designer's KiCad pass (J5 pin 1 connected by the
+   designer). U2 pin 1 (A1, GND, 0.3 mm pin) set to a solid zone connection; J16 pin 2 thermal spokes turned from
+   45° to 0° (two spokes now clear the tracks). The GND of U6 (pins 3, 7 and their via) sat in a ground island
+   walled in by B.Cu / F.Cu tracks (DRC "missing connection GND_F - GND_F"): joined to the plane via at
+   (186.0, 133.5) with a 0.3 mm track, B.Cu then F.Cu through a new via at (183.35, 131.55). DRC: 0 unconnected,
+   only the 6 terminal courtyards (baseline); `audit_gate.py` against the designer's board: 0 new FAIL;
+   `hw_checks` PASS (baseline refreshed).
 9. ~~Silkscreen text below the JLCPCB 1.0 mm height~~ — done 2026-11-16 (owner: enlarge to 1.0 mm). All 63 board
    texts are 1.0 mm high with a 0.15 mm line (long labels and the LED labels 0.8 mm wide). Moved so that no text
    covers a pad, an outline, a designator or another text: CH labels 0.4 mm further from the terminals; test-pad
