@@ -1,0 +1,11 @@
+number,name,type,source
+1,ADDR,input,"ADS1115IDGSR_datasheet.pdf, TI SBAS444, Pin Configuration and Functions, DGS (VSSOP-10) top view"
+2,ALERT/RDY,output,
+3,GND,power_in,
+4,AIN0,input,
+5,AIN1,input,
+6,AIN2,input,
+7,AIN3,input,
+8,VDD,power_in,
+9,SDA,bidirectional,
+10,SCL,input,

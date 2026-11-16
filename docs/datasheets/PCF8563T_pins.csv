@@ -1,0 +1,9 @@
+number,name,type,source
+1,OSCI,input,"PCF8563T_datasheet.pdf, NXP PCF8563, Table 3 Pin description, SO8"
+2,OSCO,output,
+3,INT,open_collector,
+4,VSS,power_in,
+5,SDA,bidirectional,
+6,SCL,input,
+7,CLKOUT,output,
+8,VDD,power_in,

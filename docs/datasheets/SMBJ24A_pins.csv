@@ -1,0 +1,3 @@
+number,name,type,source
+1,K,passive,"SMBJ24A_datasheet.pdf (hongjiacheng): SMB unidirectional, band = cathode; KiCad D_SMB convention (pad 1 = K)"
+2,A,passive,

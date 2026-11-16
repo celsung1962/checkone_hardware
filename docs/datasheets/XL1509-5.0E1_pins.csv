@@ -1,0 +1,9 @@
+number,name,type,source
+1,VIN,power_in,"XL1509-5.0E1_datasheet.pdf, XLSEMI XL1509, Table 1 Pin Description: 1 VIN, 2 OUTPUT, 3 FEEDBACK, 4 ON/OFF, 5-8 GND"
+2,OUTPUT,output,
+3,FB,input,
+4,ON/OFF,input,
+5,GND,power_in,
+6,GND,power_in,
+7,GND,power_in,
+8,GND,power_in,

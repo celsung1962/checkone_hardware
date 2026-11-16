@@ -1,0 +1,9 @@
+number,name,type,source
+1,S,passive,"AO4485_datasheet.pdf, ElecSuper AO4485, 5 Pin Configuration and Functions: 1/2/3 Source, 4 Gate, 5-8 Drain"
+2,S,passive,
+3,S,passive,
+4,G,input,
+5,D,passive,
+6,D,passive,
+7,D,passive,
+8,D,passive,

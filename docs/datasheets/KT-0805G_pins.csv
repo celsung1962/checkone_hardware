@@ -1,0 +1,3 @@
+number,name,type,source
+1,K,passive,"KT-0805G_datasheet.pdf (Hubei KENTO): 0805 green LED, cathode mark; KiCad LED_0805 convention (pad 1 = K)"
+2,A,passive,

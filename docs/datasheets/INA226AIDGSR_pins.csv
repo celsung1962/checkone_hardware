@@ -1,0 +1,11 @@
+number,name,type,source
+1,A1,input,"INA226AIDGSR_datasheet.pdf, TI SBOS547, Pin Configuration and Functions, DGS (VSSOP-10)"
+2,A0,input,
+3,ALERT,open_collector,
+4,SDA,bidirectional,
+5,SCL,input,
+6,VS,power_in,
+7,GND,power_in,
+8,VBUS,input,
+9,IN-,input,
+10,IN+,input,

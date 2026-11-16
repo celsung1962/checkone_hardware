@@ -1,22 +1,23 @@
 # CheckOne — Hardware brief for Claude Code (KiCad)
 
 AQTech Power Prognostics · Hardware owner: Celso Souza · v1 schematic and placement: Sergio Zimath ·
-Brief revision: 2026-11-16 (rev. 1 — written from the equipment description and the v1 KiCad project)
+Brief revision: 2026-11-16 (rev. 2 — rev 1.1 of the board: review changes applied, schematic redrawn in the GapOne style)
 
 This file is the hardware contract. [FROZEN] items are locked; [PROPOSED] items are calculated starting points that
 may be refined with justification; [OPEN] items must not be closed by the agent.
 
-The v1 board exists as a schematic and a placement (not routed, not fabricated). This brief takes v1 and the
-equipment description as the baseline. The decisions in section 2 come from the description; they are [FROZEN]
-once the owner confirms them (O1). Work on v1 goes on as revision 1.1 (principle 8 of the kicad-schematic skill).
+The v1 board (S. Zimath: schematic and placement, not routed, not fabricated) is now **revision 1.1**: the changes of
+`reports/CheckOne/review_2026-11-16.md` applied by the owner's decision of 2026-11-16 ("aplique todas as mudanças"),
+the schematic redrawn in the GapOne V2 style, the placement kept. The decisions in section 2 come from the
+description; they are [FROZEN] once the owner confirms them (O1).
 
 ## 0. Working rules
-1. Language: everything in English — reports, commits, `calc/` scripts and all new schematic content. Chat replies
-   follow the user's language. The v1 sheets are in Portuguese (C-11 of the requirements): translate at rev 1.1.
+1. Language: everything in English — reports, commits, `calc/` scripts and all schematic content. Chat replies
+   follow the user's language.
 2. Conclusion first, then the justification.
 3. Every number backed by a script in `calc/` (`calc/checkone_budget.py`: measurement, NTC, fault current, budget).
-4. Pinouts only from datasheets in `docs/datasheets/` (listed in `manifest.csv`). No symbol is drawn or changed
-   without its datasheet on disk (none on disk yet: O3).
+4. Pinouts only from datasheets in `docs/datasheets/` (listed in `manifest.csv`, 27 documents). No symbol is drawn or
+   changed without its datasheet on disk and its pin table `docs/datasheets/<part>_pins.csv`.
 5. No silent workarounds: infeasibility → stop and report with evidence and alternatives.
 6. `kicad-cli sch erc` after every sheet and before every commit; `python tools/hw_checks/hw_checks.py` before every
    commit (ERC / DRC against `tools/hw_checks/baseline/`, datasheet manifest).
@@ -26,14 +27,20 @@ once the owner confirms them (O1). Work on v1 goes on as revision 1.1 (principle
    `meeting_2026-11-16_Sergio.md` holds Sergio's requests: review the electronics, route, check the fit in the
    enclosure, order with the AMP. He allows any change but wants the important ones reported to him before the
    version is closed: list every such change in the rev 1.1 report.
-9. **v1 is generated.** `hardware/CheckOne/gerador/design.py` is the single circuit definition; `gen_sch.py` and
-   `gen_pcb.py` write the schematic and the board from it. Until the owner decides otherwise (O2), a circuit change
-   goes into `design.py` and both files are regenerated; never hand-edit one side only.
+9. **The schematic is generated** (as GapOne): `hardware/build_symbol_lib.py` (project symbols, pins checked
+   against the pin tables; `hardware/check_all_symbols.py`), `hardware/gen_checkone.py` (root + 6 A4 sheets with
+   `hardware/schgen.py`) — never hand-edit the `.kicad_sch`. Then export the netlist and run
+   `hardware/sync_board.py` with KiCad's Python: it reloads every footprint from its library at the same place and
+   sets values, fields, paths and nets (the "Update PCB from Schematic"); the board itself (placement, routing) is
+   edited in KiCad. Gate after a schematic change: ERC 0, `check_drawing.py` 0 hits, `fix_passive_text.py` 0 to
+   move, `check_revision.py --rev 1.1`, DRC parity 0, `hw_checks.py` PASS. S. Zimath's v1 generator
+   (`gerador/design.py`) is retired; it stays in `reference/import_2026-11-16/` and in the git history.
 
 ## 0.1 Reference [FROZEN]
-- v1 KiCad project (KiCad 7 files, opened with KiCad 10): `hardware/CheckOne/`, copied unchanged from the hand-over
-  `reference/import_2026-11-16/` (outside git, `OUTSIDE_GIT.md`) without `producao/` and `.kicad_prl`.
-- Form of the repository, checks, release and documentation: GapOne_V2 (`aqtechengenharia/gapone_hardware`).
+- v1 KiCad project (KiCad 7 files): hand-over in `reference/import_2026-11-16/` (outside git, `OUTSIDE_GIT.md`),
+  including S. Zimath's update of 10:56 (`update_S_Zimath_1057/`); imported as is at commit `eac4dd2`.
+- Form of the repository, the schematic, the checks, release and documentation: GapOne_V2
+  (`aqtechengenharia/gapone_hardware`).
 
 ## 1. The product in one paragraph
 CheckOne is AQTech's production test fixture for GapOne and FluxOne sensors: up to eight sensors are powered with
@@ -58,42 +65,38 @@ temperatures (third ADS1115, probe up to 150 °C), keeps time (PCF8563 + CR2032)
 | D9 Assembly | JLCPCB SMD (codes in DS 8.1), THT hand-soldered from LCSC | |
 
 ## 3. Open items [OPEN]
-- **O1 — Confirm the description as the contract.** Owner to confirm section 2 and decide the conflicts C-1…C-12 of
-  `docs/requirements/CheckOne_requirements.md` (the ones that change the board: C-5 display 5 V path, C-6 INA226
-  supply, C-7 test pads, C-9 / C-10 placement, C-12 fault current into 3V3A, C-14 board size).
-- **O2 — How v1 is edited.** Keep the generator (`gerador/design.py` → schematic and board) or convert the project to
-  KiCad 10 and edit it directly (the AQTech form). The generator writes KiCad 7 files with Portuguese names, bare
-  footprint names on the board and no LCSC field on the footprints (G-5). Until decided: generator only (rule 9).
-- **O3 — Datasheets.** 26 fetched on 2026-11-16 (`docs/datasheets/manifest.csv`); GZ2012D601TF and the display
-  modules still missing. Symbols and footprints checked in `reports/CheckOne/review_2026-11-16.md`: BAT54W is
-  SOD-123 (v1 SOT-323), DC-005-A200 slots turned 90°, KF2EDGRC outline 12.2 instead of 8.4 mm deep. The datasheet
-  check stays a known failure until the schematic values are part numbers (rev 1.1). S. Zimath's update of
-  2026-11-16 10:56 (imported, `reference/import_2026-11-16/update_S_Zimath_1057/`) fixed the DC-005-A200, changed the
-  FCH1040 land (not to the maker's) and the shunts (25 ppm, C2989146); the review's status table lists what is open.
-- **O4 — Fault current into 3V3A (C-12).** +24 V on Iin pushes 2.8–3.8 mA per channel into 3V3A through the BAT54S;
-  the XC6206 cannot sink it. Options: a clamp to the 3V3A rail that can sink (zener / shunt load), BAT54S to a
-  dedicated clamp rail, a larger series resistor, the SMBJ5.0A of DS 9. Needs the rail load (calc 3 assumes 3 mA).
-  Review 2026-11-16 proposes R1n1 1 kΩ → 4.7 kΩ: 0.6–0.8 mA, filter 3.4 kHz, gain error 0.11 % calibrated out.
-- **O5 — Items to confirm on real parts (DS 11):** CYD size and holes (C-8), enclosure window walls and ribs vs the
-  12.5 mm terminal bodies, sensors' start-up current vs the 200 mA PTCs, CYD display controller, JC4880P443C 26-pin
-  pinout, SMAJ5.0A leakage at 2.5 V, AQTech logo SVG.
+- **O1 — Confirm the description as the contract.** Owner to confirm section 2. The conflicts that changed the board
+  were decided on 2026-11-16 ("aplique todas as mudanças") and are in rev 1.1: C-5 (R6 fitted, D4 DNP), C-6 (INA226
+  stays on +3.3V; the description is to be corrected), C-7 (test pads 2.0 mm), C-9 / C-10 (J2, LED1-LED4 moved),
+  C-12 (R1n1 4.7 kΩ). Still open: C-1…C-4, C-8, C-13, C-14. **Sergio is to be told the rev 1.1 changes before the
+  version is closed** (`reports/CheckOne/review_2026-11-16.md`, "Applied in rev 1.1").
+- **O2 — How the project is edited.** Decided 2026-11-16: schematic generated in the GapOne style (rule 9), board
+  edited in KiCad after `sync_board.py`; v1 generator retired.
+- **O3 — Datasheets.** 27 on disk (`docs/datasheets/manifest.csv`, incl. the 25 ppm shunt C2989146); pin tables for
+  the 12 project symbols; the datasheet check passes. Still missing: GZ2012D601TF (no PDF at LCSC; a passive, not
+  enforced) and the display modules (O5).
+- **O4 — Fault current into 3V3A (C-12).** Closed in rev 1.1: R1n1 4.7 kΩ (0.6–0.8 mA per channel, filter 3.4 kHz,
+  gain error 0.11 % calibrated out, `calc/checkone_budget.py` item 3). Bench check in section 15.
+- **O5 — Items to confirm on real parts (DS 11):** CYD size and holes (C-8; H5–H8 at 87 × 49 mm), enclosure window
+  walls and ribs vs the 12.2 mm terminal bodies, sensors' start-up current vs the 200 mA PTCs, CYD display
+  controller, JC4880P443C 26-pin pinout, SMAJ5.0A leakage at 2.5 V, AQTech logo SVG.
 - **O6 — Simulation files (G-1).** The ngspice netlists and results of DS 9 are not in the hand-over.
 - **O7 — Sensor consumption (G-3).** GapOne / FluxOne current per sensor, for the budget and the PTC choice.
-- **O9 — Fit in the enclosure (C-14, G-8).** The v1 outline is 122.1 × 87.1 mm with holes on 115.00 × 80.00 mm, as
-  the description says; whether that already has Sergio's 1 mm per side of clearance needs the AK-P-08A drawing or
-  his caliper measurements (inside length / width, hole positions of the lid screws, window positions).
-- **O10 — Order with the AMP.** Sergio would like the board ordered with the GapOne AMP if the routing is done the
-  same day. Not before O1 / O3 / O4 / O9 are closed and the routing audit passes; owner's call.
-- **O8 — Revision and date.** v1 title blocks: rev 1.0, no date, A2 sheets. Next: 1.1 with the date of the first
-  change on every sheet and the board (principle 8).
+- **O8 — Revision and date.** Done: rev 1.1, 2026-11-16 in every title block and on the board
+  (`check_revision.py --rev 1.1` PASS); silkscreen "rev 1.1".
+- **O9 — Fit in the enclosure (C-14, G-8).** Outline 122.1 × 87.1 mm, holes on 115.00 × 80.00 mm (unchanged). The
+  terminals now sit with their front 0.95 mm beyond the board edge, as v1's 3D study assumed (pin rows 6.15 mm from
+  the long edges, owner choice 2026-11-16); confirm against the AK-P-08A drawing or Sergio's measurements.
+- **O10 — Order with the AMP.** Owner's call, after routing and the routing audit.
 
 ## 4. KiCad project structure
-`hardware/CheckOne/`: root `CheckOne.kicad_sch` with four hierarchical sheets — `alimentacao` (input, soft start,
-filter, buck, INA226, 3.3 V, LEDs, test pads), `canais` (CH1–CH8), `adcs` (3 × ADS1115, NTC1 / NTC2), `display_rtc`
-(display connectors, RTC, battery, holes); nets by global labels. Board `CheckOne.kicad_pcb`: 122 × 87 mm, 2 layers,
-all parts placed, no tracks. Project library `CheckOne` (`CheckOne.kicad_sym`: AO4485, XL1509; `CheckOne.pretty`:
-KF2EDGRC-5.08-4P, DC-005-A200, BS-02-A1AJ006). `CheckOne.net`: netlist exported with KiCad 10 (166 parts).
-
+`hardware/CheckOne/`, KiCad 10 files: root `CheckOne.kicad_sch` and six A4 sheets — `Power_Input` (DC jack, PTC,
+TVS, reverse diode, soft start, pi filter), `Power_Rails` (5 V buck, display 5 V, INA226, 3.3 V / 3.3VA, LEDs, I²C
+pull-ups, test pads), `Channels_1_4`, `Channels_5_8`, `ADC_NTC` (3 × ADS1115, NTC inputs), `Display_RTC` (display
+connectors, RTC, mounting holes). Inter-sheet nets through SHEET PORTS (CHn_AIN, SDA, SCL) and power symbols. Board
+`CheckOne.kicad_pcb`: 122 × 87 mm, 2 layers, S. Zimath's placement, not routed. Project library `CheckOne`
+(`CheckOne.kicad_sym`, built; `CheckOne.pretty`: KF2EDGRC-5.08-4P, DC-005-A200, BS-02-A1AJ006, L_Fangcheng_FCH1040).
+`CheckOne.net`: netlist (166 parts, 70 nets).
 ## 4.1 Parts policy [FROZEN]
 SMD parts assembled by JLCPCB with the LCSC code in the `LCSC` field; THT parts and loose items bought from LCSC
 and hand-soldered (DS 8). For new parts copy `.claude/skills/kicad-schematic/references/jlcpcb_policy.md` here.
@@ -101,19 +104,19 @@ and hand-soldered (DS 8). For new parts copy `.claude/skills/kicad-schematic/ref
 ## 5. Channel / signal map [FROZEN after O1]
 | Signal | Path | Level | Terminal |
 |---|---|---|---|
-| CHn +24 | +24V_SENS → F1n (200 mA) → FB1n → OUTn, C1n0 100 nF | 24 V | Jn pin 1 |
-| CHn loop | IINn → R1n0 120 Ω → GND; D1n SMAJ5.0A; R1n1 1 kΩ → AINn, D2n BAT54S, C1n1 10 nF → U4 (n = 1–4) / U5 (n = 5–8) | 0.48–2.52 V for 4–21 mA | Jn pin 3 Iin, pin 4 Iout = GND, pin 2 GND |
-| NTC1 / NTC2 | R4x0 10 kΩ from 3V3A, C4x3 1 µF, R4x1 1 kΩ, D4x BAT54S, C4x4 10 nF → U6 AIN0 / AIN2; U6 AIN1 = 3V3A | 0.55–3.27 V | J2 (front), J3 (inside) |
+| CHn +24 | +24V_SENS → F1n (200 mA) → FB1n → CHn_OUT, C1n0 100 nF | 24 V | Jn pin 1 |
+| CHn loop | CHn_IIN → R1n0 120 Ω 0.1 % 25 ppm → GND; D1n SMAJ5.0A; R1n1 4.7 kΩ → CHn_AIN, D2n BAT54S, C1n1 10 nF → U4 (n = 1–4) / U5 (n = 5–8) | 0.48–2.52 V for 4–21 mA | Jn pin 3 Iin, pin 4 Iout = GND, pin 2 GND |
+| NTC1 / NTC2 | R4x0 10 kΩ from +3.3VA, C4x3 1 µF, R4x1 1 kΩ, D4x BAT54S, C4x4 10 nF → U6 AIN0 / AIN2; U6 AIN1 = +3.3VA | 0.55–3.27 V | J2 (front), J3 (inside) |
 | Sensor supply | V24_F → R7 ∥ R13 (50 mΩ) → +24V_SENS, INA226 U2 | 24 V | — |
 
 (Jn = J11…J18 for CH1…CH8.)
 
-## 6. Critical IC connections (v1, to check against the datasheets — O3)
-ADS1115 VSSOP-10: 1 ADDR (U4 GND → 0x48, U5 VDD → 0x49, U6 SDA → 0x4A), 2 ALERT/RDY (NC), 3 GND, 4–7 AIN0–3,
-8 VDD (3V3A), 9 SDA, 10 SCL. INA226 VSSOP-10: 1 A1, 2 A0 (both GND → 0x40), 3 ALERT (NC), 4 SDA, 5 SCL, 6 VS (+3V3 in
-v1, 3V3A in DS: C-6), 7 GND, 8 VBUS, 9 IN−, 10 IN+. PCF8563T SO-8: 1 OSCI, 2 OSCO, 3 INT, 4 VSS, 5 SDA, 6 SCL,
+## 6. Critical IC connections (rev 1.1, pin tables from the datasheets: `docs/datasheets/*_pins.csv`)
+ADS1115 VSSOP-10 (TSSOP-10_3x3mm footprint): 1 ADDR (U4 GND → 0x48, U5 VDD → 0x49, U6 SDA → 0x4A), 2 ALERT/RDY (NC), 3 GND, 4–7 AIN0–3,
+8 VDD (3V3A), 9 SDA, 10 SCL. INA226 VSSOP-10: 1 A1, 2 A0 (both GND → 0x40), 3 ALERT (NC), 4 SDA, 5 SCL, 6 VS (+3.3V; the
+description says 3.3VA: C-6), 7 GND, 8 VBUS, 9 IN−, 10 IN+. PCF8563T SO-8: 1 OSCI, 2 OSCO, 3 INT, 4 VSS, 5 SDA, 6 SCL,
 7 CLKOUT, 8 VDD (VRTC). XL1509-5.0 SO-8: 1 VIN, 2 OUTPUT, 3 FB (+5V), 4 ON/OFF (GND = on), 5–8 GND. XC6206 SOT-23:
-1 VSS, 2 VOUT, 3 VIN. AO4485 SO-8: 1–3 S, 4 G, 5–8 D.
+1 VSS, 2 VOUT, 3 VIN. AO4485 SO-8: 1–3 S, 4 G, 5–8 D. BAT54S SOT-23: 1 A1, 2 K2, 3 K1/A2. BAT54W SOD-123: 1 K, 2 A.
 
 ## 7. Clock and synchronization
 None on the board (RTC crystal 32.768 kHz only).
@@ -134,28 +137,31 @@ Supply limited to 25.2 V (D5). Behaviour under a channel short or +24 V on Iin w
 RTC + CR2032; four green LEDs (24V, 5V, 3V3, 3V3D); bottom test pads 24V, 5V, 3V3, 3V3A, SDA, SCL, 2 × GND.
 
 ## 12. Critical nets for automated verification
-Not yet written (`calc/netlist_rules.py`). To add with rev 1.1:
-1. Each CHn: Iin reaches its ADS1115 input only through R1n1 1 kΩ; R1n0 120 Ω, D1n and D2n on the right nets.
+Not yet written (`calc/netlist_rules.py`). To add before routing:
+1. Each CHn: Iin reaches its ADS1115 input only through R1n1 4.7 kΩ; R1n0 120 Ω, D1n and D2n on the right nets.
 2. ADS1115 / INA226 / PCF8563 addresses as section 5 / 6; no address used twice.
 3. The display 3.3 V pins (J5, J6) drive nothing but the 3V3D LED.
 4. No part between OUTn of two channels; each channel has its own PTC.
 5. Every 3V3A load (ADS1115s, NTC dividers, INA226 per O1 / C-6) after R9.
 
 ## 13. Conventions
-v1 as seen: Portuguese sheet names (`alimentacao`, `canais`, `adcs`, `display_rtc`); nets `VIN_RAW`, `VIN_F`, `VIN_S`,
-`V24_D`, `V24_F`, `+24V_SENS`, `+5V`, `+5V_DISP`, `+3V3`, `+3V3A`, `DISP_3V3`, `OUTn`, `IINn`, `AINn`, `NTCn`,
-`NTCn_ADC`, `SDA`, `SCL`; references by channel (`F1n`, `R1n0`, `D1n` …); LCSC field on every assembled part.
-To extract with `analyze_kicad_project.py` at rev 1.1, together with O2.
+GapOne V2 form (schgen): A4 sheets, section title boxes, SHEET PORTS block for inter-sheet nets, calc notes citing the
+datasheet and `calc/`. Rails: `GND`, `+5V`, `+3.3V` (KiCad power), `+3.3VA`, `+24V_SENS`, `+5V_DISP`, `V24_F`
+(project power symbols). Nets: `VIN_RAW`, `VIN_F`, `VIN_S`, `SS_GATE`, `SS_CGD`, `V24_D`, `BUCK_SW`, `5V_D`, `DISP_3V3`,
+`CHn_OUT`, `CHn_IIN`, `CHn_AIN`, `NTCn`, `NTCn_ADC`, `OSCI`, `VRTC`, `VBAT`, `SDA`, `SCL`. References as v1 (by channel:
+`F1n`, `FB1n`, `C1n0`, `J1n`, `R1n0`, `D1n`, `R1n1`, `D2n`, `C1n1`). Value = part number (passives: value); fields
+Footprint, Datasheet, Description, LCSC on every assembled part.
 
 ## 14. Execution order
-0 owner decisions O1 / O2, rev 1.1 in every title block (O8); 1 datasheets (O3) and the symbol / footprint check;
-2 circuit fixes decided in O1 / O4; 3 ERC / DRC / netlist rules (section 12) and the V1R layout points; 4 routing
-(kicad-routing); F deliverables in `DOC/` (BOM workbook, technical documentation) and the JLCPCB package.
-
+Done: 0 setup, rev 1.1 in every title block (O8); 1 datasheets (O3) and the symbol / footprint check; 2 circuit fixes
+(O1 / O4); schematic redrawn (GapOne style), board synced. Next: 3 netlist rules (section 12) and the layout points of
+v1's readme (Kelvin on R7 / R13, TVS D1 at the jack, buck loop U1-D3-L2-C12, 100 nF at the terminals, 1 uF at the NTC
+connectors); 4 routing (kicad-routing); F deliverables in `DOC/` (BOM workbook, technical documentation) and the
+JLCPCB package (`hw_release.py`).
 ## 15. Bench validation
 DS 9 cases on the first boards (power-up, plug-in spark, surge, sensor hot-plug, channel short, +24 V on Iin with a
 2 A supply, reversed loop and supply, supply removed), the 3V3A voltage during the +24 V on Iin fault (O4), calibration
 of all channels with a 0.05 % calibrator, sensors' start-up current vs the PTCs (O5), CYD supply voltage (C-5).
 
 ## Appendix — Critical IC pinouts
-To fill from the datasheets (O3); section 6 lists the v1 pin use.
+Pin tables: `docs/datasheets/<part>_pins.csv` (12 parts, with the datasheet section); section 6 lists their use.

@@ -7,7 +7,8 @@ with a 3.5" ESP32 display module and a web page; AK-P-08A DIN-rail enclosure. On
 
 The repository was created on 2026-11-16 with the FluxOne_hardware / GapOne_V2 layout and repository policy
 (kicad-schematic skill 1.6.0). It holds the v1 schematic and placement by S. Zimath, imported on 2026-11-16
-(`reports/import_2026-11-16.md`), the project documents and all later work.
+(`reports/import_2026-11-16.md`), now revision 1.1 after the review (`reports/CheckOne/review_2026-11-16.md`), the
+project documents and all later work.
 
 ```
 checkone_hardware/
@@ -17,9 +18,9 @@ checkone_hardware/
 |-- hw_checks.json                  config of tools/hw_checks (board CheckOne, checks, release prefix checkone)
 |-- .claude/skills/                 kicad-schematic 1.6.0, kicad-placement 1.3.0, kicad-routing 1.29.0 (versioned with the project)
 |-- docs/requirements/              CheckOne_requirements.md (consolidated), equipment description, web page, screen designs
-|-- docs/datasheets/                PDFs + .txt + manifest.csv (fetch_datasheets.py) - empty yet (CLAUDE.md O3)
+|-- docs/datasheets/                PDFs + .txt + manifest.csv (fetch_datasheets.py), pin tables *_pins.csv
 |-- reference/import_2026-11-16/    the hand-over (v1 zip, production files, large artifacts) - READ-ONLY, outside git (store)
-|-- hardware/CheckOne/              v1 KiCad project (KiCad 7 files) and its generator gerador/design.py
+|-- hardware/CheckOne/              KiCad 10 project, rev 1.1; hardware/*.py generate the schematic and sync the board
 |-- calc/                           checkone_budget.py (measurement, NTC, fault current, power budget)
 |-- bom/                            parts.csv (catalog data), jlc_summary.md, bom_summary.md
 |-- DOC/                            deliverables (generated, outside git); DOC/source/ holds their sources

@@ -1,0 +1,4 @@
+number,name,type,source
+1,VSS,power_in,"XC6206P332MR_datasheet.pdf, Torex XC6206, PIN ASSIGNMENT, SOT-23: 1 VSS, 2 VOUT, 3 VIN"
+2,VOUT,power_out,
+3,VIN,power_in,

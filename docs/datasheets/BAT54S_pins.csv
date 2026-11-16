@@ -1,0 +1,4 @@
+number,name,type,source
+1,A1,passive,"BAT54S_datasheet.pdf, hongjiacheng BAT54 thru BAT54S Rev 2.0, Function Diagram p.1: 1 anode D1, 2 cathode D2, 3 common (cathode D1 / anode D2), SOT-23"
+2,K2,passive,
+3,K1/A2,passive,
