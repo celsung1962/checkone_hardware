@@ -1,0 +1,335 @@
+ ALUMINUM ELECTROLYTIC CAPACITORS
+
+JVJ series
+
+  Features
+
+ 1052000H  1052000H standard
+  Suitable for High-Density Surface Mounting
+  High Stability and Reliability
+
+  Specifications
+
+ Item                   Condition                                                            Performance
+                                                                                               -55~+105
+ Operating
+                                                             -
+
+  Temperature Range
+
+                                                                                            6.3~100V
+                                                           -
+
+Rated Voltage Range
+
+ Rated                                                                                      1~2200F
+                                                             -
+
+  Capacitance Range
+
+                         120Hz20                                                            ±20%
+Capacitance Tolerance
+
+                        2  After applying                                              I0.01CV  3A
+                                                                                    I0.01CV or 3A (whichever is greater)
+Leakage current        rated voltage for 2 minutes
+
+                                    -                                          6.3  10  16  25    35      50              63  100
+Rated Voltage(V)
+
+                                                                tan            0.30 0.24 0.20 0.18 0.16 0.14 0.14 0.14
+
+                       120Hz,20                                                1000F  1000F 0.02
+Dissipation Factor        (Max.)                                For products exceeding 1000F, the value increases by 0.02 per additional 1000F
+
+                                                                Z(-25)/Z(+20)  5    4   3   2     2       2               2   2
+   Temperature
+  Characteristics      Impedance
+
+                       Ratio(Max.)                              Z(-40)/Z(+20)  10   8   6   4     3       3               3   3
+     Endurance
+                        105 2000  Under 105, apply rated voltage for 2000
+                                                 hours , The capacitors shall meet the following requirements.
+      Shelf Life
+                                                                                              ±30%
+                       Capacitance Change                                               ±30% of the initial value.
+
+                                                                                                    300%
+                       Dissipation Factor                                               300% of initial specified value.
+
+                                                                                                  
+                       Leakage Current                                                   Initial specified value.
+
+                                        105 1000 
+                       After storage for 1000H at 105 with no voltage applied,the capacitor shall meet the limits same as
+
+                                                                             above endurance table.
+
+                                                                               -1-
+ ALUMINUM ELECTROLYTIC CAPACITORS
+
+JVJ series
+
+  Dimensions                                                                                                         (Unitmm)
+
+                                                                                 D  L  A  B     C  P                        W
+                                                                                                               ±0.5      0.5-0.8
+                                                                                 4 5.7 4.3 4.3 5.0 1.0         ±0.5      0.5-0.8
+                                                                                                               ±0.5      0.5-0.8
+                                                                                 5 5.4 5.3 5.3 6.0 1.5         ±0.5      0.5-0.8
+                                                                                                               ±0.5      0.5-0.8
+                                                                                 5 5.7 5.3 5.3 6.0 1.5         ±0.5      0.5-0.8
+                                                                                                               ±0.5      0.7-1.2
+                                                                                 6.3 5.4 6.6 6.6 7.3 2.0       ±0.5      0.7-1.2
+                                                                                                               ±1.0      1.0-1.4
+                                                                                 6.3 5.7 6.6 6.6 7.3 2.0       ±1.0      1.0-1.4
+
+                                                                                 6.3 7.7 6.6 6.6 7.3 2.0
+
+                                                                                 8.0 10.5 8.3 8.3 9.0 3.1
+
+                                                                                 10.0 10.5 10.3 10.3 11.0 4.7
+
+                                                                                 12.5 13.5 13 13 14 4.7
+
+                                                                                 16 16.5 17 17 18 6.4
+
+  Ripple Current Quick Reference Table:
+
+                 Freq.  50Hz                                              120Hz           1kHz                 10kHz up
+ Cap.                   0.70                                               1.00           1.35                    1.50
+                        0.80                                               1.00           1.20                    1.30
+    Under 100
+   100~2200F
+
+  Part Number Coding SystemExample35V120F
+
+JVJ 35V 120 M           6X8
+
+                                                                                    6.3X7.7: Encapsulation size
+                                                                                    M: Capacity tolerance (±20%)
+                                                                                     Rated electrostatic capacity(120uF)
+                                                                                     Rated voltage(35V)
+                                                                                     Series
+
+ R  4R7  4.7F
+Note: "R" in the model number denotes a decimal point (e.g., 4R7 = 4.7F)
+
+                                                                          -2-
+ ALUMINUM ELECTROLYTIC CAPACITORS
+
+JVJ series
+
+  Electrical characteristics
+
+                                                                                    
+   Rated          Rated      Case Size  Rated Ripple Current       tan       Part Number
+                             DXL(mm)     mA,105,120Hz)
+Voltage(V)  Capacitance(F)                                          0.3    JVJ6.3V47M4X6
+     6.3             47         4X5.7                25             0.3    JVJ6.3V100M5X6
+                    100         5X5.7                39             0.3    JVJ6.3V220M6X6
+     10             220        6.3X5.7               67             0.3    JVJ6.3V330M6X8
+                    330        6.3X7.7              105             0.3  JVJ6.3V1000M8X10
+     16                        8X10.5               230            0.24     JVJ10V22M4X6
+                   1000         4X5.7                20            0.24     JVJ10V22M5X6
+                     22         5X5.7                25            0.24     JVJ10V33M4X6
+                     22         4X5.7                22            0.24     JVJ10V33M5X6
+                     33         5X5.7                30            0.24     JVJ10V47M4X6
+                     33         4X5.7                25            0.24     JVJ10V47M5X6
+                     47         5X5.7                30            0.24     JVJ10V68M5X6
+                     47         5X5.7                40            0.24    JVJ10V100M5X5
+                     68         5X5.4                45            0.24    JVJ10V100M6X6
+                    100        6.3X5.7               53            0.24    JVJ10V150M6X6
+                    100        6.3X5.7               62            0.24    JVJ10V220M6X5
+                    150        6.3X5.4               70            0.24    JVJ10V220M6X8
+                    220        6.3X7.7              105            0.24    JVJ10V330M6X8
+                    220        6.3X7.7              130            0.24    JVJ10V470M6X8
+                    330        6.3X7.7              150            0.24   JVJ10V470M8X10
+                    470        8X10.5               210            0.24   JVJ10V680M8X10
+                    470        8X10.5               240            0.24  JVJ10V680M10X10
+                    680       10X10.5               270            0.24  JVJ10V1000M8X10
+                    680        8X10.5               260            0.24  JVJ10V1000M10X10
+                              10X10.5               315            0.24  JVJ10V1500M10X12
+                   1000       10X12.5               460            0.20     JVJ16V10M4X6
+                   1000         4X5.7                18            0.20     JVJ16V22M4X5
+                   1500         4X5.4                20            0.20     JVJ16V22M5X6
+                                5X5.7                27            0.20     JVJ16V33M4X6
+                     10         4X5.7                22            0.20     JVJ16V33M5X6
+                     22         5X5.7                28
+                     22
+                     33
+                     33
+
+                                        -3-
+ ALUMINUM ELECTROLYTIC CAPACITORS
+
+JVJ series
+
+                                                                                    
+   Rated          Rated      Case Size  Rated Ripple Current       tan       Part Number
+                             DXL(mm)     mA,105,120Hz)
+Voltage(V)  Capacitance(F)                                         0.20     JVJ16V47M5X5
+                     47         5X5.4                31            0.20     JVJ16V47M6X6
+     16              47        6.3X5.7               48            0.20     JVJ16V68M5X6
+                     68         5X5.7                31            0.20     JVJ16V68M6X6
+     25              68        6.3X5.7               48            0.20    JVJ16V100M6X5
+                    100        6.3X5.4               60            0.20    JVJ16V150M6X6
+                    150        6.3X5.7               65            0.20    JVJ16V150M6X8
+                    150        6.3X7.7               95            0.20    JVJ16V220M6X8
+                    220        6.3X7.7              110            0.20    JVJ16V330M6X8
+                    330        6.3X7.7              120            0.20   JVJ16V330M8X10
+                    330        8X10.5               195            0.20    JVJ16V470M6X8
+                    470        6.3X7.7              230            0.20   JVJ16V470M8X10
+                    470        8X10.5               230            0.20   JVJ16V680M8X10
+                    680        8X10.5               255            0.20  JVJ16V680M10X10
+                    680       10X10.5               315            0.20  JVJ16V1000M10X10
+                              10X10.5               330            0.20  JVJ16V1000M10X12
+                   1000       10X12.5               390            0.18    JVJ25V4R7M4X6
+                   1000         4X5.7                13            0.18    JVJ25V6R8M4X6
+                    4.7         4X5.7                14            0.18     JVJ25V10M4X6
+                    6.8         4X5.7                14            0.18     JVJ25V10M5X6
+                                5X5.7                20            0.18     JVJ25V22M4X6
+                     10         4X5.7                19            0.18     JVJ25V22M5X5
+                     10         5X5.4                25            0.18     JVJ25V33M4X6
+                     22         4X5.7                22            0.18     JVJ25V33M5X6
+                     22         5X5.7                29            0.18     JVJ25V47M5X5
+                     33         5X5.4                35            0.18     JVJ25V47M6X6
+                     33        6.3X5.7               48            0.18     JVJ25V68M6X6
+                     47        6.3X5.7               48            0.18    JVJ25V100M6X5
+                     47        6.3X5.4               72            0.18    JVJ25V100M6X8
+                     68        6.3X7.7               91            0.18    JVJ25V150M6X8
+                    100        6.3X7.7              100            0.18    JVJ25V180M6X8
+                    100        6.3X7.7              120            0.18    JVJ25V220M6X8
+                    150        6.3X7.7              120            0.18   JVJ25V220M8X10
+                    180        8X10.5               175
+                    220
+                    220
+
+                                        -4-
+ ALUMINUM ELECTROLYTIC CAPACITORS
+
+JVJ series
+
+                                                                                    
+   Rated          Rated      Case Size  Rated Ripple Current       tan       Part Number
+                             DXL(mm)     mA,105,120Hz)
+Voltage(V)  Capacitance(F)     6.3X7.7                             0.18    JVJ25V330M6X8
+     25             330                             220            0.18   JVJ25V330M8X10
+                    330        8X10.5               220            0.18  JVJ25V330M10X10
+     35             330       10X10.5               240            0.18   JVJ25V470M8X10
+                    470        8X10.5               240            0.18  JVJ25V470M10X10
+                    470       10X10.5               280            0.18  JVJ25V680M10X10
+                    680       10X10.5               350            0.18  JVJ25V1000M10X12
+                   1000       10X12.5               400            0.18  JVJ25V2200M16X16
+                   2200       16X16.5               900            0.16    JVJ35V3R3M4X6
+                    3.3                              13            0.16    JVJ35V4R7M4X6
+                    4.7         4X5.7                14            0.16    JVJ35V6R8M4X6
+                    6.8         4X5.7                14            0.16
+                     10         4X5.7                14            0.16     JVJ35V10M4X5
+                     10         4X5.4                21            0.16     JVJ35V10M5X6
+                     22         5X5.7                30            0.16     JVJ35V22M5X6
+                     22         5X5.7                38            0.16     JVJ35V22M6X6
+                     33        6.3X5.7               34            0.16     JVJ35V33M5X6
+                     33         5X5.7                42            0.16     JVJ35V33M6X6
+                     47        6.3X5.7               50            0.16     JVJ35V47M6X6
+                     47        6.3X5.7               70            0.16     JVJ35V47M6X8
+                     68        6.3X7.7               50            0.16     JVJ35V68M6X6
+                     68        6.3X5.7               70            0.16     JVJ35V68M6X8
+                    100        6.3X7.7               84            0.16    JVJ35V100M6X8
+                    100        6.3X7.7              120            0.16   JVJ35V100M8X10
+                    120        8X10.5                95            0.16    JVJ35V120M6X8
+                    150        6.3X7.7               95            0.16    JVJ35V150M6X8
+                    150        6.3X7.7              155            0.16   JVJ35V150M8X10
+                    220        8X10.5               190            0.16    JVJ35V220M6X8
+                    220        6.3X7.7              190            0.16   JVJ35V220M8X10
+                    220        8X10.5               220            0.16  JVJ35V220M10X10
+                    330       10X10.5               225            0.16   JVJ35V330M8X10
+                    330        8X10.5               245            0.16  JVJ35V330M10X10
+                    470       10X10.5               320            0.16  JVJ35V470M10X10
+                    470       10X10.5               375            0.16  JVJ35V470M10X12
+                    560       10X12.5               350            0.16  JVJ35V560M10X10
+                    680       10X10.5               375                  JVJ35V680M10X10
+                              10X10.5
+
+                                        -5-
+ ALUMINUM ELECTROLYTIC CAPACITORS
+
+JVJ series
+
+                                                                                   
+   Rated           Rated     Case Size  Rated Ripple Current       tan       Part Number
+                             DXL(mm)     mA,105,120Hz)
+Voltage(V)  Capacitance(F)                                         0.14     JVJ50V1M4X6
+                     1.0        4X5.7                 7            0.14   JVJ50V2R2M4X6
+     50              2.2        4X5.7                11            0.14   JVJ50V3R3M4X6
+                     3.3        4X5.7                13            0.14   JVJ50V4R7M4X6
+     63              4.7        4X5.7                13            0.14   JVJ50V4R7M5X6
+                     4.7        5X5.7                16            0.14   JVJ50V6R8M4X6
+                     6.8        4X5.7                14            0.14   JVJ50V6R8M5X6
+                     6.8        5X5.7                17            0.14    JVJ50V10M5X5
+                      10        5X5.4                18            0.14    JVJ50V10M6X6
+                      10       6.3X5.7               24            0.14    JVJ50V22M6X5
+                      22       6.3X5.4               42            0.14    JVJ50V22M6X8
+                      22       6.3X7.7               51            0.14    JVJ50V33M6X6
+                      33       6.3X5.7               45            0.14    JVJ50V33M6X8
+                      33       6.3X7.7               60            0.14    JVJ50V47M6X6
+                      47       6.3X5.7               54            0.14    JVJ50V47M6X8
+                      47       6.3X7.7               63            0.14    JVJ50V68M6X8
+                      68       6.3X7.7               63            0.14   JVJ50V68M8X10
+                      68       8X10.5               120            0.14   JVJ50V100M6X8
+                     100       6.3X7.7              140            0.14  JVJ50V100M8X10
+                     100       8X10.5               140            0.14  JVJ50V150M8X10
+                     150       8X10.5               155            0.14  JVJ50V150M10X10
+                     150      10X10.5               170            0.14  JVJ50V220M10X10
+                     220      10X10.5               220            0.14  JVJ50V330M10X10
+                     330      10X10.5               220            0.14  JVJ50V470M12X13
+                     470     12.5X13.5              220            0.14   JVJ63V2R2M4X6
+                     2.2        4X5.7                11            0.14   JVJ63V3R3M5X6
+                     3.3        5X5.7                13            0.14   JVJ63V4R7M5X6
+                     4..7       5X5.7                16            0.14   JVJ63V6R8M5X6
+                     6.8        5X5.7                17            0.14    JVJ63V10M5X6
+                      10        5X5.7                19            0.14    JVJ63V10M6X6
+                      10       6.3X5.7               24            0.14    JVJ63V22M6X6
+                      22       6.3X5.7               40            0.14    JVJ63V22M6X8
+                      22       6.3X7.7               49            0.14    JVJ63V33M6X8
+                      33       6.3X7.7               53            0.14   JVJ63V33M8X10
+                      33       8X10.5               112
+
+                                        -6-
+ ALUMINUM ELECTROLYTIC CAPACITORS
+
+JVJ series
+
+                                                                                    
+   Rated           Rated     Case Size  Rated Ripple Current       tan       Part Number
+                             DXL(mm)     mA,105,120Hz)
+Voltage(V)  Capacitance(F)     6.3X7.7                             0.14     JVJ63V47M6X8
+     63               47                             75            0.14    JVJ63V47M8X10
+     80               47       8X10.5               119            0.14    JVJ63V68M8X10
+                      68       8X10.5               125            0.14   JVJ63V100M8X10
+    100              100       8X10.5               135            0.14  JVJ63V100M10X10
+                     100      10X10.5               195            0.14  JVJ63V150M10X10
+                     150      10X10.5               205            0.14  JVJ63V150M10X12
+                     150      10X12.5               225            0.14  JVJ63V220M10X10
+                     220      10X10.5               225            0.14  JVJ80V100M10X10
+                     100      10X10.5               135            0.14   JVJ100V2R2M4X6
+                     2.2        4X5.7                              0.14   JVJ100V2R2M5X6
+                     2.2        5X5.8                 9            0.14   JVJ100V3R3M5X6
+                     3.3        5X5.8                11            0.14   JVJ100V4R7M5X6
+                     4.7        5X5.8                14            0.14   JVJ100V4R7M6X6
+                     4.7       6.3X5.7               16            0.14   JVJ100V6R8M6X6
+                     6.8       6.3X5.7               21            0.14    JVJ100V10M6X6
+                      10       6.3X5.7               21            0.14    JVJ100V10M6X8
+                      10       6.3X7.7               35            0.14    JVJ100V22M6X8
+                      22       6.3X7.7               50            0.14   JVJ100V22M8X10
+                      22       8X10.5                60            0.14   JVJ100V33M8X10
+                      33       8X10.5                84            0.14  JVJ100V33M10X10
+                      33      10X10.5                90            0.14  JVJ100V47M10X10
+                      47      10X10.5               133            0.14  JVJ100V68M10X10
+                      68      10X10.5               140            0.14  JVJ100V68M10X12
+                      68      10X12.5               155            0.14  JVJ100V100M12X13
+                     100     12.5X13.5              180
+                                                    380
+
+                                        -7-
+

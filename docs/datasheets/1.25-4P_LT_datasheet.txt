@@ -1,0 +1,270 @@
+             
+
+                            SHENZHEN SHOUHAN TECHNOLOGYCO.,LTD
+
+                          Tel: 0755-27597601 Fax: 0755-27597491
+
+           
+
+SPECIFICATION FOR APPROVAL
+
+Material code:       05747
+
+ Project
+
+ Part No             1.25-4P LT
+
+ Approval signatures
+
+ /Part No.            /Signatures
+
+                             Date:
+
+/Drawn          
+/Check
+
+/Approved 
+
+                  1
+                            
+
+1 SCOPE: ()
+       1.1 This specification covers production and inspection of Connector.
+                 .
+
+  2 USE CONDITION: ()
+       2.1 Ambient temperature Range:-25+85
+                -25+85
+       2.2 Applicable PC board thickness:0.6~1.2mm
+                 PC 0.6~1.2 mm
+
+  3 Appearance and Dimension:
+       3.1 Appearance:Product surface without defectdirtcrackand mechanical damang,
+                Contact without rust,plating not oxided and not peeled.
+                
+                .
+       3.2 Dimension:According to drawings
+                
+       3.3 Exchangable:Exchangable with same specification products.
+                
+
+  4Material:
+          
+
+     P/N          Type               Material              Finish      Expiain
+                                                                        
+                                                  Tin Plating:3~4m
+   Terminal      Contact       Phosphor bronze       3~4m               RoHS
+                              0.15mm                                 Comp liant
+                                                       Color:White
+    Housing      Plastic    Nylon66 UL94V-0            
+                                                  Tin Plating:3~4m
+                               Phosphor bronze       3~4m
+OpeningWafer     Contact      0.30mm
+                                                       Color: Beige
+                            Nylon46 UL94V-0            
+  Lips Wafer     Plastic                        Gold Plating:3~4m
+                               Phosphor bronze     3~4m
+                              0.30mm
+Tiepian Wafer    Contact                               Color: White
+                            PBT  UL94V-0               
+                                                  Tin Plating:3~4m
+                 Plastic       Phosphor bronze       3~4m
+                              0.30mm              Tin Plating:3~4m
+                                                     3~4m
+                 Contact       Phosphor bronze
+                               0.25mm                  Color: Beige
+                                                       
+               Solder tabs  Nylon46 UL94V-0
+                 
+
+                 Plastic
+                  
+                          
+
+5Electriacl Performance:
+    
+
+N0.           Ltem                                  Requirement
+                                                      
+
+ 5.1  Voltage Rated                             125V AC DC
+       
+                                                    1A AC DC
+5.2   Current Rated
+                                                    25 m
+                                                  100M
+
+5.3   Contact Resistance                       250V AC/minute
+
+      
+
+5.4   Insulation Resistance
+
+                             
+
+5.5                       Dielectric Strength
+
+                             
+
+6Mechanical Performance:
+    
+
+N0.                          Ltem                Requirement
+                                                   
+
+6.1   Male contact Retention force             15N per pin
+
+                          PIN                  15N per pin
+
+6.2   Female contactRetention force             3N per pin
+                 
+                                               0.5N per pin
+6.3                       Plug-in force
+                             
+
+6.4                       Plug-out force
+
+                             
+
+7Endurance Characteristics:
+    
+
+N0.   Ltem                                                             Requirement
+                                                                         
+
+7.1   Soldering rest                           Time:2.5±0.5S 2.5±0.5S
+                                               Temperature:260±5 260±5
+                                               Area of Soldering: 95% 95%
+7.2   Resistance to soldering Heat
+                                                    Time:5±1S :5±1S
+
+                                                    Temperature:260±5 260±5
+
+                                                    Appearance:N0 Damage 
+      
+
+ 7.3           Heat test       Time:96h 96 
+7.4            
+7.5                            Temperature:+85±3 +85±3
+ 7.6          Cold test
+                               Appearance:N0 Damage 
+ 7.7
+      Temperature Cycling      Contact resistance: 20 m 20 m
+                               Time:48h 48 
+
+      lnvariab lenes humidity  Temperature:-25±3 -25±3
+              
+                               Appearance:N0 Damage 
+              Salt Spray       Contact resistance:20 m 20 m
+              
+                                Low temperature:-25±3 -25±3
+                                High temperature:-85±3 -85±3
+
+                                For 5 cycles.test after keeping in Normal
+                                Condition for 30 min.
+                                5  30 
+                                
+                                Appearance: N0 Damage 
+                                Contact resistance: 20 m 20m
+
+                                Temperature:60±2 60±2
+                                Relative humidity:90%-96% RH
+                                90%-96% RH
+                                Tim:96h 96 
+                                Appearance:N0 Damage 
+
+                                Contact resistance: 20 m 20 m
+                                lnsulation Resistance: 100M 
+                                100 M
+
+                               Salt concentration: 5±1% 5±1%
+                               Temperature:35±2 35±2
+                               Tim:16±2h 16±2 
+                               After salt is removed by running wafer and A
+                               drop is removed ,it is measured.
+                               
+                               5±1%  16 , 
+                                , 
+                                1-2 ,
+                               Appearance:N0 Damage 
+                               Contact resistance: 20 m
+                               20 m
+   0     1   2  3  4  5                    6                       7             8                   9           10               11
+
+                                                         REV.         EC#               DESCRIPTION          DATE DRAWN CHECK APPROVED
+
+                                                         1.00                                                2020.6.23
+                                                                                          
+                                                                                                                                                                                                           A
+                                                                                                
+
+A
+
+B                                                                                                                                       B
+
+                                                                                                                 15 23.50 17.50
+
+                                                                                                                 14 22.25 16.25
+
+                                                                                                                 13 21.00 15.00
+
+                                                                                                                 12 19.75 13.75
+
+C                                                                                                                11 18.50         12.50
+                                                                                                                 10 17.25                                 C
+
+                                                                                                                                  11.25
+
+                                                                                                                 9 16.00 10.00
+
+                                                                                                                 8 14.75 8.75
+
+D                                                                                                                7 13.50 7.50 D
+
+                                                                                                                 6 12.25 6.25
+
+E                                                                                1.2mm~1.6mm                      5 11.00         5.00
+                                                                                                                  4 9.75
+                                                                                 -25~85                           3 8.50          3.75
+                                                                                                                  2 7.25
+                                                                                 125V AC/DC                      Pin DIM.A                                 E
+                                                                                 1A
+                                                                                                                                  2.50
+                                                                                 0.02
+                                                                                 100M                                             1.25
+                                                                                  500V AC/minute
+                                                                                                                                  DIM.B
+
+F                                                        4            Cap        1 PCS               :LCP (UL94V-0),:                   F
+
+                                                         3         FITTING NAIL  2 PCS                  :,:60u"MIN
+
+                                                         2            PIN        n PCS                  :,:60u"MIN
+
+                                                         1            Housing    1 PCS               :LCP (UL94V-0),:
+
+      :                                                  NO.          NAME       Q'TY                            DESCRIPTION
+
+G                                                                                                                                                                                                       G
+
+      1) :;
+
+      2) :;
+
+      3)                                                 DRAW :                  2020.6.23 TITLE:                DRAW NAME:
+
+            ;                GENERAL TOLERANCES          DESIGN:                                 1.25-4P LT
+
+      4)              DIM TOL       DIM DEG              CHECK:                  2020.6.23 SERIES: 12502 SERIES
+
+H                     X.            X°.          ±3.00°                                                          DRAW NO.               H
+
+                      X.X    ±0.35  X.X°         ±2.00°  APPROVED                2020.6.23 P/N:                  UNIT: SHEET:
+
+                      X.XX   ±0.25  X.XX°        ±1.00°                                 REV. 1.00 SCALE N/A
+
+                      X.XXX  ±0.15  X.XXX°                            CUSTOMER DRAWING                               mm      1/1
+
+   0  1      2  3  4  5                    6                       7             8                   9           10               11
+

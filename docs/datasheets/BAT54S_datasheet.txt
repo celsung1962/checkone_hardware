@@ -1,0 +1,187 @@
+BAT54 THRU BAT54S                                                                       D
+                                                                                               
+SURFACE MOUNT SCHOTTKY BARRIER RECTIFIER
+                                                                                                       www.ichjc.com
+
+          SOT-23 Surface Mount Schottky Barrier Rectifier
+
+Features
+
+·VR 30V                                                                                Reverse Voltage
+·IF(AV) 0.2A                                                                                    30 V
+· High Current Capability
+·Low Forward Voltage Drop                                                              Forward Current
+·Extremely Fast Switching Speed                                                            0.2 Ampere
+
+  Applications                                                                                    SOT-23
+
+   These Schottky barrier diodes are designed for high speed switching
+   applications, circuit protection, and voltage clamping.
+
+  Mechanical Data
+
+·Case: SOT-23
+   Molding compound meets UL 94V-0 flammability rating, RoHS-compliant,
+   halogen-free
+
+·Terminals: Solder plated, solderable per MIL-STD-750,Method 2026
+·Polarity: Cathode line denotes the cathode end
+
+   Function Diagram
+
+          Marking:               3              3             3             3
+          BAT54:KL1
+          BAT54A:KL2  1                 2    1          2  1          2  1          2
+          BAT54C:KL3
+          BAT54S:KL4             BAT54          BAT54A        BAT54C        BAT54S
+
+Maximum Ratings (Ta=25 Unless otherwise specified)
+
+                       PARAMETER                SYMBOL           UNIT                   VALUE
+   Maximum repetitive peak reverse voltage         VRRM            V                        30
+                                                   VRMS            V                        21
+                Maximum RMS voltage                 VDC            V                        30
+          Maximum DC blocking voltage              IF(AV)         mA                       200
+ Maximum average forward rectified current          IFSM          mA                       600
+Non-repetitive Peak Forward Surge Current @         PD                                     200
+                                                     Tj           mW                       125
+               t=8.3ms Half-sine wave              TSTG            
+                   Power Dissipation               RJA                                 -55 ~+150
+                                                                  /W                       500
+                Junction Temperature
+             Storage temperature range
+             Typical thermal resistance
+
+Rev:12.0                                     Zhuhai Hongjiacheng Technology co., Ltd                      1 of 3
+BAT54 THRU BAT54S                                                                                                                                                                                       D
+                                                                                                                                                                                                               
+SURFACE MOUNT SCHOTTKY BARRIER RECTIFIER
+                                                                                                                                                                                                                       www.ichjc.com
+  Electrical Characteristics (Ta=25 Unless otherwise noted)
+
+                                           PARAMETER           TEST CONDITIONS                                                          SYMBOL                        UNIT                        Min            Typ                 Max
+
+                                                                           IF = 0.1mA                                                                                                                                                240
+
+                                                                           IF = 1.0mA                                                                                                                                                320
+
+          Maximum forward voltage                                          IF = 10mA                                                    VF                            mV                                                             400
+
+                                                                           IF = 30mA                                                                                                                                                 500
+
+                                                                           IF = 100mA                                                                                                                                                1000
+
+          Maximum reverse current                                               VR=25V                                                  IR                                                A                                          2.0
+
+Capacitance between terminals                                           VR = 1.0V, f = 1MHz                                             CT                                                pF                                         10
+
+                                   Reverse Recovery time             IF=IR=10mA                                                         trr                                               ns                                         5.0
+                                                               Irr=0.1×IRRL=100
+
+Ratings And Characteristics Curves (Ta=25 Unless otherwise specified)
+
+                                   200                                                                                                          1000
+                                   100                                                                                                                     Pulsed
+
+                                                                                                                                                 100                                                   Ta=100°C
+
+                                              Ta=100°C
+
+                                                               Ta=25°C
+
+FORWARDCURRENTIF(mA)               10                                                                                                           REVERSECURRENTIR(A)
+
+                                                                                                                                                                                      10
+                                   1
+
+                                   0.1                                                                                                                                1                                Ta=25°C
+
+          0.01                                                                                                                                                        0.1
+
+                                        0     200         400              600                                                     800                                                    0       10             20                  30
+
+                                                   FORWARDVOLTAGEVF(mV)                                                                                                                           REVERSEVOLTAGEVR(V)
+
+                                   Fig.1 Typical Instaneous Forward Characteristics                                                                                                           Fig.2 Typical Reverse Characteristics
+
+CAPACITANCEBETWEENTERMINALSCT(pF)  20                                                                                                                                 300
+                                                                                                                           Ta=25                                      250
+                                                                                                                           f=1MHz                                     200
+                                                                                                                                                                      150
+                                   16                                                                                                                                 100
+
+                                   12                                                                                                           POWERDISSIPATIONPDmW   50
+                                                                                                                                                                         0
+                                   8                                                                                                                                       0
+
+                                   4
+
+                                   0
+
+                                        0  5          10  15   20               25                                                 30                                                         25  50   75        100          125    150
+
+                                                      REVERSEVOLTAGEVR(V)                                                                                                                         AMBIENTTEMPERATURETa()
+
+                                           Fig.3 Typical Junction Capacitance                                                                                                                     Fig.4 Power Derating Curve
+
+Rev:12.0                                                                        Zhuhai Hongjiacheng Technology co., Ltd                                                                                                                   2 of 3
+BAT54 THRU BAT54S                                                                                                       D
+                                                                                                                               
+SURFACE MOUNT SCHOTTKY BARRIER RECTIFIER
+                                                                                                                                       www.ichjc.com
+  Ordering Information
+
+PACKAGE   PACKAGE CODE UNIT WEIGHT(g)                                REEL(pcs)  BOX(pcs)                         CARTON(pcs)        DELIVERY MODE
+ SOT-23                                                                  3000     45000                              180000                   7''
+                                R1                            0.008
+
+Package Outline Dimensions (SOT-23)
+
+                                                                                                                     Dimensions
+
+                             D                                       Symbol        Millimeters                                      Inches
+                             b
+                                                                         A      Min.                             Max.         Min.            Max.
+E1                                                      0.25            A1
+                                              L1                        A2      0.90                             1.15  0.035                0.045
+                      e                                                  b
+                            e1      E                                    c      -                                0.10            -          0.004
+                                                                         D
+                                               L                         E      0.90                             1.05  0.035                0.041
+                                             c                          E1
+                                                                         e      0.30                             0.50  0.012                0.020
+                                                                        e1
+                                                                         L      0.10                             0.20  0.004                0.008
+                                                                         L1
+                                                                                2.80                             3.00  0.110                0.118
+
+                                                                                1.20                             1.40  0.047                0.055
+
+                                                                                2.25                             2.55  0.089                0.100
+
+                                                                                                       0.950TYP                     0.037TYP
+
+                                                        A2 A                    1.80                             2.00  0.071                0.079
+                                                        A1
+                                                                                                       0.550REF                     0.022REF
+Suggested Pad Layout
+                                                                                0.30                             0.50  0.012                0.020
+
+                                                                                -                                8°              -            8°
+
+                     J                                                                                               Dimensions
+
+          K                                                          Symbol        Millimeters                                      Inches
+                                              M
+                                                                         J      Min.                             Max.  Min.                   Max.
+                  N                                                      K
+                                                                         M      0.75                             0.85  0.030                0.033
+                                                                         N
+                                                                                0.85                             0.95  0.033                0.037
+
+                                                                                1.95                             2.05  0.077                0.081
+
+                                                                                1.85                             1.95  0.073                0.077
+
+Rev:12.0                                                      Zhuhai Hongjiacheng Technology co., Ltd                                         3 of 3
+

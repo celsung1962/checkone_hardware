@@ -1,0 +1,396 @@
+SMBJ SERIES                                                                                                          D
+                                                                                                                            
+600W SURFACE MOUNT TRANSIENT VOLTAGE SUPPRESSORS
+                                                                                                                                    www.ichjc.com
+
+         Transient Voltage Suppressors (TVS) Data Sheet
+
+Description                                                                                                         Breakdown Voltage
+                                                                                                                          3.3 to 440 V
+The SMBJ series is designed specifically to protect sensitive electronic
+equipment from voltage transients induced by lightning and other transient                                           Peak Pulse Power
+voltage events                                                                                                                600 W
+
+Features
+
+·For surface mounted applications in order to optimize board space                                                  DO-214AA(SMB)
+·Low leakage
+·Glass passivated junction
+·Low inductance
+·Excellent clamping capability
+·600W peak pulse power capability at 10/1000s waveform
+·Fast response time
+·Typical IR less than 5A above 12V
+·High Temperature soldering: 260 /40 seconds at terminals
+·Typical maximum temperature coefficient VBR = 0.1% ×VBR@25 ×T
+·Plastic package has Underwriters Laboratory Flammability 94V-0
+·Matte tin lead­free Plated
+·Halogen free and RoHS compliant
+·Typical failure mode is short from over-specified voltage or current
+·Whisker test is conducted based on JEDEC JESD201A per its table 4a and 4c
+·IEC 61000-4-2 ESD 30KV(Air),30KV(contact)
+
+  Applications
+
+TVS devices are ideal for the protection of I/O interfaces, VCC bus and other vulnerable circuits used in Telecom, Computer,
+Industrial and Consumer electronic applications
+
+Maximum Ratings (Ta=25 Unless otherwise specified)
+
+                                                     PARAMETER                                          SYMBOL           VALUE      SYMBOL
+                                                                                                           PPPM            600          W
+    Peak Pulse Power Dissipation with a 10/1000µs waveform (Fig.1)(Note 1), (Note 2)                        IPP                          A
+                                                                                                          PM(AV)    See Next Table      W
+    Peak Pulse Current with a 10/1000s waveform.(Note1,Fig.3)                                              IFSM             5.0          A
+                                                                                                            VF             100           V
+    Power Dissipation on Infinite Heat Sink at TL=75° C                                                                                 
+                                                                                                         TJ , TSTG       3.5/5.0
+    Peak Forward Surge Current, 8.3ms Single Half Sine Wave (Note 3)                                       RJ-L       -55 to +150      /W
+                                                                                                           RJ-A                        /W
+    Maximum Instantaneous Forward Voltage at 25A for Unidirectional Only(Note 4)                                            20
+                                                                                                                           100
+    Operating junction and Storage Temperature Range
+
+    Typical thermal resistance junction to lead
+
+    Typical thermal resistance junction to ambient
+
+Note :
+(1) Non-repetitive current pulse, per Fig. 3 and derated above Ta = 25 per Fig. 2.
+(2) Mounted on 5.0mm x 5.0mm (0.03mm thick) Copper Pads to each terminal.
+(3) 8.3ms single half sine-wave, or equivalent square wave, Duty cycle = 4 pulses per minutes maximum.
+(4) VF<3.5V for VBR<200V and VF< 6.5V for VBR>201V.
+
+Rev:1.1  Zhuhai Hongjiacheng Technology co., Ltd                                                                                    1 of 5
+SMBJ SERIES                                                                                                        D
+                                                                                                                          
+600W SURFACE MOUNT TRANSIENT VOLTAGE SUPPRESSORS
+                                                                                                                                  www.ichjc.com
+  Package Outline Dimensions (SMB/DO-214AA)
+
+                            CathodeBand                                                                                      Dimensions
+
+                            (Foruni-directionalproductsonly         Symbol                                      Millimeters                       Inches
+
+                                                                                                            Min.  Max.                  Min.              Max.
+
+                                          AC                                                                1.85  2.21                  0.073             0.087
+                                                                                        A
+
+                                                                                                     B      4.25  4.85                  0.167             0.191
+
+                                B                                                                           3.30  3.94                  0.130             0.155
+                                                                                                     C
+                                                                                                            2.15  2.65                  0.085             0.104
+                                                         H
+                                                                                                     D
+
+          D                                                                     E                           0.75  1.52                  0.030             0.060
+
+                                                                                F                           -     0.203                 -                 0.008
+
+                      E            F                                            G                           5.08  5.59                  0.200             0.220
+
+                                G
+
+                                                                                H                           0.15  0.31                  0.006             0.012
+
+                         J      K      J                                        M                           2.26             -          0.089             -
+
+          M                                                                     J                           2.10             -          0.085             -
+
+                                                                                K                           -     2.74                  -                 0.107
+
+Electrical Characteristics (Ta=25 Unless otherwise specified)
+
+         Part Number        Marking        Reverse           Breakdown Voltage                                              Maximum       Peak    Reverse
+                                          Stand-Off                VBR (V) @IT                          Test Current Clamping            Pulse    Leakage
+                                                                                                                                        Current    @VRWM
+                                           Voltage                                                                         Voltage@IPP
+                                                                                                                                         IPP (A)   IR(A)
+   Uni         Bi           Uni    Bi      VRWM(V)           Min.   Max.                                IT(mA)    VC(V)                   75.00       600
+SMBJ3.3A  SMBJ3.3CA                            3.3           5.20   6.50                                                                  65.22       800
+SMBJ5.0A  SMBJ5.0CA         KD     AD          5.0           6.40   7.00                                10        8.0                     58.25       800
+SMBJ6.0A  SMBJ6.0CA                            6.0           6.67   7.37                                                                  53.57       500
+SMBJ6.5A  SMBJ6.5CA         KE     AE          6.5           7.22   7.98                                10        9.2                     50.00       200
+SMBJ7.0A  SMBJ7.0CA                            7.0           7.78   8.60                                                                  46.51       100
+SMBJ7.5A  SMBJ7.5CA         KG     AG          7.5           8.33   9.21                                10        10.3                    44.12        50
+SMBJ8.0A  SMBJ8.0CA                            8.0           8.89   9.83                                                                  41.67        10
+SMBJ8.5A  SMBJ8.5CA         KK     AK          8.5           9.44   10.40                               10        11.2                    38.96        5
+SMBJ9.0A  SMBJ9.0CA                            9.0           10.00  11.10                                                                 35.29        5
+SMBJ10A   SMBJ10CA          KM     AM         10.0           11.10  12.30                               10        12.0                    32.97        5
+SMBJ11A   SMBJ11CA                            11.0           12.20  13.50                                                                 30.15        5
+SMBJ12A   SMBJ12CA          KP     AP         12.0           13.30  14.70                               1         12.9                    27.91        5
+SMBJ13A   SMBJ13CA                            13.0           14.40  15.90                                                                 25.86        5
+SMBJ14A   SMBJ14CA          KR     AR         14.0           15.60  17.20                               1         13.6                    24.59        5
+SMBJ15A   SMBJ15CA                            15.0           16.70  18.50                                                                 23.08        5
+SMBJ16A   SMBJ16CA          KT     AT         16.0           17.80  19.70                               1         14.4                    21.74        5
+SMBJ17A   SMBJ17CA                            17.0           18.90  20.90                                                                 20.55        5
+SMBJ18A   SMBJ18CA          KV     AV         18.0           20.00  22.10                               1         15.4                    19.49        5
+SMBJ19A   SMBJ19CA                            19.0           21.10  23.30                                                                 18.52        5
+SMBJ20A   SMBJ20CA          KX     AX         20.0           22.20  24.50                               1         17.0                    16.90        5
+SMBJ22A   SMBJ22CA                            22.0           24.40  26.90                                                                 15.42        5
+SMBJ24A   SMBJ24CA          KZ     WZ         24.0           26.70  29.50                               1         18.2                    14.25        5
+SMBJ26A   SMBJ26CA                            26.0           28.90  31.90
+                            LE     BE                                                                   1         19.9
+
+                            LG     BG                                                                   1         21.5
+
+                            LK     BK                                                                   1         23.2
+
+                            LM     BM                                                                   1         24.4
+
+                            LP     BP                                                                   1         26.0
+
+                            LR     BR                                                                   1         27.6
+
+                            LT     BT                                                                   1         29.2
+
+                            LB     BB                                                                   1         30.8
+
+                            LV     BV                                                                   1         32.4
+
+                            LX     BX                                                                   1         35.5
+
+                            LZ     BZ                                                                   1         38.9
+
+                            ME     CE                                                                   1         42.1
+
+Rev:1.1                                   Zhuhai Hongjiacheng Technology co., Ltd                                                                         2 of 5
+SMBJ SERIES                                                                                                         D
+                                                                                                                           
+600W SURFACE MOUNT TRANSIENT VOLTAGE SUPPRESSORS
+                                                                                                                                   www.ichjc.com
+  Electrical Characteristics (Ta=25 Unless otherwise specified)
+
+         Part Number      Marking   Reverse                                             Breakdown Voltage                      Maximum       Peak    Reverse
+                                   Stand-Off                                                  VBR (V) @IT  Test Current Clamping            Pulse    Leakage
+                                                                                                                                           Current    @VRWM
+                                    Voltage                                                                                   Voltage@IPP   IPP (A)
+                                                                                                                                             13.22    IR(A)
+Uni                   Bi  Uni  Bi  VRWM(V)                                              Min.    Max.       IT(mA)  VC(V)                     12.40        5
+                                                                                        31.10   34.40                                        11.26        5
+SMBJ28A   SMBJ28CA        MG   CG  28.0                                                 33.30   36.80      1       45.4                      10.33        5
+                                                                                        36.70   40.60                                         9.30        5
+SMBJ30A   SMBJ30CA        MK   CK  30.0                                                 40.00   44.20      1       48.4                       8.65        5
+                                                                                        44.40   49.10                                         8.25        5
+SMBJ33A   SMBJ33CA        MM   CM  33.0                                                 47.80   52.80      1       53.3                       7.75        5
+                                                                                        50.00   55.30                                         7.28        5
+SMBJ36A   SMBJ36CA        MP   CP  36.0                                                 53.30   58.90      1       58.1                       6.89        5
+                                                                                        56.70   62.70                                         6.41        5
+SMBJ40A   SMBJ40CA        MR   CR  40.0                                                 60.00   66.30      1       64.5                       6.20        5
+                                                                                        64.40   71.20                                         5.83        5
+SMBJ43A   SMBJ43CA        MT   CT  43.0                                                 66.70   73.70      1       69.4                       5.31        5
+                                                                                        71.10   78.60                                         4.96        5
+SMBJ45A   SMBJ45CA        MV   CV  45.0                                                 77.80   86.00      1       72.7                       4.76        5
+                                                                                        83.30   92.10                                         4.63        5
+SMBJ48A   SMBJ48CA        MX   CX  48.0                                                 86.70   95.80      1       77.4                       4.38        5
+                                                                                        88.80   97.60                                         4.11        5
+SMBJ51A   SMBJ51CA        MZ   CZ  51.0                                                 94.40   104.00     1       82.4                       3.70        5
+                                                                                        100.00  111.00                                        3.39        5
+SMBJ54A   SMBJ54CA        NE   DE  54.0                                                 111.00  123.00     1       87.1                       3.11        5
+                                                                                        122.00  135.00                                        2.87        5
+SMBJ58A   SMBJ58CA        NG   DG  58.0                                                 133.00  147.00     1       93.6                       2.65        5
+                                                                                        144.00  159.00                                        2.47        5
+SMBJ60A   SMBJ60CA        NK   DK  60.0                                                 155.00  171.00     1       96.8                       2.32        5
+                                                                                        167.00  185.00                                        2.18        5
+SMBJ64A   SMBJ64CA        NM   DM  64.0                                                 178.00  197.00     1       103.0                      2.06        5
+                                                                                        189.00  209.00                                        1.95        5
+SMBJ70A   SMBJ70CA        NP   DP  70.0                                                 201.00  220.00     1       113.0                      1.85        5
+                                                                                        211.00  232.00                                        1.69        5
+SMBJ75A   SMBJ75CA        NR   DR  75.0                                                 224.00  247.00     1       121.0                      1.48        5
+                                                                                        246.00  272.00                                        1.23        5
+SMBJ78A   SMBJ78CA        NT   DT  78.0                                                 279.00  309.00     1       126.0                      1.06        5
+                                                                                        335.00  371.00                                        0.93        5
+SMBJ80A   SMBJ80CA        NB   DB  80.0                                                 391.00  432.00     1       129.6                      0.84        5
+                                                                                        447.00  494.00                                                    5
+SMBJ85A   SMBJ85CA        NV   DV  85.0                                                 492.00  543.00     1       137.0
+
+SMBJ90A   SMBJ90CA        NX   DX  90.0                                                                    1       146.0
+
+SMBJ100A  SMBJ100CA       NZ   DZ  100.0                                                                   1       162.0
+
+SMBJ110A  SMBJ110CA       PE   EE  110.0                                                                   1       177.0
+
+SMBJ120A  SMBJ120CA       PG   EG  120.0                                                                   1       193.0
+
+SMBJ130A  SMBJ130CA       PK   EK  130.0                                                                   1       209.0
+
+SMBJ140A  SMBJ140CA       PB   EB  140.0                                                                   1       226.8
+
+SMBJ150A  SMBJ150CA       PM   EM  150.0                                                                   1       243.0
+
+SMBJ160A  SMBJ160CA       PP   EP  160.0                                                                   1       259.0
+
+SMBJ170A  SMBJ170CA       PR   ER  170.0                                                                   1       275.0
+
+SMBJ180A  SMBJ180CA       PT   ET  180.0                                                                   1       291.6
+
+SMBJ190A  SMBJ190CA       PV   EV  190.0                                                                   1       307.8
+
+SMBJ200A  SMBJ200CA       PW   EW  200.0                                                                   1       324.0
+
+SMBJ220A  SMBJ220CA       PX   EX  220.0                                                                   1       356.0
+
+SMBJ250A  SMBJ250CA       PZ   EZ  250.0                                                                   1       405.0
+
+SMBJ300A  SMBJ300CA       QE   FE  300.0                                                                   1       486.0
+
+SMBJ350A  SMBJ350CA       QG   FG  350.0                                                                   1       567.0
+
+SMBJ400A  SMBJ400CA       QK   FK  400.0                                                                   1       648.0
+
+SMBJ440A  SMBJ440CA       QM   FM  440.0                                                                   1       713.0
+
+Note :
+(1)Suffix 'A ' denotes 5% tolerance device.
+(2)Add suffix ' CA ' after part number to specify Bi-directional devices.
+(3)For Bi-Directional devices having VR of 10 volts and under, the IR limit is double.
+
+Rev:1.1                            Zhuhai Hongjiacheng Technology co., Ltd                                                                           3 of 5
+SMBJ SERIES                                                                                                                                                                                                                                                                 D
+                                                                                                                                                                                                                                                                                   
+600W SURFACE MOUNT TRANSIENT VOLTAGE SUPPRESSORS
+                                                                                                                                                                                                                                                                                           www.ichjc.com
+  Ratings And Characteristics Curves (Ta=25 Unless otherwise specified)
+
+                                       100                                                                                                                                                                                                100
+
+PPPM-PeakPuslePower(kW)                                                                                                                                                                      80PeakPulsePower(PPP)orCurrent(IPP Derating
+                                                                                                                                                                                                   inPercentage%
+                                       10
+                                                                                                                                                                                             60
+
+                                                                                                                                                                                           40
+                                       1
+
+                                                                                                                                                                                           20
+
+                                       0.1                                                                                                                                                                                                    0  0  25         50      75      100        125  150                  175
+                                          0.1
+                                                   1                           10       100          1000
+
+                                                          tp-PulseDuration(s)                                                                                                                                                                                  Ta-Ambienttemperature()
+
+                                               Fig. 1 Peak Pulse Power Rating Curve                                                                                                                                                                     Fig.2 Pulse Derating Curve
+
+                                       150                                                                                                                                                     10000
+                                                           tr=10s
+                                                                                   TJ=25                                                                                                                                                                               Bi-directionalV=0
+                                                            PeakvalueIPPM          PulseWidth(td)isdefinedas                                                                                                                                                                                  Uni-directionalV=0
+                                       100                                         thepointwherethepeak
+                                                                                   currentdecaysto50%ofIPPM
+
+         IPPM-PeakPulseCurrent,%IRSM                                                                                                                                                           CJ-JunctionCapacitance(pF)  1000
+
+                                                                                                                                                                                                                                         Uni-directional@VR
+                                                                                                                                                                                                                                100
+
+                                                                                 HalfValueIPPM(IPMM/2)                                                                                                                                    10
+
+                                       50
+                                                                                                         10/1000sWaveformas
+                                                                                                         definedbyR.E.A
+
+                                                                                                                                                                                                                                                 TJ=25                 Bi-directional@VR
+                                                                                                                                                                                                                                                 f=1.0MHz
+                                               td                                                                                                                                                                                                Vsig=50mVP-P
+
+                                       0                                                                                                                                                                                                  1
+                                                                                                                                                                                                                                            1
+                                            0      1                           2             3                               4                                                                                                                                     10               100                             1000
+
+                                                                           t-Time(ms)                                                                                                                                                                          VBR-ReverseBreakdownVoltage(V)
+
+                                                   Fig.3 Pulse Waveform                                                                                                                                                                             Fig.4 Typical Junction Capacitance
+
+                                       6                                                                                                                                                                                        120
+                                                                                                                                                                                                                                                                                          Tj=Tjmax.
+PM(AV),SteadystatePowerDissipation(W)  5                                                                                                                                                                                                                                                  8.3msSingleHalfSine-Wave
+
+                                                                                                                                                                                                                                100
+
+                                       4                                                                                                                                                       IFSM-PeakForwardSurgeCurrent(A)            80
+
+                                       3                                                                                                                                                                                                  60
+
+                                       2                                                                                                                                                                                                  40
+
+                                       1                                                                                                                                                                                                  20
+
+                                       0                                                                                                                                                                                                  0
+
+                                          0    25     50                   75      100  125     150           175                                                                                                                             1                            10                                       100
+
+                                                      Ta-Ambienttemperature                                                                                                                                                                                    NumberofCyclesat60Hz
+
+                                       Fig.5 Steady State Power Dissipation Derating Curve                                      Fig.6 Maximum Non-Repetitive Forward Surge Current Uni-Directional Only
+
+Rev:1.1                                                                                         Zhuhai Hongjiacheng Technology co., Ltd                                                                                                                                                                             4 of 5
+SMBJ SERIES                                                                                                                                            D
+                                                                                                                                                              
+600W SURFACE MOUNT TRANSIENT VOLTAGE SUPPRESSORS
+                                                                                                                                                                      www.ichjc.com
+  Ordering Information
+
+             PACKAGE       PACKAGE CODE         UNIT WEIGHT(g)                                            REEL(pcs)       BOX(pcs)                CARTON(pcs)  DELIVERY MODE
+                SMB                 R1                 0.098                                                  500            2000                      16000            7''
+                SMB                 R3                 0.098                                                 3000            6000                      48000            13''
+
+Part Numbering
+
+                                                SMBJXXXCA
+
+                                                                                                                    5%VBRVoltageTolerance
+                                                                                                                    Bidirectional
+                                                                                                                    VRWMVoltage
+                                                                                                                    SeriesCode
+
+Soldering Parameters
+
+                                                                         U1                                               Profile Feature                          Pb-Free Assembly
+                           3BNQVQ                                                                                                                             +150
+                   51                                                                   $SJ UJD BM ; POF                  Temperature Min (Ts(min))           +200
+                   5-                                                     U-               5-UP51                                                             60-180 secs.
+             54 NBY
+                                                                                                                                          3 /sec. Max
+                                                                                                          Pre-heat        Temperature Max(Ts(max))            3 /sec. Max
+                                                                                                                                                              +217
+                                                                                                                          Time (Min to Max) (ts)              60-150 secs.
+                                                                                                                                                              +260(+0/-5)
+                                                                                                          Average ramp up rate (Liquid us Temp (TL) to peak)  30 secs. Max
+                                                                                                                                                              6 /sec. Max
+5FNQFSBUVSF                                                                                               Ts(max) to TL - Ramp-up Rate                        8 min. Max
+                                                                                                                                                              +260
+                                                                                                          Reflow          Temperature(TL)(Liquid us)
+                                                                                                                          Temperature(tL)
+
+             54 NJO
+                                                          3BNQEPXO                    Peak Temp (TP)
+                  
+                               U4                                                                         Time within 5 of actual Peak Temp (tP)
+                           1SFIFBU
+                                                                                                          Ramp-down Rate
+                             UUP1FBL
+
+                                          5JNF                                                            Time 25 to Peak Temp (TP)
+                                                                                                          Do not exceed
+
+Packaging (SMB/DO-214AA)
+
+                       P0  P1                   P2                            D0 B                                                      T            Symbol    Dimension (mm)
+                                                                                                                                                         W        12.00±0.20
+                                                                                                          E                                             P0         4.00±0.10
+                                                                                                                                                        P1         8.00±0.10
+                                                                                                                     F                                  P2         2.00±0.10
+                                                                                                                          W                             D0        1.55±0.10
+                                                                                                                                    B0                  D1         1.5±0.10
+                                                                                                                                                         E         1.75±0.10
+                           A           A                                      D1                                                 K0                      F         5.50±0.05
+                                                                                                 B                        SECTIONB-B                    A0         3.86±0.10
+                                                                                                                                                        B0         5.65±0.10
+                                  A0                                                                                                                    K0         2.75±0.15
+                           SECTIONA-A                                                                                                                    T         0.25±0.05
+
+Rev:1.1                                                                       Zhuhai Hongjiacheng Technology co., Ltd                                          5 of 5
+

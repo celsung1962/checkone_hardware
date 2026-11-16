@@ -1,0 +1,102 @@
+JK-SMD0805-020-30 PPTC DEVICES                                             EditionA0
+Part NumberQ/JKTD-30-020                                               Page No: 1 OF 3
+
+                                                              Terminal pad materials :Tin-Plated Nickle-copper
+
+                                                              Terminal pad solderability : Meets EIA specification
+                                                              RS 186-9E and ANSI/J-STD-002 Category 3.
+
+                                                              Marking : Part identification 2=020
+
+Table1 :DIMENTION(Unit : mm)
+
+Model  Marking                       A                        B              C             D           E
+
+                              Min.         Max.     Min.         Max.  Min.          Max   Min.        Min.
+
+JK-SMD0805-020 2              2.00         2.20     1.20         1.50  0.55          1.20  0.20        0.10
+
+Table2 :PERFORMANCE RATINGS:
+
+                                           Ihold       Itrip     Pd    Maximum             Resistance
+
+Model  Marking Vmax                  Imax  @25 @25 Typ                 Time To Trip
+
+                        (Vdc) (A)                      (A) (W) Current Time Rimin R1max
+                                               (A)                     (A) (Sec) () ()
+
+JK-SMD0805-020 2        30.0 40 0.20 0.50 0.50 8.0                           0.02 0.500 4.500
+
+Table3:Test Conditons and Standards
+
+Item                                    Test Conditon                                 Standard
+
+Initial Resistance                            25                                    0.504.500
+         IH                         250.20A60min                                       No Trip
+       Ttrip                                                                            0.02s
+                                        258A30.0V
+   Trip end.utrripance                 30V40A60min                              No arcing or burning
+
+Operating Temperature-40 TO 85
+PackagingBulk ,3500pcs per bag
+
+SHENZHEN JINRUI ELECTRONIC MATERIAL CO.,LTD                      6 F DISTRICT NO. 3000046 BLDG Hi-Tech SCIENCE &
+
+INDUSTRY PARK SHANGKENG COMMUNITY GUANLAN STREET BAOAN SHENZHEN
+
+TEL075526546327 26584158                                               FAX 075526546562
+
+Web Sitewww.jkpptc.com                                                 E-mail:customer@jkpptc.com
+JK-SMD0805-020-30 PPTC DEVICES                   EditionA0
+Part NumberQ/JKTD-30-020                     Page No: 2 OF 3
+
+Solder reflow conditions
+
+                                                                                        Recommended reflow methods: IR, vapor phase
+                                                                                       oven, hot air oven, N2 environment for lead-free.
+                                                                                        Devices are not designed to be wave soldered to
+                                                                                       the bottom side of the board.
+                                                                                        Recommended maximum paste thickness is
+                                                                                       0.25mm (0.010inch).
+                                                                                        Devices can be cleaned using standard industry
+                                                                                       methods and solvents.
+                                                                                        Soldering temprature profile meets RoHs leadfree
+                                                                                       process.
+
+Notes: If reflow temperatures exceed the recommended profile, devices may not meet the
+performance requirements
+
+SHENZHEN JINRUI ELECTRONIC MATERIAL CO.,LTD  6 F DISTRICT NO. 3000046 BLDG Hi-Tech SCIENCE &
+
+INDUSTRY PARK SHANGKENG COMMUNITY GUANLAN STREET BAOAN SHENZHEN
+
+TEL075526546327 26584158                     FAX 075526546562
+
+Web Sitewww.jkpptc.com                       E-mail:customer@jkpptc.com
+JK-SMD0805-020-030 PPTC DEVICES                    EditionA0
+Part NumberQ/JKTD-30-020                     Page No: 3 OF 3
+
+Recommended pad layout (mm)
+
+WARNING
+· Use PPTC beyond the maximum ratings or improper use may result in device damage and possible electrical arcing and
+flame.
+· PPTC are intended for protection against occasional over current or over temperature fault conditions and should not be
+used when repeated fault conditions or prolonged trip events are anticipated.
+· Device performance can be impacted negatively if devices are handled in a manner inconsistent with recommended
+electronic, thermal, and mechanical procedures for electronic components.
+· Use PPTC with a large inductance in circuit will generate a circuit voltage (L di/dt) above the rated voltage of the PPTC.
+· Avoid impact PPTC device its thermal expansion like placed under pressure or installed in limited space.
+· Contamination of the PPTC material with certain silicon based oils or some aggressive solvents can adversely impact the
+performance of the devices.PPTC SMD can be cleaned by standard methods.
+· Requests that customers comply with our recommended solder pad layouts and recommended reflow profile. Improper
+board layouts or reflow profilecould negatively impact solderability performance of our devices.
+
+SHENZHEN JINRUI ELECTRONIC MATERIAL CO.,LTD  6 F DISTRICT NO. 3000046 BLDG Hi-Tech SCIENCE &
+
+INDUSTRY PARK SHANGKENG COMMUNITY GUANLAN STREET BAOAN SHENZHEN
+
+TEL075526546327 26584158                     FAX 075526546562
+
+Web Sitewww.jkpptc.com                       E-mail:customer@jkpptc.com
+

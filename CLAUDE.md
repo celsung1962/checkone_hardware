@@ -64,13 +64,14 @@ temperatures (third ADS1115, probe up to 150 °C), keeps time (PCF8563 + CR2032)
 - **O2 — How v1 is edited.** Keep the generator (`gerador/design.py` → schematic and board) or convert the project to
   KiCad 10 and edit it directly (the AQTech form). The generator writes KiCad 7 files with Portuguese names, bare
   footprint names on the board and no LCSC field on the footprints (G-5). Until decided: generator only (rule 9).
-- **O3 — Datasheets.** None on disk. Fetch the datasheets of every part of DS 8 into `docs/datasheets/`
-  (`fetch_datasheets.py`), then check every v1 symbol and footprint against them (V1R item 8: BAT54W package,
-  FCH1040 pads, MX1.25 connector; ADS1115 / INA226 footprint name). `hw_checks.json` accepts the missing datasheets as
-  a known failure until then.
+- **O3 — Datasheets.** 26 fetched on 2026-11-16 (`docs/datasheets/manifest.csv`); GZ2012D601TF and the display
+  modules still missing. Symbols and footprints checked in `reports/CheckOne/review_2026-11-16.md`: BAT54W is
+  SOD-123 (v1 SOT-323), DC-005-A200 slots turned 90°, KF2EDGRC outline 12.2 instead of 8.4 mm deep. The datasheet
+  check stays a known failure until the schematic values are part numbers (rev 1.1).
 - **O4 — Fault current into 3V3A (C-12).** +24 V on Iin pushes 2.8–3.8 mA per channel into 3V3A through the BAT54S;
   the XC6206 cannot sink it. Options: a clamp to the 3V3A rail that can sink (zener / shunt load), BAT54S to a
   dedicated clamp rail, a larger series resistor, the SMBJ5.0A of DS 9. Needs the rail load (calc 3 assumes 3 mA).
+  Review 2026-11-16 proposes R1n1 1 kΩ → 4.7 kΩ: 0.6–0.8 mA, filter 3.4 kHz, gain error 0.11 % calibrated out.
 - **O5 — Items to confirm on real parts (DS 11):** CYD size and holes (C-8), enclosure window walls and ribs vs the
   12.5 mm terminal bodies, sensors' start-up current vs the 200 mA PTCs, CYD display controller, JC4880P443C 26-pin
   pinout, SMAJ5.0A leakage at 2.5 V, AQTech logo SVG.

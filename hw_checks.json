@@ -15,7 +15,7 @@
      "known_failure": {
        "problem_line": "^\\s+- ",
        "match": "^- .+: in the schematic but no datasheet in the manifest$",
-       "reason": "no datasheet fetched yet at the import of the v1 project (2026-11-16): CLAUDE.md O3; replace this pattern by the list of parts still missing once docs/datasheets is filled, then remove it"}}
+       "reason": "26 datasheets are on disk by part number (2026-11-16), but the v1 schematic values are descriptive (e.g. ADS1115 (0x48), CH1 +24/GND/Iin/Iout) and match no manifest row; the values become part numbers at rev 1.1 (reports/CheckOne/review_2026-11-16.md section 3 item 7), then remove this"}}
   ],
   "release": {
     "_doc": "tools/hw_checks/hw_release.py: tag <prefix>-v<version>[-rcN] -> board and documents ({version} = tag version). Add one entry per board under boards, e.g. \"wind\": {\"board\": \"CheckOne\", \"documents\": [...]}",

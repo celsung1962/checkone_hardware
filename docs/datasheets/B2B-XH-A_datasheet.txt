@@ -1,0 +1,488 @@
+                             XH CONNECTOR                                                                                                                                    Emboss Tape Radial Tape
+
+                             2.5mm pitch/Disconnectable Crimp style connectors
+
+                                  1                                                                                               Specifications ญญญญญญญญญญญญญญญญญญญ
+
+                              5                                                                                                   ท Current rating: 3 A AC, DC (AWG #22)
+                             JST                                                                                                  ท Voltage rating: 250 V AC, DC
+                                                                                                                                  ท Temperature range: -25ฐC to +85ฐC
+   The XH connector was developed based
+   on the high reliability and versatility of our                                                                                                               (including temperature rise in applying
+   NH series connectors. The connector is very                                                                                                                   electrical current)
+   small with a mounting height of 9.8mm.                                                                                         ท Contact resistance: Initial value/ 10 m max.
+                                                                                                                                                                After environmental tests/ 20 m max.
+   ท Original folded beam contact                                                                                                 ท Insulation resistance: 1,000 M min.
+   ท Box-shaped shrouded header                                                                                                   ท Withstanding voltage: 1,000 VAC/minute
+   ท Header with a boss                                                                                                           ท Applicable wire: AWG #30 to #22
+   ท Interchangeability                                                                                                           ท Applicable PC board thickness: 1.6 mm
+   ท Conforming to the HA terminal
+                                                                                                                                  * Refer to "General Instruction and Notice when using
+                                                                                                                                    Terminals and Connectors" at the end of this catalog.
+
+                                                                                                                                  * Contact JST for details.
+                                                                                                                                  * Compliant with RoHS.
+
+                                                                                                                                  Standards ญญญญญญญญญญญญญญญญญญญญญญ
+                                                                                                                                  0 Recognized E60389
+
+                                                                                                                                  1Certified LR20812
+                                                                                                                                  2 J50014297
+
+   PC board layout and Assembly layout
+
+Through-hole type (viewed from soldening side)
+
+   Top entry type                                                                                                                   Side entry type
+
+                                  NJO                                                                                                                                 NJO                  
+                                                                                                                                                                                        
+
+             2 circuits           NJO                                                                                                                                 NJO
+   3 circuits or more                                                                                                                                                                 
+
+                                                                                                                                             
+                                                                                                                                             
+
+   Top entry type with a boss
+
+   <Single circuit>                     <2 circuits or more>
+
+                                                                             NJO                                                                                    
+
+                                                                    NJO                                                           
+                                                                          
+
+                                                                                                                                                                      
+                                               2 circuits                                                                                                                  
+                                     3 circuits or more 
+                           
+                           
+
+  Note: 1. Tolerances are non-cumulative: ฑ0.05 mm for all centers.
+          2. Hole dimensions differ according to the type of PC board and piercing method. If PC boards made of hard material are used, the hole dimensions should
+             be larger. The dimensions above should serve as a guideline. Contact JST for details.
+
+SMT type (viewed from component side)
+     Side entry type
+
+                                                                                                                                  
+                                                                                                                                      
+
+                                                                                                                                           
+
+                             End face of wafer on the mating side                                                                 
+
+                                                                                                                                
+
+   Note: 1. Tolerances are non-cumulative: ฑ0.05 mm for all centers.
+
+   2. The dimensions above should serve as a guideline. Contact JST for details.
+
+1
+                                                                                                                                         XH CONNECTOR
+
+Contact                                                                                                         Model No.      Shape     Applicable Wire                 Insulation O.D  Q'ty/
+                                                                                                                                                                              (mm)       reel
+Shape A                                                    Shape B                                                                       NN     "8(                                      
+                                                                                                                                                                             
+                                                                                                                SXH-001T-P0.6N "                                                         
+                                                                                                                                                                             
+                                                                                                                SXH-001T-P0.6  #  
+                                                                                                                SXH-002T-P0.6           
+
+                                                                                                                                         Material and Finish
+
+                                                                                                                               Phosphor bronze, tin-plated
+                                                                                   
+                                                                                                                RoHS compliance
+                                                                                                                Note:
+$POUBDU  $SJNQJOH                                            "QQMJDBUPS                                         1. Contact JST if you require gold-plated contacts or contacts made of brass.
+         NBDIJOF $SJNQBQQMJDBUPS                               %JFT                                             2. Contact JST also if you require shielded wires, thin wires or other
+
+                                                                                                                   special wires.
+                                                                                                                3. SXH-001T-P0.6N is low-insertion force type contact, for easier insertion/
+
+                                                                                                                   withdrawal, which would be less resistant to the vibration.
+
+                                                                                       $SJNQBQQMJDBUPSXJUIEJFT
+
+SXH-001T-P0.6N                     .,4-                      .,49)/ "1-.,49)/                                        $POUBDU   $SJNQJOH  $SJNQBQQMJDBUPS      "QQMJDBUPS  $SJNQBQQMJDBUPSXJUIEJFT
+                            "1,/  .,44$                      4$49)/ "1-4$49)/                                   SXH-002T-P0.6  NBDIJOF          .,4-             %JFT     "1-.,49)
+                                                             .,49) "1-.,49)                                                                                               "1-4$49)
+SXH-001T-P0.6                      .,4-                      4$49) "1-4$49)                                                     "1,/          .,44$         .,49)
+                                  .,44$                                                                                                                     4$49)
+
+Note: *Strip-crimp applicator
+
+Housing
+
+                                                                                                                Circuits    Model No.           Dimensions (mm)                          Q'ty/
+                                                                                                                                                                                         bag
+                                                                                                                          XHP-1              "                #           $              
+                                                                                                                          XHP-2                                                          
+                                                                                                                          XHP-2(10.0)-U                                                  
+                                                                                                                          XHP-3                                                          
+                                                                                                                          XHP-4                                                          
+                                                                                                                          XHP-5                                                          
+                                                                                                                          XHP-6                                                          
+                                                                                                                          XHP-6(5.0)-U                                                   
+                                                                                                                          XHP-7                                                          
+                                                                                                                          XHP-8                                                          
+                                                                                                                          XHP-9                                                          
+                                                             Circuit No.1 mark                                            XHP-10                                                         
+                                                                                                                          XHP-11                                                         
+                                                                                                                          XHP-12                                                         
+                                                                                                                          XHP-13                                                         
+                                                                                                                          XHP-14                                                         
+                                                                                                                          XHP-15                                                         
+                                                 "                                                                        XHP-16                                                         
+                                                 #                                                                        XHP-20                                          
+                                                 $                                                                                                                                          
+                                                                                                                                                                          
+Plugged up
+  <2 circuits 10.0 mm pitch>                                                                                                                                              
+
+                                                                                                                                                                          
+
+                                                                                                                                                                          
+
+                                                                                                                                                                          
+
+                                                                                                                                                                          
+
+                                                                                                                                                                          
+
+                                                                                                                                                                          
+
+                                                                                                                                                                          
+
+                                                                                                                                                                          
+                                                                           
+                                                                                                                                                    Material
+                                                             Circuit No.1 mark                                                           PA 6, UL94V-0, natural (white)
+
+                                             "                                                                  RoHS compliance
+                                             #
+                                             $                                                                  Note:
+
+<6 circuits 5.0 mm pitch>                                                                                       1. XHP-2(10.0)-U is 2 circuits 10.0mm pitch plugged up.
+                                                                                                                   Not UL/CSA/TUจ V approved.
+
+                                                                                                                2. XHP-6(5.0)-U is 6 circuits 5.0mm pitch plugged up.
+                                                                                                                   Not UL/CSA/TUจ V approved.
+
+                                                                                                                <For reference> As the color identification,
+                                                                                                                   the following alphabet shall be put in the underlined part.
+                                                                                                                   For availability, delivery and minimum order quantity, contact JST.
+                                                                              Circuit No.1 mark
+                                                                                                                   ex. XHP-1-oo-
+                                  "                                                                                         (blank)...natural (white)
+                                  #                                                                                         BK...black R...red E...blue Y...yellow L...lemon yellow
+                                  $                                                                                         M...green D...orange N...brown FY...vivid yellow
+
+                                                                                                                   <Plugged up type>
+
+                                                                                                                   ex. XHP-2(10.0)-U-oo-
+                                                                                                                            (blank)...natural (white)
+                                                                                                                            R...red E...blue
+
+                                                                                                                                                                                         2
+XH CONNECTOR
+
+ Through-hole type shrouded header
+
+The shrouded headers are interchangeable with those of the NR and NRD insulation displacement connectors, and JQ board-to-board connectors.
+
+   Top entry type                                                                                            Circuits            Model No.             Dimensions (mm)     Q'ty/box
+
+    plugged up                                                                                                         Top entry type Side entry type     A     B Top entry type Side entry type
+
+                                                                                                             2 B2B-XH-A S2B-XH-A-1 S2B-XH-A               2.5   7.4 1,000 1,000
+
+                                                                                                             2 B2(10.0)B-XH-A-U  --         --            10.0  14.9 1,000                          ญ
+
+                                                                                                             3 B3B-XH-A S3B-XH-A-1 S3B-XH-A               5.0   9.9 1,000 1,000
+
+                                                                                                             4 B4B-XH-A S4B-XH-A-1 S4B-XH-A               7.5   12.4       500                      500
+
+                                                                                                             5 B5B-XH-A S5B-XH-A-1 S5B-XH-A 10.0                14.9       500                      500
+
+                                                                                                             6 B6B-XH-A S6B-XH-A-1 S6B-XH-A 12.5                17.4       500                      500
+
+                                                   "                                                         7 B7B-XH-A S7B-XH-A-1 S7B-XH-A 15.0                19.9       500                      250
+
+   Top entry type                                  #                                                         8 B8B-XH-A S8B-XH-A-1 S8B-XH-A 17.5                22.4       250                      250
+
+         <2 circuits>                                                                                        9 B9B-XH-A S9B-XH-A-1 S9B-XH-A 20.0                24.9       250                      250
+
+            0.64                                                                                             10 B10B-XH-A S10B-XH-A-1 S10B-XH-A 22.5            27.4       250                      250
+
+                                                      <3 circuits or more>                                   11 B11B-XH-A S11B-XH-A-1 S11B-XH-A 25.0            29.9       250                      250
+
+                                                                                       0.64                  12 B12B-XH-A S12B-XH-A-1 S12B-XH-A 27.5            32.4       250                      200
+
+                                                                                                             13 B13B-XH-A S13B-XH-A-1 S13B-XH-A 30.0            34.9       250                      200
+
+                                                                                                             14 B14B-XH-A S14B-XH-A-1 S14B-XH-A 32.5            37.4       250                      200
+
+                                                                                                             15 B15B-XH-A S15B-XH-A-1 S15B-XH-A 35.0            39.9       250                      100
+
+                                                                                                             16 B16B-XH-A        -- S16B-XH-A 37.5              42.4       200                      100
+
+                                                                                                             20 B20B-XH-A        --         --            47.5  52.4       100                      ญ
+
+          "                                                                                                                                          Material and Finish
+                                                                "                              
+       #                                                                                                                            Post: Brass, copper-undercoated, tin-plated (reflow treatment)
+                                                                #                                                                   Wafer: PA 66, UL94V-0, natural (white)
+
+   Side entry type                                                                                           RoHS compliance This product displays (LF)(SN) on a label.
+                                             0.64                                                            Note: B2(10.0)B-XH-A-U is 2 circuits 10.0mm pitch plugged up.
+
+                                                                                               4 
+#9)"               Not UL/CSA/TUจ V approved.
+                                                                                                   4 
+#9)" 
+                                                                                                             <For reference> As the color identification,
+                                                                                                                the following alphabet shall be put in the underlined part.
+                                                                                                                For availability, delivery and minimum order quantity, contact JST.
+                              "                                  
+                                                                                                                ex. S3B-XH-A(-1)-oo-
+                              #                                                                                          (blank)...natural (white)
+                                                                                                                         BK...black R...red E...blue Y...yellow L...lemon yellow
+                                                                                                                         M...green D...orange N...brown FY...vivid yellow
+
+Through-hole type shrouded header
+
+   Top entry type of glass-filled nylon                                                                      Circuits  Model No.                          Dimensions (mm)                           Q'ty/
+                                                                                                                                                                                                    bag
+                                                                                                                       B2B-XH-2                        "              #
+                                                                                                                       B3B-XH-2                                                                     
+   <2 circuits>                                                                                                        B4B-XH-2                                                                     
+                                                                                                                       B5B-XH-2
+                                                                                                                       B6B-XH-2                                                                       
+                                                                                                                       B7B-XH-2                                                                       
+                                                                                                                       B8B-XH-2                                                                       
+                                                                                                                       B9B-XH-2                                                                       
+                                                                                                                       B10B-XH-2                                                                      
+                                                                                                                       B11B-XH-2                                                                      
+                                                                                                                       B12B-XH-2                                                                      
+                                                                                                                       B13B-XH-2                                                                      
+                                                                                                                       B14B-XH-2                                                                      
+                                                                                                                       B15B-XH-2                                                                      
+                                    "                                                                                                                                                                 
+                                                                                                                                                                                                      
+                                    #                                                                                                                                 
+
+   <3 to 8 circuits>                                                                                                                                                  
+
+                                                                                                                                                                      
+
+                                                                                                                                                                      
+
+                                                                                                                                                                      
+
+                                                                                                                                                                      
+
+                                                                                                                                                                      
+
+                                                                                                                                                    Material and Finish
+
+                                 "                                                                                              Post: Brass, copper-undercoated, tin-plated (reflow treatment)
+                                                                                                                                Wafer: Glass-filled PA 66, UL94V-0, natural (ivory)
+                                 #
+                                                                                                             RoHS compliance This product displays (LF)(SN) on a label.
+   <9 circuits or more>
+                                                                                                             <For reference> As the color identification,
+                                                                                                                the following alphabet shall be put in the underlined part.
+                                                                                                                For availability, delivery and minimum order quantity, contact JST.
+                                                                 
+                                                                                                                ex. B2B-XH-2-oo-
+                                                                                                                         (blank)...natural (ivory)
+                                                                                                                         C...black R...red E...blue Y...yellow M...green
+
+                   
+
+                                       "                                                       
+
+                                       #
+
+3
+                                                                                                          XH CONNECTOR
+
+ Through-hole type shrouded header
+
+The shrouded headers are interchangeable with those of the NR and NRD insulation displacement connectors, and JQ board-to-board connectors.
+
+Top entry type with a boss                                                      Circuits    Model No.        Dimensions (mm)                                          Q'ty/
+                                                                                                                                                                      box
+  <Single circuit>                                                                        *B1B-XH-AM      "  #                                                        
+                                                                                           B2B-XH-AM                                                                  
+                                                                                           B3B-XH-AM                                                                  
+                                                                                           B4B-XH-AM                                                                    
+                                                                                           B5B-XH-AM                                                                    
+                                                                                           B6B-XH-AM                                                                    
+                                                                                           B7B-XH-AM                                                                    
+                                                                                           B8B-XH-AM                                                                    
+                                                                                           B9B-XH-AM                                                                    
+                                                                                           B10B-XH-AM                                                                   
+                                                                                           B12B-XH-AM                                                                   
+
+                                                                                                             
+
+                                                                                                             
+
+                                                                                                             
+
+                                                                                                             
+                                                                  
+                                                                                                             
+
+                                                                                                             
+
+<2 circuits>                                                                                                           Material and Finish
+
+                                                                                                   Post: Brass, copper-undercoated, tin-plated (reflow treatment)
+                                                                                                   Wafer: PA 66, UL94V-0, natural (white)
+                                        
+                                                                                RoHS compliance This product displays (LF)(SN) on a label.
+                                                                                Note: *Marked product is not approved by UL/CSA/TUจ V standards.
+
+                                                                                <For reference> As the color identification,
+                                                                                   the following alphabet shall be put in the underlined part.
+                                                                                   For availability, delivery and minimum order quantity, contact JST.
+
+    "                                                                              ex. B1B-XH-AM-oo-
+                                                                                            (blank)...natural (white)
+    #                                                                                       BK...black R...red E...blue Y...yellow L...lemon yellow
+                                                                                            M...green
+<3 circuits or more>
+
+                                          
+
+                                                                      
+
+                                          
+
+                                                     
+                        
+            "                                                         
+            #                                                     
+
+SMT type shrouded header                                                                       Model No.     Dimensions (mm)                                          Q'ty/
+                                                                                                                                                                      reel
+                                                                                Circuits  S3B-XH-SM4-TB   "  #
+                                                                                          S4B-XH-SM4-TB                                                                
+                                                                                          S6B-XH-SM4-TB                                                                
+                                                                                                                                                                       
+                                                                                                             
+
+                                                                                                             
+
+                                                                                                                        Material and Finish
+                                                   
+    "                                                                                          Post: Copper alloy, copper-undercoated, tin-plated (reflow treatment)
+                                                                                               Wafer: PA 6T, UL94V-0, natural (ivory)
+    #                                                                                          Solder tab: Brass, copper-undercoated, tin-plated (reflow treatment)
+
+                                                                                RoHS compliance This product displays (LF)(SN) on a label.
+                                                                                Note: The products listed above are supplied on embossed-tape.
+                                                                                <For reference> As the color identification,
+
+                                                                                   the following alphabet shall be put in the underlined part.
+                                                                                   For availability, delivery and minimum order quantity, contact JST.
+
+                                                                                   ex. S3B-XH-SM4-oo-TB-
+                                                                                            (blank)...natural (ivory)
+                                                                                            M...green R...red E...blue L...lemon yellow
+
+                                                                                                                                                                      4
+XH CONNECTOR
+
+Through-hole type shrouded header on radial-tape
+
+   TV4 type                                                  2-TV4 type                                                                            2-TV4 type
+
+     <3 to 4 circuits>                                         <2 circuits>                                                                          <3 to 8 circuits>
+
+                       #                                                                                                                                                        #
+                       "                                                                                                                                                        "
+
+                                                                                                                                                                                                      
+                                                                                                                                                                                                          
+                                                                                                                                                                                            
+
+                                                                                                                                                                                            
+
+Circuits                  Model No.                       Dimensions (mm)                                          Q'ty/  RoHS compliance This product displays (LF)(SN) on a label.
+                                                                                                                    box
+            57                       57                   "  #                                                           <For reference> As the color identification,
+                                                                                                                            the following alphabet shall be put in the underlined part.
+                            B2B-XH-2-TV4                                                                                     For availability, delivery and minimum order quantity, contact JST.
+                                                                                                                     
+          B3B-XH-TV4        B3B-XH-2-TV4                                                                                     ex. B2B-XH-2-TV4-oo-
+                                                                                                                                      (blank)...natural (TV4 type/white, 2-TV4 type/ivory)
+          B4B-XH-TV4        B4B-XH-2-TV4                                                                                              C...black (glass-filled) BK...black R...red E...blue Y...yellow
+                                                                                                                                      M...green
+                            B5B-XH-2-TV4                     
+
+                            B6B-XH-2-TV4                     
+
+                            B7B-XH-2-TV4                     
+
+                            B8B-XH-2-TV4                     
+
+                                   Material and Finish
+
+            Post: Brass, copper-undercoated, tin-plated (reflow treatment)
+            Wafer: TV4 type/ PA 66, UL94V-0, natural (white)
+
+                      2-TV4 type/ Glass-filled PA 66, UL94V-0, natural (ivory)
+
+Taping specification                                                                                                      Packaging specifications
+
+                                                                                                                                                                        D
+
+                            2 and 3 circuits 
+
+                            4 to 8 circuits                                                                        
+
+                                                                                                                                                H     TERMINALS & CONNECTORS
+
+                                                                                                                                                         R
+
+                                                                                                                                                      W
+        
+                                                                                                                                       Distance between the end of the tape and
+                                                                                                                                       the first connector's center line (either end)
+                                                                                                                 
+                                                                                                                                       5BJMUBQF                                 -FBEFSUBQF
+
+                                     
+
+     2 circuits: 5.1                     2 circuits: 2.5
+3 to 8 circuits: 3.85              3 to 8 circuits: 5
+
+                          
+
+Note: Conforms to JIC C 0806 of "Tape packaging of components with                                                        1BDLBHFUZQF                                              Flat pack (zigzag folded)
+       unidirectional leads on continuous tapes".
+
+                                                                                                                          %JTUBODFCFUXFFOGPMET                                  24 indexing holes per fold (304.8 mm)
+
+                                                                                                                          #PYTJ[F                                                  316()45()330() mm
+
+                                                                                                                          %JTUBODFCFUXFFOUIFFOEPGUIFUBQFBOE                                 19.05 mm
+                                                                                                                          UIFGJSTUDPOOFDUPS'TDFOUFSMJOF FJUIFSFOE
+
+
+                                                                                                                          2VBOUJUZ     DJSDVJUT                                   1,000 pcs. / box
+                                                                                                                                       DJSDVJUT                                      500 pcs. / box
+
+                                                                                                                          Note: Products of different packaging specifications are also available.
+
+                                                                                                                            Contact JST for details.
+
+5
+

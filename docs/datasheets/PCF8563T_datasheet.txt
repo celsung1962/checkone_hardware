@@ -1,0 +1,2697 @@
+PCF8563                                                          Product data sheet
+
+Real-Time Clock/Calendar
+
+Rev. 11.1 -- 19 January 2026
+
+Document information
+
+Information           Content
+
+Keywords              PCF8563, RTC, I2C-bus, calendar optimized
+
+Abstract              The PCF8563 is a CMOS Real-Time Clock (RTC) and calendar optimized for low power
+                      consumption.
+NXP Semiconductors                                                                                   PCF8563
+
+                                                                                                Real-Time Clock/Calendar
+
+1 General description
+
+The PCF8563 is a CMOS1 Real-Time Clock (RTC) and calendar optimized for low power consumption. A
+programmable clock output, interrupt output, and voltage-low detector are also provided. All addresses and
+data are transferred serially via a two-line bidirectional I2C-bus. Maximum bus speed is 400 kbit/s. The register
+address is incremented automatically after each written or read data byte.
+
+1 The definition of the abbreviations and acronyms used in this data sheet can be found in Section 18.
+
+PCF8563             All information provided in this document is subject to legal disclaimers.          © 2026 NXP B.V. All rights reserved.
+
+Product data sheet           Rev. 11.1 -- 19 January 2026                                                  Document feedback
+                                                                                                                               2 / 50
+NXP Semiconductors                                                                                   PCF8563
+
+                                                                                                Real-Time Clock/Calendar
+
+2 Features and benefits
+
+· Provides year, month, day, weekday, hours, minutes, and seconds based on a 32.768 kHz quartz crystal
+· Century flag
+· Clock operating voltage: 1.0 V to 5.5 V at room temperature
+· Low backup current; typical 0.25 A at VDD = 3.0 V and Tamb = 25 °C
+· 400 kHz two-wire I2C-bus interface (at VDD = 1.8 V to 5.5 V)
+· Programmable clock output for peripheral devices (32.768 kHz, 1.024 kHz, 32 Hz, and 1 Hz)
+· Alarm and timer functions
+· Integrated oscillator capacitor
+· Internal Power-On Reset (POR)
+· I2C-bus target address: read A3h and write A2h
+· Open-drain interrupt pin
+
+PCF8563             All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet           Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                       3 / 50
+NXP Semiconductors                                                                                           PCF8563
+
+3 Applications                                                                                          Real-Time Clock/Calendar
+
+· Mobile telephones
+· Portable instruments
+· Electronic metering
+· Battery-powered products
+
+PCF8563                     All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                   Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                               4 / 50
+NXP Semiconductors                                                                                             PCF8563
+
+                                                                                                          Real-Time Clock/Calendar
+
+4 Ordering information
+
+Table 1 describes the ordering information for PCF8563.
+
+Table 1.Ordering information
+
+Type number         Package
+
+                    Name      Description                                                                 Version
+
+PCF8563BS/4         HVSON10   Plastic thermal enhanced very thin small outline package; no leads; SOT650-1
+                              10 terminals; body 3 × 3 × 0.85 mm
+
+PCF8563T/5          SO8       Plastic small outline package; 8 leads; body width 3.9 mm                   SOT96-1
+PCF8563T/F4[1]      SO8
+PCF8563TS/4 [1]     TSSOP8    Plastic small outline package; 8 leads; body width 3.9 mm                   SOT96-1
+                    TSSOP8
+PCF8563TS/5                   Plastic thin shrink small outline package; 8 leads; body width 3 mm SOT505-1
+
+                              Plastic thin shrink small outline package; 8 leads; body width 3 mm SOT505-1
+
+[1] Not recommended for new designs. Replacement part is PCF85063ATL.
+
+PCF8563                       All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                     Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                                 5 / 50
+NXP Semiconductors                                                                                   PCF8563
+
+                                                                                                Real-Time Clock/Calendar
+
+5 Marking                                        Marking code
+                                                 8563S
+Table 2 provides the marking codes for PCF8563.  PCF8563
+                                                 8563T
+Table 2.Marking codes                            8563
+Type number                                      P8563
+PCF8563BS/4
+PCF8563T/5
+PCF8563T/F4
+PCF8563TS/4
+PCF8563TS/5
+
+PCF8563             All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet           Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                       6 / 50
+NXP Semiconductors                                                                                                    PCF8563
+
+                                                                                                                 Real-Time Clock/Calendar
+
+6 Block diagram
+
+Figure 1 shows the labeled block diagram of PCF8563.
+
+ OSCI                  OSCILLATOR DIVIDER                                                                        CLOCK OUT             CLKOUT
+OSCO                     32.768 kHz
+                         MONITOR                         CONTROL
+   VDD                                     00 CONTROL_STATUS_1
+   VSS              (1)                    01 CONTROL_STATUS_2
+                        POWER ON           0D CLKOUT_CONTROL
+  SDA                       RESET
+  SCL                                                 TIME
+                           WATCH
+                             DOG           02  VL_SECONDS
+
+                           I2C-BUS         03         MINUTES
+                        INTERFACE
+                                           04         HOURS
+                                 PCF8563
+                                           05         DAYS
+
+                                           06         WEEKDAYS
+
+                                           07 CENTURY_MONTHS
+
+                                           08         YEARS
+
+                                               ALARM FUNCTION
+
+                                           09  MINUTE_ALARM
+
+                                           0A  HOUR_ALARM
+
+                                           0B  DAY_ALARM
+
+                                           0C  WEEKDAY_ALARM
+
+                                                                                                                 INTERRUPT             INT
+
+                                               TIMER FUNCTION
+
+                                           0E  TIMER_CONTROL
+
+                                           0F         TIMER
+
+                                                                                                                            001aah658
+
+ 1. COSCO; see Table 30 for values.
+Figure 1.Block diagram of PCF8563
+
+PCF8563                              All information provided in this document is subject to legal disclaimers.             © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                            Rev. 11.1 -- 19 January 2026                                                     Document feedback
+                                                                                                                                                   7 / 50
+NXP Semiconductors                                                                                                   PCF8563
+
+                                                                                                                Real-Time Clock/Calendar
+
+7 Pinning information
+
+This section provides the pin configuration and description for PCF8563.
+
+7.1 Pinning
+
+The figures given below show pinning for various packages of PCF8563.
+
+        terminal 1
+        index area
+
+         OSCI 1          PCF8563BS  10 n.c.                                                   OSCI 1            8 VDD
+        OSCO 2                      9 VDD
+                                    8 CLKOUT                                                  OSCO 2                                 7 CLKOUT
+            n.c. 3                  7 SCL                                                        INT 3          PCF8563T
+            INT 4                   6 SDA
+           VSS 5                                                                                                                     6 SCL
+
+                                                                        001aaf981             VSS 4             5 SDA
+
+                                      Transparent top view                                                                                  001aaf975
+
+For mechanical details, see Figure 29.                                             Top view. For mechanical details, see Figure 30.
+Figure 2.Pin configuration for HVSON10 (PCF8563BS)                                 Figure 3.Pin configuration for SO8 (PCF8563T)
+
+                                     OSCI 1    PCF8563TS                                      8 VDD
+                                    OSCO 2                                                    7 CLKOUT
+                                                                                              6 SCL
+                                        INT 3                                                 5 SDA
+                                       VSS 4
+
+                                                                                   001aaf976
+
+Top view. For mechanical details, see Figure 31.
+Figure 4.Pin configuration for TSSOP8 (PCF8563TS)
+
+7.2 Pin description
+
+Table 3 provides detailed description of various pins on PCF8563.
+
+Table 3.Pin description
+
+Symbol              Pin                                                                       Description
+
+                    SO8, TSSOP8                HVSON10                                        Oscillator input
+                                               1                                              Oscillator output
+OSCI                1                          2                                              Interrupt output (open-drain; active LOW)
+                                               4                                              Ground
+OSCO                2                          5[1]                                           Serial data input and output
+                                               6                                              Serial clock input
+INT                 3                          7                                              Clock output, open-drain
+                                               8                                              Supply voltage
+VSS                 4                          9
+
+SDA                 5
+
+SCL                 6
+
+CLKOUT              7
+
+VDD                 8
+
+PCF8563                             All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                           Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                                       8 / 50
+NXP Semiconductors                                                                                                    PCF8563
+
+                                                                                                                 Real-Time Clock/Calendar
+
+Table 3.Pin description...continued
+
+Symbol              Pin                       Description
+
+                    SO8, TSSOP8      HVSON10  Not connected; don't connect and don't use it as a
+                                     3, 10    feed through
+n.c.                -
+
+[1] The die paddle (exposed pad) is connected to VSS through high ohmic (non-conductive) silicon attach and must be electrically isolated. It is good
+       engineering practice to solder the exposed pad to an electrically isolated PCB copper pad for better heat transfer. But it is not required as the RTC
+
+       consumes minimal power. Don't run traces under the package-exposed pad.
+
+PCF8563                              All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                            Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                                        9 / 50
+NXP Semiconductors                                                                                                       PCF8563
+
+                                                                                                                    Real-Time Clock/Calendar
+
+8 Functional description
+
+The PCF8563 contains sixteen 8-bit registers with an auto-incrementing register address and an on-chip 32.768
+kHz oscillator with one integrated capacitor. It also contains a frequency divider, which provides the source clock
+for the Real-Time Clock (RTC) and calender. It also contains a programmable clock output, a timer, an alarm, a
+voltage-low detector, and a 400 kHz I2C-bus interface.
+
+All 16 registers are designed as addressable 8-bit parallel registers although not all bits are implemented. The
+first two registers (memory address 00h and 01h) are used as control and/or status registers. The memory
+addresses 02h through 08h are used as counters for the clock function (seconds up to years counters). Address
+locations 09h through 0Ch contain alarm registers, which define the conditions for an alarm. Address 0Dh
+controls the CLKOUT output frequency. 0Eh and 0Fh are the Timer_control and Timer registers, respectively.
+
+The Seconds, Minutes, Hours, Days, Months, Years and the Minute_alarm, Hour_alarm, and Day_alarm
+registers are all coded in Binary Coded Decimal (BCD) format.
+
+When one of the RTC registers is written or read, the contents of all-time counters are frozen. Therefore, it
+prevents the faulty writing or reading of the clock and calendar during a carry condition.
+
+8.1 CLKOUT output
+
+A programmable square wave is available at the CLKOUT pin. The register CLKOUT_control at address 0Dh
+controls the operation. Frequencies of 32.768 kHz (default), 1.024 kHz, 32 Hz, and 1 Hz can be generated for
+use as a system clock, microcontroller clock, input to a charge pump, or for calibration of the oscillator. CLKOUT
+is an open-drain output and enabled at power on. If disabled, it becomes high-impedance.
+
+8.2 Register organization
+
+Table 4.Formatted registers overview
+
+Bit positions labeled as x are not relevant. Bit positions labeled with N must always be written with logic 0; if read they could
+be either logic 0 or logic 1. After reset, all registers are set according to Table 27.
+
+Address Register name Bit
+
+                              7     6          5       4        3                                               2   1              0
+
+Control and status registers
+
+00h  Control_status_1 TEST1 N                  STOP N           TESTC N                                             N              N
+
+01h  Control_status_2 N             N          N       TI_TP AF                                                 TF  AIE            TIE
+
+Time and date registers
+
+02h  VL_seconds               VL    SECONDS (0 to 59)
+
+03h  Minutes                  x     MINUTES (0 to 59)
+
+04h  Hours                    x     x          HOURS (0 to 23)
+
+05h  Days                     x     x          DAYS (1 to 31)
+
+06h  Weekdays                 x     x          x       x        x                                               WEEKDAYS (0 to 6)
+
+07h  Century_months C               x          x       MONTHS (1 to 12)
+
+08h  Years                    YEARS (0 to 99)
+
+Alarm registers
+
+09h  Minute_alarm             AE_M MINUTE_ALARM (0 to 59)
+
+0Ah  Hour_alarm               AE_H  x          HOUR_ALARM (0 to 23)
+
+PCF8563                             All information provided in this document is subject to legal disclaimers.         © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                           Rev. 11.1 -- 19 January 2026                                                 Document feedback
+                                                                                                                                            10 / 50
+NXP Semiconductors                                                                                                           PCF8563
+
+                                                                                                                        Real-Time Clock/Calendar
+
+Table 4.Formatted registers overview...continued
+
+Bit positions labeled as x are not relevant. Bit positions labeled with N must always be written with logic 0; if read they could
+be either logic 0 or logic 1. After reset, all registers are set according to Table 27.
+
+Address Register name Bit
+
+                              7           6                 5  4                 3                                   2  1        0
+
+0Bh       Day_alarm           AE_D        x                 DAY_ALARM (1 to 31)
+
+0Ch       Weekday_alarm AE_W x                              x  x                 x                                   WEEKDAY_ALARM (0 to 6)
+
+CLKOUT control register
+
+0Dh       CLKOUT_control FE               x                 x  x                 x                                   x  FD[1:0]
+
+Timer registers
+
+0Eh       Timer_control       TE          x                 x  x                 x                                   x  TD[1:0]
+
+0Fh       Timer               TIMER[7:0]
+
+8.3 Control registers
+
+8.3.1 Register Control_status_1
+
+Table 5.Control_status_1 - control and status register 1 (address 00h) bit description
+
+Bit     Symbol Value Description                                                                                           Reference
+                                                                                                                           Section 8.9
+7       TEST1        0[1]     Normal mode; must be set to logic 0 during normal operations                                 Section 8.10
+
+                     1        EXT_CLK test mode                                                                            Section 8.11.1
+
+6       N            0[2]     Unused
+
+5       STOP         0 [1]    RTC source clock runs
+
+                     1        All RTC divider chain flip-flops are asynchronously set to logic 0; the
+
+                              RTC clock is stopped (CLKOUT at 32.768 kHz is still available)
+
+4       N            0 [2]    Unused
+
+3       TESTC        0        Power-On Reset (POR) override facility is disabled; set to logic 0 for
+2 to 0  N                     normal operation
+                     1 [1]
+                     000 [2]  Power-On Reset (POR) override can be enabled
+
+                              Unused
+
+[1] Default value.
+[2] Bits labeled as N must always be written with logic 0.
+
+8.3.2 Register Control_status_2
+
+Table 6.Control_status_2 - control and status register 2 (address 01h) bit description
+
+Bit     Symbol Value             Description                                                                               Reference
+
+7 to 5 N            000[1]       Unused                                                                                    Section 8.3.2.1
+                                                                                                                           and
+4       TI_TP       0[2]         INT is active when TF is active (subject to the status of TIE)                            Section 8.8
+
+                    1            INT pulses active according to Table 7 (subject to the status of TIE)                     Section 8.3.2.1
+
+                                    Remark: If AF and AIE are active, then INT is permanently active.
+
+3       AF          0 [2]        Read: alarm flag inactive
+
+PCF8563                                  All information provided in this document is subject to legal disclaimers.        © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                Rev. 11.1 -- 19 January 2026                                                Document feedback
+                                                                                                                                                11 / 50
+NXP Semiconductors                                                                                                               PCF8563
+
+                                                                                                                            Real-Time Clock/Calendar
+
+Table 6.Control_status_2 - control and status register 2 (address 01h) bit description...continued
+
+Bit  Symbol Value          Description                                                                                      Reference
+
+                           Write: alarm flag is cleared
+
+                    1      Read: alarm flag active
+
+                           Write: alarm flag remains unchanged
+
+2    TF             0 [2]  Read: timer flag inactive
+
+                           Write: timer flag is cleared
+
+                    1      Read: timer flag active
+
+                           Write: timer flag remains unchanged
+
+1    AIE            0 [2]  Alarm interrupt disabled
+
+                    1      Alarm interrupt enabled
+
+0    TIE            0 [2]  Timer interrupt disabled
+
+                    1      Timer interrupt enabled
+
+[1] Bits labeled as N must always be written with logic 0.
+[2] Default value.
+
+8.3.2.1 Interrupt output
+
+Bits TF and AF
+
+When an alarm occurs, AF is set to logic 1. Similarly, at the end of a timer countdown, TF is set to logic 1. These
+bits maintain their value until overwritten using the interface. If both timer and alarm interrupts are required in
+the application, the source of the interrupt can be determined by reading these bits. To prevent one flag being
+overwritten while clearing another, a logic AND is performed during a write access.
+
+                     TE                                                           TI_TP                                                             e.g. AIE
+     COUNTDOWN COUNTER                                                                                                      TIE
+                                                  TF: TIMER        to interface:
+                                             SET                   read TF                                                                                   0
+                                                                                                                                                             1
+                                                    CLEAR                                                                0
+                                                                                                                                                       INT
+                                                                   PULSE                                                 1  AIE
+
+                                                                   GENERATOR 2                                                             013aaa087
+
+                                                                   TRIGGER
+
+                                                                   CLEAR
+
+                           from interface:
+                                   clear TF
+
+                                                 AF: ALARM         to interface:
+                                                     FLAG          read AF
+
+                           set alarm         SET
+                             flag AF
+
+                                                            CLEAR
+
+                           from interface:
+                                  clear AF
+
+When bits TIE and AIE are disabled, pin INT remains high-impedance.
+
+Figure 5.Interrupt scheme
+
+Bits TIE and AIE
+
+These bits activate or deactivate the generation of an interrupt when TF or AF is asserted, respectively. The
+interrupt is the logical OR of these two conditions when both AIE and TIE are set.
+
+PCF8563                                      All information provided in this document is subject to legal disclaimers.     © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                    Rev. 11.1 -- 19 January 2026                                             Document feedback
+                                                                                                                                                 12 / 50
+NXP Semiconductors                                                                                                                    PCF8563
+
+                                                                                                                                 Real-Time Clock/Calendar
+
+Countdown timer interrupts
+
+The pulse generator for the countdown timer interrupt uses an internal clock and depends on the selected
+source clock for the countdown timer and on the countdown value n. As a consequence, the width of the
+interrupt pulse varies (see Table 7).
+
+Table 7.INT operation (bit TI_TP = 1)[1]
+
+Source clock (Hz)                         INT period (s)
+
+                                          n = 1[2]                                                                    n > 1 [2]
+                                                                                                                      1/4096
+4096                                      1/8192                                                                      1/64
+64                                        1/128                                                                       1/64
+1                                         1/64                                                                        1/64
+1/60                                      1/64
+
+[1] TF and INT become active simultaneously.
+[2] n = loaded countdown value. Timer stops when n = 0.
+
+8.4 Time and date registers
+
+Most of the registers are coded in the BCD format to simplify application use.
+
+8.4.1 Register VL_seconds
+
+Table 8.VL_seconds - seconds and clock integrity status register (address 02h) bit description
+
+Bit     Symbol      Value   Place value Description
+
+7       VL          0       -                               Clock integrity is guaranteed.
+                                                            The integrity of the clock information is not guaranteed.
+                    1[1]    -
+
+6 to 4 SECONDS 0 to 5       Tens place                      Actual seconds coded in BCD format, see Table 9.
+
+3 to 0              0 to 9  Unit place
+
+[1] Startup value.
+
+Table 9.Seconds coded in BCD format
+
+Seconds value       Upper-digit (tens place)                    Digit (unit place)
+(decimal)
+                    Bit 6      Bit 5                     Bit 4  Bit 3                                                 Bit 2      Bit 1  Bit 0
+                                                                                                                                 0      0
+00                  0          0                         0      0                                                     0          0      1
+                                                                                                                                 1      0
+01                  0          0                         0      0                                                     0          :      :
+                                                                                                                                 0      1
+02                  0          0                         0      0                                                     0          0      0
+                                                                                                                                 :      :
+:                   :          :                         :      :                                                     :          0      0
+                                                                                                                                 0      1
+09                  0          0                         0      1                                                     0
+
+10                  0          0                         1      0                                                     0
+
+:                   :          :                         :      :                                                     :
+
+58                  1          0                         1      1                                                     0
+
+59                  1          0                         1      1                                                     0
+
+PCF8563                                   All information provided in this document is subject to legal disclaimers.                    © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                 Rev. 11.1 -- 19 January 2026                                                            Document feedback
+                                                                                                                                                             13 / 50
+NXP Semiconductors                                                                                                  PCF8563
+
+                                                                                                               Real-Time Clock/Calendar
+
+8.4.1.1 Voltage-low detector and clock monitor
+
+The PCF8563 has an on-chip voltage-low detector (see Figure 6). When VDD drops below Vlow, bit VL in the
+VL_seconds register is set to indicate that the integrity of the clock information is no longer guaranteed. The VL
+flag can only be cleared by using the interface.
+
+                                                                       mgr887
+
+                                   VDD
+
+                                                                       normal power
+                                                                       operation
+
+                                            period of battery
+                                            operation
+
+                                   Vlow
+
+                                                               VL set  t
+
+Figure 6.Voltage-low detection
+
+The VL flag is intended to detect the situation when VDD is decreasing slowly, for example under battery
+operation. If the oscillator stops or VDD reach Vlow before power is re-asserted, then the VL flag is set. It
+indicates that the time can be corrupted.
+
+8.4.2 Register Minutes
+
+Table 10.Minutes - minutes register (address 03h) bit description
+
+Bit     Symbol      Value       Place value Description
+
+7       -           -           -           Unused
+
+6 to 4 MINUTES      0 to 5      Tens place  Actual minutes coded in BCD format
+
+3 to 0              0 to 9      Unit place
+
+8.4.3 Register Hours
+
+Table 11.Hours - hours register (address 04h) bit description
+
+Bit     Symbol      Value       Place value Description
+
+7 to 6 -            -           -           Unused
+
+5 to 4 HOURS        0 to 2      Tens place  Actual hours coded in BCD format
+
+3 to 0              0 to 9      Unit place
+
+8.4.4 Register Days
+
+Table 12.Days - days register (address 05h) bit description
+
+Bit     Symbol      Value       Place value Description
+
+7 to 6  -           -           -           Unused
+5 to 4  DAYS[1]     0 to 3      Tens place  Actual day coded in BCD format
+
+3 to 0              0 to 9      Unit place
+
+[1] The PCF8563 compensates for leap years by adding a 29th day to February if the year counter contains a value, which is exactly divisible by 4, including
+       the year 00.
+
+PCF8563                            All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                          Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                                    14 / 50
+NXP Semiconductors                                                                                                                        PCF8563
+
+                                                                                                                                     Real-Time Clock/Calendar
+
+8.4.5 Register Weekdays
+
+Table 13.Weekdays - weekdays register (address 06h) bit description
+
+Bit       Symbol                            Value          Description
+
+7 to 3 -                                    -              Unused
+
+2 to 0 WEEKDAYS                             0 to 6         Actual weekday values (see Table 14)
+
+Table 14.Weekday assignments
+
+Day[1]                         Bit
+
+                               2                                          1                                                          0
+
+Sunday                         0                                          0                                                          0
+
+Monday                         0                                          0                                                          1
+
+Tuesday                        0                                          1                                                          0
+
+Wednesday                      0                                          1                                                          1
+
+Thursday                       1                                          0                                                          0
+
+Friday                         1                                          0                                                          1
+
+Saturday                       1                                          1                                                          0
+
+[1] The user can re-assign the definition.
+
+8.4.6 Register Century_months
+
+Table 15.Century_months - century flag and months register (address 07h) bit description
+
+Bit       Symbol       Value                   Place value Description
+
+7         C[1]         0[2]                    -                          It indicates that the century is x.
+
+                       1                       -                          It indicates that the century is x + 1.
+
+6 to 5 -               -                       -                          Unused
+
+4         MONTHS       0 to 1                  Tens place                 Actual month coded in BCD format, see Table 16.
+
+3 to 0                 0 to 9                  Unit place
+
+[1] The user can re-assign this bit.
+[2] This bit is toggled when the register Years overflows from 99 to 00.
+
+Table 16.Month assignments in BCD format
+
+Month               Upper-digit (tens Digit (unit place)
+                    place)
+
+                    Bit 4                         Bit 3                   Bit 2                                               Bit 1     Bit 0
+                                                                          0                                                   0         1
+January             0                             0                       0                                                   1         0
+                                                                          0                                                   1         1
+February            0                             0                       1                                                   0         0
+                                                                          1                                                   0         1
+March               0                             0
+                                                                                                                                        © 2026 NXP B.V. All rights reserved.
+April               0                             0
+                                                                                                                                           Document feedback
+May                 0                             0                                                                                                          15 / 50
+
+PCF8563                                           All information provided in this document is subject to legal disclaimers.
+
+Product data sheet                                         Rev. 11.1 -- 19 January 2026
+NXP Semiconductors                                                                                                      PCF8563
+
+                                                                                                                   Real-Time Clock/Calendar
+
+Table 16.Month assignments in BCD format...continued
+
+Month               Upper-digit (tens Digit (unit place)
+                    place)
+
+                    Bit 4  Bit 3                          Bit 2                                        Bit 1       Bit 0
+                                                          1                                            1           0
+June                0      0                              1                                            1           1
+                                                          0                                            0           0
+July                0      0                              0                                            0           1
+                                                          0                                            0           0
+August              0      1                              0                                            0           1
+                                                          0                                            1           0
+September           0      1
+
+October             1      0
+
+November            1      0
+
+December            1      0
+
+8.4.7 Register Years
+
+Table 17.Years - years register (08h) bit description
+
+Bit      Symbol            Value          Place value             Description
+                                                                  Actual year coded in BCD format.[1]
+7 to 4 YEARS               0 to 9         Tens place
+
+3 to 0                     0 to 9         Unit place
+
+[1] When the register Years overflows from 99 to 00, the century bit C in the register Century_months is toggled.
+
+8.5 Setting and reading the time
+
+Figure 7 shows the data flow and data dependencies starting from the 1 Hz clock tick.
+
+                                                       1 Hz tick
+
+                                                       SECONDS
+
+                                                       MINUTES
+
+                           LEAP YEAR                   HOURS      WEEKDAY
+                           CALCULATION                  DAYS
+
+                                                       MONTHS
+
+                                                          YEARS
+
+                                                          C       013aaa092
+
+Figure 7.Data flow for the time function
+
+During read/write operations, the time counting circuits (memory locations 02h through 08h) are blocked.
+
+PCF8563                    All information provided in this document is subject to legal disclaimers.              © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                  Rev. 11.1 -- 19 January 2026                                                      Document feedback
+                                                                                                                                        16 / 50
+NXP Semiconductors                                                                                                  PCF8563
+
+                                                                                                               Real-Time Clock/Calendar
+
+It prevents:
+
+· Faulty reading of the clock and calendar during a carry condition.
+· Incrementing the time registers during the read cycle.
+After this read/write access is completed, the time circuit is released again and any pending request to
+increment the time counters that occurred during the read access is serviced. A maximum of one request can
+be stored. Therefore, all accesses must be completed within 1 second (see Figure 8).
+
+                                                                                                                              t<1s
+
+                     START SLAVE ADDRESS           DATA     DATA                                               STOP
+                                                                                                                          013aaa215
+
+Figure 8.Access time for read/write operations
+
+As a consequence of this method, it is important to make a read or write access in one go. IN other words,
+setting or reading seconds through to years must be made in one single access. Failing to comply with this
+method could result in the time becoming corrupted.
+
+As an example, if the time (seconds through to hours) is set in one access and then the date is set in a second
+access, the time increment between the two accesses becomes a possibility. A similar problem exists when
+reading. A roll-over can occur between reads and therefore, giving the minutes from one moment and the hours
+from the next.
+
+Recommended method for reading the time:
+
+ 1. Send a START condition and the target address for write (A2h).
+ 2. Set the address pointer to 2 (VL_seconds) by sending 02h.
+ 3. Send a RESTART condition or STOP followed by START.
+ 4. Send the target address for read (A3h).
+ 5. Read VL_seconds.
+ 6. Read Minutes.
+ 7. Read Hours.
+ 8. Read Days.
+ 9. Read Weekdays.
+10. Read Century_months.
+11. Read Years.
+12. Send a STOP condition.
+
+8.6 Alarm registers
+
+8.6.1 Register Minute_alarm
+
+Table 18.Minute_alarm - minute alarm register (address 09h) bit description
+
+Bit     Symbol               Value              Place value Description
+
+7       AE_M                 0                  -           Minute alarm is enabled
+                                                            Minute alarm is disabled
+                             1[1]               -
+
+6 to 4 MINUTE_ALARM          0 to 5             Tens place  Minute alarm information coded in BCD format
+
+3 to 0                       0 to 9             Unit place
+
+PCF8563                            All information provided in this document is subject to legal disclaimers.                        © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                          Rev. 11.1 -- 19 January 2026                                                                Document feedback
+                                                                                                                                                          17 / 50
+NXP Semiconductors                                                                                                   PCF8563
+
+                                                                                                                Real-Time Clock/Calendar
+
+[1] Default value.
+
+8.6.2 Register Hour_alarm
+
+Table 19.Hour_alarm - hour alarm register (address 0Ah) bit description
+
+Bit     Symbol                Value   Place value Description
+
+7       AE_H                  0       -            Hour alarm is enabled
+                                                   Hour alarm is disabled
+                              1[1]    -
+
+6       -                     -       -            Unused
+
+5 to 4 HOUR_ALARM             0 to 2  Tens place   Hour alarm information coded in BCD format
+
+3 to 0                        0 to 9  Unit place
+
+[1] Default value.
+
+8.6.3 Register Day_alarm
+
+Table 20.Day_alarm - day alarm register (address 0Bh) bit description
+
+Bit     Symbol                Value   Place value Description
+
+7       AE_D                  0       -            Day alarm is enabled
+                                                   Day alarm is disabled
+                              1[1]    -
+
+6       -                     -       -            Unused
+
+5 to 4 DAY_ALARM              0 to 3  Tens place   Day alarm information coded in BCD format
+
+3 to 0                        0 to 9  Unit place
+
+[1] Default value.
+
+8.6.4 Register Weekday_alarm
+
+Table 21.Weekday_alarm - weekday alarm register (address 0Ch) bit description
+
+Bit     Symbol             Value      Description
+
+7       AE_W               0          Weekday alarm is enabled
+
+                           1[1]       Weekday alarm is disabled
+
+6 to 3 -                   -          Unused
+
+2 to 0 WEEKDAY_ALARM       0 to 6     Weekday alarm information
+
+[1] Default value.
+
+8.6.5 Alarm flag
+
+By clearing the alarm enable bit (AE_x) of one or more of the alarm registers, the corresponding alarm
+conditions are active. When an alarm occurs, AF is set to logic 1. The asserted AF can be used to generate an
+interrupt (INT). The AF is cleared using the interface.
+
+The registers at addresses 09h through 0Ch contain alarm information. When one or more of these registers
+is loaded with minute, hour, day or weekday, and its corresponding AE_x is logic 0, then that information is
+compared with the current minute, hour, day, and weekday. When all enabled comparisons match for the first
+time, the alarm flag (AF in register Control_2) is set to logic 1.
+
+PCF8563                             All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                           Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                                     18 / 50
+NXP Semiconductors                                                                                           PCF8563
+
+                                                                                                        Real-Time Clock/Calendar
+
+The generation of interrupts from the alarm function is controlled via bit AIE. If bit AIE is enabled, the INT pin
+follows the condition of bit AF. AF remains set until cleared by the interface. Once AF has been cleared, it only
+sets again when the time increments to match the alarm condition once more. Alarm registers having their AE_x
+bit at logic 1 are ignored.
+
+                    check now signal                        AEN_M                      example
+                                                            AEN_H                     AEN_M = 1
+                       MINUTE ALARM                         AEN_D
+                                                         =                                       1
+                                                                                                 0
+                         MINUTE TIME
+                                                                             set alarm flag AF (1)
+                         HOUR ALARM
+                                                         =
+
+                           HOUR TIME
+
+                          DAY ALARM
+                                                         =
+
+                            DAY TIME
+
+                                                            AEN_W
+
+                    WEEKDAY ALARM                                            013aaa088
+                                                      =
+
+                     WEEKDAY TIME
+
+ 1. Only when all enabled alarm settings are matching.
+It's only on increment to a matched case that the alarm flag is set (see Section 8.6.5).
+
+Figure 9.Alarm function block diagram
+
+8.7 Register CLKOUT_control and clock output
+
+Frequencies of 32.768 kHz (default), 1.024 kHz, 32 Hz, and 1 Hz can be generated for use as a system clock,
+microcontroller clock, input to a charge pump, or for calibration of the oscillator.
+
+Table 22.CLKOUT_control - CLKOUT control register (address 0Dh) bit description
+
+Bit  Symbol         Value                                   Description
+
+7    FE             0                                       The CLKOUT output is inhibited and the CLKOUT output is set to
+
+                                                            high-impedance.
+
+                    1[1]                                    The CLKOUT output is activated.
+
+6 to 2 -            -                                       Unused
+
+1 to 0 FD[1:0]                                              Frequency output at pin CLKOUT
+                                                                32.768 kHz
+                    00 [1]
+
+                    01                                      1.024 kHz
+
+                    10                                      32 Hz
+
+                    11                                      1 Hz
+
+[1] Default value.
+
+PCF8563                     All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                   Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                             19 / 50
+NXP Semiconductors                                                                                                   PCF8563
+
+                                                                                                                Real-Time Clock/Calendar
+
+8.8 Timer function
+
+The Timer_control register at address 0Eh controls the 8-bit countdown timer at address 0Fh. This register
+determines one of 4 source clock frequencies for the timer (4096 Hz, 64 Hz, 1 Hz, or 1/60 Hz), which enables/
+disables the timer. The timer counts down from a software-loaded 8-bit binary value. At the end of every
+countdown, the timer sets the timer flag TF. The TF can only be cleared by using the interface. The asserted
+TF can be used to generate an interrupt on pin INT. The interrupt can be generated as a pulsed signal every
+countdown period or as a permanently active signal that follows the state of TF. Bit TI_TP is used to control this
+mode selection. When reading the timer, the current countdown value is returned.
+
+8.8.1 Register Timer_control
+
+Table 23.Timer_control - timer control register (address 0Eh) bit description
+
+Bit     Symbol              Value             Description
+
+7       TE                  0[1]              The timer is disabled.
+
+                            1                 The timer is enabled.
+
+6 to 2  -                   -                 Unused
+1 to 0  TD[1:0]
+                                              Timer source clock frequency select[2]
+
+                            00                4.096 kHz
+
+                            01                64 Hz
+
+                            10                1 Hz
+                            11 [2]            1/60 Hz
+
+[1] Default value.
+[2] These bits determine the source clock for the countdown timer. When not in use, TD[1:0] must be set to 1/60 Hz for power saving.
+
+8.8.2 Register Timer
+
+Table 24.Timer - timer value register (address 0Fh) bit description
+
+Bit         Symbol         Value                      Description
+
+7 to 0      TIMER[7:0]     00h to FFh                 Countdown period in seconds:
+
+                                                      Here, n is the countdown value.
+
+Table 25.Timer register bits value range
+Bit
+
+7           6           5                 4           3               2                                         1                     0
+
+128         64          32                16          8               4                                         2                     1
+
+The register Timer is an 8-bit binary countdown timer. It is enabled and disabled via the Timer_control register
+bit TE. The Timer_control register also selects the source clock for the timer. Other timer properties such as
+interrupt generation are controlled via the register Control_status_2.
+
+For an accurate read back of the count down value, it is recommended to read the register twice and check for
+consistent results. It is not possible to freeze the countdown timer counter during the read back.
+
+PCF8563                             All information provided in this document is subject to legal disclaimers.     © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                           Rev. 11.1 -- 19 January 2026                                             Document feedback
+                                                                                                                                        20 / 50
+NXP Semiconductors                                                                                   PCF8563
+
+                                                                                                Real-Time Clock/Calendar
+
+8.9 EXT_CLK test mode
+
+A test mode is available that allows for onboard testing. In such a mode, it is possible to set up test conditions
+and control the operation of the RTC.
+
+The test mode is entered by setting bit TEST1 in register Control_status_1. Then pin CLKOUT becomes an
+input. The test mode replaces the internal 64 Hz signal with the signal applied to pin CLKOUT. Every 64 positive
+edges applied to pin CLKOUT then generates an increment of one second.
+
+The signal applied to pin CLKOUT must have a minimum pulse width of 300 ns and a maximum period of 1000
+ns. The internal 64 Hz clock, now sourced from CLKOUT, is divided down to 1 Hz by a 26 divide chain called a
+prescaler. The prescaler can be set into a known state by using bit STOP. When bit STOP is set, the prescaler
+is reset to 0 (STOP must be cleared before the prescaler can operate again).
+
+From a STOP condition, the first 1 second increment will take place after 32 positive edges on CLKOUT.
+Thereafter, every 64 positive edges cause a one-second increment.
+
+Remark: Entry into EXT_CLK test mode is not synchronized to the internal 64 Hz clock. When entering the test
+mode, no assumption as to the state of the prescaler can be made.
+
+8.9.1 Example of an operation
+
+1. Set EXT_CLK test mode (Control_status_1, bit TEST1 = 1).
+2. Set STOP (Control_status_1, bit STOP = 1).
+3. Clear STOP (Control_status_1, bit STOP = 0).
+4. Set time registers to the desired value.
+5. Apply 32 clock pulses to CLKOUT.
+6. Read the time registers to see the first change.
+7. Apply 64 clock pulses to CLKOUT.
+8. Read the time registers to see the second change.
+
+Repeat steps 7 and 8 for additional increments.
+
+8.10 STOP bit function
+
+The function of the STOP bit is to allow for accurate starting of the time circuits. The STOP bit function causes
+upper part of the prescaler (F2 to F14) to be held in reset; therefore no 1 Hz ticks are generated (see Figure 10).
+The time circuits can then be set and does not increment until the STOP bit is released (see Figure 11 and
+Table 26).
+
+PCF8563             All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet           Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                     21 / 50
+NXP Semiconductors                                                                                                                               PCF8563
+
+                                                                                                                                            Real-Time Clock/Calendar
+
+                                                             OSCILLATOR STOP           reset
+                                                             DETECTOR
+
+                               32768 Hz                  F0  F1        F2                                                                     F14
+                                                   16384 Hz                                                                                 RESET
+                                                                       8192 Hz
+                                                                                               4096 Hz
+                                                                                                                              2 Hz
+      OSCILLATOR                                                                                                                       F13             1 Hz tick
+                                                                                                                                     RESET             STOP
+                                                                       RESET
+
+                                                                                            1 Hz                                            CLKOUT source
+                                                                                           32 Hz
+                                                                                       1024 Hz                                                                    013aaa089
+                                                                                       32768 Hz
+
+Figure 10.STOP bit functional diagram
+
+The STOP bit function does not affect the output of 32.768 kHz on CLKOUT, but stops the generation of 1.024
+kHz, 32 Hz, and 1 Hz.
+
+The lower two stages of the prescaler (F0 and F1) are not reset. Since the I2C-bus is asynchronous to the crystal
+oscillator, the accuracy of restarting the time circuits is between zero and one 8.192 kHz cycle (see Figure 11).
+
+                            8192 Hz
+
+                                          stop released                0 µs to 122 µs                                                       001aaf912
+
+Figure 11.STOP bit release timing
+
+Table 26.First increment of time circuits after STOP bit release
+
+Bit   Prescaler bits           [1] 1 Hz tick Time                          Comment
+
+STOP  F0F1-F2 to F14                                         hh:mm:ss
+
+The clock running normally
+
+0     01-0 0001 1101                                         12:45:12      Prescaler counting normally
+
+      0100
+
+STOP bit activated by the user. F0F1 are not reset and values cannot be predicted externally
+
+1     XX-0 0000 0000                                         12:45:12      Prescaler is reset; time circuits are frozen
+
+      0000
+
+A new time set by the user
+
+1     XX-0 0000 0000                                         08:00:00      Prescaler is reset; time circuits are frozen
+
+      0000
+
+STOP bit released by the user
+
+PCF8563                                                  All information provided in this document is subject to legal disclaimers.                    © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                                Rev. 11.1 -- 19 January 2026                                                            Document feedback
+                                                                                                                                                                            22 / 50
+NXP Semiconductors                                                                                                                     PCF8563
+
+                                                                                                                                  Real-Time Clock/Calendar
+
+Table 26.First increment of time circuits after STOP bit release...continued
+
+Bit   Prescaler bits       [1] 1 Hz tick Time                              Comment
+
+STOP  F0F1-F2 to F14       0.507813 to 0.507935 s             hh:mm:ss     Prescaler is now running
+0                                                             08:00:00
+      XX-0 0000 0000
+      0000
+
+      XX-1 0000 0000                                          08:00:00     -
+      0000
+
+      XX-0 1000 0000                                          08:00:00     -
+      0000
+
+      XX-1 1000 0000                                          08:00:00     -
+      0000
+
+      :                                                       :            :
+
+      11-1 1111 1111       1.000000 s                         08:00:00     -
+      1110
+
+      00-0 0000 0000                                          08:00:01     The 0 to 1 transition of F14 increments the time
+      0001                                                                 circuits
+
+      10-0 0000 0000                                          08:00:01     -
+      0001
+
+      :                                                       :            :
+
+      11-1 1111 1111                               013aaa076  08:00:01     -
+      1111
+
+      00-0 0000 0000                                          08:00:01     -
+      0000
+
+      10-0 0000 0000                                          08:00:01     -
+      0000
+
+      :                                                       :            :
+
+      11-1 1111 1111                                          08:00:01     -
+      1110
+
+      00-0 0000 0000                                          08:00:02     The 0 to 1 transition of F14 increments the time
+      0001                                                                 circuits
+
+[1] F0 is clocked at 32.768 kHz.
+
+The first increment of the time circuits is between 0.507813 s and 0.507935 s after the STOP bit is released.
+The prescaler bits F0 and F1 not being reset (see Table 26) and the unknown state of the 32 kHz clock causes
+the uncertainty.
+
+8.11 Reset
+
+The PCF8563 includes an internal reset circuit, which is active whenever the oscillator is stopped. In the reset
+state, the I2C-bus logic is initialized including the address pointer and all registers are set according to Table 27.
+I2C-bus communication is not possible during reset.
+
+Table 27.Register reset value[1]
+
+Address Register name                              Bit
+
+                                                   7          6         5     4                                                3  2  1  0
+
+00h      Control_status_1                          0          0         0     0                                                1  0  0  0
+
+PCF8563                                            All information provided in this document is subject to legal disclaimers.        © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                          Rev. 11.1 -- 19 January 2026                                                Document feedback
+                                                                                                                                                          23 / 50
+NXP Semiconductors                                                                                                           PCF8563
+
+                                                                                                                        Real-Time Clock/Calendar
+
+Table 27.Register reset value[1]...continued
+
+Address Register name                    Bit
+
+                                         7    6        5                              4                              3  2  1                    0
+
+01h  Control_status_2                    0    0        0                              0                              0  0  0                    0
+
+02h  VL_seconds                          1    x        x                              x                              x  x  x                    x
+
+03h  Minutes                             x    x        x                              x                              x  x  x                    x
+
+04h  Hours                               x    x        x                              x                              x  x  x                    x
+
+05h  Days                                x    x        x                              x                              x  x  x                    x
+
+06h  Weekdays                            x    x        x                              x                              x  x  x                    x
+
+07h  Century_months                      x    x        x                              x                              x  x  x                    x
+
+08h  Years                               x    x        x                              x                              x  x  x                    x
+
+09h  Minute_alarm                        1    x        x                              x                              x  x  x                    x
+
+0Ah  Hour_alarm                          1    x        x                              x                              x  x  x                    x
+
+0Bh  Day_alarm                           1    x        x                              x                              x  x  x                    x
+
+0Ch  Weekday_alarm                       1    x        x                              x                              x  x  x                    x
+
+0Dh  CLKOUT_control                      1    x        x                              x                              x  x  0                    0
+
+0Eh  Timer_control                       0    x        x                              x                              x  x  1                    1
+
+0Fh  Timer                               x    x        x                              x                              x  x  x                    x
+
+[1] Registers marked x are undefined at power up and unchanged by subsequent resets.
+
+8.11.1 Power-On Reset (POR) override
+
+The POR duration is directly related to the crystal oscillator startup time. Due to long startup times experienced
+by these types of circuits, a mechanism is built in to disable the POR. This override speeds up the on-board test
+of the device. The setting of this mode requires that the I2C-bus pins, SDA and SCL, are toggled in a specific
+order as shown in Figure 12. All timings are required minimum.
+
+Once the override mode has been entered, the device immediately stops and resets. Normal operation can now
+commence, that is entry into the EXT_CLK test mode via I2C-bus access. The override mode can be cleared
+by writing logic 0 to TESTC. TESTC must be set to logic 1 before re-entry into the override mode is possible.
+Setting TESTC to logic 0 during normal operation has no effect except to prevent entry into the POR override
+mode.
+
+                       500 ns                 2000 ns
+
+     SDA
+
+                  SCL                                                                                                   override active mgm664
+
+                                   8 ms
+                        power-on
+
+Figure 12.POR override sequence
+
+PCF8563                                  All information provided in this document is subject to legal disclaimers.        © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                Rev. 11.1 -- 19 January 2026                                                Document feedback
+                                                                                                                                                24 / 50
+NXP Semiconductors                                                                                                                                PCF8563
+
+                                                                                                                                             Real-Time Clock/Calendar
+
+9 Characteristics of the I2C-bus
+
+The I2C-bus is for bidirectional, two-line communication between different ICs or modules. The two lines are
+SDA and SCL. Both lines must be connected to a positive supply via a pullup resistor. Data transfer can be
+initiated only when the bus is not busy.
+
+9.1 Bit transfer
+
+One data bit is transferred during each clock pulse. The data on the SDA line must remain stable during
+the HIGH period of the clock pulse as changes in the data line now is interpreted as a control signal (see
+Figure 13).
+
+                         SDA
+
+                                                    SCL  data line   change                                                          mbc621
+                                                           stable;   of data
+Figure 13.Bit transfer                                   data valid  allowed
+
+9.2 START and STOP conditions
+
+Both data and clock lines remain HIGH when the bus is not busy.
+A HIGH-to-LOW transition of the data line while the clock is HIGH, is defined as the START condition - S.
+A LOW-to-HIGH transition of the data line while the clock is HIGH, is defined as the STOP condition - P (see
+Figure 14).
+
+                    SDA                                                                                                                      SDA
+
+                               SCL                                                     P                                                         SCL
+                                                         S                    STOP condition
+                                                                                                                                             mbc 622
+                                              START condition
+
+Figure 14.Definition of START and STOP conditions
+
+9.3 System configuration
+
+A device generating a message is a transmitter; a device receiving a message is a receiver. The device
+that controls the message is the controller; and the devices that the controller controls are the targets (see
+Figure 15).
+
+PCF8563                                                  All information provided in this document is subject to legal disclaimers.          © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                                Rev. 11.1 -- 19 January 2026                                                  Document feedback
+                                                                                                                                                                  25 / 50
+NXP Semiconductors                                                                                                                 PCF8563
+
+                                                                                                                              Real-Time Clock/Calendar
+
+SDA
+SCL
+
+     CONTROLLER                                    TARGET          TARGET   CONTROLLER                                           CONTROLLER
+     TRANSMITTER                                  RECEIVER     TRANSMITTER  TRANSMITTER                                          TRANSMITTER
+
+        RECEIVER                                                  RECEIVER                                                          RECEIVER
+
+                                                                                                                                                   mba605
+
+Figure 15.System configuration
+
+9.4 Acknowledge
+
+The number of data bytes transferred between the START and STOP conditions from transmitter to receiver is
+unlimited. Each byte of eight bits is followed by an acknowledge cycle.
+
+· A target receiver, which is addressed, must generate an acknowledge after the reception of each byte.
+· Also, a controller receiver must generate an acknowledge after the reception of each byte that has been
+
+  clocked out of the target transmitter.
+· The device that acknowledges must pull down the SDA line during the acknowledge clock pulse. It ensures
+
+  that the SDA line is stable LOW during the HIGH period of the acknowledge related clock pulse (set-up and
+  hold times must be considered).
+· A controller receiver must signal an end of data to the transmitter by not generating an acknowledge on the
+  last byte that has been clocked out of the target. In this event, the transmitter must leave the data line HIGH to
+  enable the controller to generate a STOP condition.
+
+Acknowledgment on the I2C-bus is illustrated in Figure 16.
+
+                     data output
+                    by transmitter
+
+                                                                            not acknowledge
+
+                    data output
+                    by receiver
+
+                                                                            acknowledge
+
+                          SCL                               1  2            8                                                 9
+                    from controller
+
+                                               S
+
+                                     START                                                                                      clock pulse for
+                                    condition                                                                                 acknowledgement
+
+                                                                                                                                                  mbc602
+
+Figure 16.Acknowledgment on the I2C-bus
+
+9.5 I2C-bus protocol
+
+9.5.1 Addressing
+Before any data is transmitted on the I2C-bus, the device that must respond is addressed first. The addressing
+is always carried out with the first byte transmitted after the start procedure.
+
+The PCF8563 acts as a target receiver or target transmitter. Therefore, the clock signal SCL is only an input
+signal, but the data signal SDA is a bidirectional line.
+
+Two target addresses are reserved for the PCF8563:
+
+    Read: A3h (10100011)
+
+PCF8563                                           All information provided in this document is subject to legal disclaimers.                              © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                         Rev. 11.1 -- 19 January 2026                                                                      Document feedback
+                                                                                                                                                                               26 / 50
+NXP Semiconductors                                                                                                    PCF8563
+
+                                                                                                                 Real-Time Clock/Calendar
+
+    Write: A2h (10100010)
+The PCF8563 target address is illustrated in Figure 17.
+
+                                     1 0 1 0 0 0 1 R/W
+
+                                     group 1             group 2
+                                                                        mce189
+
+Figure 17.Target address
+
+9.5.2 Clock and calendar READ or WRITE cycles
+
+The I2C-bus configuration for the different PCF8563 READ and WRITE cycles is shown in Figure 18, Figure 19,
+and Figure 20. The register address is a 4-bit value that defines which register is to be accessed next. The
+upper four bits of the register address are not used.
+
+                                     acknowledgement     acknowledgement                                         acknowledgement
+                                         from target         from target                                             from target
+
+                                       S TARGET ADDRESS 0 A REGISTER ADDRESS A  DATA                             AP
+                                                                          R/W
+                                                                                n bytes
+Figure 18.Controller transmits to target receiver (WRITE mode)
+                                                                                             auto increment
+                                                                                      memory register address
+
+                                                                                                              013aaa346
+
+                    acknowledgement  acknowledgement                            acknowledgement                        acknowledgement
+                        from target      from target                                from target                          from controller
+
+S TARGET ADDRESS 0 A REGISTER ADDRESS A S TARGET ADDRESS 1 A                                                     DATA             A
+
+                    R/W                                                                 R/W                      n bytes
+                                                                                (1)
+                                                                                                                             auto increment
+                                                                                                                       memory register address
+
+                                                                                                                       no acknowledgement
+                                                                                                                           from controller
+
+                                                                                                                 DATA                1P
+
+                                                                                                                                                              last byte
+                                                                                                                                                                            auto increment
+
+                                                                                                                                                                     memory register address
+
+                                                                                                                                                                                                                       013aaa041
+
+ 1. At this moment, controller transmitter becomes controller receiver and PCF8563 target receiver becomes target
+     transmitter.
+
+Figure 19.Controller reads after setting register address (write register address; READ data)
+
+PCF8563                              All information provided in this document is subject to legal disclaimers.                   © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                            Rev. 11.1 -- 19 January 2026                                                           Document feedback
+                                                                                                                                                       27 / 50
+NXP Semiconductors                                                                                                           PCF8563
+
+                                                                                                                        Real-Time Clock/Calendar
+
+                                            acknowledgement           acknowledgement                                   no acknowledgement
+                                                from target             from controller                                     from controller
+
+                    S TARGET ADDRESS 1 A                     DATA     A                     DATA                        1P
+
+                                            R/W              n bytes                     last byte
+
+                                                                      auto increment                                    auto increment
+                                                                      register address                                  register address
+
+                                                                                                                        013aaa347
+
+Figure 20.Controller reads target immediately after first byte (READ mode)
+
+9.6 Interface watchdog timer
+
+                                                                      t<1s
+
+                    data  START SLAVE ADDRESS DATA DATA                                 STOP
+
+                               WD timer          running              WD timer tracking                                 running
+                                                                      time counters frozen                                             013aaa420
+                                      time
+                                counters
+
+a. Correct data transfer: read or write
+
+                                                                      1s<t<2s
+
+                    data  START SLAVE ADDRESS DATA DATA data transfer fail
+
+                               WD timer          running              WD timer tracking                                 WD trips
+                                      time                            time counters frozen
+                                                                                                                         running
+                                counters                                                                                      013aaa421
+
+b. Incorrect data transfer; read or write
+Figure 21.Interface watchdog timer
+
+During read/write operations, the time counting circuits are frozen. To prevent a situation where the accessing
+device becomes locked and does not clear the interface, the PCF8563 has a built-in watchdog timer. If the
+interface is active for more than 1 s from the time a valid target address is transmitted, then the PCF8563
+automatically clears the interface and allows the time counting circuits to continue counting. The watchdog
+triggers between 1 s and 2 s after receiving a valid target address. Each time the watchdog period is exceeded,
+1 s is lost from the time counters.
+
+The watchdog is implemented to prevent the excessive loss of time due to interface access failure, for example,
+if main power is removed from a battery backed-up system during an interface access.
+
+PCF8563                                     All information provided in this document is subject to legal disclaimers.                       © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                   Rev. 11.1 -- 19 January 2026                                                               Document feedback
+                                                                                                                                                                  28 / 50
+NXP Semiconductors                                                                                                    PCF8563
+
+                                                                                                                 Real-Time Clock/Calendar
+
+10 Internal circuitry
+
+Figure 22 shows the internal view of device diode protection for PCF8563.
+
+                                                                       OSCI                              VDD
+                                                                     OSCO                                CLKOUT
+
+                                                                         INT                             SCL
+                                                                        VSS
+                                                                                                         SDA
+Figure 22.Device diode protection diagram
+                                                                              PCF8563
+
+                                                                                              013aaa348
+
+PCF8563             All information provided in this document is subject to legal disclaimers.                   © 2026 NXP B.V. All rights reserved.
+
+Product data sheet           Rev. 11.1 -- 19 January 2026                                                           Document feedback
+                                                                                                                                      29 / 50
+NXP Semiconductors                                                                                                      PCF8563
+
+                                                                                                                   Real-Time Clock/Calendar
+
+11 Limiting values
+
+Table 28.Limiting values
+In accordance with the Absolute Maximum Rating System (IEC 60134).
+
+Symbol Parameter                       Conditions                       Min                                        Max    Unit
+                                                                        -0.5
+VDD   Supply voltage                                                    -50                                        +6.5   V
+                                                                        -0.5
+IDD   Supply current                                                    -0.5                                       +50    mA
+                                                                        -10
+VI    Input voltage                    On pins SCL, SDA, and OSCI       -10                                        +6.5   V
+                                       On pins CLKOUT and INT           -
+VO    Output voltage                   At any input                                                                +6.5   V
+                                                                    [1] -
+II    Input current                                                                                                +10    mA
+                                                                    [1]
+IO    Output current                   At any output                                                               +10    mA
+Ptot  Total power dissipation                                       [1]
+VESD  Electrostatic discharge voltage  HBM                                                                         300    mW
+                                           HVSON10 (PCF8563BS/4)    [1] -
+                                                                    [1] -                                          ±3500  V
+
+                                       SO8 (PCF8563T/F4)                -
+                                                                        -
+                                       TSSOP8 (PCF8563TS/4)         [2] -
+                                                                    [2] -
+                                       SO8 (PCF8563T/5)                                                            ±2000  V
+                                                                    [2]
+                                       TSSOP8 (PCF8563TS/5)
+                                                                    [2]
+                                       CDM
+                                                                    [2]
+                                       HVSON10 (PCF8563BS/4)                                                       ±2000  V
+                                                                    [3] -
+                                       SO8 (PCF8563T/F4)            [4] -65                                        ±1000  V
+
+                                       SO8 (PCF8563T/5)                 -40                                        ±1500  V
+
+                                       TSSOP8 (PCF8563TS/4)                                                        ±1500  V
+
+                                       TSSOP8 (PCF8563TS/5)                                                        ±1750  V
+
+Ilu   Latch-up current                                                                                             200    mA
+Tstg  Storage temperature
+Tamb  Ambient temperature                                                                                          +150   °C
+
+                                       Operating device                                                            +85    °C
+
+[1] Pass level; Human Body Model (HBM), according to List item.
+[2] Pass level; Charged-Device Model (CDM), according to List item.
+[3] Pass level; latch-up testing according to List item at maximum ambient temperature (Tamb(max)).
+[4] According to the NXP store and transport requirements (see List item), the devices must be stored at a temperature of +8 °C to +45 °C and a humidity of
+
+       25 % to 75 %. For long-term storage, products deviant conditions are described in that document.
+
+PCF8563                                All information provided in this document is subject to legal disclaimers.        © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                              Rev. 11.1 -- 19 January 2026                                                Document feedback
+                                                                                                                                              30 / 50
+NXP Semiconductors                                                                                                     PCF8563
+
+                                                                                                                  Real-Time Clock/Calendar
+
+12 Static characteristics
+
+Table 29.Static characteristics
+
+VDD = 1.8 V to 5.5 V; VSS = 0 V; Tamb = -40 °C to +85 °C; fosc = 32.768 kHz; quartz Rs = 40 k; CL = 8 pF; unless otherwise
+specified.
+
+Symbol    Parameter        Conditions                                                                       Min   Typ  Max Unit
+
+Supplies  Supply voltage   Interface inactive;                                                         [1] 1.0    -    5.5  V
+VDD       Supply current   fSCL = 0 Hz;
+                           Tamb = 25 °C                                                                     1.8   -    5.5  V
+IDD
+                           Interface active;                                                                Vlow  -    5.5  V
+                           fSCL = 400 kHz
+                                                                                                            -     -    800  A
+                           Clock data integrity;
+                           Tamb = 25 °C
+
+                           Interface active
+
+                               fSCL = 400 kHz
+
+                               fSCL = 100 kHz                                                               -     -    200  A
+
+                           Interface inactive (fSCL = 0 Hz); CLKOUT                                    [2]
+                           disabled; Tamb = 25 °C
+                                                                                                            -     275  550  nA
+                               VDD = 5.0 V
+                                                                                                            -     250  500  nA
+                               VDD = 3.0 V
+                                                                                                            -     225  450  nA
+                               VDD = 2.0 V
+                                                                                                       [2]
+                           Interface inactive (fSCL = 0 Hz); CLKOUT
+                           disabled; Tamb = -40 °C to +85 °C                                                -     500  750  nA
+
+                               VDD = 5.0 V                                                                  -     400  650  nA
+
+                               VDD = 3.0 V                                                                  -     400  600  nA
+
+                               VDD = 2.0 V                                                             [2]
+
+                           Interface inactive (fSCL = 0 Hz); CLKOUT
+                           enabled at 32 kHz; Tamb = 25 °C
+
+                           VDD = 5.0 V                                                                      -     825  1600 nA
+
+                           VDD = 3.0 V                                                                      -     550  1000 nA
+
+                           VDD = 2.0 V                                                                      -     425  800  nA
+
+                           Interface inactive (fSCL = 0 Hz); CLKOUT                                    [2]
+
+                           enabled at 32 kHz; Tamb = -40 °C to +85 °C
+
+                           VDD = 5.0 V                                                                      -     950  1700 nA
+                           VDD = 3.0 V
+                           VDD = 2.0 V                                                                      -     650  1100 nA
+
+                                                                                                            -     500  900  nA
+
+Inputs
+
+VIL       LOW-level input                                                                                   -0.5  -    +0.3VDD V
+
+          voltage
+
+VIH       HIGH-level                                                                                        0.7VDD -   5.5  V
+
+          input voltage
+
+PCF8563                    All information provided in this document is subject to legal disclaimers.                  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                  Rev. 11.1 -- 19 January 2026                                                          Document feedback
+                                                                                                                                            31 / 50
+NXP Semiconductors                                                                                                      PCF8563
+
+                                                                                                                   Real-Time Clock/Calendar
+
+Table 29.Static characteristics...continued
+
+VDD = 1.8 V to 5.5 V; VSS = 0 V; Tamb = -40 °C to +85 °C; fosc = 32.768 kHz; quartz Rs = 40 k; CL = 8 pF; unless otherwise
+specified.
+
+Symbol            Parameter    Conditions                                                                     Min  Typ  Max Unit
+
+ILI               Input leakage VI = VDD or VSS                                                               -1   0    +1         A
+
+                  current
+
+Ci                Input                                                                                    [3] -   -    7          pF
+
+                  capacitance
+
+Outputs
+
+IOL               LOW-level    Output sink current;
+
+                  output current VOL = 0.4 V; VDD = 5 V
+
+                               On pin SDA                                                                     3    -    -          mA
+
+                               On pin INT                                                                     1    -    -          mA
+
+                               On pin CLKOUT                                                                  1    -    -          mA
+
+ILO               Output leakage VO = VDD or VSS                                                              -1   0    +1         A
+
+                  current
+
+Voltage detector
+
+Vlow              Low voltage  Tamb = 25 °C; sets bit VL; see Figure 6                                        -    0.9  1.0        V
+
+[1] For reliable oscillator startup at power on, use VDD greater than 1.3 V. If powered up at 1.0 V, the oscillator starts but it can be a bit slow, especially if
+       at high temperature. Normally, the power supply is not 1.0 V at startup and only comes at the end of battery discharge. VDD min of 1.0 V is specified so
+       that the customer can calculate how large a battery or capacitor they need for their application. VDD min of 1.3 V or greater is needed to ensure speedy
+       oscillator startup time.
+
+[2] Timer source clock = 1/60 Hz, level of pins SCL and SDA is VDD or VSS.
+[3] Tested on a sample basis.
+
+            1                              mgr888              1                                                        mgr889
+      IDD                                                IDD
+      (µA)                                               (µA)
+
+         0.8                                                0.8
+
+      0.6                                                0.6
+
+      0.4                                                0.4
+
+      0.2                                                0.2
+
+      0        0           2   4 VDD (V) 6               0              0                                  2          4 VDD (V) 6
+
+Tamb = 25 °C; Timer = 1 minute.                          Tamb = 25 °C; Timer = 1 minute.
+
+Figure 23.Supply current IDD as a function of supply     Figure 24.Supply current IDD as a function of supply
+voltage VDD; CLKOUT disabled                             voltage VDD; CLKOUT = 32 kHz
+
+PCF8563                        All information provided in this document is subject to legal disclaimers.               © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                      Rev. 11.1 -- 19 January 2026                                                       Document feedback
+                                                                                                                                             32 / 50
+NXP Semiconductors                                                                                             PCF8563
+
+                                                                                                          Real-Time Clock/Calendar
+
+      1                    mgr890                                                                         mgr891
+IDD
+(µA)                                                       4
+
+   0.8                                         frequency
+                                               deviation
+
+                                                 (ppm) 2
+
+0.6
+
+                                               0
+
+0.4
+
+                                               -2
+
+0.2
+
+                                               -4
+
+0                   0  40  80 T (°C) 120                      0                                        2  4 VDD (V) 6
+- 40
+
+VDD = 3 V; Timer = 1 minute.                   Tamb = 25 °C; normalized to VDD = 3 V.
+
+Figure 25.Supply current IDD as a function of  Figure 26.Frequency deviation as a function of supply
+temperature T; CLKOUT = 32 kHz                 voltage VDD
+
+PCF8563                    All information provided in this document is subject to legal disclaimers.     © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                  Rev. 11.1 -- 19 January 2026                                             Document feedback
+                                                                                                                               33 / 50
+NXP Semiconductors                                                                                                                       PCF8563
+
+                                                                                                                                    Real-Time Clock/Calendar
+
+13 Dynamic characteristics
+
+Table 30.Dynamic characteristics
+
+VDD = 1.8 V to 5.5 V; VSS = 0 V; Tamb = -40 °C to +85 °C; fosc = 32.768 kHz; quartz Rs = 40 k; CL = 8 pF; unless otherwise
+specified.
+
+Symbol            Parameter                                                                 Conditions                       Min    Typ  Max Unit
+
+Oscillator
+
+COSCO             Capacitance on pin OSCO                                                                                    15     25   35   pF
+fosc/fosc         Relative oscillator frequency variation
+                                                                                            VDD = 200 mV;                    -      0.2  -    ppm
+                                                                                            Tamb = 25 °C
+
+Quartz crystal parameters (f = 32.768 kHz)
+
+Rs                Series resistance                                                                                          -      -    100  k
+CL                Load capacitance
+Ctrim             Trimmer capacitance                                                       Parallel                         [1] 7  -    12.5 pF
+
+                                                                                            External; on pin                 5      -    25   pF
+                                                                                            OSCI
+
+CLKOUT output
+
+CLKOUT            Duty cycle on pin CLKOUT                                                                                   [2] -  50   -    %
+
+I2C-bus timing characteristics (see Figure 27)[3][4]
+
+fSCL              SCL clock frequency                                                                                        [5] -  -    400  kHz
+
+tHD;STA           Hold time (repeated) START condition                                                                       0.6    -    -    s
+
+tSU;STA           Set-up time for a repeated START condition                                                                 0.6    -    -    s
+
+tLOW              LOW period of the SCL clock                                                                                1.3    -    -    s
+
+tHIGH             HIGH period of the SCL clock                                                                               0.6    -    -    s
+tr                Rise time of both SDA and SCL signals
+                                                                                            Standard-mode                    -      -    1    s
+
+                                                                                            Fast-mode                        -      -    0.3  s
+
+tf                Fall time of both SDA and SCL signals                                                                      -      -    0.3  s
+
+tBUF              Bus free time between a STOP and START                                                                     1.3    -    -    s
+
+                  condition
+
+Cb                Capacitive load for each bus line                                                                          -      -    400  pF
+tSU;DAT           Data set-up time
+tHD;DAT           Data hold time                                                                                             100    -    -    ns
+tSU;STO           Set-up time for STOP condition
+                                                                                                                             0      -    -    ns
+
+                                                                                                                             0.6    -    -    s
+
+tw(spike)         Spike pulse width                                                         On bus                           -      -    50   ns
+
+[1]
+
+      CL is a calculation of Ctrim and COSCO in the series:                                 .
+
+[2] Unspecified for fCLKOUT = 32.768 kHz.
+
+[3] All timing values are valid within the operating supply voltage at ambient temperature and referenced to VIL and VIH with an input voltage swing of VSS to
+
+[4]   VDD.        description  of  the  I2C-bus  specification  is  given  in  List  item.
+      A detailed
+[5] I2C-bus access time between two STARTs or between a START and a STOP condition to this device must be less than one second.
+
+PCF8563                                          All information provided in this document is subject to legal disclaimers.              © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                        Rev. 11.1 -- 19 January 2026                                                      Document feedback
+                                                                                                                                                              34 / 50
+NXP Semiconductors                                                                                                                  PCF8563
+
+                                                                                                                               Real-Time Clock/Calendar
+
+SDA
+
+                    tBUF           tLOW                                                                                    tf
+
+SCL
+
+                          tHD;STA        tr                                                                tHD;DAT             tSU;DAT
+
+                                                                                                                    tHIGH
+
+                        SDA                                                                                                             tSU;STO
+
+                                                                                                  tSU;STA                                        mga728
+                        (1) Configured as Controller when OSC is connected to VSS
+                        (2) Configured as Target when OSC is connected to VDD
+
+Figure 27.I2C-bus timing waveforms
+
+PCF8563                   All information provided in this document is subject to legal disclaimers.                                    © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                 Rev. 11.1 -- 19 January 2026                                                                            Document feedback
+                                                                                                                                                             35 / 50
+NXP Semiconductors                                                                                                          PCF8563
+
+14 Application information                                                                                               Real-Time Clock/Calendar
+
+Figure 28 shows the detailed application diagram for PCF8563.                                                        VDD
+
+                                                                 SDA      MASTER
+                                                                 SCL  TRANSMITTER/
+
+                                                                         RECEIVER
+
+                    1F         100 nF
+
+                                       VDD     SCL
+
+                               CLOCK CALENDAR
+
+                               OSCI PCF8563
+
+                               OSCO          SDA                 VDD
+
+                                       VSS
+
+                                                                 R    R R: pull-up resistor
+
+                                                                                                                 R=  tr
+                                                                                                                     Cb
+
+                                                    SDA SCL                                                              mgm665
+                                                      (I2C-bus)
+
+Figure 28.Application diagram
+
+14.1 Quartz frequency adjustment
+
+14.1.1 Method 1: Fixed OSCI capacitor
+
+By evaluating the average capacitance necessary for the application layout, a fixed capacitor can be used. The
+frequency is best measured via the 32.768 kHz signal available after power on at pin CLKOUT. The frequency
+tolerance depends on the quartz crystal tolerance, the capacitor tolerance, and the device-to-device tolerance
+(on average ±5 ppm). Average deviations of ±5 minutes per year can be easily achieved.
+
+14.1.2 Method 2: OSCI trimmer
+Using the 32.768 kHz signal available after power on at pin CLKOUT, fast setting of a trimmer is possible.
+
+14.1.3 Method 3: OSCO output
+Direct measurement of OSCO out (accounting for test probe capacitance).
+
+PCF8563                              All information provided in this document is subject to legal disclaimers.                  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                            Rev. 11.1 -- 19 January 2026                                                          Document feedback
+                                                                                                                                                      36 / 50
+NXP Semiconductors                                                                                                                  PCF8563
+
+                                                                                                                               Real-Time Clock/Calendar
+
+15 Package outline                                                                                                                                   SOT650-1
+
+  HVSON10: plastic thermal enhanced very thin small outline package; no leads;
+  10 terminals; body 3 x 3 x 0.85 mm
+
+                                                                                                                        0           1      2 mm
+
+                                                                                                                               scale
+
+                    X
+
+                                            D                               BA
+
+                                                                                              A
+
+                                                                                 E                                      A1
+
+                                                                                                                                                  c
+
+            terminal 1                                                                                                         detail X
+            index area
+
+            terminal 1              e       e1                              vMC A B           y1 C                                         C
+            index area        1                                             wM C                                                               y
+                                                        b
+                      L                                             5
+
+                    Eh
+
+                              10            Dh         6
+
+DIMENSIONS (mm are the original dimensions)
+
+UNIT  A(1)    A1         b    c        D(1) Dh E(1) Eh                 e         e1  L     v  w                             y  y1
+      max.
+
+mm    1      0.05       0.30  0.2      3.1  2.55  3.1  1.75            0.5       2   0.55  0.1 0.05 0.05                       0.1
+             0.00       0.18           2.9  2.15  2.9  1.45                          0.30
+
+Note
+1. Plastic or metal protrusions of 0.075 mm maximum per side are not included.
+
+    OUTLINE                                       REFERENCES                                                                    EUROPEAN          ISSUE DATE
+                                                                                                                               PROJECTION
+VERSION                       IEC              JEDEC                      JEITA                                                                      01-01-22
+                                                                                                                                                     02-02-08
+    SOT650-1                  ---           MO-229                          ---
+
+Figure 29.Package outline SOT650-1 (HVSON10) of PCF8563BS
+
+PCF8563                                     All information provided in this document is subject to legal disclaimers.                     © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                   Rev. 11.1 -- 19 January 2026                                                             Document feedback
+                                                                                                                                                                37 / 50
+NXP Semiconductors                                                                                                                              PCF8563
+
+  SO8: plastic small outline package; 8 leads; body width 3.9 mm                                                                           Real-Time Clock/Calendar
+
+                                                                                                                                                                   SOT96-1
+
+                                               D                                                E                                    A
+
+                                                                                                                                              X
+
+                                    y                                        c                  HE                                            vM A
+                                                          5
+                                 Z
+                                8
+
+                                                                                                                              Q
+
+                                                                                A2                                                   (A3)  A
+                                                                                     A1
+
+                                  pin 1 index               4  wM                                                           
+                                                        bp                                               Lp
+                                1                                                                       L
+                                        e
+                                                                                                detail X
+
+                                                          0          2.5                 5 mm
+
+                                                                     scale
+
+DIMENSIONS (inch dimensions are derived from the original mm dimensions)
+
+UNIT      A         A1    A2     A3    bp         c       D(1) E(2)  e          HE          L   Lp                            Q      v     w     y      Z (1)  
+        max.
+
+mm      1.75        0.25  1.45   0.25  0.49       0.25    5.0  4.0   1.27       6.2      1.05   1.0                           0.7    0.25 0.25   0.1    0.7    8o
+                    0.10  1.25         0.36       0.19    4.8  3.8              5.8             0.4                           0.6                       0.3
+
+inches  0.069  0.010      0.057  0.01  0.019 0.0100 0.20       0.16  0.05       0.244    0.041  0.039                         0.028  0.01  0.01  0.004  0.028  0o
+               0.004      0.049        0.014 0.0075 0.19       0.15             0.228           0.016                         0.024                     0.012
+
+Notes
+1. Plastic or metal protrusions of 0.15 mm (0.006 inch) maximum per side are not included.
+2. Plastic or metal protrusions of 0.25 mm (0.01 inch) maximum per side are not included.
+
+OUTLINE                                                 REFERENCES                                                                    EUROPEAN        ISSUE DATE
+VERSION                                                                                                                              PROJECTION
+                             IEC                  JEDEC              JEITA                                                                              99-12-27
+ SOT96-1                  076E03                                                                                                                        03-02-18
+                                                  MS-012
+
+Figure 30.Package outline SOT96-1 (SO8) of PCF8563T
+
+PCF8563                                           All information provided in this document is subject to legal disclaimers.                        © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                         Rev. 11.1 -- 19 January 2026                                                                Document feedback
+                                                                                                                                                                         38 / 50
+NXP Semiconductors                                                                                                                             PCF8563
+
+                                                                                                                                          Real-Time Clock/Calendar
+
+TSSOP8: plastic thin shrink small outline package; 8 leads; body width 3 mm                                                                                  SOT505-1
+
+                                       D                                                                 E                           A     X
+
+                                                                                    c                    HE                                     vM A
+                             y
+
+                                    Z
+
+                          8                      5
+
+                                                                                       A2 A1                                         (A3)       A
+
+                              pin 1 index
+
+                          1                    4                                                                                            
+                                 e         bp                                                                          Lp
+                                                                                                                    L
+
+                                                                                                            detail X
+
+                                                          wM
+
+                                                       0                               2.5               5 mm
+
+                                                                                       scale
+
+DIMENSIONS (mm are the original dimensions)
+
+UNIT    A           A1    A2           A3  bp       c     D(1) E(2)                    e      HE   L        Lp                  v    w     y       Z(1)  
+      max.
+
+mm    1.1           0.15  0.95      0.25   0.45     0.28   3.1  3.1                    0.65   5.1  0.94     0.7                 0.1  0.1   0.1     0.70  6°
+                    0.05  0.80             0.25     0.15   2.9  2.9                           4.7           0.4                                    0.35  0°
+
+Notes
+1. Plastic or metal protrusions of 0.15 mm maximum per side are not included.
+2. Plastic or metal protrusions of 0.25 mm maximum per side are not included.
+
+OUTLINE                                                   REFERENCES                                                                  EUROPEAN           ISSUE DATE
+                                                                                                                                     PROJECTION
+VERSION                       IEC                   JEDEC            JEITA                                                                                 99-04-09
+                                                                                                                                                           03-02-18
+SOT505-1
+
+Figure 31.Package outline SOT505-1 (TSSOP8) of PCF8563TS
+
+PCF8563                                             All information provided in this document is subject to legal disclaimers.                     © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                                           Rev. 11.1 -- 19 January 2026                                                             Document feedback
+                                                                                                                                                                        39 / 50
+NXP Semiconductors                                                                                   PCF8563
+
+                                                                                                Real-Time Clock/Calendar
+
+16 Handling information
+
+Handling information
+All input and output pins are protected against ElectroStatic Discharge (ESD) under normal handling. When handling
+Metal-Oxide Semiconductor (MOS) devices ensure that all normal precautions are taken as described in JESD625-A, IEC
+61340-5 or equivalent standards.
+
+PCF8563             All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet           Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                     40 / 50
+NXP Semiconductors                                                                                      PCF8563
+
+                                                                                                   Real-Time Clock/Calendar
+
+17 Soldering of SMD packages
+
+This text provides a very brief insight into a complex technology. A more in-depth account of soldering ICs can
+be found in Application Note AN10365 "Surface mount reflow soldering description".
+
+17.1 Introduction to soldering
+
+Soldering is one of the most common methods through which packages are attached to Printed Circuit Boards
+(PCBs), to form electrical circuits. The soldered joint provides both the mechanical and the electrical connection.
+There is no single soldering method that is ideal for all IC packages. Wave soldering is often preferred when
+through-hole and Surface Mount Devices (SMDs) are mixed on one printed wiring board; however, it is not
+suitable for fine pitch SMDs. Reflow soldering is ideal for the small pitches and high densities that come with
+increased miniaturization.
+
+17.2 Wave and reflow soldering
+
+Wave soldering is a joining technology in which the joints are made by solder coming from a standing wave of
+liquid solder. The wave soldering process is suitable for the following:
+
+· Through-hole components
+· Leaded or leadless SMDs, which are glued to the surface of the printed circuit board
+
+Not all SMDs can be wave soldered. Packages with solder balls, and some leadless packages which have
+solder lands underneath the body, cannot be wave soldered. Also, leaded SMDs with leads having a pitch
+smaller than ~0.6 mm cannot be wave soldered, due to an increased probability of bridging.
+
+The reflow soldering process involves applying solder paste to a board, followed by component placement and
+exposure to a temperature profile. Leaded packages, packages with solder balls, and leadless packages are all
+reflow solderable.
+
+Key characteristics in both wave and reflow soldering are:
+
+· Board specifications, including the board finish, solder masks and vias
+· Package footprints, including solder thieves and orientation
+· The moisture sensitivity level of the packages
+· Package placement
+· Inspection and repair
+· Lead-free soldering versus SnPb soldering
+
+17.3 Wave soldering
+
+Key characteristics in wave soldering are:
+
+· Process issues, such as application of adhesive and flux, clinching of leads, board transport, the solder wave
+  parameters, and the time during which components are exposed to the wave
+
+· Solder bath specifications, including temperature and impurities
+
+17.4 Reflow soldering
+
+Key characteristics in reflow soldering are:
+
+· Lead-free versus SnPb soldering; note that a lead-free reflow process usually leads to higher minimum peak
+  temperatures (see Figure 32) than a SnPb process, thus reducing the process window
+
+· Solder paste printing issues including smearing, release, and adjusting the process window for a mix of large
+  and small components on one board
+
+PCF8563                All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet              Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                        41 / 50
+NXP Semiconductors                                                                                                       PCF8563
+
+                                                                                                                    Real-Time Clock/Calendar
+
+· Reflow temperature profile; this profile includes preheat, reflow (in which the board is heated to the peak
+  temperature) and cooling down. It is imperative that the peak temperature is high enough for the solder to
+  make reliable solder joints (a solder paste characteristic). In addition, the peak temperature must be low
+  enough that the packages and/or boards are not damaged. The peak temperature of the package depends on
+  package thickness and volume and is classified in accordance with Table 31 and Table 32
+
+Table 31.SnPb eutectic process (from J-STD-020D)
+
+Package thickness (mm)           Package reflow temperature (°C)
+
+                                 Volume (mm³)
+
+                                 < 350                                                         350
+                                                                                              220
+< 2.5                            235                                                          220
+
+ 2.5                             220
+
+Table 32.Lead-free process (from J-STD-020D)
+
+Package thickness (mm)           Package reflow temperature (°C)
+
+                                 Volume (mm³)
+
+                                 < 350            350 to 2000                                                       > 2000
+                                                                                                                    260
+< 1.6                            260              260                                                               245
+                                                                                                                    245
+1.6 to 2.5                       260              250
+
+> 2.5                            250              245
+
+Moisture sensitivity precautions, as indicated on the packing, must be respected at all times.
+Studies have shown that small packages reach higher temperatures during reflow soldering, see Figure 32.
+
+                    temperature         maximum peak temperature
+                                          = MSL limit, damage level
+
+                                                minimum peak temperature
+                                        = minimum soldering temperature
+
+                                                                                                  peak
+                                                                                              temperature
+
+                                                                                                                           time
+                                                                                                                    001aac844
+
+                                                             MSL: Moisture Sensitivity Level
+Figure 32.Temperature profiles for large and small components
+
+For further information on temperature profiles, refer to Application Note AN10365 "Surface mount reflow
+soldering description".
+
+PCF8563                                 All information provided in this document is subject to legal disclaimers.               © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                               Rev. 11.1 -- 19 January 2026                                                       Document feedback
+                                                                                                                                                      42 / 50
+NXP Semiconductors                                                                                                       PCF8563
+
+                                                                                                                    Real-Time Clock/Calendar
+
+18 Acronyms
+
+Table 33 describes the acronyms used in this data sheet.
+
+Table 33.Acronyms
+
+Acronym             Description
+
+BCD                 Binary Coded Decimal
+
+CDM                 Charged-Device Model
+
+CMOS                Complementary Metal Oxide Semiconductor
+
+ESD                 ElectroStatic Discharge
+
+HBM                 Human Body Model
+I2C                 Inter-Integrated Circuit
+
+IC                  Integrated Circuit
+
+LSB                 Least Significant Bit
+
+MSB                 Most Significant Bit
+
+MSL                 Moisture Sensitivity Level
+
+PCB                 Printed-Circuit Board
+
+POR                 Power-On Reset
+
+RTC                 Real-Time Clock
+
+SCL                 Serial CLock line
+
+SDA                 Serial DAta line
+
+SMD                 Surface Mount Device
+
+PCF8563                                 All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                               Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                                         43 / 50
+NXP Semiconductors                                                                                   PCF8563
+
+                                                                                                Real-Time Clock/Calendar
+
+19 References
+
+This section lists the references used to supplement this document.
+
+ 1. AN10365 Surface mount reflow soldering description
+ 2. IEC 60134 Rating systems for electronic tubes and valves and analogous semiconductor devices
+ 3. IEC 61340-5 Protection of electronic devices from electrostatic phenomena
+ 4. IPC/JEDEC J-STD-020 Moisture/Reflow Sensitivity Classification for Nonhermetic Solid State Surface
+
+     Mount Devices
+ 5. JESD22-A114 Electrostatic Discharge (ESD) Sensitivity Testing Human Body Model (HBM)
+ 6. JESD22-C101 Field-Induced Charged-Device Model Test Method for Electrostatic-Discharge-Withstand
+
+     Thresholds of Microelectronic Components
+ 7. JESD78 IC Latch-Up Test
+ 8. JESD625-A Requirements for Handling Electrostatic-Discharge-Sensitive (ESDS) Devices
+ 9. UM10569 NXP store and transport requirements
+10. SNV-FA-01-02 Marking Formats Integrated Circuits
+11. UM10204 I2C-bus specification and user manual
+
+PCF8563             All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet           Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                     44 / 50
+NXP Semiconductors                                                                                          PCF8563
+
+                                                                                                       Real-Time Clock/Calendar
+
+20 Revision history
+
+Table 34 summarizes revisions to this document.
+
+Table 34.Revision history  Release date          Description
+Document ID                19 January 2026
+                                                 Updated per CIN #202601009I:
+PCF8563 v.11.1                                   · Modified footnote description for PCF8563T/F4 and PCF8563
+
+PCF8563 v.11               26 October 2015         TS/4 type numbers in Table 1
+                                                 · Editorial changes
+PCF8563 v.10               3 April 2012
+                                                 · Removed DIP8 package
+PCF8563 v.9                16 June 2011          · Table 3: Corrected footnote description
+                                                 · Table 28: Corrected last footnote description
+PCF8563 v.8                18 November 2010      · Modified Table 29:
+
+PCF8563 v.7                23 July 2010            ­ VIL: Corrected VSS to -0.5
+                                                   ­ VIH: Corrected VDD to 5.5
+PCF8563_6                  21 February 2008        ­ Corrected first footnote description
+
+PCF8563_5                  17 July 2007          · Adjusted marking codes
+                                                 · Adjusted text for FE = 0 in Table 22
+PCF8563-04 (9397 750 12999) 12 March 2004
+                                                 · Product data sheet
+PCF8563-03 (9397 750 11158) 14 April 2003
+                                                 · Product data sheet
+PCF8563-02 (9397 750 04855) 16 April 1999
+                                                 · Product data sheet
+PCF8563_N_1 (9397 750      25 March 1998
+03282)                                           · Product data sheet
+
+                                                 · Product data sheet
+
+                                                 · Product data
+
+                                                 · Product data
+
+                                                 · Product data
+
+                                                 · Objective specification
+
+PCF8563                    All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                  Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                            45 / 50
+NXP Semiconductors                                                                                               PCF8563
+
+                                                                                                            Real-Time Clock/Calendar
+
+Legal information
+
+Data sheet status
+
+Document status[1][2]           Product status[3]                                Definition
+Objective [short] data sheet    Development                                      This document contains data from the objective specification for product
+                                                                                 development.
+Preliminary [short] data sheet  Qualification
+Product [short] data sheet      Production                                       This document contains data from the preliminary specification.
+
+                                                                                 This document contains the product specification.
+
+[1] Please consult the most recently issued document before initiating or completing a design.
+[2] The term 'short data sheet' is explained in section "Definitions".
+[3] The product status of device(s) described in this document may have changed since this document was published and may differ in case of multiple
+
+       devices. The latest product status information is available on the Internet at URL https://www.nxp.com.
+
+Definitions                                                                      Suitability for use -- NXP Semiconductors products are not designed,
+                                                                                 authorized or warranted to be suitable for use in life support, life-critical or
+Draft -- A draft status on a document indicates that the content is still        safety-critical systems or equipment, nor in applications where failure or
+under internal review and subject to formal approval, which may result           malfunction of an NXP Semiconductors product can reasonably be expected
+in modifications or additions. NXP Semiconductors does not give any              to result in personal injury, death or severe property or environmental
+representations or warranties as to the accuracy or completeness of              damage. NXP Semiconductors and its suppliers accept no liability for
+information included in a draft version of a document and shall have no          inclusion and/or use of NXP Semiconductors products in such equipment or
+liability for the consequences of use of such information.                       applications and therefore such inclusion and/or use is at the customer's own
+                                                                                 risk.
+
+Short data sheet -- A short data sheet is an extract from a full data sheet      Applications -- Applications that are described herein for any of these
+with the same product type number(s) and title. A short data sheet is            products are for illustrative purposes only. NXP Semiconductors makes no
+intended for quick reference only and should not be relied upon to contain       representation or warranty that such applications will be suitable for the
+detailed and full information. For detailed and full information see the         specified use without further testing or modification.
+relevant full data sheet, which is available on request via the local NXP
+Semiconductors sales office. In case of any inconsistency or conflict with the   Customers are responsible for the design and operation of their
+short data sheet, the full data sheet shall prevail.                             applications and products using NXP Semiconductors products, and NXP
+                                                                                 Semiconductors accepts no liability for any assistance with applications or
+Product specification -- The information and data provided in a Product          customer product design. It is customer's sole responsibility to determine
+data sheet shall define the specification of the product as agreed between       whether the NXP Semiconductors product is suitable and fit for the
+NXP Semiconductors and its customer, unless NXP Semiconductors and               customer's applications and products planned, as well as for the planned
+customer have explicitly agreed otherwise in writing. In no event however,       application and use of customer's third party customer(s). Customers should
+shall an agreement be valid in which the NXP Semiconductors product              provide appropriate design and operating safeguards to minimize the risks
+is deemed to offer functions and qualities beyond those described in the         associated with their applications and products.
+Product data sheet.
+                                                                                 NXP Semiconductors does not accept any liability related to any default,
+Disclaimers                                                                      damage, costs or problem which is based on any weakness or default
+                                                                                 in the customer's applications or products, or the application or use by
+Limited warranty and liability -- Information in this document is believed       customer's third party customer(s). Customer is responsible for doing all
+to be accurate and reliable. However, NXP Semiconductors does not give           necessary testing for the customer's applications and products using NXP
+any representations or warranties, expressed or implied, as to the accuracy      Semiconductors products in order to avoid a default of the applications
+or completeness of such information and shall have no liability for the          and the products or of the application or use by customer's third party
+consequences of use of such information. NXP Semiconductors takes no             customer(s). NXP does not accept any liability in this respect.
+responsibility for the content in this document if provided by an information
+source outside of NXP Semiconductors.                                            Limiting values -- Stress above one or more limiting values (as defined in
+In no event shall NXP Semiconductors be liable for any indirect, incidental,     the Absolute Maximum Ratings System of IEC 60134) will cause permanent
+punitive, special or consequential damages (including - without limitation -     damage to the device. Limiting values are stress ratings only and (proper)
+lost profits, lost savings, business interruption, costs related to the removal  operation of the device at these or any other conditions above those
+or replacement of any products or rework charges) whether or not such            given in the Recommended operating conditions section (if present) or the
+damages are based on tort (including negligence), warranty, breach of            Characteristics sections of this document is not warranted. Constant or
+contract or any other legal theory.                                              repeated exposure to limiting values will permanently and irreversibly affect
+Notwithstanding any damages that customer might incur for any reason             the quality and reliability of the device.
+whatsoever, NXP Semiconductors' aggregate and cumulative liability
+towards customer for the products described herein shall be limited in           Terms and conditions of commercial sale -- NXP Semiconductors
+accordance with the Terms and conditions of commercial sale of NXP               products are sold subject to the general terms and conditions of commercial
+Semiconductors.                                                                  sale, as published at https://www.nxp.com/profile/terms, unless otherwise
+                                                                                 agreed in a valid written individual agreement. In case an individual
+Right to make changes -- NXP Semiconductors reserves the right to                agreement is concluded only the terms and conditions of the respective
+make changes to information published in this document, including without        agreement shall apply. NXP Semiconductors hereby expressly objects to
+limitation specifications and product descriptions, at any time and without      applying the customer's general terms and conditions with regard to the
+notice. This document supersedes and replaces all information supplied prior     purchase of NXP Semiconductors products by customer.
+to the publication hereof.
+                                                                                 No offer to sell or license -- Nothing in this document may be interpreted
+                                                                                 or construed as an offer to sell products that is open for acceptance or
+                                                                                 the grant, conveyance or implication of any license under any copyrights,
+                                                                                 patents or other industrial or intellectual property rights.
+
+PCF8563                         All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet                       Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                                 46 / 50
+NXP Semiconductors                                                                                   PCF8563
+
+                                                                                                Real-Time Clock/Calendar
+
+Quick reference data -- The Quick reference data is an extract of the           Security -- Customer understands that all NXP products may be subject to
+product data given in the Limiting values and Characteristics sections of this  unidentified vulnerabilities or may support established security standards or
+document, and as such is not complete, exhaustive or legally binding.           specifications with known limitations. Customer is responsible for the design
+                                                                                and operation of its applications and products throughout their lifecycles
+Export control -- This document as well as the item(s) described herein         to reduce the effect of these vulnerabilities on customer's applications
+may be subject to export control regulations. Export might require a prior      and products. Customer's responsibility also extends to other open and/or
+authorization from competent authorities.                                       proprietary technologies supported by NXP products for use in customer's
+                                                                                applications. NXP accepts no liability for any vulnerability. Customer should
+Suitability for use in non-automotive qualified products -- Unless              regularly check security updates from NXP and follow up appropriately.
+this document expressly states that this specific NXP Semiconductors            Customer shall select products with security features that best meet rules,
+product is automotive qualified, the product is not suitable for automotive     regulations, and standards of the intended application and make the
+use. It is neither qualified nor tested in accordance with automotive testing   ultimate design decisions regarding its products and is solely responsible
+or application requirements. NXP Semiconductors accepts no liability for        for compliance with all legal, regulatory, and security related requirements
+inclusion and/or use of non-automotive qualified products in automotive         concerning its products, regardless of any information or support that may be
+equipment or applications.                                                      provided by NXP.
+In the event that customer uses the product for design-in and use in            NXP has a Product Security Incident Response Team (PSIRT) (reachable
+automotive applications to automotive specifications and standards,             at PSIRT@nxp.com) that manages the investigation, reporting, and solution
+customer (a) shall use the product without NXP Semiconductors' warranty         release to security vulnerabilities of NXP products.
+of the product for such automotive applications, use and specifications, and
+(b) whenever customer uses the product for automotive applications beyond       NXP B.V. -- NXP B.V. is not an operating company and it does not distribute
+NXP Semiconductors' specifications such use shall be solely at customer's       or sell products.
+own risk, and (c) customer fully indemnifies NXP Semiconductors for any
+liability, damages or failed product claims resulting from customer design and  Trademarks
+use of the product for automotive applications beyond NXP Semiconductors'
+standard warranty and NXP Semiconductors' product specifications.               Notice: All referenced brands, product names, service names, and
+                                                                                trademarks are the property of their respective owners.
+HTML publications -- An HTML version, if available, of this document is
+provided as a courtesy. Definitive information is contained in the applicable   NXP -- wordmark and logo are trademarks of NXP B.V.
+document in PDF format. If there is a discrepancy between the HTML
+document and the PDF document, the PDF document has priority.                   I2C-bus -- logo is a trademark of NXP B.V.
+
+Translations -- A non-English (translated) version of a document, including
+the legal information in that document, is for reference only. The English
+version shall prevail in case of any discrepancy between the translated and
+English versions.
+
+PCF8563             All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet           Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                     47 / 50
+NXP Semiconductors                                                                                   PCF8563
+
+                                                                                                Real-Time Clock/Calendar
+
+Tables
+
+Tab. 1.   Ordering information ..........................................5        Tab. 18.  Minute_alarm - minute alarm register
+Tab. 2.   Marking codes ...................................................6                (address 09h) bit description ...........................17
+Tab. 3.   Pin description ...................................................8    Tab. 19.  Hour_alarm - hour alarm register (address
+Tab. 4.   Formatted registers overview .......................... 10                        0Ah) bit description ......................................... 18
+Tab. 5.   Control_status_1 - control and status                                   Tab. 20.  Day_alarm - day alarm register (address
+          register 1 (address 00h) bit description ........... 11                           0Bh) bit description ......................................... 18
+Tab. 6.   Control_status_2 - control and status                                   Tab. 21.  Weekday_alarm - weekday alarm register
+          register 2 (address 01h) bit description ........... 11                           (address 0Ch) bit description .......................... 18
+Tab. 7.   INT operation (bit TI_TP = 1) .......................... 13             Tab. 22.  CLKOUT_control - CLKOUT control
+Tab. 8.   VL_seconds - seconds and clock integrity                                          register (address 0Dh) bit description ............. 19
+          status register (address 02h) bit description ....13                    Tab. 23.  Timer_control - timer control register
+Tab. 9.   Seconds coded in BCD format ........................13                            (address 0Eh) bit description .......................... 20
+Tab. 10.  Minutes - minutes register (address 03h) bit                            Tab. 24.  Timer - timer value register (address 0Fh)
+          description ....................................................... 14            bit description .................................................. 20
+Tab. 11.  Hours - hours register (address 04h) bit                                Tab. 25.  Timer register bits value range ........................20
+          description ....................................................... 14  Tab. 26.  First increment of time circuits after STOP
+Tab. 12.  Days - days register (address 05h) bit                                            bit release ........................................................22
+          description ....................................................... 14  Tab. 27.  Register reset value ........................................ 23
+Tab. 13.  Weekdays - weekdays register (address                                   Tab. 28.  Limiting values ................................................ 30
+          06h) bit description ..........................................15       Tab. 29.  Static characteristics ....................................... 31
+Tab. 14.  Weekday assignments .................................... 15             Tab. 30.  Dynamic characteristics .................................. 34
+Tab. 15.  Century_months - century flag and months                                Tab. 31.  SnPb eutectic process (from J-STD-020D) ..... 42
+          register (address 07h) bit description .............. 15                Tab. 32.  Lead-free process (from J-STD-020D) ............ 42
+Tab. 16.  Month assignments in BCD format ..................15                    Tab. 33.  Acronyms .........................................................43
+Tab. 17.  Years - years register (08h) bit description ...... 16                  Tab. 34.  Revision history ...............................................45
+
+PCF8563             All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet           Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                     48 / 50
+NXP Semiconductors                                                                                   PCF8563
+
+                                                                                                Real-Time Clock/Calendar
+
+Figures
+
+Fig. 1.   Block diagram of PCF8563 ............................... 7                 Fig. 20.  Controller reads target immediately after
+Fig. 2.   Pin configuration for HVSON10                                                        first byte (READ mode) ................................... 28
+          (PCF8563BS) .................................................... 8         Fig. 21.  Interface watchdog timer .................................28
+Fig. 3.   Pin configuration for SO8 (PCF8563T) ............. 8                       Fig. 22.  Device diode protection diagram .....................29
+Fig. 4.   Pin configuration for TSSOP8                                               Fig. 23.  Supply current IDD as a function of supply
+          (PCF8563TS) .................................................... 8                   voltage VDD; CLKOUT disabled ..................... 32
+Fig. 5.   Interrupt scheme ............................................. 12          Fig. 24.  Supply current IDD as a function of supply
+Fig. 6.   Voltage-low detection ...................................... 14                      voltage VDD; CLKOUT = 32 kHz .................... 32
+Fig. 7.   Data flow for the time function ........................ 16                Fig. 25.  Supply current IDD as a function of
+Fig. 8.   Access time for read/write operations ............. 17                               temperature T; CLKOUT = 32 kHz ..................33
+Fig. 9.   Alarm function block diagram ..........................19                  Fig. 26.  Frequency deviation as a function of supply
+Fig. 10.  STOP bit functional diagram ........................... 22                           voltage VDD .................................................... 33
+Fig. 11.  STOP bit release timing .................................. 22              Fig. 27.  I2C-bus timing waveforms ...............................35
+Fig. 12.  POR override sequence ..................................24                 Fig. 28.  Application diagram .........................................36
+Fig. 13.  Bit transfer .......................................................25     Fig. 29.  Package outline SOT650-1 (HVSON10) of
+Fig. 14.  Definition of START and STOP conditions ...... 25                                    PCF8563BS .....................................................37
+Fig. 15.  System configuration .......................................26             Fig. 30.  Package outline SOT96-1 (SO8) of
+Fig. 16.  Acknowledgment on the I2C-bus .................... 26                                PCF8563T ....................................................... 38
+Fig. 17.  Target address ................................................ 27         Fig. 31.  Package outline SOT505-1 (TSSOP8) of
+Fig. 18.  Controller transmits to target receiver                                              PCF8563TS .....................................................39
+          (WRITE mode) ................................................ 27           Fig. 32.  Temperature profiles for large and small
+Fig. 19.  Controller reads after setting register                                              components ..................................................... 42
+          address (write register address; READ
+          data) ................................................................ 27
+
+PCF8563             All information provided in this document is subject to legal disclaimers.  © 2026 NXP B.V. All rights reserved.
+
+Product data sheet           Rev. 11.1 -- 19 January 2026                                          Document feedback
+                                                                                                                     49 / 50
+NXP Semiconductors                                                                                        PCF8563
+
+                                                                                                     Real-Time Clock/Calendar
+
+Contents
+
+1        General description ......................................... 2            13      Dynamic characteristics ............................... 34
+2        Features and benefits ..................................... 3              14      Application information ................................ 36
+3        Applications ..................................................... 4       14.1    Quartz frequency adjustment ...........................36
+4        Ordering information .......................................5              14.1.1  Method 1: Fixed OSCI capacitor ..................... 36
+5        Marking ............................................................. 6    14.1.2  Method 2: OSCI trimmer ................................. 36
+6        Block diagram ..................................................7          14.1.3  Method 3: OSCO output ..................................36
+7        Pinning information .........................................8             15      Package outline ............................................. 37
+7.1      Pinning ............................................................... 8  16      Handling information .....................................40
+7.2      Pin description ................................................... 8      17      Soldering of SMD packages ......................... 41
+8        Functional description .................................. 10               17.1    Introduction to soldering .................................. 41
+8.1      CLKOUT output ............................................... 10           17.2    Wave and reflow soldering .............................. 41
+8.2      Register organization .......................................10            17.3    Wave soldering ................................................ 41
+8.3      Control registers .............................................. 11        17.4    Reflow soldering .............................................. 41
+8.3.1    Register Control_status_1 ............................... 11               18      Acronyms ....................................................... 43
+8.3.2    Register Control_status_2 ............................... 11               19      References ......................................................44
+8.3.2.1  Interrupt output ................................................ 12       20      Revision history .............................................45
+8.4      Time and date registers ...................................13                      Legal information ...........................................46
+8.4.1    Register VL_seconds .......................................13
+8.4.1.1  Voltage-low detector and clock monitor ........... 14
+8.4.2    Register Minutes ..............................................14
+8.4.3    Register Hours .................................................14
+8.4.4    Register Days .................................................. 14
+8.4.5    Register Weekdays ..........................................15
+8.4.6    Register Century_months ................................ 15
+8.4.7    Register Years ................................................. 16
+8.5      Setting and reading the time ........................... 16
+8.6      Alarm registers ................................................ 17
+8.6.1    Register Minute_alarm .....................................17
+8.6.2    Register Hour_alarm ........................................18
+8.6.3    Register Day_alarm ......................................... 18
+8.6.4    Register Weekday_alarm .................................18
+8.6.5    Alarm flag ........................................................ 18
+8.7      Register CLKOUT_control and clock output .... 19
+8.8      Timer function .................................................. 20
+8.8.1    Register Timer_control .....................................20
+8.8.2    Register Timer ................................................. 20
+8.9      EXT_CLK test mode ........................................21
+8.9.1    Example of an operation ................................. 21
+8.10     STOP bit function ............................................ 21
+8.11     Reset ................................................................23
+8.11.1   Power-On Reset (POR) override ..................... 24
+9        Characteristics of the I2C-bus ......................25
+9.1      Bit transfer ....................................................... 25
+9.2      START and STOP conditions .......................... 25
+9.3      System configuration ....................................... 25
+9.4      Acknowledge ....................................................26
+9.5      I2C-bus protocol .............................................. 26
+9.5.1    Addressing ....................................................... 26
+9.5.2    Clock and calendar READ or WRITE cycles ....27
+9.6      Interface watchdog timer ................................. 28
+10       Internal circuitry .............................................29
+11       Limiting values ...............................................30
+12       Static characteristics .....................................31
+
+                                                                                    Please be aware that important notices concerning this document and the product(s)
+                                                                                    described herein, have been included in section 'Legal information'.
+
+                                                                                    © 2026 NXP B.V.                                          All rights reserved.
+
+                                                                                    For more information, please visit: https://www.nxp.com                     Document feedback
+
+                                                                                                                                             Date of release: 19 January 2026
+                                                                                                                                                Document identifier: PCF8563
+

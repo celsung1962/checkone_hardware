@@ -1,0 +1,297 @@
+AO4485                                     Rev-1.4                          www.elecsuper.com
+
+         SuperMOS - SOP8 -40V BVDSS, 13m RDS(on), P-channel MOSFET
+
+1. Description
+
+The AO4485 is P-Channel enhancement MOS Field Effect Transistor. Uses advanced trench
+technology and design to provide excellent RDS(ON) with low gate charge. Device is suitable for use in
+DC-DC conversion, power switch and charging circuit. Standard Product AO4485 is Pb-free.
+
+2. Features                                         Material: Halogen free
+                                                    Reliable and rugged
+ -40V, RDS(ON)=13m(TYP.) @VGS=-10V                  Avalanche Rated
+             RDS(ON)=17m(TYP.) @VGS=-4.5V           Low leakage current
+
+ Fast Switching
+ High density cell design for low RDS(on)
+
+3. Applications                                              100% UIS TESTED!
+
+ PWM applications
+ Load switch
+ Power management in portable/desktop PCs
+ DC/DC conversion
+
+4. Ordering Information
+
+  Part   Package Marking           Material     Packing       Quantity   Flammability   Reel
+Number    SOP8 ES4485/LOT                                      per reel      Rating    Sizes
+                                   Halogen      Tape &
+AO4485                                free        Reel       3,000 PCS     UL 94V-0      13
+                                                                                       inches
+
+5. Pin Configuration and Functions
+
+Pin      Function                               Outline                  Circuit Diagram
+
+4        Gate                      Note c                                                               1 / 10
+
+                                             876          5
+
+1/2/3    Source                                      LOT
+                                                ES4485
+
+5/6/7/8  Drain                               1  2  3      4
+
+Copyright© ElecSuper Incorporated          Contact Us
+AO4485                                  Rev-1.4                                                   www.elecsuper.com
+
+6. Specification
+
+Absolute Maximum Rating & Thermal Characteristics
+
+Ratings at 25  ambient temperature unless otherwise specified.
+
+        Parameter                       Symbol                       Limit                                 Unit
+
+Drain-Source Voltage                    BVDSS                        -40                                   V
+
+Gate-Source Voltage                     VGS                          ±20                                   V
+
+Continuous Drain Current            TA=25°C                          11
+                                                        ID                                        A
+
+                                    TA=75°C                          8.8
+
+Maximum Power Dissipation           TA=25°C                          3.2
+                                                        PD                                       W
+
+                                    TA=75°C                          1.9
+
+Pulsed Drain Current a                  IDM                          44                                    A
+
+Avalanche Current, Single Pulsed b      IAS                          -29                                   A
+
+Avalanche Energy, Single Pulsed b       EAS                          126                                   mJ
+
+Operating Junction Temperature          TJ                           150                                   °C
+
+Storage Temperature Range               Tstg                         -55 to +150                           °C
+
+Thermal resistance ratings
+
+                                        Single Operation
+
+                            Parameter                                Symbol                       Typical  Unit
+                                                                                                     40    °C/W
+Junction-to-Ambient Thermal Resistance                      t  10 s  RJA
+
+Note:
+       a: Repetitive rating, pulse width limited by junction temperature, tp=10s, Duty Cycle=1%.
+       b: Tj=25, VDD=-30V, VG=-10V, L=0.3mH, Rg=25.
+       c: This diagram is only an electrical schematic, and the actual pin size is based on POD.
+
+Copyright© ElecSuper Incorporated       Contact Us                                                         2 / 10
+AO4485                                         Rev-1.4                      www.elecsuper.com
+
+Electrical Characteristics
+
+At TA = 25 unless otherwise specified
+
+           Parameter               Symbol      Test Conditions      Min. Typ. Max. Unit
+
+                                   OFF CHARACTERISTICS
+
+Drain-to-Source Breakdown Voltage BVDSS        VGS=0V, ID=-250uA    -40             V
+
+Zero Gate Voltage Drain Current        IDSS    VGS=0V, VDS=-40V                -1 uA
+
+Gate-to-source Leakage Current         IGSS    VGS=±20V, VDS=0V                ±100 nA
+
+                                   ON CHARACTERISTICS
+
+Gate Threshold Voltage             VGS(TH)     VGS=VDS, ID=-250uA   -1.0 -1.6 -2.0  V
+
+                                               VGS=-10V, ID=-10A         13    16
+                                               VGS=-4.5V, ID=-8A
+Drain-to-source On-resistance      RDS(on)                                          m
+
+                                                                         17    20
+
+                        CHARGES, CAPACITANCES AND GATE RESISTANCE
+
+Input Capacitance                      CISS                              2500
+
+Output Capacitance                 COSS        VGS=0V, VDS =-20V,        260        pF
+                                                      f=1MHz
+
+Reverse Transfer Capacitance           CRSS                              180
+
+Total Gate Charge                  QG(TOT)                               42
+Gate-to-Source Charge
+Gate-to-Drain Charge                   QGS     VGS=-10V, VDS=-20V,       7          nC
+                                                       ID=-10A
+
+                                       QGD                               8.8
+
+                                   SWITCHING CHARACTERISTICS
+
+Turn-On Delay Time                     td(ON)                            10
+
+Rise Time                              tr      VGS=-10V, VDS=-20V,       20
+Turn-Off Delay Time
+                                               RL=1, RG=3                           ns
+
+                                   td(OFF)                               55
+
+Fall Time                              tf                                30
+
+                                   BODY DIODE CHARACTERISTICS
+
+Forward Voltage                        VSD     VGS=0V, ISD=-10A                -1.5 V
+
+Copyright© ElecSuper Incorporated              Contact Us                           3 / 10
+AO4485                             Rev-1.4     www.elecsuper.com
+
+7. Typical Characteristic
+
+Copyright© ElecSuper Incorporated  Contact Us  4 / 10
+AO4485                                 Rev-1.4  www.elecsuper.com
+
+Figure 7: Capacitance Characteristics
+
+Copyright© ElecSuper Incorporated  Contact Us   5 / 10
+AO4485                                                       Rev-1.4                         www.elecsuper.com
+
+8. Dimension (SOP8)                                          FT               BW
+POD A(Y)                                                                      TL
+
+                                                   BL
+
+                                       Z
+
+                                                                      A2          A3
+                                                                                         A
+                                                                                           
+                                                                      A1             FL
+                                                                                  LL
+        LP                                             LW
+
+COMMON DIMENSIONS: UNITS OF MEASURE=MILLIMETER
+
+Symbol        Dimensions                                              Symbol                 Dimensions
+
+    A   Min.                                           Max.              FL       Min.                   Max.
+   A1                                                                    LP
+   A2         1.75                                                       LL       0.50                   0.80
+   A3                                                                   LW
+   BL   0.05                                           0.15              TL       1.25                   1.30
+  BW                                                                      Z
+   FT   1.40                                           1.50                                  1.1 BSC
+
+              0.623 BSC                                                           0.38                   0.43
+
+        4.92                                           5.08                       5.90                   6.10
+
+        3.70                                           4.10                                  0.54
+
+        0.20                                           0.21                              0°              8°
+
+Copyright© ElecSuper Incorporated                            Contact Us                                        6 / 10
+AO4485                                   Rev-1.4        www.elecsuper.com
+
+POD B(C)
+
+COMMON DIMENSIONS: UNITS OF MEASURE=MILLIMETER
+
+Symbol          Dimensions               Symbol         Dimensions
+                                                          NOM.
+    A     Min.  NOM.               Max.      L    Min.      0.60    Max.
+   A1                                       L1    0.50      1.05    0.70
+   A2     1.55  1.65               1.75           0.90       4°     1.20
+   A3                                       B1     0°     0.14MAX    8°
+    b     0.06  0.11               0.16     B2            0.12MAX
+    c                                       b1     0      0.66MAX   0.08
+    D     1.35  1.45               1.55     b2             0.04
+    E                                        e            1.27BSC
+   E1     0.60  0.70               0.80
+
+          0.30  0.40               0.50
+
+          0.17  0.20               0.25
+
+          4.80  4.90               5.00
+
+          5.80  6.00               6.20
+
+          3.80  3.90               4.00
+
+Copyright© ElecSuper Incorporated  Contact Us                             7 / 10
+AO4485                                     Rev-1.4                    www.elecsuper.com
+                                   D                                  C
+POD C(X)
+
+          E1                                                          
+                 E
+                    A2                               e
+                                                                                   A1b
+                                                                                           A
+
+                                                                                                                             L
+
+               Dimensions                                             Dimensions
+
+Symbol    Min.                     Max.                 Symbol  Min.              Max.
+
+    L     0.40                     0.60                     e         1.27 TYP
+   D                                                        c
+    E     4.95                     5.05                    A2   0.15              0.25
+   E1                                                      A1
+    b     3.8                      4.0                          1.33              1.50
+
+          5.80                     6.20                         0.04              0.20
+
+                0.4 TYP                                         0°                                                              8°
+
+Copyright© ElecSuper Incorporated        Contact Us                                                                                 8 / 10
+AO4485                             Rev-1.4           www.elecsuper.com
+
+9. Recommended Soldering Footprint
+
+        2.20
+
+                                               5.74
+
+        2.87
+
+                                   1.27 0.635             0.80
+
+                                               DIMENSIONS: MILLIMETERS
+
+Copyright© ElecSuper Incorporated  Contact Us        9 / 10
+AO4485                             Rev-1.4     www.elecsuper.com
+
+                                                            DISCLAIMER
+
+ELECSUPER PROVIDES TECHNICAL AND RELIABILITY DATA (INCLUDING DATASHEETS), DESIGN RESOURCES
+(INCLUDING REFERENCE DESIGNS), APPLICATION OR OTHER DESIGN ADVICE, SAFETY INFORMATION, AND OTHER
+RESOURCES "AS IS" AND WITH ALL FAULTS, AND DISCLAIMS ALL WARRANTIES, EXPRESS AND IMPLIED, INCLUDING
+WITHOUT LIMITATION ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
+OR NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY RIGHTS.
+
+These resources are intended for skilled developers designing with ElecSuper products. You are solely responsible for
+(1) selecting the appropriate ElecSuper products for your application;
+(2) designing, validating and testing your application;
+(3) ensuring your application meets applicable standards, and any other safety, security, or other requirements.
+These resources are subject to change without notice. ElecSuper grants you permission to use these resources only for
+development of an application that uses the ElecSuper products described in the resource. Other reproduction and display of
+these resources are prohibited. No license is granted to any other ElecSuper intellectual property right or to any third party
+intellectual property right. ElecSuper disclaims responsibility for, and you will fully indemnify ElecSuper and its representatives
+against, any claims, damages, costs, losses, and liabilities arising out of your use of these resources. ElecSuper's products
+are provided subject to ElecSuper's Terms of Sale or other applicable terms available either on www.elecsuper.com or
+provided in conjunction with such ElecSuper products. ElecSuper's provision of these resources does not expand or otherwise
+alter ElecSuper's applicable warranties or warranty disclaimers for ElecSuper products.
+
+Copyright© ElecSuper Incorporated  Contact Us  10 / 10
+

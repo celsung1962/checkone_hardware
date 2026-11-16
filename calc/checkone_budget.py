@@ -24,6 +24,8 @@ NTC_R25, NTC_B, R_DIV, C_NTC = 100e3, 3950.0, 10e3, 1e-6
 # 3. fault +24 V on Iin (description 5.2 / 9: SMAJ5.0A clamp 6.4 V in 5.2, 7.4 V in 9)
 V_CLAMP_IIN = (6.4, 7.4)
 I_3V3_LOAD = 3e-3        # A, ASSUMED total load of +3V3 / 3V3A (3 x ADS1115, INA226, RTC, LED3 via 1 k, pull-ups)
+R_SERIES_ALT = 4.7e3     # ohm, proposed series resistor (review 2026-11-16, O4)
+Z_DIFF, Z_CM = 15e6, 6e6  # ohm, ADS1115 at FSR +-4.096 V: differential 15 M (datasheet table), common mode ~6 M (text)
 
 # 4. power budget
 V_BUS = 24.0
@@ -57,12 +59,17 @@ def main():
     print(f'   1 uF filter at 25 degC: Rth {rth / 1e3:.2f} k -> {1 / (2 * math.pi * rth * C_NTC):.1f} Hz '
           f'(description: ~17 Hz)')
 
-    print('3. +24 V wired to Iin: current into 3V3A through R 1 k and the BAT54S upper diode, per channel')
-    for vc in V_CLAMP_IIN:
-        inj = (vc - VDD_A - VF_BAT54S) / R_SERIES
-        print(f'   Iin clamped at {vc} V -> {inj * 1e3:.1f} mA into 3V3A (assumed rail load {I_3V3_LOAD * 1e3:.0f} mA): '
-              + ('the XC6206 cannot sink it, 3V3A / +3V3 rise until the PTC trips' if inj > I_3V3_LOAD
-                 else 'absorbed by the load'))
+    print('3. +24 V wired to Iin: current into 3V3A through the series R and the BAT54S upper diode, per channel')
+    z_in = 1 / (1 / Z_DIFF + 1 / Z_CM)
+    for rs in (R_SERIES, R_SERIES_ALT):
+        for vc in V_CLAMP_IIN:
+            inj = (vc - VDD_A - VF_BAT54S) / rs
+            print(f'   R {rs / 1e3:.1f} k, Iin clamped at {vc} V -> {inj * 1e3:.2f} mA into 3V3A (assumed rail load '
+                  f'{I_3V3_LOAD * 1e3:.0f} mA): ' + ('the XC6206 cannot sink it, 3V3A / +3V3 rise until the PTC trips'
+                                                    if inj > I_3V3_LOAD else 'absorbed by the load'))
+        print(f'   R {rs / 1e3:.1f} k: gain error from the ADS1115 input impedance (~{z_in / 1e6:.1f} M) '
+              f'{rs / z_in * 100:.3f} % (removed by the per-channel gain calibration); input filter '
+              f'{1 / (2 * math.pi * rs * C_IN) / 1e3:.1f} kHz')
 
     print('4. Power budget')
     p_sens = V_BUS * I_SENSOR * N_CH

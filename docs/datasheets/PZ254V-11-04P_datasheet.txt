@@ -1,0 +1,103 @@
+RoHS                                                                           REV             ECN NO.      DESRIPTION      DESIGN                     APPROVAL                            DATE
+                                                                                A1               NEW                                                                                    2024.05.24
+                       2.54*No.of Positions=B±0.35
+                                                              2.50
+                                                                                                         SPECIFICATIONS                                                                 No.of Dimension
+                                                                                                         1. Current rating: 3A
+                                                                                                         2. Temperature range: -40°C ~ +105°C                                           PIN/ROW A  B
+                                                                                                         3. Insulation resistance: 1000M Min.
+                                                                                                         4. Withstanding voltage: 500V AC/ minute.                                      02 2.54 5.08
+                                                                                                         5. Contact resistance: 20m Max.
+                                                                                                                                                                                        03 5.08 7.62
+
+                                                                                                                                                                                        04 7.62 10.16
+
+                                                                                                                                                                                        05 10.16 12.70
+
+                                                                                                                                                                                        06 12.70 15.24
+
+                                                                                                         Material:                                                                      07 15.24 17.78
+                                                                                                         Insulator Material:PA6T (UL 94V-0) Black
+                                                                                                         Contact Material:Brass                                                         08 17.78 20.32
+                                                                                                         Plating:Matte Tin or gold plated over Nickel
+                                                                                                         Mate with XFCN PM254 Single row series                                         09 20.32 22.86
+
+2.54*No.of Contacts-2.54=A±0.25                                                                                                                                                         10 22.86 25.40
+
+                                                                                                                                                                                        11 25.40 27.94
+
+2.54±0.05                                                                                                                                                                               12 27.94 30.48
+
+           0.64*0.64                                                                                     Ordering Code:                                                                 13 30.48 33.02
+
+                                                                                                                                                                                        14 33.02 35.56
+
+                                                                                                         PZ254V-11-XX                                                                   15 35.56 38.10
+
+                                                                               6.1±0.20                  1               2                                                              16 38.10 40.64
+                                                                                     3.0±0.20
+                                                                                                         1.                                                                             17 40.64 43.18
+
+                                                                                                         2.Pin: 02-40P                                                                  18 43.18 45.72
+
+                                                              2.50                                                                                                                      19 45.72 48.26
+
+                                                                                                                                                                                        20 48.26 50.80
+
+                                                                                                                                                                                        21 50.80 53.34
+
+                                                                                                                                                                                        22 53.34 55.88
+
+                                                                                                                                                                                        23 55.88 58.42
+
+                                                                                                                                                                                        24 58.42 60.96
+
+                                                                                                                                                                                        25 60.96 63.50
+
+                                                                                                                                                                                        26 63.50 66.04
+
+                                                                                                                                                                                        27 66.04 58.58
+
+                                                                                                                                                                                        28 58.58 71.12
+
+                                                                                                                                                                                        29 71.12 73.66
+
+                                                                                                                                                                                        30 73.66 76.20
+
+                                                                                                                                                                                        31 76.20 78.74
+
+                                                                                                                                                                                        32 78.74 81.28
+
+                                                                                                                                                                                        33 81.28 83.82
+
+                                                                                                                                                                                        34 83.82 86.36
+
+                                                                                                                                                                                        35 86.36 88.90
+
+                                                                                                                                                                                        36 88.90 91.44
+
+                                                       Ø1.02                                                                                                                            37 91.44 93.98
+
+2.54±0.05                                                                                                                                                                               38 93.98 96.52
+
+ P.C.B Hole Layout                                                                                                                                                                      39 96.52 99.06
+
+                                                                                                                                                                                        40 99.06 101.60
+
+                                                                      X.±0.50         X.°±               PART NO:                                      XFCN
+                                                                     .X±0.25         .X°±                                 PZ254V-11-XX
+                                                                    .XX±0.15         .XX°±                                                             0769-82001899
+                                                                    .XXX±0.10       .XXX°±               TITLE:                                        www.xfconn.com
+                                                                      UNITS:          mm                        2.54mm Pin Header Connectors
+
+                                                                                                                             Chen ZhiQiang             DWG NO:
+                                                                                                                                  Liu Wei                                            /
+
+                                                                    THESE DRAWINGS AND SPECIFICATIONS       APPD            Chen HongJiang              VIEW                            SHEET      REV
+                                                                    ARE THE PROPERTY OF XFCN AND SHALL      CHKD                                       SCALE                               1/1      A1
+                                                                    NOT BE REPRODUCED,COPIED OR CUED IN     DRAW                                       NONE
+                                                                    ANY MANNER WITHOUT THE PRIOR
+                                                                    WRITTEN CONSENT OF XFCN
+
+                                                                                                            DATE            2024.06.11
+

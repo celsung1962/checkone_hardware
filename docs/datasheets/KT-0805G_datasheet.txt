@@ -1,0 +1,440 @@
+  
+
+                                                                      0805 
+
+  
+
+  Specification for approval
+
+(Customer name)
+
+(Director)
+
+(title)
+
+(Customer part NO)
+
+(Revision)             A.0
+
+(Issue date) 2018-12-06
+
+(Return date)
+
+
+
+                                   
+
+             We are please in sending you herewith our specification and drawings for your approval. 
+                  Please return to us one copy "For Approval" with your approved signatures.
+
+(Accessory):
+
+   
+
+  PAD                       
+
+(Customer's Proposal)
+
+         (Agree)()
+         (Disagree)
+
+(Reason)
+(Customer Signature):
+
+                               1   11 
+  
+
+                                                                             0805 
+
+1. / Features
+
+    / Package ( L/W/H ) : 2.0*1.25*0.85 mm
+    / Color:  / Green light
+    / Lens: / Transparent planar colloid
+    EIA/ EIA STD Package
+    ROHS/ Meet ROHS, Green Product
+    / Compatible With SMT Automatic Equipment
+
+        / Compatible With Infrared Reflow Solder Process
+
+2 . / Package Profile & Soldering PAD Suggested
+
+/ Notes: 1.  : mm/ All dimensions are in millimeters
+             2.  ± 0.1 mm Tolerance is ± 0.10 mm unless otherwise noted
+
+3.  / Soldering Profile Suggested                              260° „C.Max.
+                                                               10sec.Max.
+                lead-free solder
+                                            1~5° C„ /sec.Max.
+
+1~5° C„ /sec.Max.  Pre-heating  60sec.Max.
+                   180-200° C„  Above 220° „C
+
+                   120sec.Max.
+                             1~5° C„ /sec.Max.
+
+                                                                              2   11 
+                          
+
+                                                                                         0805 
+
+4. / Absolute Maximum Ratings Ta=25
+
+           / Parameter            Symbol                     / Rating                     / Unit
+                                         Pd                            100                    mW
+    / Power Dissipation                 IFP                             60                    mA
+
+/ Peak Forward Current
+   (1/10, 0.1ms)
+
+/ DC Forward Current                      IF                         30                  mA
+
+/Backward Voltage                         VR                         5                   V
+
+                                                                         -40∞C ~ + 85∞C
+                                                       Topr
+
+Operating Temperature Range
+
+                                                                         -40∞C ~ + 85∞C
+                                                      Tstg
+
+Storage Temperature Range
+
+                                          Tsol                       / Reflow soldering : 260∞C 10s
+ Soldering Condition
+                                                                     / Hand soldering : 300∞C 3s
+      
+Electrostatic Discharge                   ESD                                            V
+
+5./ Electrical Optical Characteristics Ta=25
+
+                                                                               
+         Parameter        Symbol   Min.    Typ.               Max.   Unit   Test Condition
+                                    175      --                430   mcd
+                             IV             120                      deg       IF = 5mA
+      Light Intensity      21/2      ---                        ---   nm       IF = 5mA
+                            d       513      ---               528    nm       IF = 5mA
+                            p       516      15                525             IF = 5mA
+      Viewing Angle                 2.6                        3.1    V        IF = 5mA
+                             VF
+                                     ---                        5     A         VR = 5V
+ Dominant Wavelength         IR                                       nm       IF = 5mA
+                             
+         
+    Peak Wavelength
+
+         
+     Forward Voltage
+
+         
+    Backward Voltage
+
+           
+Spectral Line Half-Width
+
+                                                                                          3   11 
+               
+
+                                                                                   0805 
+
+6.  BIN /Photoelectric parameters are divided into BIN sprcifications
+
+6.1. BIN /Bin Range of Luminous Intensity
+
+     Bin       Min                                  Max        Unit  Condition
+
+     P23       175                                  210
+
+     P24       210                                  250
+
+     P25       250                                  300        mcd   IF = 5mA
+
+     P26       300                                  360
+
+     P27       360                                  430
+
+Notes: Tolerance of Luminous Intensity: ± 10%
+
+6.2. BIN / Bin Range of Forward Voltgae
+
+Bin       Min                                  Max       Unit        Condition
+                                                                     IF = 5mA
+VM        2.6                                  2.7
+
+VN        2.7                                  2.8
+
+VO        2.8                                  2.9       V
+
+VP        2.9                                  3.0
+
+VQ        3.0                                  3.1
+
+Notes: Tolerance of Forward Voltage: ± 0.05V
+
+6.3. BIN / Bin Range of Wavelength
+
+Bin       Min                                  Max       Unit        Condition
+
+G2        513                                  516
+
+G3        516                                  519
+
+G4        519                                  522       nm          IF = 5mA
+
+G5        522                                  525
+
+G6        525                                  528
+
+Notes: Tolerance of Wavelength: ± 1nm
+
+                                                                                 4   11 
+  
+
+                                                                          0805 
+
+7./ Typical Electrical-Optical Characteristics Curves
+
+                                                    
+                                           Spectrum Distribution (Ta=25)
+
+                      1.2
+
+                      1
+
+  Relative Intensity  0.8
+
+                      0.6
+
+                      0.4
+
+                      0.2
+
+                      0
+
+                           380  430  480  530  580  630                   680  730  780
+
+                                          Wavelength (nm)
+
+                                                                           5   11 
+  
+
+                                                                                 0805 
+
+8./ Reel And Tape Dimensions
+
+         3000 pcs/ Packing quantity: 3000 PCS/rolls
+
+       / Notes: 1. (mm)/ All dimensions are in millimeters.
+                       2. ±0.1mm/ Tolerance is ± 0.1 mm unless otherwise noted.
+
+9./ Label Explanation
+
+  The label  Anti-static, moisture-proof aluminum foil bag
+
+                                                                              6   11 
+                    
+
+                                                                        0805 
+
+10./Reliability Test Items And Conditions
+
+                          Ref.Standard Test Condition  Time       Quantity Accepted/Rejected
+Test Item                                              
+                                                                        /
+
+Reflow                    JESD22-B106  Temp:255max     2times       22                0/1
+
+                                       T=10 sec
+
+Thermal Shock                          -40 15min       300
+
+                          JESD22-A106                  cycles       22                0/1
+
+                                       100 15min
+
+High Temperature Storage  JESD22-A103 Temp:100 1000Hrs.             22                0/1
+
+
+
+Low Temperature Storage   JESD22-A119 Temp:-40 1000Hrs.             22                0/1
+
+
+
+Life Test                              Ta=25
+
+                          JESD22-A108  IF=5mA          1000Hrs.     22                0/1
+
+High Temperature /
+
+High Humidity             Qiangsq831 85/ 85%RH 1000Hrs.             22                0/1
+
+
+
+ Criteria For Judging Damage
+
+     Test Items           Symbol       Test Condition             Judging For Damage
+                                          
+                                                                    
+ Forward Voltage            VF             IF=5mA
+                             IR            VR = 5V     Min.             Max. 
+                            Mcd            IF=5mA
+  Reverse Current                                              -        U.S.L*)x1.1
+       
+                                                               -        U.S.L*)x2.0
+
+Luminous Intensity                                     L.S.L*)x0.7
+
+U.S.L: Upper standard level 
+L.S.L: Lower standard level 
+
+                   / Note                                                7   11 
+                  
+
+
+  
+
+                                                                                               0805 
+
+11./ Cautions
+
+   11.1. /welding
+      11.1.1 SMD LED 
+                   SMD LED is soft and easy to damage the luminous surface and plastic shell by external
+                   force. It should be handled lightly when welding
+
+      11.1.2  LED 
+                  
+                   It is recommended to use soldering flux with tin wash type, reflow soldering according
+                   to the condition of reflux curve, reflow twice at most, ensure the LED luminous surface
+                   is clean, foreign matter will affect the luminous color
+
+      11.1.3  300  3 
+                   25W
+                   Manual welding is only recommended for repair and heavy industry;The maximum welding
+                   temperature should not exceed 300 degrees, and must be completed within 3 seconds (manual
+                   welding can only be welded once) soldering iron maximum power should not exceed 25W.
+
+      11.1.4   PCB
+                  
+                  During the soldering process, do not touch the lens at high temperatureAfter soldering,
+                  any mechanical force on the lens or any excessive vibration shall not be accepted to apply,
+                  also the circuit board shall not be bent as well.
+
+      11.1.5  BIN  LED 
+                   Please do not use different BIN LED on the same product, otherwise it may cause serious
+                   color difference.
+
+   11.2. /cleaning
+
+       11.2.1 ,isopropyl alcohol( 1 )
+                 15 , LED ,
+                   /No ultrasonic cleaning. It is recommended to use isopropyl alcohol, pure alcohol to wipe
+                   or soak, not more than 1 minute, and leave at room temperature for 15 minutes before use.
+                   After cleaning, make sure the LED luminous surface is clean and the foreign matter will
+                   affect the luminous color
+
+      11.2.2 , LED.
+                  Avoid touching or contaminating the water, trichloroethylene, acetone, sulfide, nitride,
+                  acid, alkali, and salts that can damage leds.
+
+     8   11 
+  
+
+                  0805 
+
+11.3. /enbedment
+
+11.3.1  LED  LED 
+          LED 
+          LED 
+         
+        Volatile substances to leach into the LED inside, photons in electricity and heat conditions,
+        will lead to the LED color, thus causing serious droop, it is forbidden to use any of the
+        LED device performance or reliability of harmful substances or materials, for a specific
+        purpose and use of the environment, advice on all the material and the material
+        compatibility test.When attaching LED, do not use adhesive that can produce volatile
+        organic gas.
+
+11.3.2 , 168 
+         It is recommended to light up for 168 hours at room temperature for a small amount of test
+         before using normal filling and sealing glue
+
+11.4. /save
+
+   11.4.1 ,LED  30, RH60%,
+          Before opening the package, LED should be stored in a temperature 30  or below, under RH60
+          % relative humidity, used in a year
+
+   11.4.2 LED ,,,LED  30, 60%
+            , 7 LED ,,.,
+             60±5/24H 105±5/1H,
+            
+              LED is humidity sensitive element, element to avoid moisture absorption, after open the packing,
+              the LED should be in temperature 30  or below, within 60% relative humidity, using time
+              7 days. After moisture absorption, LED may crack when reflow soldering, influence the luminous
+              color. For bulk is not used, please deal with the tide (for package product: bake 60  +
+              / - 5  / 24 h.For bulk goods: baking 105  + 5 , 1 hours), and then save after sealed
+              with aluminum foil bag or stored in nitrogen moistureproof enclosure
+
+11.4.3 
+             Avoid the presence of acid, alkali and corrosive gas in the preservation environment,
+             and avoid strong vibration and strong magnetic field
+
+                   9   11 
+        
+
+                                                                                             0805 
+
+11.5./electrostatic
+
+  11.5.1  LED,
+            Static electricity or peak surge voltage will damage the LED, avoiding instantaneous voltage
+            when the lamp is turned on or off
+
+11.5.2   LED ,,,LED 
+         ,,
+        It is recommended to wear anti-static wrist bands, anti-static gloves and anti-static shoes
+         when using LED. The equipment and instruments used are properly grounded. After the LED
+         was damaged, the leakage current increased obviously, the forward voltage of low current
+         became lower, and the low current point did not light, etc
+
+11.6 /test
+
+   11.6.1 LED ,,
+               , LED
+
+             LED shall be driven at rated current, and shall be protected by current-limiting resistance
+              in the circuit. Otherwise, slight voltage changes will cause large current changes, which
+              will damage the LED.
+
+     11.6.2 ,, LED 
+           When the circuit is on or off, avoid sudden surge voltage. Otherwise, the LED will be burnt
+              out
+            LED:/Please check the LED as shown
+
+11.6.3  VF  VR  LED.
+        If the forward voltage VF is too high or the reverse voltage VR is too high, the LED will
+        be damaged.
+
+11.6.4  LED  LED  5V LED.
+         When lighting or testing the LED, the reverse voltage added on both ends of the LED shall
+         not be higher than 5V, otherwise it is easy to damage the LED.
+
+           10   11 
+        
+
+                                                                            0805 
+
+11.6.5  LED , LED 
+        LED luminous color will vary slightly with the working current. It is suggested that
+        resistance and LED should be used in series in the design
+
+11.6.6  LED  LED 
+         
+        LED is easy to change due to its own heat and changes in the temperature of the environment.
+        The increase in temperature will reduce the luminous efficiency of LED, which will affect
+        the luminous color. Heat dissipation should be fully considered in the design
+
+         11   11 
+

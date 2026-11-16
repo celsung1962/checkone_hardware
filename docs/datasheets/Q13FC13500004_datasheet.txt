@@ -1,0 +1,193 @@
+kHz Range Crystal unit                       FC-135
+
+Product name                                 FC-135 32.768000 kHz 12.5 +20.0-20.0
+
+Product Number / Ordering code               Q13FC13500004xx
+
+                                                         Please refer to the 5.Packing information about xx (last 2 digits)
+
+Complies with EU RoHS directive
+
+Reference weight Typ. 11 mg
+
+1.Absolute maximum ratings
+
+    Parameter                    Symbol Min.             Typ.    Max.   Unit Conditions / Remarks
+
+Storage temperature                T_stg           -55   -       125    ºC Storage as single product
+
+Maximum drive level                  GL            -     -       0.5    µW
+
+2.Specificatoins(characteristics)
+
+    Parameter                    Symbol        Min.       Typ.   Max.      Unit Conditions / Remarks
+                                                 -       32.768     -       kHz
+Nominal frequency                  f_nom                           85       ºC
+                                                -40          -    0.5       µW
+Operating temperature              T_use         -         0.1            x 10-6 +25ºC DL=0.1µW
+                                                                 +20.0      ºC
+Level of drive                       DL        -20.0         -     30   x 10-6/ºC2
+                                                20         25               pF
+Frequency tolerance                f_tol         -           -   -0.04      k
+                                                 -        12.5      -        fF
+Turnover temperature                 Ti          -           -     70       pF
+                                                 -         3.4      -       kH
+Parabolic coefficient                B           -          1       -   x10-6 /yea @+25ºC, First year
+                                                 -         7.1      -
+Load capacitance                     CL          -3          -     3
+
+Motional resistance (ESR)            R1
+
+Motional capacitance                 C1
+
+Shunt capacitance                    C0
+
+Motional inductance                  L1
+
+Frequency aging                    f_age
+
+3.External dimensions                    (Unit: mm)              4.Footprint(Recommended)      (Unit: mm)
+
+                                 0.8±0.1 1.5±0.1
+                                                                                                                                                          1.8
+    C622J                                                                                                   1.0
+
+      3.2±0.1                                                                                 2.5
+                                                                 Do not design any circuit patterns in the shaded area.
+                1.7
+
+                                   Internal
+
+                                   Connection
+
+#1                           #2
+
+                                 #1            #2
+
+                       0.75
+
+5.Packing information
+
+[ 1 ]Product number last 2 digits code (xx) description          The recommended code is "00"
+
+    Q13FC13500004xx
+
+                Code         Condition                   Code           Condition
+                                                           14    1000pcs / Reel
+                 01 Any Q'ty vinyl bag(Tape cut)           15    2000pcs / Reel
+                                                           00    3000pcs / Reel
+                 11 Any Q'ty / Reel
+
+                 12 250pcs / Reel
+
+                 13 500pcs / Reel
+
+                                                         1 Page
+[ 2 ] Taping specification                                                   Unit: mm
+                 Subject to EIA-481 & IEC-60286
+
+                 (1) Tape dimensions TE1204L
+                 Material of the Carrier Tape : PS
+                 Material of the Top Tape : PET+PE
+
+                 2.0±0.05        10P: 40±0.1                           5.5±0.05 1.75±0.1                 1.00±0.1
+                                4.0±0.1                                         12.1±0.2
+         +0.1                                                                                   3.6±0.10.3±0.05
+1.5 -0
+
+                                                  EPSON
+                                EPSON
+
+         +0.2  4.0±0.1                              1.9±0.1
+1.0 -0
+
+                                                                             User direction of feed
+
+(2) Reel dimensions
+     Material of the Reel : PS
+
+                 +0                                                            Unit: mm
+
+                 -3                                                   ±1             +0.3
+                                                             15.40 mm                -0
+               180.00 mm                                                       2.00 mm
+                                                                      ± 0.3  21±0.8 13±0.2
+                                                             13.00 mm
+
+                           160
+                                     76
+
+                                                             60.00 mm
+
+H3
+
+                                                    2 Page
+Reflow profile
+
+Pre Heating Temperature                    Temperature            +260ºC
+     Tp1 ~ Tp2 = + 170 °C                   TMax.                +220ºC
+                                                Tmlt
+Heating Temperature                                                                    35s
+     TMlt = + 220 °C                                              100s
+
+Peek Temperature                                                          t(time)
+     TMax. = + 260 °C
+
+Point of measuring                                       Tp2
+
+                In case of Solder ability
+
+Terminal.                                                Tp1
+
+                In case of Resistance to soldering heat
+
+                Surface.
+
+Notice
+
+    NOTICEPLEASE READ CAREFULLY BELOW BEFORE THE USE OF THIS DOCUMENT
+    
+     1. The content of this document is subject to change without notice. Before purchasing or using Epson products, please contact with sales
+
+         representative of Seiko Epson Corporation ("Epson") for the latest information and be always sure to check the latest information published
+        on Epson's official web sites and resources.
+     2. This document may not be copied, reproduced, or used for any other purposes, in whole or in part, without Epson's prior consent.
+     3. Information provided in this document including, but not limited to application circuits, programs and usage, is for reference purpose only.
+        Epson makes no guarantees against any infringements or damages to any third parties' intellectual property rights or any oth er rights resulting
+        from the information. This document does not grant you any licenses, any intellectual property rights or any other rights wi th respect to
+        Epson products owned by Epson or any third parties.
+     4. Epson has prepared this document carefully to be accurate and dependable, but Epson does not guarantee that the information is always
+        accurate and complete. Epson assumes no responsibility for any damages you incurred due to any misinformation in this docume nt.
+     5. Epson products listed in this document and our associated technologies shall not be used in any equipment or systems that laws and
+        regulations in Japan or any other countries prohibit to manufacture, use or sell. Furthermore, Epson products and our assoc iated technologies
+        shall not be used for the purposes of military weapons development (e.g. mass destruction weapons), military use, or any oth er military
+        applications. If exporting Epson products or our associated technologies, please be sure to comply with the Foreign Exchang e and Foreign
+        Trade Control Act in Japan, Export Administration Regulations in the U.S.A (EAR) and other export -related laws and regulations in Japan and
+        any other countries and to follow their required procedures.
+     6. Epson assumes no responsibility for any damages (whether direct or indirect) caused by or in relation with your non-compliance with the terms
+        and conditions in this document or for any damages (whether direct or indirect) incurred by any third party that you give, t ransfer or assign
+        Epson products.
+     7. For more details or other concerns about this document, please contact our sales representative.
+     8. Company names and product names listed in this document are trademarks or registered trademarks of their respective companies.
+
+     Disclaimer
+     1. Epson products are designed for use in general electronic equipment applications that do not require extremely high reliability or safety.
+
+     2. Epson does not represent or warrant that its products will not cause a failure for any particular application, except for cases where the
+        failure is a direct result caused by defects in materials and workmanship of this product.
+        If a product fails due to defects in materials and workmanship, to the maximum extent permitted by law, we will, at our sole discretion,
+        refund or replace the affected product.
+
+     3. When products for used directly or indirectly in certain devices or applications (ex. Nuclear power, aerospace, infrastructure facilities,
+        medical equipment, etc.) which are connected to or affect safety of human life or property, Customer is solely responsible for determining
+        if the products and respective specifications are suitable for the intended use in particular customer applications.
+        Customer shall implement necessary and proper safety design and measures (including redundant design, malfunction prevention
+        design, etc.) to ensure reliability and safety before using the products in/with customer's Equipment.
+
+     4. No dismantling, analysis, reverse engineering, modification, alteration, adaptation, reproduction, etc., of Epson products is allowed.
+        Furthermore, any defects caused by this are not covered by the warranty.
+
+     ©Seiko Epson Corporation 2025
+
+                                                         3 Page
+
