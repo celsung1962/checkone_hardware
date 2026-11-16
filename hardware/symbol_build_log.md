@@ -5,7 +5,7 @@
 | Symbol | LCSC | Source symbol | Pin table | Datasheet reference | Changes to match the datasheet | Notes |
 |---|---|---|---|---|---|---|
 | ADS1115IDGSR | C37593 | KiCad Analog_ADC:ADS1115IDGS | ADS1115IDGSR_pins.csv | ADS1115IDGSR_datasheet.pdf, TI SBAS444, Pin Configuration and Functions, DGS (VSSOP-10) top view | none |  |
-| INA226AIDGSR | C49851 | KiCad Sensor_Energy:INA226 | INA226AIDGSR_pins.csv | INA226AIDGSR_datasheet.pdf, TI SBOS547, Pin Configuration and Functions, DGS (VSSOP-10) | pin 9: name 'Vin-' -> 'IN-'; pin 10: name 'Vin+' -> 'IN+' |  |
+| INA226AIDGSR | C49851 | custom (generated from the pin table) | INA226AIDGSR_pins.csv | INA226AIDGSR_datasheet.pdf, TI SBOS547, Pin Configuration and Functions, DGS (VSSOP-10) | none |  |
 | PCF8563T | C7440 | KiCad Timer_RTC:PCF8563T | PCF8563T_pins.csv | PCF8563T_datasheet.pdf, NXP PCF8563, Table 3 Pin description, SO8 | pin 3: type output -> open_collector; pin 7: name 'CLKO' -> 'CLKOUT' |  |
 | XC6206P332MR | C5446 | KiCad Regulator_Linear:XC6206PxxxMR | XC6206P332MR_pins.csv | XC6206P332MR_datasheet.pdf, Torex XC6206, PIN ASSIGNMENT, SOT-23: 1 VSS, 2 VOUT, 3 VIN | pin 1: name 'GND' -> 'VSS'; pin 2: name 'VO' -> 'VOUT'; pin 3: name 'VI' -> 'VIN' |  |
 | AO4485 | C5334068 | custom (generated from the pin table) | AO4485_pins.csv | AO4485_datasheet.pdf, ElecSuper AO4485, 5 Pin Configuration and Functions: 1/2/3 Source, 4 Gate, 5-8 Drain | none |  |

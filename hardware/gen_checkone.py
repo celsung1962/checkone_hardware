@@ -165,39 +165,46 @@ def sheet_power_input():
     sh.drop((58.42, y), f"{P}:SMBJ24A", "D1", direction="down", pin1="1", end="GND")
     sh.lab((63.5, y), "VIN_F", direction="up")
     sh.span((58.42, y), (83.82, y), f"{P}:SS34", "D2", pin1="2")
-    sh.wire((83.82, y), (124.46, y))
-    drop(sh, (88.9, y), "C:100nF", "C1", end="GND")
-    sh.lab((96.52, y), "VIN_S", direction="up")
-    _, far = drop(sh, (104.14, y), "R:10k", "R1")
+    sh.wire((83.82, y), (134.62, y))
+    sh.lab((86.36, y), "VIN_S", direction="up")
+    _, far = drop(sh, (91.44, y), "R:10k", "R1")
     sh.drop(far, f"{P}:KT-0805G", "LED1", direction="down", pin1="2", end="GND")
+    drop(sh, (101.6, y), "C:100nF", "C1", end="GND")
     pwr_flag(sh, 1, (40.64, 78.74), "GND")
 
-    section(sh, "Soft start (hot plug)", (111.76, 22.86))
-    q1 = ic(sh, "AO4485", "Q1", (124.46, 71.12))
-    q1.field_pos = {"Reference": (8.89, -7.62), "Value": (10.16, 7.62)}
+    # soft start: Q1 source on VIN_S; R2 || C2 source-gate, R3 gate-GND, R4 + (C3 || C4) gate-drain, all wired
+    section(sh, "Soft start (hot plug)", (101.6, 22.86))
+    q1 = ic(sh, "AO4485", "Q1", (134.62, 71.12))
+    q1.field_pos = {"Reference": (8.89, -10.16), "Value": (8.89, -7.62)}
     q1.used.update({"2", "3", "6", "7", "8"})
-    sh.wire((124.46, y), sh.pt(q1, "1"))
-    sh.label(q1, "4", "SS_GATE")
+    sh.wire((134.62, y), sh.pt(q1, "1"))
+    g = sh.pt(q1, "4")
     d = sh.pt(q1, "5")
-    section(sh, "Soft start gate network", (15.24, 96.52))
-    for i, (key, ref, n1, n2) in enumerate((("R:4.7k", "R2", "VIN_S", "SS_GATE"), ("C:220uF", "C2", "VIN_S", "SS_GATE"),
-                                            ("R:10k", "R3", "SS_GATE", "GND"), ("R:1k", "R4", "SS_GATE", "SS_CGD"),
-                                            ("C:1uF", "C3", "SS_CGD", "V24_D"), ("C:1uF", "C4", "SS_CGD", "V24_D"))):
-        p = part(sh, key, ref, (27.94 + i * 22.86, 121.92))
-        two(sh, p, n1, n2)
+    sh.wire(g, (106.68, g[1]))
+    span(sh, (111.76, y), (111.76, g[1]), "C:220uF", "C2")            # + on the source (VIN_S)
+    span(sh, (121.92, y), (121.92, g[1]), "R:4.7k", "R2")
+    drop(sh, (106.68, g[1]), "R:10k", "R3", end="GND", gap=0)
+    sh.lab((116.84, g[1]), "SS_GATE", direction="down")
+    _, r4 = drop(sh, (124.46, g[1]), "R:1k", "R4")
+    yc3, yc4 = 86.36, 96.52
+    sh.wire(r4, (124.46, yc4))
+    sh.lab((124.46, 83.82), "SS_CGD", direction="left")
+    span(sh, (124.46, yc3), (144.78, yc3), "C:1uF", "C3")
+    span(sh, (124.46, yc4), (144.78, yc4), "C:1uF", "C4")
+    sh.wire((144.78, yc4), (144.78, d[1]))
 
-    section(sh, "Pi filter 68 uH (about 41 Hz)", (162.56, 22.86))
-    sh.wire(d, (162.56, d[1]))
-    sh.wire((182.88, d[1]), (226.06, d[1]))
-    sh.lab((137.16, d[1]), "V24_D", direction="up")
-    drop(sh, (144.78, d[1]), "C:220uF", "C5", end="GND")
-    drop(sh, (157.48, d[1]), "C:1uF", "C6", end="GND")
-    span(sh, (162.56, d[1]), (182.88, d[1]), "L:FCH1040", "L1")
-    drop(sh, (190.5, d[1]), "C:220uF", "C7", end="GND")
-    drop(sh, (203.2, d[1]), "C:1uF", "C8", end="GND")
-    drop(sh, (213.36, d[1]), "C:100nF", "C9", end="GND")
-    sh.pwr((226.06, d[1]), "V24_F")
-    pwr_flag(sh, 2, (233.68, 86.36), "V24_F")
+    section(sh, "Pi filter 68 uH (about 41 Hz)", (154.94, 22.86))
+    sh.wire(d, (172.72, d[1]))
+    sh.wire((193.04, d[1]), (233.68, d[1]))
+    sh.lab((149.86, d[1]), "V24_D", direction="up")
+    drop(sh, (154.94, d[1]), "C:220uF", "C5", end="GND")
+    drop(sh, (167.64, d[1]), "C:1uF", "C6", end="GND")
+    span(sh, (172.72, d[1]), (193.04, d[1]), "L:FCH1040", "L1")
+    drop(sh, (200.66, d[1]), "C:220uF", "C7", end="GND")
+    drop(sh, (213.36, d[1]), "C:1uF", "C8", end="GND")
+    drop(sh, (223.52, d[1]), "C:100nF", "C9", end="GND")
+    sh.pwr((233.68, d[1]), "V24_F")
+    pwr_flag(sh, 2, (241.3, 86.36), "V24_F")
 
     sh.note("Input chain per description 5.1 (S. Zimath, v1): PTC 1.6 A -> SMBJ24A (VBR 26.7-29.5 V) -> SS34 reverse-polarity "
             "diode -> 24 V LED -> soft start -> pi filter. Supply 24 V +-5 %, 25.2 V max: above it the SMBJ24A conducts (DS 9).\n"
@@ -234,12 +241,14 @@ def sheet_power_rails():
     sh.lab((86.36, out[1]), "BUCK_SW", direction="up")
     sh.drop((91.44, out[1]), f"{P}:SS34", "D3", direction="down", pin1="1", end="GND")
     span(sh, (99.06, out[1]), (119.38, out[1]), "L:FCH1040", "L2")
-    sh.wire((119.38, out[1]), (134.62, out[1]))
+    sh.wire((119.38, out[1]), (139.7, out[1]))
     drop(sh, (124.46, out[1]), "C:220uF", "C12", end="GND")
     sh.pwr((134.62, out[1]), "+5V")
     fb = sh.pt(u1, "3")
     sh.wire(fb, (86.36, fb[1]), (86.36, 66.04), (134.62, 66.04), (134.62, out[1]))
-    pwr_flag(sh, 1, (140.97, 55.88), "+5V")
+    _, far = drop(sh, (139.7, out[1]), "R:1.5k", "R5", gap=0)
+    sh.drop(far, f"{P}:KT-0805G", "LED2", direction="down", pin1="2", end="GND")
+    pwr_flag(sh, 1, (106.68, 55.88), "+5V")
 
     section(sh, "3.3 V (XC6206) and analog 3.3VA", (147.32, 22.86))
     u3 = ic(sh, "XC6206P332MR", "U3", (182.88, 45.72))
@@ -249,12 +258,14 @@ def sheet_power_rails():
     drop(sh, (162.56, vi[1]), "C:1uF", "C15", end="GND")
     sh.power(u3, "1", "GND", stub=2.54)
     vo = sh.pt(u3, "2")
-    sh.wire(vo, (223.52, vo[1]))
+    sh.wire(vo, (226.06, vo[1]))
     drop(sh, (198.12, vo[1]), "C:1uF", "C16", end="GND")
     drop(sh, (208.28, vo[1]), "C:100nF", "C18", end="GND")
-    sh.pwr((218.44, vo[1]), "+3.3V")
-    span(sh, (223.52, vo[1]), (243.84, vo[1]), "R:10", "R9")
-    sh.wire((243.84, vo[1]), (259.08, vo[1]))
+    _, far = drop(sh, (218.44, vo[1]), "R:1k", "R8")
+    sh.drop(far, f"{P}:KT-0805G", "LED3", direction="down", pin1="2", end="GND")
+    sh.pwr((223.52, vo[1]), "+3.3V")
+    span(sh, (226.06, vo[1]), (246.38, vo[1]), "R:10", "R9")
+    sh.wire((246.38, vo[1]), (259.08, vo[1]))
     drop(sh, (251.46, vo[1]), "C:1uF", "C17", end="GND")
     sh.pwr((259.08, vo[1]), "+3.3VA")
     pwr_flag(sh, 2, (266.7, 55.88), "+3.3VA")
@@ -278,35 +289,43 @@ def sheet_power_rails():
     sh.pwr((83.82, y), "+5V_DISP")
     pwr_flag(sh, 3, (93.98, 104.14), "+5V_DISP")
 
-    section(sh, "Sensor-bus monitor (INA226, 0x40)", (127.0, 76.2))
-    u2 = ic(sh, "INA226AIDGSR", "U2", (165.1, 109.22))
-    u2.field_pos = {"Reference": (-7.62, -15.24), "Value": (7.62, -15.24)}
-    sh.power(u2, "10", "V24_F", stub=2.54)
-    sh.power(u2, "9", "+24V_SENS", stub=15.24)
-    sh.power(u2, "8", "+24V_SENS", stub=2.54)
-    sh.power(u2, "6", "+3.3V", stub=2.54)
+    # INA226: Kelvin shunt R7 || R13 wired to IN+ (V24_F side) and IN- / VBUS (+24V_SENS side); C13 at VS; I2C
+    # pull-ups R11 / R12 on its SDA / SCL
+    section(sh, "Sensor-bus monitor (INA226, 0x40)", (116.84, 76.2))
+    u2 = ic(sh, "INA226AIDGSR", "U2", (180.34, 111.76))
+    u2.field_pos = {"Reference": (5.08, -12.7), "Value": (12.7, 15.24)}
+    inp, inn, vbus = sh.pt(u2, "10"), sh.pt(u2, "9"), sh.pt(u2, "8")
+    yt, yb = 91.44, 116.84
+    sh.wire(inp, (160.02, inp[1]), (160.02, yt), (134.62, yt))
+    sh.pwr((134.62, yt), "V24_F")
+    sh.wire(inn, (157.48, inn[1]), (157.48, yb), (127.0, yb))
+    sh.wire(vbus, (162.56, vbus[1]), (162.56, inn[1]))
+    span(sh, (139.7, yt), (139.7, yb), "R:100m", "R7")
+    span(sh, (149.86, yt), (149.86, yb), "R:100m", "R13")
+    sh.pwr((127.0, yb), "+24V_SENS")
+    drop(sh, (132.08, yb), "C:220uF", "C14", end="GND")
+    pwr_flag(sh, 4, (121.92, 99.06), "+24V_SENS")
+    vs = sh.pt(u2, "6")
+    sh.wire(vs, (vs[0], 86.36))
+    sh.pwr((vs[0], 86.36), "+3.3V")
+    c13, _ = drop(sh, (vs[0], 91.44), "C:100nF", "C13", direction="left", end="GND")
+    c13.field_pos = {"Reference": (0, -3.81), "Value": (0, -6.35)}
     sh.power(u2, "7", "GND", stub=2.54)
-    sh.power_bus(u2, ["1", "2"], "GND", stub=12.7)
+    sh.power_bus(u2, ["1", "2"], "GND", stub=5.08)
     sh.nc(u2, "3")
-    sh.label(u2, "4", "SDA", kind="global")
-    sh.label(u2, "5", "SCL", kind="global")
-    pwr_flag(sh, 4, (132.08, 96.52), "+24V_SENS")
+    sda, scl = sh.pt(u2, "4"), sh.pt(u2, "5")
+    sh.wire(sda, (210.82, sda[1]))
+    sh.wire(scl, (226.06, scl[1]))
+    drop(sh, (200.66, sda[1]), "R:4.7k", "R11", direction="up", end="+3.3V")
+    drop(sh, (215.9, scl[1]), "R:4.7k", "R12", direction="up", end="+3.3V")
+    sh.lab((210.82, sda[1]), "SDA", direction="up", kind="global")
+    sh.lab((226.06, scl[1]), "SCL", direction="up", kind="global")
 
-    # row 3: shunt, decoupling, indicators, I2C pull-ups, test pads
-    section(sh, "Shunt, decoupling, indicators, I2C pull-ups, test pads", (15.24, 127.0))
-    for i, (key, ref, n1, n2) in enumerate((("R:100m", "R7", "V24_F", "+24V_SENS"), ("R:100m", "R13", "V24_F", "+24V_SENS"),
-                                            ("C:220uF", "C14", "+24V_SENS", "GND"), ("C:100nF", "C13", "+3.3V", "GND"))):
-        p = part(sh, key, ref, (22.86 + i * 12.7, 149.86))
-        two(sh, p, n1, n2)
-    chain_led(sh, (78.74, 139.7), "R:1.5k", "R5", "LED2", "+5V")
-    chain_led(sh, (93.98, 139.7), "R:1k", "R8", "LED3", "+3.3V")
-    for i, (ref, net) in enumerate((("R11", "SDA"), ("R12", "SCL"))):
-        p = part(sh, "R:4.7k", ref, (111.76 + i * 12.7, 149.86))
-        sh.power(p, "1", "+3.3V", stub=2.54)
-        sh.label(p, "2", net, kind="global")
+    # row 3: test pads
+    section(sh, "Test pads (bottom side)", (15.24, 127.0))
     for i, (ref, net) in enumerate((("TP1", "+24V_SENS"), ("TP2", "+5V"), ("TP3", "+3.3V"), ("TP4", "+3.3VA"),
                                     ("TP5", "SDA"), ("TP6", "SCL"), ("TP7", "GND"), ("TP8", "GND"))):
-        testpoint(sh, ref, (144.78 + i * 10.16, 149.86), net, kind="global")
+        testpoint(sh, ref, (22.86 + i * 10.16, 149.86), net, kind="global")
     sh.note("XL1509-5.0 per its datasheet typical application (L 68 uH / 2 A, Schottky SS34, ON/OFF low = on, FB to the 5 V "
             "output): 5 V +-4 % (4.8-5.2 V), 150 kHz. Layout (v1 LEIA-ME 4): C10 / C11 at VIN, loop U1-D3-L2-C12 short.\n"
             "Display 5 V (review item 4): the CYD's own LDO needs ~4.4 V; through the SS34 it would get 4.3-4.5 V, so R6 0 ohm is "

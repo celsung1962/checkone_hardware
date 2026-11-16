@@ -37,9 +37,11 @@ PARTS = [
     dict(name="ADS1115IDGSR", ref="U", src="kicad:Analog_ADC:ADS1115IDGS", csv="ADS1115IDGSR", lcsc="C37593",
          manifest="ADS1115IDGSR", boards=BOTH,
          desc="16-bit 860 SPS 4-channel delta-sigma ADC, PGA, I2C, VSSOP-10 (TI)"),
-    dict(name="INA226AIDGSR", ref="U", src="kicad:Sensor_Energy:INA226", csv="INA226AIDGSR", lcsc="C49851",
+    dict(name="INA226AIDGSR", ref="U", src="custom", csv="INA226AIDGSR", lcsc="C49851",
          manifest="INA226AIDGSR", boards=BOTH,
-         desc="36 V bidirectional current / power monitor, I2C, VSSOP-10 (TI) - sensor bus"),
+         desc="36 V bidirectional current / power monitor, I2C, VSSOP-10 (TI) - sensor bus",
+         # IN+, IN-, VBUS in this order on the left: the Kelvin shunt wires to them without crossing (rev 1.1)
+         left=["10", "9", "8"], right=["4", "5", None, "1", "2", None, "3"], top=[None, "6"], bottom=[None, "7"]),
     dict(name="PCF8563T", ref="U", src="kicad:Timer_RTC:PCF8563T", csv="PCF8563T", lcsc="C7440", manifest="PCF8563T",
          boards=BOTH, desc="Real-time clock / calendar, I2C, 32.768 kHz, SO-8 (NXP)"),
     dict(name="XC6206P332MR", ref="U", src="kicad:Regulator_Linear:XC6206PxxxMR", csv="XC6206P332MR", lcsc="C5446",
