@@ -380,7 +380,8 @@ def channel_full(sh, n, x0):
     top = (x0 + 5.08, 35.56)
     sh.pwr(top, "+24V_SENS")
     _, a = drop(sh, top, "F:200mA", f"F1{n}", gap=0)
-    _, b = drop(sh, a, "FB:GZ2012", f"FB1{n}", gap=2.54)
+    _, b = drop(sh, a, "FB:GZ2012", f"FB1{n}", gap=5.08)
+    name(sh, (a[0], a[1] + 2.54), f"CH{n}_PTC")                 # PTC -> bead link (POWER netclass)
     yo = 63.5
     sh.wire(b, (b[0], yo), (p1[0], yo), p1)
     drop(sh, (x0 + 17.78, yo), "C:100nF", f"C1{n}0", end="GND")

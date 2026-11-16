@@ -207,7 +207,10 @@
           "td_width_to_size_filter_ratio": 0.9
         }
       ],
-      "track_widths": [],
+      "track_widths": [
+        0.0,
+        0.5
+      ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
           "corner_radius_percentage": 80,
@@ -234,7 +237,16 @@
           "spacing": 0.6
         }
       },
-      "via_dimensions": [],
+      "via_dimensions": [
+        {
+          "diameter": 0.0,
+          "drill": 0.0
+        },
+        {
+          "diameter": 0.6,
+          "drill": 0.3
+        }
+      ],
       "zones_allow_external_fillets": false
     },
     "ipc2581": {
@@ -516,6 +528,25 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "POWER",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.5,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
       }
     ],
     "meta": {
@@ -523,7 +554,120 @@
     },
     "net_colors": {},
     "netclass_assignments": {},
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "POWER",
+        "pattern": "/Power_Input/VIN_RAW"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Power_Input/VIN_F"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Power_Input/VIN_S"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Power_Input/V24_D"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "V24_F"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "+5V"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Power_Rails/BUCK_SW"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "+3.3V"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "+3.3VA"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "+5V_DISP"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_1_4/CH1_OUT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_1_4/CH2_OUT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_1_4/CH3_OUT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_1_4/CH4_OUT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_5_8/CH5_OUT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_5_8/CH6_OUT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_5_8/CH7_OUT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_5_8/CH8_OUT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "+24V_SENS"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Power_Rails/5V_D"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_1_4/CH1_PTC"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_1_4/CH2_PTC"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_1_4/CH3_PTC"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_1_4/CH4_PTC"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_5_8/CH5_PTC"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_5_8/CH6_PTC"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_5_8/CH7_PTC"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/Channels_5_8/CH8_PTC"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {

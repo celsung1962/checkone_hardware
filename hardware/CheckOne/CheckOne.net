@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\celso.souza\\checkone_hardware\\hardware\\CheckOne\\CheckOne.kicad_sch")
-		(date "2026-11-16T14:02:51")
+		(date "2026-11-16T15:29:18")
 		(tool "Eeschema 10.0.8")
 		(sheet
 			(number "1")
@@ -11505,7 +11505,7 @@
 		(net
 			(code "1")
 			(name "+3.3V")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C13")
 				(pin "1")
@@ -11569,7 +11569,7 @@
 		(net
 			(code "2")
 			(name "+3.3VA")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C17")
 				(pin "1")
@@ -11705,7 +11705,7 @@
 		(net
 			(code "3")
 			(name "+5V")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C12")
 				(pin "1")
@@ -11760,7 +11760,7 @@
 		(net
 			(code "4")
 			(name "+5V_DISP")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "FB1")
 				(pin "2")
@@ -11787,7 +11787,7 @@
 		(net
 			(code "5")
 			(name "+24V_SENS")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C14")
 				(pin "1")
@@ -12214,7 +12214,7 @@
 		(net
 			(code "19")
 			(name "/Channels_1_4/CH1_OUT")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C110")
 				(pin "1")
@@ -12234,6 +12234,21 @@
 		)
 		(net
 			(code "20")
+			(name "/Channels_1_4/CH1_PTC")
+			(class "Default")
+			(node
+				(ref "F11")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB11")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "21")
 			(name "/Channels_1_4/CH2_IIN")
 			(class "Default")
 			(node
@@ -12260,9 +12275,9 @@
 			)
 		)
 		(net
-			(code "21")
+			(code "22")
 			(name "/Channels_1_4/CH2_OUT")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C120")
 				(pin "1")
@@ -12281,7 +12296,22 @@
 			)
 		)
 		(net
-			(code "22")
+			(code "23")
+			(name "/Channels_1_4/CH2_PTC")
+			(class "Default")
+			(node
+				(ref "F12")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB12")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "24")
 			(name "/Channels_1_4/CH3_IIN")
 			(class "Default")
 			(node
@@ -12308,9 +12338,9 @@
 			)
 		)
 		(net
-			(code "23")
+			(code "25")
 			(name "/Channels_1_4/CH3_OUT")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C130")
 				(pin "1")
@@ -12329,7 +12359,22 @@
 			)
 		)
 		(net
-			(code "24")
+			(code "26")
+			(name "/Channels_1_4/CH3_PTC")
+			(class "Default")
+			(node
+				(ref "F13")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB13")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "27")
 			(name "/Channels_1_4/CH4_IIN")
 			(class "Default")
 			(node
@@ -12356,9 +12401,9 @@
 			)
 		)
 		(net
-			(code "25")
+			(code "28")
 			(name "/Channels_1_4/CH4_OUT")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C140")
 				(pin "1")
@@ -12377,7 +12422,22 @@
 			)
 		)
 		(net
-			(code "26")
+			(code "29")
+			(name "/Channels_1_4/CH4_PTC")
+			(class "Default")
+			(node
+				(ref "F14")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB14")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "30")
 			(name "/Channels_5_8/CH5_IIN")
 			(class "Default")
 			(node
@@ -12404,9 +12464,9 @@
 			)
 		)
 		(net
-			(code "27")
+			(code "31")
 			(name "/Channels_5_8/CH5_OUT")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C150")
 				(pin "1")
@@ -12425,7 +12485,22 @@
 			)
 		)
 		(net
-			(code "28")
+			(code "32")
+			(name "/Channels_5_8/CH5_PTC")
+			(class "Default")
+			(node
+				(ref "F15")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB15")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "33")
 			(name "/Channels_5_8/CH6_IIN")
 			(class "Default")
 			(node
@@ -12452,9 +12527,9 @@
 			)
 		)
 		(net
-			(code "29")
+			(code "34")
 			(name "/Channels_5_8/CH6_OUT")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C160")
 				(pin "1")
@@ -12473,7 +12548,22 @@
 			)
 		)
 		(net
-			(code "30")
+			(code "35")
+			(name "/Channels_5_8/CH6_PTC")
+			(class "Default")
+			(node
+				(ref "F16")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB16")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "36")
 			(name "/Channels_5_8/CH7_IIN")
 			(class "Default")
 			(node
@@ -12500,9 +12590,9 @@
 			)
 		)
 		(net
-			(code "31")
+			(code "37")
 			(name "/Channels_5_8/CH7_OUT")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C170")
 				(pin "1")
@@ -12521,7 +12611,22 @@
 			)
 		)
 		(net
-			(code "32")
+			(code "38")
+			(name "/Channels_5_8/CH7_PTC")
+			(class "Default")
+			(node
+				(ref "F17")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB17")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "39")
 			(name "/Channels_5_8/CH8_IIN")
 			(class "Default")
 			(node
@@ -12548,9 +12653,9 @@
 			)
 		)
 		(net
-			(code "33")
+			(code "40")
 			(name "/Channels_5_8/CH8_OUT")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C180")
 				(pin "1")
@@ -12569,7 +12674,22 @@
 			)
 		)
 		(net
-			(code "34")
+			(code "41")
+			(name "/Channels_5_8/CH8_PTC")
+			(class "Default")
+			(node
+				(ref "F18")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "FB18")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "42")
 			(name "/Display_RTC/DISP_3V3")
 			(class "Default")
 			(node
@@ -12591,7 +12711,7 @@
 			)
 		)
 		(net
-			(code "35")
+			(code "43")
 			(name "/Display_RTC/OSCI")
 			(class "Default")
 			(node
@@ -12613,7 +12733,7 @@
 			)
 		)
 		(net
-			(code "36")
+			(code "44")
 			(name "/Display_RTC/VBAT")
 			(class "Default")
 			(node
@@ -12630,7 +12750,7 @@
 			)
 		)
 		(net
-			(code "37")
+			(code "45")
 			(name "/Display_RTC/VRTC")
 			(class "Default")
 			(node
@@ -12658,7 +12778,7 @@
 			)
 		)
 		(net
-			(code "38")
+			(code "46")
 			(name "/Power_Input/SS_CGD")
 			(class "Default")
 			(node
@@ -12678,7 +12798,7 @@
 			)
 		)
 		(net
-			(code "39")
+			(code "47")
 			(name "/Power_Input/SS_GATE")
 			(class "Default")
 			(node
@@ -12709,9 +12829,9 @@
 			)
 		)
 		(net
-			(code "40")
+			(code "48")
 			(name "/Power_Input/V24_D")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C3")
 				(pin "2")
@@ -12764,9 +12884,9 @@
 			)
 		)
 		(net
-			(code "41")
+			(code "49")
 			(name "/Power_Input/VIN_F")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "D1")
 				(pin "1")
@@ -12786,9 +12906,9 @@
 			)
 		)
 		(net
-			(code "42")
+			(code "50")
 			(name "/Power_Input/VIN_RAW")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "F1")
 				(pin "1")
@@ -12801,9 +12921,9 @@
 			)
 		)
 		(net
-			(code "43")
+			(code "51")
 			(name "/Power_Input/VIN_S")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C1")
 				(pin "1")
@@ -12850,9 +12970,9 @@
 			)
 		)
 		(net
-			(code "44")
+			(code "52")
 			(name "/Power_Rails/5V_D")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "D4")
 				(pin "1")
@@ -12876,9 +12996,9 @@
 			)
 		)
 		(net
-			(code "45")
+			(code "53")
 			(name "/Power_Rails/BUCK_SW")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "D3")
 				(pin "1")
@@ -12899,7 +13019,7 @@
 			)
 		)
 		(net
-			(code "46")
+			(code "54")
 			(name "/SCL")
 			(class "Default")
 			(node
@@ -12963,7 +13083,7 @@
 			)
 		)
 		(net
-			(code "47")
+			(code "55")
 			(name "/SDA")
 			(class "Default")
 			(node
@@ -13033,7 +13153,7 @@
 			)
 		)
 		(net
-			(code "48")
+			(code "56")
 			(name "GND")
 			(class "Default")
 			(node
@@ -13677,126 +13797,6 @@
 			)
 		)
 		(net
-			(code "49")
-			(name "Net-(F11-Pad2)")
-			(class "Default")
-			(node
-				(ref "F11")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "FB11")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "50")
-			(name "Net-(F12-Pad2)")
-			(class "Default")
-			(node
-				(ref "F12")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "FB12")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "51")
-			(name "Net-(F13-Pad2)")
-			(class "Default")
-			(node
-				(ref "F13")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "FB13")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "52")
-			(name "Net-(F14-Pad2)")
-			(class "Default")
-			(node
-				(ref "F14")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "FB14")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "53")
-			(name "Net-(F15-Pad2)")
-			(class "Default")
-			(node
-				(ref "F15")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "FB15")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "54")
-			(name "Net-(F16-Pad2)")
-			(class "Default")
-			(node
-				(ref "F16")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "FB16")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "55")
-			(name "Net-(F17-Pad2)")
-			(class "Default")
-			(node
-				(ref "F17")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "FB17")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "56")
-			(name "Net-(F18-Pad2)")
-			(class "Default")
-			(node
-				(ref "F18")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "FB18")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
 			(code "57")
 			(name "Net-(LED1-A)")
 			(class "Default")
@@ -13880,7 +13880,7 @@
 		(net
 			(code "62")
 			(name "V24_F")
-			(class "Default")
+			(class "POWER")
 			(node
 				(ref "C10")
 				(pin "1")
