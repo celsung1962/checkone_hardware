@@ -89,7 +89,7 @@ def gen_sheet(key,title,page):
                 hide=' hide' if k in ('Footprint','Datasheet','LCSC') else ''
                 props+=f'(property {q(k)} {q(v)} (at {px_} {py_} 0) (effects (font (size 1.27 1.27)) (justify {j}){hide}))'
             pinlines=' '.join(f'(pin {q(n)} (uuid {U()}))' for n,*_ in ps)
-            items.append(f'(symbol (lib_id {q(p["sym"])}) (at {sx} {sy} 0) (unit 1) (in_bom yes) (on_board yes) (dnp {"yes" if p["dnp"] else "no"}) (uuid {U()}) {props} {pinlines} (instances (project "CheckOne" (path "/{ROOT}/{sheet_uuid[key]}" (reference {q(p["ref"])}) (unit 1)))))')
+            items.append(f'(symbol (lib_id {q(p["sym"])}) (at {sx} {sy} 0) (unit 1) (in_bom {"yes" if p["lcsc"] else "no"}) (on_board yes) (dnp {"yes" if p["dnp"] else "no"}) (uuid {U()}) {props} {pinlines} (instances (project "CheckOne" (path "/{ROOT}/{sheet_uuid[key]}" (reference {q(p["ref"])}) (unit 1)))))')
             stubs={}
             for n,px,py,ang,L in ps:
                 if n not in p['pins']:

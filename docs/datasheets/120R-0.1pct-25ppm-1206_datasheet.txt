@@ -1,0 +1,511 @@
+                DATASHEET
+
+        Product Name High-Precision Thin Film Chip Resistors
+            Part Name TC Series
+                File No. SMD-SP -014
+
+Uniroyal Electronics Global Co., Ltd.
+
+88#, Longteng Road, Economic & Technical Development Zone, Kunshan, Jiangsu, China
+                               Tel +86 512 5763 1411 / 22 /33
+
+                            Email marketing@uni-royal.cn
+             Manufacture Plant Uniroyal Electronics Industry Co., Ltd.
+
+                                         Aeon Technology Corporation
+                                         Royal Electronic Factory (Thailand) Co., Ltd.
+                                         Royal Technology (Thailand) Co., Ltd.
+                                     High Precision Thin Film Chip Resistors
+
+1. Scope
+
+1.1 This datasheet is the characteristics of High Precision Thin Film Chip Resistors manufactured by UNI-ROYAL.
+1.2 Thin film NiCr Resistance element.
+1.3 Very tight tolerance ±0.05%~±1%
+1.4 Extremely low TCR ±5ppm~±50ppm
+1.5 Completed Lead-free
+1.6 Compliant with RoHS directive.
+1.7 Halogen free requirement.
+
+2. Explanation of Part No. System
+
+Part No. includes 14 codes shown as below:
+2.1 1st~4th codes: Part name. E.g.:TC01,TC02, TC03, TC05, TC06, TC07, TC10, TC12
+
+2.2 5th~6th digits:
+
+For Thin Film Chip Resistors, these 2 digits will be used to indicate the requested Temperature Coefficient.
+
+           (1) 05=5PPM (2) 10=10PPM (3) 15=15PPM (4) 25=25PPM (5) 50=50PPM
+2.3 The 7th digit is to denote the Resistance Tolerance. The following letter code is to be used for indicating the standard Resistance Tolerance.
+
+B=±0.10%          C=±0.25% D=±0.50% F=±1%
+
+2.4 The 8th to 11th digits is to denote the Resistance Value.
+
+2.4.1 For the standard resistance values of TC series, the 8th digit to the 10th digits is to denote the significant figures of the resistance and the 11th
+
+digit is the zeros following.
+
+2.4.2 The following number s and the letter codes is to be used to indicate the number of zeros in the 11th digit:
+
+0=100             1=101 2=102 3=103 4=104 5=105 6=106 J=10-1 K=10-2 L=10-3                                             M=10-4
+
+2.4.3 The 12th, 13th & 14th digits.
+
+The 12th digit is to denote the Packaging Type with the following codes:
+
+                     T=Tape/Reel
+2.4.4 The 13th digit is normally to indicate the Packing Quantity of Tape/Box & Tape/Reel packaging types. The following letter code and number
+
+is to be used for some packing quantities:
+
+                     4=4000pcs 5=5000pcs C=10000pcs
+2.4.5 The 14th digit
+
+This is to indicate the wattage or power rating:
+
+D=1/20W C=1/16W F=1/10W G=1/8W J=1/4W
+
+K=1/3W M=1/2W N=3/4W S=Special
+
+3. Ordering Procedure
+  (Example: TC06 1/4W ±0.1% 25PPM 1K T/R-5000 )
+
+TC06                                 25           B            1001                               T                 5          J
+
+Product Type:     Temperature                                  Resistance Value:                     Packing quantity:
+Fill-in 4 digits  coefficient:                                 1% (E-96 series):                     TC02:
+with the chip     Fill-in 2 digits with the                    The 1st to 3rd digits are for the     C=10000PCS
+resistor type as  codes as follow:                             significant figures of the            TC03,TC05,TC06,
+follows:          05=5ppm                                      resistance and 4th digit denotes      TC07:
+TC01              10=10ppm                                     number of zeros following.            5=5000PCS
+TC02              25=25ppm                                                                           TC10,TC12:
+TC03              50=50ppm                                     J=10-1; K=10-2; L=10-3                4=4000PCS
+TC05
+TC06                                     Tolerance:                       Packing Type:              Wattage:
+TC07                                     C=±0.25%                         T=Tape/Reel                D=1/20W; C=1/16W
+TC10                                     B=±0.1%                                                     F=1/10W; G=1/8W
+TC12                                     D=±0.5%                                                     J=1/4W; K=1/3W
+                                         F=±1%                                                       M=1/2W; N=3/4W
+                                                                                                     S=Special
+
+Apr.28,2025 V.15                                               www. uni-royal.cn                                                  Page 2/9
+                       High Precision Thin Film Chip Resistors
+
+4. Marking                                                                                  2701  2.7K
+(1) For TC01,TC02 size. Due to the very TC01 TC02
+
+    small size of the resistor's body, there is no marking
+    on the body.
+
+(2) For TC05TC06TC07TC10TC12 size.
+      ±0.1%±0.25%±0.5%±1% Tolerance:
+    4 codes.
+    1st~3rd codes are the significant figures of resistance value,
+    and the rest code is the power of ten.
+    Letter "R" in mark means decimal point.
+
+(3) Standard E-96 series values of TC03 ±1% : due to the small size of the resistor's body, 3 digits marking will be used to indicate the accurate
+      resistance value by using the following multiplier & resistance code.
+
+      Multiplier Code (for TC03 ±1% marking)
+
+Code              A          B    C      D                                E  F         G          H     X      Y     Z
+
+Multiplier        100        101  102    103                            104  105       106  107         10-1   10-2  10-3
+
+Standard E-96 series Resistance Value code (for TC03±1% marking)
+
+Value                  Code       Value                             Code     Value          Code        Value        Code
+                                                                              316            49          562          73
+100                    01         178                               25        324            50          576          74
+                                                                              332            51          590          75
+102                    02         182                               26        340            52          604          76
+                                                                              348            53          619          77
+105                    03         187                               27        357            54          634          78
+                                                                              365            55          649          79
+107                    04         191                               28        374            56          665          80
+                                                                              383            57          681          81
+110                    05         196                               29        392            58          698          82
+                                                                              402            59          715          83
+113                    06         200                               30        412            60          732          84
+                                                                              422            61          750          85
+115                    07         205                               31        432            62          768          86
+                                                                              442            63          787          87
+118                    08         210                               32        453            64          806          88
+                                                                              464            65          825          89
+121                    09         215                               33        475            66          845          90
+                                                                              487            67          866          91
+124                    10         221                               34        499            68          887          92
+                                                                              511            69          909          93
+127                    11         226                               35        523            70          931          94
+                                                                              536            71          953          95
+130                    12         232                               36        549            72          976          96
+
+133                    13         237                               37
+
+137                    14         243                               38
+
+140                    15         249                               39
+
+143                    16         255                               40
+
+147                    17         261                               41
+
+150                    18         267                               42
+
+154                    19         274                               43
+
+158                    20         280                               44
+
+162                    21         287                               45
+
+165                    22         294                               46
+
+169                    23         301                               47
+
+174                    24         309                               48
+
+So the resistance value are marked as the following examples
+
+                             1.96K=196×101=29B                                                    12.4=124×10-1=10X
+
+(4) Standard E-24 and not belong to E-96 series values (±1%) of TC03 size: the marking is 3 digits, the first 2 digits are the significant of the
+resistance and the 3rd digit denotes number of zeros following or marking as underline.
+
+                                333=33K                                                              333=33K
+
+Apr.28,2025 V.15                                                    www. uni-royal.cn                                Page 3/9
+                          High Precision Thin Film Chip Resistors
+
+5. DimensionUnitmm
+
+    Type         L                W            H           A          B
+TC01(0201)  0.60±0.05        0.30±0.05     0.23±0.05  0.12±0.05  0.15±0.05
+TC02(0402)  1.00±0.10        0.50±0.05     0.35±0.05  0.20±0.10  0.25±0.10
+TC03(0603)  1.60±0.10        0.80±0.10     0.45±0.10  0.30±0.20  0.30±0.20
+TC05(0805)  2.00±0.15     1.25+0.15/-0.10  0.55±0.10  0.30±0.20  0.40±0.20
+TC06(1206)  3.10±0.15     1.55+0.15/-0.10  0.55±0.10  0.40±0.20  0.45±0.20
+TC07(1210)  3.10±0.10        2.50±0.15     0.55±0.10  0.40±0.20  0.45±0.20
+TC10(2010)  5.00±0.10        2.50±0.20     0.55±0.10  0.50±0.25  0.50±0.20
+TC12(2512)  6.35±0.10        3.20±0.20     0.55±0.10  0.50±0.25  0.50±0.20
+
+6. Resistance Range
+
+                  Power    Operating         Max.     Max.     Dielectric   Resistance Range        TCR
+                  rating  Temperature      Working  Overload  withstanding                       (PPM/ )
+Type                                       Voltage  Voltage                 ±0.1%     ±0.5%
+                                                                Voltage     ±0.25%     ±1%          ±10
+                                                       50V         ---                              ±15
+                                                                            10~5.1K 10~5.1K         ±25
+                                                       50V        100V                              ±50
+TC01 1/20W -55            ~ 1 25V                                           10~5.1K 10~5.1K          ±5
+                                                      150V        300V                              ±10
+                                                                            10~82K    10~82K        ±25
+                                                      300V        500V                              ±50
+                                                                            10~82K    10~82K         ±5
+                                                      400V        500V                              ±10
+                                                      400V        500V      100~2K    100~2K        ±25
+                                                      400V        500V                              ±50
+TC02 1/16W -55            ~ 1 25V                                           50~12K    50~12K         ±5
+                                                      400V        500V                              ±10
+                                                                            10~332K 10~332K         ±25
+                                                                                                    ±50
+                                                                            10~332K 10~332K          ±5
+                                                                                                    ±10
+                                                                            100~4K    100~4K        ±25
+                                                                                                    ±50
+TC03 1/10W -55                          75V                                 10~50K    10~50K
+                                                                                                    ±10
+                                                                            4.7~1M    1~1M
+                                                                                                    ±25
+                                                                            4.7~1M    1~1M          ±50
+                                                                                                     ±5
+                                                                            100~15K 100~15K         ±10
+                                                                                                    ±25
+TC05 1/8W -55                           150V                                10~100K 10~100K         ±50
+                                                                                                     ±5
+                                                                            4.7~2M    1~2M          ±10
+                                                                                                    ±25
+                                                                            4.7~2M    1~2M          ±50
+
+                                                                            100~15K 100~15K
+
+TC06 1/4W -55                           200V                                10~200K 10~200K
+
+                                                                            4.7~3M    1~3M
+
+                                                                            4.7~3M    1~3M
+
+                                                                            10~1M     10~1M
+
+TC07 1/3W -55                           200V                                4.7~1.5M  2.49~1.5M
+                                                                            4.7~1.5M  2.49~1.5M
+TC10 1/2W -55                           200V                                100~25K   100~25K
+                                                                            50~200K   50~200K
+TC12 3/4W -55                           200V                                 4.7~3M
+                                                                             4.7~3M     1~3M
+                                                                            100~25K     1~3M
+                                                                            50~200K   100~25K
+                                                                            4.7~3M    50~200K
+                                                                             4.7~3M     1~3M
+                                                                                        1~3M
+
+Apr.28,2025 V.15                                      www. uni-royal.cn                          Page 4/9
+                         High Precision Thin Film Chip Resistors
+
+7. Soldering pad size recommended
+
+Type                           Dimension(mm)
+
+TC01              A            B            C            D
+TC02
+TC03          0.25±0.05  0.30±0.05      0.35±0.05    0.85±0.05
+TC05          0.50±0.05                              1.4±0.05
+TC06          0.8±0.05   0.45±0.05      0.5±0.05     2.1±0.05
+TC07           1.0±0.1                                3.0±0.1
+TC10           2.0±0.1   0.65±0.05      0.8±0.05      4.2±0.1
+TC12           2.0±0.1                                4.2±0.1
+               3.6±0.1         1.0±0.1      1.3±0.1   6.2±0.1
+               4.9±0.1                                8.1±0.1
+                               1.1±0.1      1.6±0.1
+
+                               1.1±0.1      2.6±0.1
+
+                               1.3±0.1      2.6±0.1
+
+                               1.6±0.1      3.3±0.1
+
+8. Derating Curve
+
+    Power rating will change based on continuous load at ambient temperature from -55 to 155.
+
+    It is constant between -55 to 70, and derate to zero when temperature rise from 70 to 155.
+    Voltage rating:
+    Resistors shall have a rated direct-current (DC) continuous working voltage or an approximate sine-wave
+    root-mean-square (RMS) alternating-current (AC) continuous working voltage at commercial-line
+    frequency and waveform corresponding to the power rating, as determined from the following formula:
+
+            RCWV =  × R
+    Remark: RCWV: Rating Continuous Working Voltage (Volt.) P: power rating (Watt) R: nominal resistance ()
+    In no case shall the rated DC or RMS AC continuous working voltage be greater than the applicable maximum value.
+    The overload voltage is 2.5 times RCWV or Max. Overload voltage whichever is lower.
+
+9. Structure
+
+10. Performance Specification           Limits                                       Test Method
+             Characteristic                                        (GB/T5729&JIS-C-5201&IEC60115-1)
+
+Temperature              Refer to item 6.0           4.8 Natural resistance changes per temp. Degree centigrade
+Coefficient                                             R2-R1
+                                                                   × 106 (PPM/)
+Short-time overload R±(0.5%+0.05)                       R1(t2-t1)
+
+                                                     R1: Resistance Value at room temperature t1;
+                                                     R2: Resistance at test temperature t2
+                                                     t1: +25 or specified room temperature
+                                                     t2: Test temperature-55or 125
+
+                                                     4.13 Permanent resistance change after the application of a
+                                                     potential of 2.5 times RCWV or Max. Overload Voltage
+                                                     whichever less for 5 seconds..
+
+Apr.28,2025 V.15                                     www. uni-royal.cn                                                Page 5/9
+                  High Precision Thin Film Chip Resistors
+
+Insulation resistance 1000M                 4.6 The measuring voltage shall be ,measured with a direct voltage
+                                            of (100±15)V or a voltage equal to the dielectric withstanding
+Load life         R±(0.5%+0.05)             voltage., and apply for 1min
+Humidity          R±(0.5%+0.05)
+                                            4.25 Permanent Resistance change after 1000 hours operating at
+                                            RCWV or Max. Working Voltage whichever less with duty cycle
+                                            of 1.5 hours "ON"0.5 hour "OFF" at 70±2 ambient.
+
+                                            4.24 Temporary resistance change after 240 hours exposure in a
+                                            humidity test chamber controlled at 40±2 and 90-95% relative
+                                            humidity,
+
+Terminal bending  TC01: R±(0.5%+0.05)       4.33 Twist of test board:
+                  Other:R±(0.2%+0.05)       Y/X = 3/90 mm for 60Seconds
+
+Solderability     95% coverage min.         4.17 The area covered with a new, smooth, clean, shiny and
+Soldering heat                              continuous surface free from concentrated pinholes. Temperature
+                  TC01: R±(0.5%+0.05)       of solder:245±3; Dwell time in solder: 2~3 seconds.
+                  Other:
+                  0.1%,0.25%:R±(0.2%+0.05)  4.18 Dip the resistor into a solder bath having a temperature of 260
+                  0.5%,1%:R±(0.5%+0.05)     ±5 and hold it for 10±1 seconds.
+
+Load life in humidity R±(0.5%+0.05)         7.9 Resistance change after 1000 hours (1.5hours"ON"
+                                            0.5hours"OFF") at RCWV or Max. Working Voltage whichever
+    Low           R±(0.5%+0.05)             less in a humidity test chamber controlled at 40±2 and 93%±3%
+Temperature       R±(0.5%+0.05)             RH.
+
+   Storage                                  IEC 60068-2-1(Aa)
+                                            Lower limit temperaturefor 2H.
+    High
+Temperature                                 MIL-STD-202 108A
+                                            Upper limit temperature for 1000H.
+  Exposure
+
+Leaching          No visible damage         J-STD-002 Test D
+                                            Samples completely immersed for 30 sec in solder bath at 260.
+
+Rapid change      R±(0.5%+0.05)             4.19 30 min at lower limit temperature and 30 min at upper limit
+of temperature                              temperature100 cycles.
+
+Apr.28,2025 V.15                       www. uni-royal.cn                 Page 6/9
+                              High Precision Thin Film Chip Resistors
+
+11. Soldering Condition
+      (This is for recommendation, please customer perform adjustment according to actual application)
+
+11.1 Recommend Reflow Soldering Profile(solder : Sn96.5 / Ag3 / Cu0.5)
+
+                         Profile Feature                  Lead (Pb)-Free solder
+Preheat
+Temperature Min (Tsmin)                          150
+Temperature Max (Tsmax)                          200
+Time (Tsmin to Tsmax ) (ts)                      60 -120seconds
+Average ramp-up rate
+(Ts max to Tp)                                   3 / second max.
+
+Time maintained above :                          217
+Temperature (TL)                                 60-150 seconds
+Time (tL)                                        260
+                                                 10 seconds
+Peak Temperature (Tp)                            6/second max.
+
+Time within +0 of actual peak Temperature (tp)2
+               -5
+
+Ramp-down Rate
+
+Time 25 to Peak Temperature                      8minutes max.
+
+Allowed Re-flow times : 2 times
+Remark : To avoid discoloration phenomena of chip on terminal electrodes, we suggest use N2 Re-flow furnace .
+
+11.2 Recommend Wave Soldering Profile(Apply to 0603 and above size)
+
+Apr.28,2025 V.15                                 www. uni-royal.cn                                             Page 7/9
+                           High Precision Thin Film Chip Resistors
+
+12. Packing
+12.1 Dimension of Paper Taping :(Unit: mm)
+
+Type        A           B           C        D-+00.1       E       F     G         W          T
+                                  ±0.05                   ±0.1   ±0.05  ±0.1      ±0.2
+
+TC01 0.40±0.05 0.70±0.05 2.00 1.50 1.75 3.50 4.00                                       8.00 0.42±0.1
+
+TC02 0.65±0.10 1.20±0.10 2.00 1.50 1.75 3.50 4.00                                       8.00 0.42±0.05
+
+Type           A     B           C         D-+00.1   E      F     GW                     T
+                               ±0.05                ±0.1  ±0.05  ±0.1 ±0.2              ±0.1
+TC03        ±0.2 ±0.2
+TC05
+TC06        1.10 1.90 2.00 1.50 1.75 3.50 4.00 8.00 0.67
+TC07
+            1.65 2.40 2.00 1.50 1.75 3.50 4.00 8.00 0.81
+
+            2.00 3.60 2.00 1.50 1.75 3.50 4.00 8.00 0.81
+
+            2.80 3.50 2.00 1.50 1.75 3.50 4.00 8.00 0.75
+
+12.2 Dimension of plastic taping:(Unit: mm)
+
+Type   A        B      C          D-+00.1    D1+-00.25     E      F      G         W     T
+      ±0.2     ±0.2  ±0.05                                ±0.1  ±0.05   ±0.1      ±0.2  ±0.1
+
+TC10 2.90 5.60 2.00               1.50       1.50 1.75 5.50 4.00 12.00 1.00
+
+TC12 3.50 6.70 2.00               1.50       1.50 1.75 5.50 4.00 12.00 1.00
+
+12.3 Dimension of Reel(Unit: mm)
+
+Type  Taping         Qty/Reel          A      B            C     D            M         W
+                                      ±0.5   ±0.5         ±0.5   ±1           ±2        ±1
+
+TC01 Paper 10,000pcs 2.0 13.0 21.0 60.0 178.0 10.0
+
+TC02 Paper 10,000pcs 2.0 13.0 21.0 60.0 178.0 10.0
+
+TC03 Paper           5,000pcs         2.0 13.0 21.0 60.0 178.0 10.0
+
+TC05 Paper           5,000pcs         2.0 13.0 21.0 60.0 178.0 10.0
+
+TC06 Paper           5,000pcs         2.0 13.0 21.0 60.0 178.0 10.0
+
+TC07 Paper           5,000pcs         2.0 13.0 21.0 60.0 178.0 10.0
+
+TC10 Embossed 4,000pcs                2.0    13.0 21.0 60.0 178.0 13.8
+
+TC12 Embossed 4,000pcs                2.0    13.0 21.0 60.0 178.0 13.8
+
+13. Note
+13.1. UNI-ROYAL recommend products store in warehouse with temperature between 15 to 35 under humidity between 25 to 75%RH.
+
+       Even under storage conditions recommended above, solder ability of products will be degraded stored over 1 year old.
+13.2. Cartons must be placed in correct direction which indicated on carton, otherwise the reel or wire will be deformed.
+13.3. Storage conditions as below are inappropriate:
+
+         a. Stored in high electrostatic environment
+         b. Stored in direct sunshine, rain, snow or condensation.
+         c. Exposed to sea wind or corrosive gases, such as Cl2, H2S, NH3, SO2, NO2, Br etc.
+13.4 After the surface of TC series high resistance resistors is coated with flux, the resistance value may be affected (exceeding the resistance
+      value range). After the customer's evaluation, if necessary, corresponding cleaning measures can be taken to restore the resistance. In addition,
+      if the surface of the resistor needs to be coated with other substances, the client needs to evaluate the impact on the product to avoid any
+      impact during use.
+
+Apr.28,2025 V.15                                                www. uni-royal.cn                       Page 8/9
+                             High Precision Thin Film Chip Resistors
+
+14. Record
+
+Version Description                                   Page  Date            Amended by   Checked by
+                                                            Mar.20, 2018    Haiyan Chen  Nana Chen
+1           First version                             1~7   Mar.14, 2019    Haiyan Chen  Yuhua Xu
+                                                            Apr.23, 2019    Haiyan Chen  Yuhua Xu
+2           1. Modify the power                       3     July.29, 2019   Haiyan Chen  Yuhua Xu
+            2. Modify the resistance range                  Apr.15,2020     Haiyan Chen  Yuhua Xu
+                                                                                         Yuhua Xu
+3           Modify the dimension of A face value      3     Apr.29, 2020    Haiyan Chen  Yuhua Xu
+
+4           Modify the High Temperature Exposure      5     Jan.14, 2021    Haiyan Chen  Yuhua Xu
+            conditions
+                                                                                         John Zhao
+5           Add Tolerance                             2~ 3                               Yuhua Xu
+                                                                                         Haiyan Chen
+6           Modify the reflow curve and add the wave 6
+
+            soldering curve
+
+7           Add the TC03 marking                      3
+
+            Modify the test limits for Load lifeLow
+
+8           Temperature StorageHigh Temperature 6           Jan.20,2021     Song Nie
+
+            Exposure and Rapid change of temperature
+
+9           Add the 13.4                              8     Jul.12,2021     Haiyan Chen
+                                                            Feb.25,2022     Haiyan Chen
+10          Modify performance criteria               5~6   Jun.28,2022     Song Nie
+
+11          Modify the tolerance and resistance range 4
+
+12          Modify the temperature coefficient test   5     Oct.26, 2022    Haiyan Chen  Yuhua Xu
+                                                                                         Yuhua Xu
+            conditions
+
+13          Add the ±1% tolerance                     4     Jul.13, 2023    Haiyan Chen
+
+14          Add the TC01 series                       1~9   Nov.07, 2024 Haiyan Chen     Yuhua Xu
+
+15          Modify the "W" dimension of TC07          4     Apr.28, 2025    Haiyan Chen  Yuhua Xu
+
+© Uniroyal Electronics Global Co., Ltd. All rights reserved. Specification herein will be changed at any time without prior notice.
+
+Apr.28,2025 V.15                                         www. uni-royal.cn               Page 9/9
+

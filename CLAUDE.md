@@ -67,7 +67,9 @@ temperatures (third ADS1115, probe up to 150 °C), keeps time (PCF8563 + CR2032)
 - **O3 — Datasheets.** 26 fetched on 2026-11-16 (`docs/datasheets/manifest.csv`); GZ2012D601TF and the display
   modules still missing. Symbols and footprints checked in `reports/CheckOne/review_2026-11-16.md`: BAT54W is
   SOD-123 (v1 SOT-323), DC-005-A200 slots turned 90°, KF2EDGRC outline 12.2 instead of 8.4 mm deep. The datasheet
-  check stays a known failure until the schematic values are part numbers (rev 1.1).
+  check stays a known failure until the schematic values are part numbers (rev 1.1). S. Zimath's update of
+  2026-11-16 10:56 (imported, `reference/import_2026-11-16/update_S_Zimath_1057/`) fixed the DC-005-A200, changed the
+  FCH1040 land (not to the maker's) and the shunts (25 ppm, C2989146); the review's status table lists what is open.
 - **O4 — Fault current into 3V3A (C-12).** +24 V on Iin pushes 2.8–3.8 mA per channel into 3V3A through the BAT54S;
   the XC6206 cannot sink it. Options: a clamp to the 3V3A rail that can sink (zener / shunt load), BAT54S to a
   dedicated clamp rail, a larger series resistor, the SMBJ5.0A of DS 9. Needs the rail load (calc 3 assumes 3 mA).

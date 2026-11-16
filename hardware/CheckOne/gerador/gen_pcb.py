@@ -23,16 +23,16 @@ fixed={}
 for k,x in enumerate(termX):
     fixed[f'J1{k+1}']=(CX+x-1.5*5.08, CY-43.5-1+10.9, 0)      # CH1-4 na borda superior, encaixe para fora
     fixed[f'J1{k+5}']=(CX+x+1.5*5.08, CY+43.5+1-10.9, 180)    # CH5-8 na borda inferior
-fixed['J1']=(CX+44.7, CY-43.5-0.5+13.8, 180)                 # DC-005 na borda superior, boca para fora
+fixed['J1']=(CX+45.4, CY-43.5-0.5+13.8, 180)                 # DC-005 na borda superior, boca para fora
 fixed['J2']=(*M(41.8,-40.1),0)                          # NTC1 na janela frontal
 fixed['J3']=(*M(-54-1.25,-28),0)                             # NTC2 interno
 fixed['J4']=(*M(28.5,-5),0); fixed['J5']=(*M(-31,-17),0); fixed['J6']=(*M(-17,-17),0)
 fixed['J7']=(*M(-56,24+3.81),0)
 fixed['BT1']=(*M(-48-2.3,6),0)
 for i,(lx,lz) in enumerate([(49.3,-42.4),(49.3,-40.2),(49.3,-38.0),(49.3,-35.8)]): fixed[f'LED{i+1}']=(*M(lx,lz),0)
-fixed['Q1']=(*M(56.5,15),90); fixed['U1']=(*M(55,-5),0); fixed['L2']=(*M(54.5,-17),0); fixed['C12']=(*M(53.6,-29.2),0)
+fixed['Q1']=(*M(56.5,15),90); fixed['U1']=(*M(55,-5),0); fixed['L2']=(*M(54.5,-17),90); fixed['C12']=(*M(38,-15.5),0)
 fixed['C2']=(*M(0,15),0); fixed['C5']=(*M(14.5,15),0); fixed['L1']=(*M(9,2),0); fixed['C7']=(*M(23,3.6),0)
-fixed['C10']=(*M(41.8,-8),0); fixed['C14']=(*M(29,15),0)
+fixed['C10']=(*M(44,-2),0); fixed['C14']=(*M(29,15),0)
 for i,(x,z) in enumerate([(-57.5,40),(57.5,40),(-57.5,-40),(57.5,-40)]): fixed[f'H{i+1}']=(*M(x,z),0)
 for i,(x,z) in enumerate([(-43.5,24.5),(43.5,24.5),(-43.5,-24.5),(43.5,-24.5)]): fixed[f'H{i+5}']=(*M(x,z),0)
 for i in range(8): fixed[f'TP{i+1}']=(*M(-24+i*8,-2),0)
@@ -58,7 +58,8 @@ def make(p):
     for pad in f.Pads():
         num=pad.GetNumber()
         if num in p['pins'] and not p['pins'][num].startswith('NC_'): pad.SetNet(net(p['pins'][num]))
-    if p['dnp']: f.SetAttributes(f.GetAttributes()|pcbnew.FP_EXCLUDE_FROM_BOM|pcbnew.FP_EXCLUDE_FROM_POS_FILES)
+    if p['lcsc']: f.SetProperty('LCSC',p['lcsc'])
+    if p['dnp'] or not p['lcsc']: f.SetAttributes(f.GetAttributes()|pcbnew.FP_EXCLUDE_FROM_BOM|pcbnew.FP_EXCLUDE_FROM_POS_FILES)
     return f
 # reserva da serigrafia (rótulos dos bornes e dos conectores) antes da distribuição automática
 for k,x in enumerate(termX):
@@ -107,7 +108,7 @@ for k,x in enumerate(termX):
     yb=CY+43.5+1-10.9-2.6
     silk(f'CH{k+5}',CX+x,yb-2.2,1.5,bold=True)
     for i in range(4): silk(names[i],CX+x+1.5*5.08-i*5.08,yb,0.8)
-silk('24V DC  (+) centro',CX+44.7,CY-43.5+16.5,0.9,bold=True)
+silk('24V DC  (+) centro',CX+45.4,CY-43.5+16.5,0.9,bold=True)
 silk('NTC1',*M(44.5,-34.6),1.0,bold=True); silk('NTC2',*M(-54,-23.4),1.0,bold=True)
 for txt,(lx,lz) in zip(['24V','5V','3V3','3V3D'],[(48.6,-42.4),(48.6,-40.2),(48.6,-38.0),(48.6,-35.8)]): silk(txt,CX+lx-2.9,CY-lz,0.7)
 silk('DISPLAY 5V: 5V TX RX GND',*M(28.5,-9.5),0.7); silk('I2C CYD: GND SCL SDA 3V3',*M(-31,-21.5),0.7); silk('I2C JC3248: GND 3V3 SDA SCL',*M(-17,-23.5),0.7)

@@ -14,7 +14,7 @@ Abrir `CheckOne.kicad_pro`.
 - `CheckOne.kicad_pcb` — placa de 122 × 87 mm, 2 camadas, com todos os componentes
   posicionados, redes atribuídas (ratsnest), contorno, furos e serigrafia. **Sem trilhas.**
 - `CheckOne.kicad_sym` / `CheckOne.pretty` — símbolos (AO4485 em SO-8, XL1509) e
-  footprints próprios (borne KF2EDGRC-5.08-4P, DC-005-A200, suporte BS-02-A1AJ006),
+  footprints próprios (borne KF2EDGRC-5.08-4P, DC-005-A200, suporte BS-02-A1AJ006, indutor FCH1040 de 11,5 × 10,5 mm),
   desenhados a partir dos datasheets.
 - `producao/` — PDF do esquemático, imagem do posicionamento, BOM e CPL no formato da
   JLCPCB (só SMD; os PTH são soldados à mão).
@@ -40,7 +40,6 @@ Abrir `CheckOne.kicad_pro`.
 6. **NTC:** capacitor de 1 µF colado no conector XH.
 7. Conferir no gabinete: posição dos furos do CYD (H5–H8, modelados a 87 × 49 mm) e
    do JC3248W535; posição do J4 em relação ao P1 do display.
-8. **Footprints a conferir:** pacote do BAT54W (C7502705) — usado SOT-323; indutor
-   FCH1040 — usado `L_10.4x10.4_H4.8` (conferir as ilhas no datasheet); conector SMD
+8. **Footprints a conferir:** pacote do BAT54W (C7502705) — usado SOT-323; conector SMD
    1.25-4P LT (C668611) — usado o footprint Molex 53398 compatível.
 9. **CPL:** conferir as rotações no visualizador da JLCPCB antes de confirmar o pedido.
