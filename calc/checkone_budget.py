@@ -79,5 +79,44 @@ def main():
           f'{i_buck_in * 1e3:.0f} mA at 24 V; total {tot:.2f} A of {I_SUPPLY:.1f} A ({tot / I_SUPPLY * 100:.0f} %)')
 
 
+def markdown(out_dir):
+    """Tables for the technical document (DOC/source/generated), from the same constants (rev 1.1: 4.7 k series R)."""
+    import os
+    os.makedirs(out_dir, exist_ok=True)
+    lsb = ADC_FSR / 2 ** (ADC_BITS - 1)
+    rows = ['| Loop current | Shunt voltage | ADS1115 code (+-4.096 V) | Meaning (NAMUR NE43) |', '|---|---|---|---|']
+    for i, m in ((0.0036, 'below: open loop'), (0.004, 'zero of the range'), (0.012, 'mid scale'),
+                 (0.020, 'full scale'), (0.021, 'above: short circuit'), (0.022, '')):
+        v = i * R_SHUNT
+        rows.append(f'| {i * 1e3:.1f} mA | {v:.3f} V | {round(v / lsb)} | {m} |')
+    rows += ['', f'Source: `calc/checkone_budget.py` item 1 (120 ohm shunt, LSB {lsb * 1e6:.1f} uV = '
+                 f'{lsb / R_SHUNT * 1e6:.2f} uA per count; input filter 4.7 k / 10 nF '
+                 f'{1 / (2 * math.pi * R_SERIES_ALT * C_IN) / 1e3:.1f} kHz).']
+    open(os.path.join(out_dir, 'loop_table.md'), 'w', encoding='utf-8', newline='\n').write('\n'.join(rows) + '\n')
+    rows = ['| Temperature | NTC resistance | Divider voltage | Ratio to 3V3A |', '|---|---|---|---|']
+    for t in (-20, 0, 25, 50, 80, 100, 120, 140, 150):
+        r = ntc_r(t)
+        v = VDD_A * r / (r + R_DIV)
+        rows.append(f'| {t} °C | {r / 1e3:.2f} kΩ | {v:.3f} V | {v / VDD_A * 100:.1f} % |')
+    rth = 1 / (1 / R_DIV + 1 / NTC_R25)
+    rows += ['', f'Source: `calc/checkone_budget.py` item 2 (NTC 100 k B3950, 10 k to 3V3A; 1 uF filter '
+                 f'{1 / (2 * math.pi * rth * C_NTC):.1f} Hz at 25 °C).']
+    open(os.path.join(out_dir, 'ntc_table.md'), 'w', encoding='utf-8', newline='\n').write('\n'.join(rows) + '\n')
+    i_buck_in = 5.0 * I_DISPLAY_5V / ETA_BUCK / V_BUS
+    tot = I_SENSOR * N_CH + i_buck_in
+    rows = ['| Load | Current at 24 V | Note |', '|---|---|---|',
+            f'| Sensors | {I_SENSOR * N_CH:.2f} A | {N_CH} x {I_SENSOR * 1e3:.0f} mA, assumed (open item O7) |',
+            f'| Display and electronics through the buck | {i_buck_in * 1e3:.0f} mA | {I_DISPLAY_5V * 1e3:.0f} mA at 5 V, '
+            f'efficiency {ETA_BUCK:.0%}, assumed |',
+            f'| Total | {tot:.2f} A | {tot / I_SUPPLY * 100:.0f} % of the {I_SUPPLY:.1f} A supply |',
+            '', 'Source: `calc/checkone_budget.py` item 4.']
+    open(os.path.join(out_dir, 'budget.md'), 'w', encoding='utf-8', newline='\n').write('\n'.join(rows) + '\n')
+    print('markdown tables written to', out_dir)
+
+
 if __name__ == '__main__':
-    main()
+    import sys
+    if '--markdown' in sys.argv:
+        markdown(sys.argv[sys.argv.index('--markdown') + 1])
+    else:
+        main()
