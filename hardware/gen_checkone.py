@@ -110,6 +110,17 @@ def section(sh, title, at, width=None):
                      [S("uuid"), sg.U(f"{sh.name}/section/{title}")]])
 
 
+def name(sh, point, net, angle=0, kind="local", shape="bidirectional"):
+    """Net name written on an existing wire (no stub): the label's anchor sits on the wire and its text runs along
+    it (owner 2026-11-16: no lines that go nowhere). kind global also puts the net in the SHEET PORTS block."""
+    S = sg.S
+    x, y = sg.snap(point[0]), sg.snap(point[1])
+    if kind != "local":
+        sh.hier.setdefault(net, shape)
+    sh.items.append([S("label"), net, [S("at"), x, y, angle], [S("fields_autoplaced"), S("yes")],
+                     sg.font(justify="left bottom"), [S("uuid"), sg.U(f"{sh.name}/name/{net}/{x}/{y}")]])
+
+
 def pwr_flag(sh, n, at, net):
     f = sh.place("power:PWR_FLAG", f"#FLG{sh.tag}{n:02d}", at, value="PWR_FLAG")
     if net in POWER_NETS:
@@ -161,12 +172,12 @@ def sheet_power_input():
     y = vin[1]
     sh.power_bus(j1, ["3", "2"], "GND", stub=2.54)
     span(sh, vin, (58.42, y), "F:1.6A", "F1")
-    sh.lab((36.83, y), "VIN_RAW", direction="up")
+    name(sh, vin, "VIN_RAW")
     sh.drop((58.42, y), f"{P}:SMBJ24A", "D1", direction="down", pin1="1", end="GND")
-    sh.lab((63.5, y), "VIN_F", direction="up")
+    name(sh, (59.69, y), "VIN_F")
     sh.span((58.42, y), (83.82, y), f"{P}:SS34", "D2", pin1="2")
     sh.wire((83.82, y), (134.62, y))
-    sh.lab((86.36, y), "VIN_S", direction="up")
+    name(sh, (76.2, y), "VIN_S")
     _, far = drop(sh, (91.44, y), "R:10k", "R1")
     sh.drop(far, f"{P}:KT-0805G", "LED1", direction="down", pin1="2", end="GND")
     drop(sh, (101.6, y), "C:100nF", "C1", end="GND")
@@ -184,11 +195,11 @@ def sheet_power_input():
     span(sh, (111.76, y), (111.76, g[1]), "C:220uF", "C2")            # + on the source (VIN_S)
     span(sh, (121.92, y), (121.92, g[1]), "R:4.7k", "R2")
     drop(sh, (106.68, g[1]), "R:10k", "R3", end="GND", gap=0)
-    sh.lab((116.84, g[1]), "SS_GATE", direction="down")
+    name(sh, (113.03, g[1]), "SS_GATE")
     _, r4 = drop(sh, (124.46, g[1]), "R:1k", "R4")
     yc3, yc4 = 86.36, 96.52
     sh.wire(r4, (124.46, yc4))
-    sh.lab((124.46, 83.82), "SS_CGD", direction="left")
+    name(sh, (124.46, 92.71), "SS_CGD", angle=90)
     span(sh, (124.46, yc3), (144.78, yc3), "C:1uF", "C3")
     span(sh, (124.46, yc4), (144.78, yc4), "C:1uF", "C4")
     sh.wire((144.78, yc4), (144.78, d[1]))
@@ -196,7 +207,7 @@ def sheet_power_input():
     section(sh, "Pi filter 68 uH (about 41 Hz)", (154.94, 22.86))
     sh.wire(d, (172.72, d[1]))
     sh.wire((193.04, d[1]), (233.68, d[1]))
-    sh.lab((149.86, d[1]), "V24_D", direction="up")
+    name(sh, (146.05, d[1]), "V24_D")
     drop(sh, (154.94, d[1]), "C:220uF", "C5", end="GND")
     drop(sh, (167.64, d[1]), "C:1uF", "C6", end="GND")
     span(sh, (172.72, d[1]), (193.04, d[1]), "L:FCH1040", "L1")
@@ -238,7 +249,7 @@ def sheet_power_rails():
     u1.used.update({"6", "7", "8"})
     out = sh.pt(u1, "2")
     sh.wire(out, (99.06, out[1]))
-    sh.lab((86.36, out[1]), "BUCK_SW", direction="up")
+    name(sh, out, "BUCK_SW")
     sh.drop((91.44, out[1]), f"{P}:SS34", "D3", direction="down", pin1="1", end="GND")
     span(sh, (99.06, out[1]), (119.38, out[1]), "L:FCH1040", "L2")
     sh.wire((119.38, out[1]), (139.7, out[1]))
@@ -280,7 +291,7 @@ def sheet_power_rails():
     span(sh, (33.02, y + 10.16), (48.26, y + 10.16), "R:0", "R6")
     sh.wire((48.26, y + 10.16), (48.26, y))
     sh.wire((50.8, y), (55.88, y))
-    sh.lab((53.34, y), "5V_D", direction="up")
+    name(sh, (49.53, y), "5V_D")
     sh.wire((55.88, y), (55.88, y + 10.16))
     span(sh, (55.88, y), (76.2, y), "FB:GZ2012", "FB1")
     span(sh, (55.88, y + 10.16), (76.2, y + 10.16), "FB:GZ2012", "FB2")
@@ -318,8 +329,8 @@ def sheet_power_rails():
     sh.wire(scl, (226.06, scl[1]))
     drop(sh, (200.66, sda[1]), "R:4.7k", "R11", direction="up", end="+3.3V")
     drop(sh, (215.9, scl[1]), "R:4.7k", "R12", direction="up", end="+3.3V")
-    sh.lab((210.82, sda[1]), "SDA", direction="up", kind="global")
-    sh.lab((226.06, scl[1]), "SCL", direction="up", kind="global")
+    name(sh, (210.82, sda[1]), "SDA", kind="global")
+    name(sh, (226.06, scl[1]), "SCL", kind="global")
 
     # row 3: test pads
     section(sh, "Test pads (bottom side)", (15.24, 127.0))
@@ -373,11 +384,11 @@ def channel_full(sh, n, x0):
     yo = 63.5
     sh.wire(b, (b[0], yo), (p1[0], yo), p1)
     drop(sh, (x0 + 17.78, yo), "C:100nF", f"C1{n}0", end="GND")
-    sh.lab((x0 + 27.94, yo), out, direction="up")
+    name(sh, (x0 + 20.32, yo), out)
     # loop input: pin 3 -> node -> R1n0 120 ohm and D1n SMAJ5.0A to GND, R1n1 4.7 k -> AIN
     yi = 81.28
     sh.wire(p3, (p3[0], yi), (x0 + 5.08, yi))
-    sh.lab((x0 + 25.4, yi), iin, direction="up")
+    name(sh, (x0 + 19.05, yi), iin)
     drop(sh, (x0 + 5.08, yi), "R:120 0.1%", f"R1{n}0", gap=0, end="GND")
     sh.drop((x0 + 17.78, yi), f"{P}:SMAJ5.0A", f"D1{n}", direction="down", pin1="1", end="GND")
     _, r_end = drop(sh, (x0 + 30.48, yi), "R:4.7k", f"R1{n}1")
@@ -389,7 +400,7 @@ def channel_full(sh, n, x0):
     sh.power(d, "1", "GND", stub=2.54)
     sh.power(d, "2", "+3.3VA", stub=2.54)
     drop(sh, (x0 + 50.8, ya), "C:10nF", f"C1{n}1", end="GND", gap=0)
-    sh.lab((x0 + 45.72, ya), ain, direction="up", kind="global", shape="output")
+    name(sh, (x0 + 31.75, ya), ain, kind="global", shape="output")
     return d
 
 
@@ -446,17 +457,17 @@ def sheet_adc_ntc():
         sh.pwr((nx, y0), "+3.3VA")
         sh.span((nx, y0), (nx, p1[1]), ref=f"R4{k}0", **fields("R:10k"))
         drop(sh, (x0 + 15.24, p1[1]), "C:1uF", f"C4{k}3", end="GND")
-        sh.lab((nx + 10.16, p1[1]), node, direction="up")
+        name(sh, (nx + 1.27, p1[1]), node)
         sh.span((nx + 20.32, p1[1]), (nx + 35.56, p1[1]), ref=f"R4{k}1", **fields("R:1k"))
         a = (nx + 35.56, p1[1])
-        sh.wire(a, (nx + 55.88, p1[1]))
+        sh.wire(a, (nx + 60.96, p1[1]))
         d = sh.place(f"{P}:BAT54S", f"D4{k}", (nx + 45.72, p1[1] + 7.62), rotation=180)
         d.field_pos = {"Reference": (0, 5.08), "Value": (0, 7.62)}
         sh.wire(sh.pt(d, "3"), (nx + 45.72, p1[1]))
         sh.power(d, "1", "GND", stub=2.54)
         sh.power(d, "2", "+3.3VA", stub=2.54)
         drop(sh, (nx + 55.88, p1[1]), "C:10nF", f"C4{k}4", end="GND", gap=0)
-        sh.lab((nx + 40.64, p1[1]), adc, direction="up")
+        name(sh, (nx + 60.96, p1[1]), adc)
     sh.note("ADS1115 (TI SBAS444): single-ended, PGA +-4.096 V, 128 SPS; ADDR to GND 0x48, VDD 0x49, SDA 0x4A; ALERT/RDY "
             "unused (polled); 100 nF at VDD. Ratiometric NTC: U6 AIN1 reads the 3.3VA that feeds the dividers.\n"
             "NTC 100 k B3950, 10 k divider from 3.3VA: 3.00 V at 25 C, 0.55 V at 150 C; 1 uF at the connector, ~17.5 Hz with the "
@@ -507,7 +518,7 @@ def sheet_display_rtc():
     c50 = part(sh, "C:22pF", "C50", (162.56, 40.64))
     sh.label(c50, "1", "OSCI")
     sh.power(c50, "2", "GND", stub=2.54)
-    sh.lab((185.42, osci[1]), "OSCI", direction="up")
+    name(sh, (176.53, osci[1]), "OSCI")
     sh.power(u7, "4", "GND", stub=2.54)
     sh.label(u7, "5", "SDA", kind="global")
     sh.label(u7, "6", "SCL", kind="global")
@@ -515,7 +526,7 @@ def sheet_display_rtc():
     sh.nc(u7, "7")
     vdd = sh.pt(u7, "8")
     sh.wire(vdd, (vdd[0], 30.48), (226.06, 30.48))
-    sh.lab((215.9, 30.48), "VRTC", direction="up")
+    name(sh, (201.93, 30.48), "VRTC")
     c51 = part(sh, "C:100nF", "C51", (226.06, 40.64))
     sh.wire((226.06, 30.48), sh.pt(c51, "1"))
     sh.power(c51, "2", "GND", stub=2.54)

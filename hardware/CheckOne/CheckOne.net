@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\celso.souza\\checkone_hardware\\hardware\\CheckOne\\CheckOne.kicad_sch")
-		(date "2026-11-16T13:32:09")
+		(date "2026-11-16T14:02:51")
 		(tool "Eeschema 10.0.8")
 		(sheet
 			(number "1")
