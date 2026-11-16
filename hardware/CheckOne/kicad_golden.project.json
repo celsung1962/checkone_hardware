@@ -1,0 +1,464 @@
+{
+ "_doc": "Per-project parameters, seeded by init_project.py from this board. Lists start EMPTY on purpose - a rule copied from another design matches zero nets and then reports a clean pass while auditing nothing. The _candidates blocks below are observations from this board, not decisions; fill the real lists yourself.",
+ "project": "CheckOne",
+ "fabricator": {
+  "_doc": "Fabricator capability. Manufacturer limits always win over the golden defaults.",
+  "name": "JLCPCB 2-layer 1oz",
+  "profile": "2L-1oz",
+  "layers": 2,
+  "copper": "1oz",
+  "captured": "2026-09-17",
+  "kicad_rules": {
+   "min_track_width": 0.127,
+   "min_clearance": 0.127,
+   "min_through_hole_diameter": 0.3,
+   "min_via_diameter": 0.5,
+   "min_via_annular_width": 0.1,
+   "min_hole_clearance": 0.254,
+   "min_hole_to_hole": 0.254,
+   "min_copper_edge_clearance": 0.3,
+   "min_text_height": 1,
+   "min_text_thickness": 0.15,
+   "solder_mask_to_copper_clearance": 0,
+   "min_silk_clearance": 0,
+   "min_connection": 0.127
+  },
+  "economical_via_drill_mm": 0.3,
+  "fine_vias_approved": false,
+  "min_hole_to_hole_mm": 0.254,
+  "min_via_drill_mm": 0.3,
+  "min_copper_to_edge_mm": 0.3
+ },
+ "stackup_reference": {
+  "_doc": "Controlled-impedance stackup this board was designed on, if any (Q-13).",
+  "name": "",
+  "diff_pair_target_ohm": null,
+  "single_ended_target_ohm": null
+ },
+ "length_groups": [],
+ "_length_group_candidates": {
+  "_doc": "Bus-like groups found on this board. Turn the ones that are length-critical into length_groups entries with a pattern, max_spread_mm and clock rule.",
+  "groups": {}
+ },
+ "diff_pairs": {
+  "_doc": "Intra-pair mismatch limits (Q-06).",
+  "rules": []
+ },
+ "_diff_pair_candidates": {
+  "_doc": "Net pairs whose names look like a differential pair. Confirm before adding rules.",
+  "pairs": []
+ },
+ "via_budget": {
+  "_doc": "Maximum vias on fast nets (Q-09).",
+  "fast_patterns": [],
+  "max_vias_fast": null,
+  "max_vias_default": null
+ },
+ "_routability": {
+  "_doc": "Observations that decide how the router must be driven. Not rules.",
+  "copper_layers": 2,
+  "footprint_local_clearance_overrides": [],
+  "clearance_floor_mm": 0,
+  "long_haul_nets": [
+   {
+    "net": "GND",
+    "span_mm": 138.2,
+    "pads": 115
+   },
+   {
+    "net": "+5V_DISP",
+    "span_mm": 112.6,
+    "pads": 4
+   },
+   {
+    "net": "+3.3VA",
+    "span_mm": 111.2,
+    "pads": 23
+   },
+   {
+    "net": "/SDA",
+    "span_mm": 107.1,
+    "pads": 11
+   },
+   {
+    "net": "/SCL",
+    "span_mm": 105.6,
+    "pads": 10
+   },
+   {
+    "net": "+3.3V",
+    "span_mm": 97.9,
+    "pads": 11
+   },
+   {
+    "net": "+24V_SENS",
+    "span_mm": 95.4,
+    "pads": 14
+   },
+   {
+    "net": "+5V",
+    "span_mm": 94.9,
+    "pads": 9
+   },
+   {
+    "net": "/ADC_NTC/NTC2_ADC",
+    "span_mm": 88.1,
+    "pads": 4
+   },
+   {
+    "net": "/Power_Input/VIN_S",
+    "span_mm": 84.6,
+    "pads": 8
+   },
+   {
+    "net": "/Display_RTC/DISP_3V3",
+    "span_mm": 77.6,
+    "pads": 3
+   },
+   {
+    "net": "/Power_Input/V24_D",
+    "span_mm": 60.7,
+    "pads": 9
+   },
+   {
+    "net": "/Power_Input/SS_GATE",
+    "span_mm": 54.7,
+    "pads": 5
+   },
+   {
+    "net": "/CH4_AIN",
+    "span_mm": 51.6,
+    "pads": 4
+   }
+  ]
+ },
+ "keepouts": {
+  "_doc": "Q-10: may a net change layer to pass under a keepout?",
+  "layer_change_allowed": false
+ },
+ "silkscreen": {
+  "_doc": "Q-14: references hidden by default; set false for boards assembled or debugged by third parties.",
+  "references_hidden": true
+ },
+ "teardrops": {
+  "_doc": "Q-15: teardrops off by default.",
+  "allowed": false,
+  "allowed_patterns": []
+ },
+ "via_in_pad": {
+  "_doc": "Q-05: same-net thermal vias in exposed/heatsink pads are allowed only for the listed reference designators (assessed per chip against its datasheet).",
+  "allowed_refs": []
+ },
+ "shared_pad_gaps": {
+  "_doc": "Q-16 (improvements entry 6): may the router narrow two or more tracks to pass them through the same gap between two adjacent pads? Default is no - ask the user this alongside the layer/copper questions in section 0. false: every gap carrying 2+ tracks is FAIL. true: it is WARN instead, and still listed in the report.",
+  "allowed": false
+ },
+ "plane_net_exceptions": {
+  "_doc": "Q-17 (improvements entry 7): pads of a plane net (GND/+3.3V-style net with its own inner-layer zone) that are allowed to reach their plane through a same-net via elsewhere instead of their own via, because there is no room for one at the pad itself. Each entry needs a reason; audited as INFO instead of FAIL.",
+  "allowed": []
+ },
+ "detour_limits": {
+  "_doc": "Q-18 (improvements entry 10): a track may go around a component instead of passing under it only while the detour stays within these two limits AND adds no via. Both must be satisfied.",
+  "max_length_increase_pct": 50,
+  "max_length_increase_mm": 10
+ },
+ "priority_routing": {
+  "_doc": "OPT-IN phased routing. Empty means the default single pass, which is what most boards want. List the nets to route FIRST, before anything else claims a channel; they are then locked and the rest of the board is routed around them. Measured trade on one 4-layer board: critical-net vias halved (24 -> 10), at the cost of about 10 more unrouted connections out of 350. That cost did NOT shrink when the set was halved, so choose the smallest set you genuinely care about and expect to finish the remainder by hand.",
+  "critical_nets": [],
+  "_selection_hint": "Good candidates: current-carrying rails routed as tracks, multi-drop buses, clocks, anything whose via count matters. Poor candidates: 2-pad point-to-point nets - they route identically either way and only consume channels early."
+ },
+ "router_costs": {
+  "_doc": "Freerouting autorouter costs, written to a .rules file by rules_writer.py and passed with -dr. These are GUI settings by default, so they live in whoever ran the router rather than in the project; putting them here makes a run reproducible. via_cost is the lever worth knowing: vias on power and long-haul nets are inductance and return-path discontinuities, and raising the cost makes the router avoid them. Freerouting default is 50.",
+  "via_cost": 50,
+  "plane_via_cost": 5,
+  "ripup_cost": 100,
+  "pref_cost": 1,
+  "against_cost": 2,
+  "preferred_direction": {},
+  "_not_settable": "automatic neckdown, vias-snap-to-SMD-pad-centers and drag-components are interactive-editor state, absent from the rules vocabulary and unreachable from any script. Turn them off in the Freerouting GUI; the audit catches their effects regardless (via-in-pad FAILs, neckdowns are stripped, footprint identity is verified)."
+ },
+ "layout_checks": {
+  "_doc": "1.19.0: datasheet layout rules turned into measurable checks, run by layout_measure.py check (references/10_datasheet_layout_review.md). kelvin: SENSE pad of a current monitor, SHUNT pad on that net, LOAD pad the load current reaches through the shunt - PASS when no copper is shared and the sense pad cannot reach the load except through the shunt pad. decoupling: routed length from an IC pin to its capacitor pad, surface: true to forbid the plane hop. separation: minimum same-layer gap between two net groups (clock vs analog inputs), exempt [x, y, r] around the IC pins. Every list starts EMPTY - each entry is a design decision taken from a datasheet.",
+  "kelvin": [
+   {
+    "sense": "U2.10",
+    "shunt": "R7.1",
+    "load": "C7.1",
+    "why": "INA226 p.31 Kelvin IN+"
+   },
+   {
+    "sense": "U2.9",
+    "shunt": "R7.2",
+    "load": "F11.1",
+    "why": "INA226 p.31 Kelvin IN-"
+   }
+  ],
+  "decoupling": [
+   {
+    "pin": "U1.1",
+    "cap": "C11.1",
+    "max_mm": 4.0,
+    "surface": true,
+    "why": "XL1509 p.8 CIN at PIN1"
+   },
+   {
+    "pin": "U2.6",
+    "cap": "C13.1",
+    "max_mm": 3.0,
+    "surface": true,
+    "why": "INA226 p.31 VS bypass"
+   },
+   {
+    "pin": "U4.8",
+    "cap": "C40.1",
+    "max_mm": 3.0,
+    "surface": true,
+    "why": "ADS1115 p.38 bypass, no via"
+   },
+   {
+    "pin": "U5.8",
+    "cap": "C41.1",
+    "max_mm": 3.0,
+    "surface": true,
+    "why": "ADS1115 p.38 bypass, no via"
+   },
+   {
+    "pin": "U6.8",
+    "cap": "C42.1",
+    "max_mm": 3.0,
+    "surface": true,
+    "why": "ADS1115 p.38 bypass, no via"
+   }
+  ],
+  "separation": [
+   {
+    "a": [
+     "/CH1_AIN",
+     "/CH2_AIN",
+     "/CH3_AIN",
+     "/CH4_AIN"
+    ],
+    "b": [
+     "/SDA",
+     "/SCL"
+    ],
+    "min_mm": 0.5,
+    "exempt": [
+     140.75,
+     93.0,
+     4.0
+    ],
+    "why": "ADS1115 p.38 digital away from analog (U4)"
+   },
+   {
+    "a": [
+     "/CH5_AIN",
+     "/CH6_AIN",
+     "/CH7_AIN",
+     "/CH8_AIN"
+    ],
+    "b": [
+     "/SDA",
+     "/SCL"
+    ],
+    "min_mm": 0.5,
+    "exempt": [
+     143.0,
+     111.0,
+     4.0
+    ],
+    "why": "ADS1115 p.38 digital away from analog (U5)"
+   },
+   {
+    "a": [
+     "/ADC_NTC/NTC1_ADC",
+     "/ADC_NTC/NTC2_ADC"
+    ],
+    "b": [
+     "/SDA",
+     "/SCL"
+    ],
+    "min_mm": 0.5,
+    "exempt": [
+     180.0,
+     129.0,
+     4.0
+    ],
+    "why": "ADS1115 p.38 digital away from analog (U6)"
+   }
+  ]
+ },
+ "approved_rule_deviations": {
+  "_doc": "Board review rev. 0.2 (D110 on ServiceOne): approved deviations from the template / fabricator rules, keyed by the .kicad_pro board.design_settings.rules name: {\"min_hole_clearance\": {\"value\": 0.2, \"reason\": \"D110: ...\"}}. apply_settings.js applies the fabricator profile and then puts these values back (printing each one); it refuses a value below the fabricator absolute minimum (profile absolute_min, else its kicad_rules value). Starts EMPTY - every entry is a recorded decision of this project."
+ },
+ "plane_plan": {
+  "_doc": "1.21.0 (L23, references/11): the inner power planes are planned after placement and before routing. plane_plan.py map proposes islands per rail with a trade-off table; the designer decides or draws each outline and records it here; plane_plan.py apply writes the zones, plane_plan.py check and audit section 30 check them. main_planes: the net of each inner plane layer (default: the largest zone). never_split: nets whose plane layer takes no island. gap_by_voltage: island clearance by rail voltage. min_neck_mm: thinnest island / main-plane copper accepted. islands: {name, rail, layer, voltage_v, gap_mm, outline [[x, y], ...] mm, pads, decided_by, note}; a zone matches by name = island name, else by (net, layer). islands starts EMPTY - every island is a design decision.",
+  "main_planes": {},
+  "never_split": [
+   "GND"
+  ],
+  "gap_by_voltage": [
+   {
+    "max_v": 5,
+    "gap_mm": 0.3
+   },
+   {
+    "max_v": 30,
+    "gap_mm": 0.5
+   },
+   {
+    "max_v": 60,
+    "gap_mm": 1
+   },
+   {
+    "max_v": 1000,
+    "gap_mm": 2
+   }
+  ],
+  "min_neck_mm": 1,
+  "islands": []
+ },
+ "datasheet_layout": {
+  "_doc": "Datasheet layout suggestions (playbook B0, reference 10 section 0), written by datasheet_layout_scan.py before routing. Each part with layout pages is reviewed: every rule gets {\"rule\": text, \"source\": \"doc p.N\", \"applied_as\": \"layout_checks.decoupling U10.1-C31.1 | placement: C31 moved to the pin | netclass POWER_DC | route_finish --avoid | keep-out | n/a: reason\"}; status \"applied\" or \"n/a\" (with note). The audit FAILs pre-flight while any part is \"pending\"; route_freerouting.py refuses to export (--skip-datasheet-review).",
+  "scanned": "2026-11-16",
+  "missing_documents": [],
+  "parts": [
+   {
+    "part": "B2B-XH-A",
+    "refs": [
+     "J2",
+     "J3"
+    ],
+    "pages": [
+     "B2B-XH-A_datasheet.pdf p1"
+    ],
+    "pages_sig": "52226d3178",
+    "status": "n/a",
+    "rules": [],
+    "note": "Page 1 is the connector drawing and its land pattern (footprint check only); no layout rule."
+   },
+   {
+    "part": "XL1509-5.0E1",
+    "refs": [
+     "U1"
+    ],
+    "pages": [
+     "XL1509-5.0E1_datasheet.pdf p8"
+    ],
+    "pages_sig": "a3517b1eb6",
+    "status": "applied",
+    "rules": [
+     {
+      "rule": "CIN and C1 must be placed near to PIN1 and PIN5~8",
+      "source": "XL1509 p.8",
+      "applied_as": "placement: C11 (1 uF) 2.6 mm from U1.1, C10 bulk 5 mm from the buck (thermal rule); layout_checks.decoupling U1.1-C11.1 max 4 mm, surface"
+     },
+     {
+      "rule": "Heavy lines must be kept short and use ground plane construction",
+      "source": "XL1509 p.8",
+      "applied_as": "netclass POWER 0.5 mm on V24_F, BUCK_SW, +5V, GND; GND pour on B.Cu with vias at U1.5-8, D3.2, C10/C11/C12 GND"
+     },
+     {
+      "rule": "Keep feedback wiring away from inductor flux",
+      "source": "XL1509 p.8",
+      "applied_as": "route: U1.3 (FB, +5V) taken from C12 + side, not under or beside L2; checked on the render"
+     },
+     {
+      "rule": "CFF / programming resistors near FB (adjustable version)",
+      "source": "XL1509 p.8",
+      "applied_as": "n/a: fixed 5.0 V version, no divider"
+     }
+    ],
+    "note": ""
+   },
+   {
+    "part": "INA226AIDGSR",
+    "refs": [
+     "U2"
+    ],
+    "pages": [
+     "INA226AIDGSR_datasheet.pdf p31"
+    ],
+    "pages_sig": "2cac7661b5",
+    "status": "applied",
+    "rules": [
+     {
+      "rule": "Connect IN+ and IN- to the sensing resistor using a Kelvin connection",
+      "source": "INA226 p.31",
+      "applied_as": "layout_checks.kelvin U2.10-R7.1 (load C7.1) and U2.9-R7.2 (load F11.1); R13 in parallel joined on the power copper"
+     },
+     {
+      "rule": "Bypass capacitor 0.1 uF as close as possible to VS and GND",
+      "source": "INA226 p.31",
+      "applied_as": "placement: C13 2.1 mm from U2.6; layout_checks.decoupling U2.6-C13.1 max 3 mm, surface"
+     },
+     {
+      "rule": "Connect VBUS to the power supply rail",
+      "source": "INA226 p.31",
+      "applied_as": "route: U2.8 to +24V_SENS on the load side of the shunt"
+     }
+    ],
+    "note": ""
+   },
+   {
+    "part": "ADS1115IDGSR",
+    "refs": [
+     "U4",
+     "U5",
+     "U6"
+    ],
+    "pages": [
+     "ADS1115IDGSR_datasheet.pdf p38",
+     "ADS1115IDGSR_datasheet.pdf p39"
+    ],
+    "pages_sig": "d00dbd77f1",
+    "status": "applied",
+    "rules": [
+     {
+      "rule": "Separate analog and digital components / signals; route digital lines away from analog",
+      "source": "ADS1115 p.38",
+      "applied_as": "placement: ADCs in the centre, away from the buck; layout_checks.separation SDA/SCL vs AIN nets min 0.5 mm"
+     },
+     {
+      "rule": "Bypass capacitors on the same layer, close, no vias between them and the device",
+      "source": "ADS1115 p.38",
+      "applied_as": "placement: C40/C41/C42 2.1 mm from VDD; layout_checks.decoupling U4.8-C40.1, U5.8-C41.1, U6.8-C42.1 max 3 mm, surface"
+     },
+     {
+      "rule": "Input filter capacitors at the AIN pins (layout example)",
+      "source": "ADS1115 p.39",
+      "applied_as": "placement: C111-C181, C404, C414 2.1-2.6 mm from their AIN pins (placement near rules)"
+     },
+     {
+      "rule": "Good ground return paths; do not cut the ground plane",
+      "source": "ADS1115 p.38",
+      "applied_as": "GND pour on B.Cu kept whole under the ADCs; few B.Cu tracks there, checked on the render"
+     },
+     {
+      "rule": "Differential inputs need a differential capacitor",
+      "source": "ADS1115 p.38",
+      "applied_as": "n/a: single-ended inputs"
+     }
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "mechanical_keepouts": [
+  {
+   "refs": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6",
+    "H7",
+    "H8"
+   ],
+   "radius_mm": 3.7,
+   "layers": "all",
+   "why": "owner 2026-11-16: largest contact 6.4 mm (M3 head, hex spacer) / 2 + 0.5 mm"
+  }
+ ]
+}
