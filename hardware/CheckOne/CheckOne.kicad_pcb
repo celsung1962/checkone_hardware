@@ -105,7 +105,7 @@
 		(descr "Resistor 120 ohm 0.1% 25 ppm/K thin film 1206 (TC series) - loop shunt")
 		(tags "resistor")
 		(property "Reference" "R160"
-			(at 0 -1.82 0)
+			(at -0.000001 -2.000001 0)
 			(layer "F.SilkS")
 			(uuid "c210c44f-2cbe-4a56-b89e-1230704aeeb5")
 			(effects
@@ -1654,7 +1654,7 @@
 		(at 195.4 69.8 180)
 		(descr "DC jack 5.5 x 2.1 mm, centre +, THT (XUNPU)")
 		(property "Reference" "J1"
-			(at 0 -2.5 180)
+			(at 7.1 4.65 0)
 			(layer "F.SilkS")
 			(uuid "03946462-2b06-4654-bd6e-bf646525537d")
 			(effects
@@ -4355,7 +4355,7 @@
 		(descr "Capacitor 100 nF 50 V X7R 0603")
 		(tags "capacitor")
 		(property "Reference" "C1"
-			(at 0 -1.43 90)
+			(at -2.5 -0.750001 0)
 			(layer "F.SilkS")
 			(uuid "59fee011-4181-4036-8c80-ebe54feb9b19")
 			(effects
@@ -5557,7 +5557,7 @@
 		(descr "MX1.25 4-pin vertical SMD (SHOU HAN, PicoBlade 53398 compatible) - display cable")
 		(tags "connector Molex PicoBlade vertical")
 		(property "Reference" "J6"
-			(at 0 -3.1 0)
+			(at 2.25 -3.2 0)
 			(layer "F.SilkS")
 			(uuid "00173154-b10d-446a-932a-78f6d7f6789f")
 			(effects
@@ -23722,8 +23722,9 @@
 		(descr "LED green 0805 (Hubei KENTO)")
 		(tags "LED")
 		(property "Reference" "LED4"
-			(at 0 -1.65 0)
+			(at 2.499999 -5.75 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "0f9f04ee-d1e8-4143-88ce-388f38d5bf00")
 			(effects
 				(font
@@ -24763,7 +24764,7 @@
 		(descr "M3 hole, CYD spacer (87 x 49 mm, to confirm O5)")
 		(tags "mountinghole M3")
 		(property "Reference" "H6"
-			(at 0 -4.2 0)
+			(at 2.751264 4.25 0)
 			(layer "F.SilkS")
 			(uuid "257e70d2-9a98-4440-96bb-7320a3ba56f0")
 			(effects
@@ -24884,8 +24885,9 @@
 		(descr "LED green 0805 (Hubei KENTO)")
 		(tags "LED")
 		(property "Reference" "LED3"
-			(at 0 -1.65 0)
+			(at 3.999999 -6 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "b6ec58c7-8bfc-4c14-a27a-7c3306fbcc29")
 			(effects
 				(font
@@ -27223,7 +27225,7 @@
 		(descr "Capacitor 10 nF 50 V X7R 0603")
 		(tags "capacitor")
 		(property "Reference" "C404"
-			(at 0 -1.43 180)
+			(at 2.250001 -1.75 0)
 			(layer "F.SilkS")
 			(uuid "be1016b7-2514-47eb-9b64-fb6fb56b7282")
 			(effects
@@ -27549,8 +27551,9 @@
 		(descr "LED green 0805 (Hubei KENTO)")
 		(tags "LED")
 		(property "Reference" "LED1"
-			(at 0 -1.65 0)
+			(at 100.7 158.6 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "d9957e05-9e76-4429-9b3a-e0400532c209")
 			(effects
 				(font
@@ -28578,8 +28581,9 @@
 		(descr "LED green 0805 (Hubei KENTO)")
 		(tags "LED")
 		(property "Reference" "LED2"
-			(at 0 -1.65 0)
+			(at 3.249999 -6.250001 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "ebe0f2ea-4275-40ff-bf15-412e9313c1d6")
 			(effects
 				(font
@@ -28792,7 +28796,7 @@
 		(descr "PTC fuse 1.6 A hold, 30 V, 1812")
 		(tags "fuse")
 		(property "Reference" "F1"
-			(at 0 -2.65 90)
+			(at 3.75 -2 0)
 			(layer "F.SilkS")
 			(uuid "46230835-34cc-4bb5-9184-aba8be0482b2")
 			(effects
@@ -33554,7 +33558,7 @@
 		(descr "MX1.25 4-pin vertical SMD (SHOU HAN, PicoBlade 53398 compatible) - display cable")
 		(tags "connector Molex PicoBlade vertical")
 		(property "Reference" "J5"
-			(at 0 -3.1 0)
+			(at 3.25 4.3 0)
 			(layer "F.SilkS")
 			(uuid "105f0e8d-ad02-4992-bb04-7e90cd9df583")
 			(effects
@@ -35955,25 +35959,47 @@
 		(layer "Edge.Cuts")
 		(uuid "d375b85b-9001-434e-9d8f-0d65bbbbf353")
 	)
-	(gr_text "I2C CYD: GND SCL SDA 3V3"
-		(at 119 121.5 0)
+	(gr_text "I2C CYD"
+		(at 114.999999 121.5 0)
+		(layer "F.SilkS")
+		(uuid "9ebd85b5-581c-4dbf-9353-129f98bb890a")
+		(effects
+			(font
+				(size 1 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "GND SCL SDA 3V3"
+		(at 119 114 0)
 		(layer "F.SilkS")
 		(uuid "1cd4229e-2a05-4233-8514-aad2baa6f62b")
 		(effects
 			(font
-				(size 0.7 0.7)
-				(thickness 0.105)
+				(size 1 0.8)
+				(thickness 0.15)
 			)
 		)
 	)
-	(gr_text "I2C JC3248: GND 3V3 SDA SCL"
-		(at 133 123.5 0)
+	(gr_text "GND 3V3 SDA SCL"
+		(at 131.75 121.449999 0)
 		(layer "F.SilkS")
 		(uuid "4cdfb172-3084-4f13-9d6c-0af71e12838d")
 		(effects
 			(font
-				(size 0.7 0.7)
-				(thickness 0.105)
+				(size 1 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "I2C JC3248"
+		(at 132.999999 127.75 0)
+		(layer "F.SilkS")
+		(uuid "c7a6ddaf-4062-40a6-83ae-0eee61cafa4f")
+		(effects
+			(font
+				(size 1 0.8)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -35983,52 +36009,63 @@
 		(uuid "33ca7fca-17e8-4e68-ab5d-ec62fdb9b496")
 		(effects
 			(font
-				(size 0.7 0.7)
-				(thickness 0.105)
+				(size 1 0.8)
+				(thickness 0.15)
 			)
 		)
 	)
-	(gr_text "3V3D"
-		(at 195.7 135.8 0)
+	(gr_text "24V DC\n(+) centro"
+		(at 185.899999 70.25 0)
 		(layer "F.SilkS")
-		(uuid "4f15f31e-1c23-4637-9686-dd2251267521")
+		(uuid "a96e9d1b-9534-4fa1-8da7-4cfb466fab31")
 		(effects
 			(font
-				(size 0.7 0.7)
-				(thickness 0.105)
-			)
-		)
-	)
-	(gr_text "3V3"
-		(at 195.7 138 0)
-		(layer "F.SilkS")
-		(uuid "e97ced24-8a63-464e-ad23-db6132b58771")
-		(effects
-			(font
-				(size 0.7 0.7)
-				(thickness 0.105)
+				(size 1 0.8)
+				(thickness 0.15)
 			)
 		)
 	)
 	(gr_text "5V"
-		(at 195.7 140.2 0)
+		(at 202.193809 139.2 0)
 		(layer "F.SilkS")
 		(uuid "3e62b165-2cbb-482d-a29c-07745ffd7507")
 		(effects
 			(font
-				(size 0.7 0.7)
-				(thickness 0.105)
+				(size 1 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "3V3"
+		(at 202.574762 137 0)
+		(layer "F.SilkS")
+		(uuid "e97ced24-8a63-464e-ad23-db6132b58771")
+		(effects
+			(font
+				(size 1 0.8)
+				(thickness 0.15)
 			)
 		)
 	)
 	(gr_text "24V"
-		(at 195.7 142.4 0)
+		(at 202.574762 141.4 0)
 		(layer "F.SilkS")
 		(uuid "0858ff53-d871-4cd2-b6a3-2bafa037dfd7")
 		(effects
 			(font
-				(size 0.7 0.7)
-				(thickness 0.105)
+				(size 1 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "3V3D"
+		(at 202.974762 134.8 0)
+		(layer "F.SilkS")
+		(uuid "4f15f31e-1c23-4637-9686-dd2251267521")
+		(effects
+			(font
+				(size 1 0.8)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36038,8 +36075,19 @@
 		(uuid "c91c5327-59eb-4010-8b7e-237d0db92274")
 		(effects
 			(font
-				(size 0.7 0.7)
-				(thickness 0.105)
+				(size 1 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "CheckOne · AQTech  rev 1.1"
+		(at 122 108.25 0)
+		(layer "F.SilkS")
+		(uuid "43afabdb-3662-43fd-9e6a-1628abf142aa")
+		(effects
+			(font
+				(size 1 0.8)
+				(thickness 0.24)
 			)
 		)
 	)
@@ -36049,8 +36097,8 @@
 		(uuid "dfad5d2e-8589-4042-9138-8aa8d8e7b7df")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36060,8 +36108,8 @@
 		(uuid "42cffbef-7f03-447d-aa90-3586a839bdca")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36071,8 +36119,8 @@
 		(uuid "4f84efd2-f845-4fde-8c94-cce5819a5b7e")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36082,8 +36130,8 @@
 		(uuid "eefa9990-f2fa-405f-aa14-84b55a1ab5f6")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36093,8 +36141,8 @@
 		(uuid "76bb63bb-121a-4a65-a4c4-907400c8aa9a")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36104,8 +36152,8 @@
 		(uuid "026471b1-dba6-49be-b05f-c554bb862b3b")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36115,8 +36163,8 @@
 		(uuid "848c5abd-e9a3-421e-bb84-33304f9d0e1e")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36126,8 +36174,8 @@
 		(uuid "b02f9369-c8a9-4ec2-90fc-af157bd02976")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36137,8 +36185,8 @@
 		(uuid "2df58cd6-39c1-42bb-90ce-c25e3e9cd5b2")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36148,8 +36196,8 @@
 		(uuid "9012c0ee-76f0-4873-9571-ce990f35e140")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36159,8 +36207,8 @@
 		(uuid "56dc5736-ed0f-4249-9ce5-3f7dfaf50ed3")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36170,8 +36218,8 @@
 		(uuid "8e661051-ac76-4d94-8d51-b92a8a6c21a5")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36181,8 +36229,8 @@
 		(uuid "59a21852-6129-4bae-b2fa-350aa38bbd19")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36192,8 +36240,8 @@
 		(uuid "0cb8902d-4f40-40eb-b822-1566b2273027")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36203,8 +36251,8 @@
 		(uuid "d377eb0c-660a-450c-8204-2c3912b70c33")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36214,8 +36262,8 @@
 		(uuid "a2543291-9ead-4fde-9791-8311b4237387")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36225,8 +36273,8 @@
 		(uuid "42e25985-bc14-45df-a4a8-76bd48d78cf8")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36236,8 +36284,8 @@
 		(uuid "6cd2521e-32b7-4251-988c-a48888c33673")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36247,8 +36295,8 @@
 		(uuid "f8c9c4c3-b946-4cd8-a0e6-44a0cff98596")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36258,8 +36306,8 @@
 		(uuid "edf31b59-4d93-4130-9e67-9dfbbe6da308")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36269,8 +36317,8 @@
 		(uuid "f4087312-2619-47ca-970b-a4818fe2faf5")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36280,8 +36328,8 @@
 		(uuid "3b98d5be-fb3b-4423-9b8d-cf3b929b1c26")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36291,8 +36339,8 @@
 		(uuid "348e119a-0bdd-4b90-90eb-e335e3f034d6")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36302,8 +36350,8 @@
 		(uuid "55508164-a040-48fe-966c-c2accb56feed")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36313,8 +36361,8 @@
 		(uuid "459d4b50-a33d-4462-a32c-7a702417d5bd")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36324,8 +36372,8 @@
 		(uuid "4e1fa1d8-0f44-4463-99ac-ca92c5080361")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36335,8 +36383,8 @@
 		(uuid "ede9a8cd-e1da-4392-affa-be1ccaf7fa4a")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36346,8 +36394,8 @@
 		(uuid "68f8e8fa-1931-4e73-bf95-642bda39b7a7")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36357,8 +36405,8 @@
 		(uuid "26aaed33-c0ff-4900-8093-c3a9bc179d15")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36368,8 +36416,8 @@
 		(uuid "ae08fb9a-c2f4-4daa-950a-0c63d23768ce")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36379,8 +36427,8 @@
 		(uuid "f1289965-3a61-4f62-b01f-df1170449054")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -36390,24 +36438,13 @@
 		(uuid "89deea1a-f269-431f-95c9-e4bf1ce7f7f1")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
-			)
-		)
-	)
-	(gr_text "24V DC  (+) centro"
-		(at 195.4 73 0)
-		(layer "F.SilkS")
-		(uuid "a96e9d1b-9534-4fa1-8da7-4cfb466fab31")
-		(effects
-			(font
-				(size 0.9 0.9)
-				(thickness 0.18)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
 	(gr_text "NTC2"
-		(at 96 123.4 0)
+		(at 93 122.4 0)
 		(layer "F.SilkS")
 		(uuid "3b41a153-4623-4a25-aae5-549882592119")
 		(effects
@@ -36418,7 +36455,7 @@
 		)
 	)
 	(gr_text "NTC1"
-		(at 194.5 134.6 0)
+		(at 190 132.85 0)
 		(layer "F.SilkS")
 		(uuid "c6551e72-1875-468a-b668-f401072736e8")
 		(effects
@@ -36439,19 +36476,8 @@
 			)
 		)
 	)
-	(gr_text "CheckOne · AQTech  rev 1.1"
-		(at 122 108.25 0)
-		(layer "F.SilkS")
-		(uuid "43afabdb-3662-43fd-9e6a-1628abf142aa")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.24)
-			)
-		)
-	)
 	(gr_text "CH1"
-		(at 111.96 67.4 0)
+		(at 111.96 67.8 0)
 		(layer "F.SilkS")
 		(uuid "85ffc867-a14a-4037-8c04-48b6a7bb580e")
 		(effects
@@ -36462,7 +36488,7 @@
 		)
 	)
 	(gr_text "CH5"
-		(at 111.96 132.6 0)
+		(at 111.96 132.199999 0)
 		(layer "F.SilkS")
 		(uuid "bffabe8b-57e5-4fb7-8269-64d2dedf5438")
 		(effects
@@ -36473,7 +36499,7 @@
 		)
 	)
 	(gr_text "CH2"
-		(at 133.88 67.4 0)
+		(at 133.88 67.8 0)
 		(layer "F.SilkS")
 		(uuid "692f3206-6040-42d2-89b6-ae453a716a36")
 		(effects
@@ -36484,7 +36510,7 @@
 		)
 	)
 	(gr_text "CH6"
-		(at 133.88 132.6 0)
+		(at 133.88 132.199999 0)
 		(layer "F.SilkS")
 		(uuid "e75a165a-6b07-4ca9-b458-645daa16223b")
 		(effects
@@ -36495,7 +36521,7 @@
 		)
 	)
 	(gr_text "CH3"
-		(at 155.8 67.4 0)
+		(at 155.8 67.8 0)
 		(layer "F.SilkS")
 		(uuid "71136a8a-0c40-4845-9c20-7ee0bbfbdf50")
 		(effects
@@ -36506,7 +36532,7 @@
 		)
 	)
 	(gr_text "CH7"
-		(at 155.8 132.6 0)
+		(at 155.8 132.199999 0)
 		(layer "F.SilkS")
 		(uuid "47ead42c-035e-474a-b0a7-9b3a8f844cb3")
 		(effects
@@ -36517,7 +36543,7 @@
 		)
 	)
 	(gr_text "CH4"
-		(at 177.72 67.4 0)
+		(at 177.72 67.8 0)
 		(layer "F.SilkS")
 		(uuid "eff8ea4f-7b54-4e6e-b752-d30fc1be915a")
 		(effects
@@ -36528,7 +36554,7 @@
 		)
 	)
 	(gr_text "CH8"
-		(at 177.72 132.6 0)
+		(at 177.72 132.199999 0)
 		(layer "F.SilkS")
 		(uuid "ce89b387-cea7-431c-aeb5-22afb8c812c7")
 		(effects
@@ -36539,97 +36565,97 @@
 		)
 	)
 	(gr_text "24V"
-		(at 110 111.35 0)
+		(at 110 112.905952 90)
 		(layer "B.SilkS")
 		(uuid "332a7c69-391a-4caf-8b0c-af9709486625")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 			(justify mirror)
 		)
 	)
 	(gr_text "5V"
-		(at 113.4 111.35 0)
+		(at 113.4 112.429761 90)
 		(layer "B.SilkS")
 		(uuid "eeee332e-c6cd-4485-b01a-b80a7232a481")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 			(justify mirror)
 		)
 	)
 	(gr_text "3V3"
-		(at 116.8 111.35 0)
+		(at 116.799999 112.905952 90)
 		(layer "B.SilkS")
 		(uuid "e35a4088-8911-4c15-9e35-1d8080526042")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 			(justify mirror)
 		)
 	)
 	(gr_text "3V3A"
-		(at 120.2 111.35 0)
+		(at 120.199999 113.334522 90)
 		(layer "B.SilkS")
 		(uuid "64ebb197-a326-483a-a04d-eda1aa67e09c")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 			(justify mirror)
 		)
 	)
 	(gr_text "SDA"
-		(at 123.6 111.35 0)
+		(at 123.6 112.929761 90)
 		(layer "B.SilkS")
 		(uuid "e89f1fd7-338d-407b-9c38-b81f1583aaf9")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 			(justify mirror)
 		)
 	)
 	(gr_text "SCL"
-		(at 127 111.35 0)
+		(at 127 112.905952 90)
 		(layer "B.SilkS")
 		(uuid "2b842488-a9eb-4bb8-9f61-6b04695af007")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 			(justify mirror)
 		)
 	)
 	(gr_text "GND"
-		(at 130.4 111.35 0)
+		(at 130.4 113.048809 90)
 		(layer "B.SilkS")
 		(uuid "fd608d59-9357-4f3f-bda7-602a916f1087")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 			(justify mirror)
 		)
 	)
 	(gr_text "GND"
-		(at 133.8 111.35 0)
+		(at 133.8 113.048809 90)
 		(layer "B.SilkS")
 		(uuid "f20a442d-0593-4552-b045-19aeacc147ee")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
+				(size 1 1)
+				(thickness 0.15)
 			)
 			(justify mirror)
 		)

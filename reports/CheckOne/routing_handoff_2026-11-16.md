@@ -56,10 +56,14 @@ separation fails. Nothing committed yet.
 7. **Geometry**: 2 acute joints (+3.3VA at 117.22, 125.75 B.Cu; V24_D at 200.15, 88.16 B.Cu), 1 off-lattice segment
    (+3.3VA 116.95, 125.48), 1 GND self-crossing (149.60, 114.17 F.Cu), 5 GND track ends up to 0.16 mm off via centres.
 8. **Thermal reliefs** starved (DRC): U2 pin 1 and J16 pin 2 (GND); acceptable or add a spoke.
-9. **Silkscreen text below the JLCPCB 1.0 mm height** (DRC `text_height`, 49): the terminal labels (+24 / GND / Iin /
-   Iout, 0.8 mm), the display connector labels (0.7 mm), the LED and test-pad labels. Owner decision: enlarge to
-   1.0 mm, or keep and accept the fabricator's legibility risk. This is why `hw_checks` FAILs (43 new DRC items:
-   text_height, the 2 unconnected, the 2 starved thermals); refresh the baseline once decided.
+9. ~~Silkscreen text below the JLCPCB 1.0 mm height~~ — done 2026-11-16 (owner: enlarge to 1.0 mm). All 63 board
+   texts are 1.0 mm high with a 0.15 mm line (long labels and the LED labels 0.8 mm wide). Moved so that no text
+   covers a pad, an outline, a designator or another text: CH labels 0.4 mm further from the terminals; test-pad
+   labels vertical under each pad; LED labels right of the LEDs; display I2C labels split into pin names
+   ("GND SCL SDA 3V3" above J5, "GND 3V3 SDA SCL" below J6) and module names ("I2C CYD", "I2C JC3248"); jack label
+   "24V DC / (+) centro" on two lines left of J1. Designators re-placed: J5, J6, C404, C1, F1, J1, H6, R160, C41;
+   LED1-LED4 designators hidden (no free spot; the LEDs are named by their labels). DRC `text_height` 0.
+   `hw_checks` now FAILs only on the 2 starved thermal reliefs (item 8).
 10. **3D models** (13 FAIL): J11-J18 (KF2EDGRC), L1 / L2 (FCH1040), J1 (DC-005), F1 (path not found).
 
 After the interactive work: refill and save the zones, `kicad_audit.js` with `audit_gate.py` against this board,
