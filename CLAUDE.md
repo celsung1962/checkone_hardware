@@ -22,7 +22,10 @@ once the owner confirms them (O1). Work on v1 goes on as revision 1.1 (principle
    commit (ERC / DRC against `tools/hw_checks/baseline/`, datasheet manifest).
 7. Form follows the v1 project and the AQTech repositories (GapOne_V2); engineering follows this brief.
 8. Source documents: `docs/requirements/` — start with `CheckOne_requirements.md` (English, consolidated, with the
-   conflicts C-1…C-12 and gaps G-1…G-6); the Portuguese description is the source of truth for the product.
+   conflicts C-1…C-14 and gaps G-1…G-8); the Portuguese description is the source of truth for the product.
+   `meeting_2026-11-16_Sergio.md` holds Sergio's requests: review the electronics, route, check the fit in the
+   enclosure, order with the AMP. He allows any change but wants the important ones reported to him before the
+   version is closed: list every such change in the rev 1.1 report.
 9. **v1 is generated.** `hardware/CheckOne/gerador/design.py` is the single circuit definition; `gen_sch.py` and
    `gen_pcb.py` write the schematic and the board from it. Until the owner decides otherwise (O2), a circuit change
    goes into `design.py` and both files are regenerated; never hand-edit one side only.
@@ -57,7 +60,7 @@ temperatures (third ADS1115, probe up to 150 °C), keeps time (PCF8563 + CR2032)
 ## 3. Open items [OPEN]
 - **O1 — Confirm the description as the contract.** Owner to confirm section 2 and decide the conflicts C-1…C-12 of
   `docs/requirements/CheckOne_requirements.md` (the ones that change the board: C-5 display 5 V path, C-6 INA226
-  supply, C-7 test pads, C-9 / C-10 placement, C-12 fault current into 3V3A).
+  supply, C-7 test pads, C-9 / C-10 placement, C-12 fault current into 3V3A, C-14 board size).
 - **O2 — How v1 is edited.** Keep the generator (`gerador/design.py` → schematic and board) or convert the project to
   KiCad 10 and edit it directly (the AQTech form). The generator writes KiCad 7 files with Portuguese names, bare
   footprint names on the board and no LCSC field on the footprints (G-5). Until decided: generator only (rule 9).
@@ -73,6 +76,11 @@ temperatures (third ADS1115, probe up to 150 °C), keeps time (PCF8563 + CR2032)
   pinout, SMAJ5.0A leakage at 2.5 V, AQTech logo SVG.
 - **O6 — Simulation files (G-1).** The ngspice netlists and results of DS 9 are not in the hand-over.
 - **O7 — Sensor consumption (G-3).** GapOne / FluxOne current per sensor, for the budget and the PTC choice.
+- **O9 — Fit in the enclosure (C-14, G-8).** The v1 outline is 122.1 × 87.1 mm with holes on 115.00 × 80.00 mm, as
+  the description says; whether that already has Sergio's 1 mm per side of clearance needs the AK-P-08A drawing or
+  his caliper measurements (inside length / width, hole positions of the lid screws, window positions).
+- **O10 — Order with the AMP.** Sergio would like the board ordered with the GapOne AMP if the routing is done the
+  same day. Not before O1 / O3 / O4 / O9 are closed and the routing audit passes; owner's call.
 - **O8 — Revision and date.** v1 title blocks: rev 1.0, no date, A2 sheets. Next: 1.1 with the date of the first
   change on every sheet and the board (principle 8).
 

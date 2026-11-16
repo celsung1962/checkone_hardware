@@ -6,6 +6,7 @@ Requirements, architecture documents and meeting notes. Mark obsolete revisions 
 | File | What it is | Source |
 |---|---|---|
 | `CheckOne_requirements.md` | Consolidated hardware requirements in English, with the source of each item, conflicts C-1…C-12 and gaps G-1…G-6 | written 2026-11-16 from the files below and the v1 KiCad project |
+| `meeting_2026-11-16_Sergio.md` | Meeting Celso / Sergio: what exists, soft-start reason, board size, Sergio's four requests (English points + Portuguese original) | owner's summary, 2026-11-16 |
 | `CheckOne_Descricao_do_equipamento_2026-11-16.html` | Equipment description (Portuguese): purpose, sensors, specifications, operator interface, electronics, logging, mechanics and connectors, BOM with JLCPCB / LCSC codes, ngspice verification, industry comparison, items to confirm, future ideas | claude.ai artifact `Xh4kmXWBBsN2iChEBn26U2`, version 1794796794-94c8, copied 2026-11-16 (unchanged HTML) |
 | `CheckOne_Descricao_do_equipamento_2026-11-16.md` | Text extraction of the description, for grep; the HTML is the source | made from the HTML on 2026-11-16 |
 | `CheckOne_web_page_demo_2026-11-16.html` | The embedded web page in demo mode: Painel, Histórico, Configuração | claude.ai artifact `Ht5hfXcbP4EHC8VT1EJMPc`, version 1794751478-bc3b, copied 2026-11-16 |

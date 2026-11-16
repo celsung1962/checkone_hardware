@@ -3,7 +3,8 @@
 AQTech Power Prognostics · consolidated 2026-11-16 from the documents listed in section 1 · owner Celso Souza
 
 This file gathers what the source documents say about the CheckOne hardware, in English, with a reference to the
-source of each item, and lists where the sources disagree (section 10) and what they do not settle (section 11).
+source of each item, and lists where the sources disagree (section 10, C-1…C-14) and what they do not settle
+(section 11, G-1…G-8).
 The sources are in Portuguese and stay unchanged. Numbers recomputed here come from `calc/checkone_budget.py`.
 
 ## 1. Sources
@@ -17,6 +18,7 @@ The sources are in Portuguese and stay unchanged. Numbers recomputed here come f
 | UI | Screen designs, 3.5" (320 × 480) and 4.3" (480 × 800) | `ui_screens/` (Design canvas files) | 5 screens × 2 sizes, AQTech Windy design system |
 | PX | Screens in real pixels (RGB565, firmware font sizes) | `reference/import_2026-11-16/artifacts/` (outside git) | renders of 4 screens |
 | PL | Placement in the AK-P-08A enclosure (3D viewer) | `reference/import_2026-11-16/artifacts/` (outside git) | enclosure, cover cut-out, CYD, main board, KF2EDGRC terminal drawing |
+| MT | Meeting Celso Souza / Sergio Zimath, 2026-11-16 | `meeting_2026-11-16_Sergio.md` | what exists, hot-plug reason for the soft start, board size, Sergio's four requests |
 
 ## 2. Product
 
@@ -117,6 +119,8 @@ The quantities of DS 8.1 agree with the circuit described in DS 5 (checked 2026-
 | C-9 | Terminal courtyards | V1R: only the terminals touch, on purpose | V1 DRC: also J2 (NTC1) overlaps J18 (CH8) | |
 | C-10 | LED1 | — | V1 DRC: LED1 pads closer to the board edge than allowed | |
 | C-11 | Language | repository rule: schematic content in English | V1: sheet names, values and notes in Portuguese | at the next revision |
+| C-13 | What the INA226 measures | DS 5.1 and V1: the sensor bus only, after the π filter, without the display and the electronics | MT: "monitors the power of the whole fixture" | DS is explicit and V1 follows it |
+| C-14 | Board size | DS 7.1 and V1: 122 × 87 mm (V1 outline 122.1 × 87.1 mm, holes 115.00 × 80.00 mm, measured 2026-11-16) | MT: Claude proposed 1 mm more; Sergio left 1 mm less on each side after measuring the enclosure | not clear whether 122 × 87 is already the reduced size; the enclosure drawing (G-8) decides |
 | C-12 | Fault current into 3V3A | DS: the BAT54S protects the converter | calc 3: +24 V on Iin pushes 2.8–3.8 mA per channel into 3V3A through the upper BAT54S diode; the XC6206 cannot sink it, so 3V3A / +3V3 can rise above 3.3 V until the channel PTC trips (up to ~1 s with a 2 A supply, DS 9) | not covered by the simulation, which checks only the ADS pin |
 
 ## 11. Gaps
@@ -129,6 +133,9 @@ The quantities of DS 8.1 agree with the circuit described in DS 5 (checked 2026-
 - G-5 V1 footprint issues: `Package_SO:VSSOP-10_3x3mm_P0.5mm` (ADS1115, INA226) is not in the KiCad 10 library;
   footprints carry no LCSC field and no library nickname on the board (DRC schematic parity: 360 items); V1R item 8
   (BAT54W package, FCH1040 pads, MX1.25 connector) still to check.
+- G-7 The zip "for Claude Code to generate the display firmware" (MT) is not in the hand-over.
+- G-8 No drawing or measured inside dimensions of the AK-P-08A on disk (the 3D viewer PL shows the enclosure but
+  carries no dimensions in text): needed to check the board fit and the holes (MT request 3).
 - G-6 The items DS 11 lists to confirm on real parts: CYD size and holes, window wall depth vs the 12.5 mm
   terminal body, ribs in the windows, sensors' start-up current vs the 200 mA PTCs, CYD display controller,
   AQTech logo SVG, JC4880P443C 26-pin pinout, SMAJ5.0A leakage at 2.5 V.
