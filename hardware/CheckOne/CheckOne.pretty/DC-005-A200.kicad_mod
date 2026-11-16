@@ -10,4 +10,14 @@
   (fp_rect (start -4.5 -0.95) (end 4.5 13.8) (stroke (width 0.1) (type solid)) (fill none) (layer "F.Fab"))
   (fp_rect (start -5.0 -1.3) (end 6.2 14.1) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd"))
   (fp_line (start -4.5 13.8) (end 4.5 13.8) (stroke (width 0.3) (type solid)) (layer "F.SilkS"))
+  (model "${KIPRJMOD}/CheckOne.3dshapes/DC-IN-TH_DC-005-A200.wrl"
+    (offset (xyz 2.33 -3 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
+  )
+  (model "${KIPRJMOD}/CheckOne.3dshapes/DC-IN-TH_DC-005-A200.wrl"
+    (offset (xyz 2.33 -3 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 -90))
+  )
 )

@@ -64,7 +64,15 @@ separation fails. Nothing committed yet.
    "24V DC / (+) centro" on two lines left of J1. Designators re-placed: J5, J6, C404, C1, F1, J1, H6, R160, C41;
    LED1-LED4 designators hidden (no free spot; the LEDs are named by their labels). DRC `text_height` 0.
    `hw_checks` now FAILs only on the 2 starved thermal reliefs (item 8).
-10. **3D models** (13 FAIL): J11-J18 (KF2EDGRC), L1 / L2 (FCH1040), J1 (DC-005), F1 (path not found).
+   Later the same day (owner): **every reference designator hidden on the silkscreen** (166 Reference fields, kept
+   in the footprints and on the Fab layers; `hide_silk_refs.py`). Only the board labels and the BT1 "+" mark remain.
+10. ~~3D models~~ — done 2026-11-16 (owner: every component in the 3D view). EasyEDA models by LCSC code
+    (easyeda2kicad 1.0.1, .wrl as the skill advises) in `hardware/CheckOne/CheckOne.3dshapes/`, aligned to the project
+    footprints from the pad positions and checked on `kicad-cli pcb render`: KF2EDGRC C441238 (rot 180, x +7.62),
+    DC-005-A200 C720557 (rot -90, offset 2.33 / -3.0), BS-02-A1AJ006 C964745 (x +2.275), FCH1040 C20415548 (LCSC
+    package model MJC-1040T, 11.5 x 10.5 x 3.8 mm), F1 1812 C18198337. Set in the project library footprints and on
+    the board; `sync_board.py` now keeps a board model with a `${KIPRJMOD}` path (F1 uses a KiCad-library
+    footprint). Without a model: the mounting holes H1-H8 and the test pads TP1-TP8 (no physical part).
 
 After the interactive work: refill and save the zones, `kicad_audit.js` with `audit_gate.py` against this board,
 `layout_measure.py check`, DRC (0 unconnected, 0 dangling), then the release (`hw_release.py`).

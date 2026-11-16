@@ -10,4 +10,14 @@
   (fp_line (start -5.86 5.36) (end 5.86 5.36) (stroke (width 0.12) (type solid)) (layer "F.SilkS"))
   (pad "1" smd rect (at -3.5 0) (size 2.5 4.0) (layers "F.Cu" "F.Paste" "F.Mask"))
   (pad "2" smd rect (at 3.5 0) (size 2.5 4.0) (layers "F.Cu" "F.Paste" "F.Mask"))
+  (model "${KIPRJMOD}/CheckOne.3dshapes/IND-SMD_L11.5-W10.5-H3.8_MJC-1040T.wrl"
+    (offset (xyz 0 -0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model "${KIPRJMOD}/CheckOne.3dshapes/IND-SMD_L11.5-W10.5-H3.8_MJC-1040T.wrl"
+    (offset (xyz 0 -0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )

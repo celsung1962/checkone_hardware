@@ -12,4 +12,14 @@
   (pad "2" thru_hole circle (at 5.08 0) (size 2.6 2.6) (drill 1.6) (layers "*.Cu" "*.Mask"))
   (pad "3" thru_hole circle (at 10.16 0) (size 2.6 2.6) (drill 1.6) (layers "*.Cu" "*.Mask"))
   (pad "4" thru_hole circle (at 15.24 0) (size 2.6 2.6) (drill 1.6) (layers "*.Cu" "*.Mask"))
+  (model "${KIPRJMOD}/CheckOne.3dshapes/CONN-TH_4P-P5.08_KF2EDGRC-5.08-4P.wrl"
+    (offset (xyz 7.62 -0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 180))
+  )
+  (model "${KIPRJMOD}/CheckOne.3dshapes/CONN-TH_4P-P5.08_KF2EDGRC-5.08-4P.wrl"
+    (offset (xyz 7.62 -0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 180))
+  )
 )

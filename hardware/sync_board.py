@@ -123,6 +123,13 @@ def main():
             new.Reference().SetPosition(old.Reference().GetPosition())
             new.Reference().SetTextAngle(old.Reference().GetTextAngle())
             new.Reference().SetVisible(old.Reference().IsVisible())
+            # 3D models set on the board (EasyEDA models for KiCad-library footprints, e.g. F1) survive the reload
+            if old.Models().size() and any("KIPRJMOD" in m.m_Filename for m in old.Models()):
+                nm = new.Models()
+                while len(nm):
+                    nm.pop()
+                for m in old.Models():
+                    new.Add3DModel(m)
             board.Remove(old)
             replaced.append(f"{ref}: {old_id} -> {c['footprint']}")
             fp = new
