@@ -223,7 +223,7 @@ def sheet_power_input():
             "inside the AO4485 +-20 V; C2 220 uF G-S (+ on the source) keeps the MOSFET off while the plug settles, ~0.2 s delay; "
             "C3 + C4 (2 uF) with R4 1 k set the ~20 ms ramp, 1-1.8 A peak into ~1.3 mF (ngspice, DS 5.1 / 9; netlists not in the "
             "hand-over, G-1). R4 is essential: without it the cable ringing couples to the gate.\n"
-            "Pi filter: 2 x (220 uF + 1 uF) around L1 68 uH (FCH1040, maker's land, review item 3), corner ~41 Hz; drop ~0.16 V.",
+            "Pi filter: 2 x (220 uF + 1 uF) around L1 68 uH (FCH1040, 4.1 mm pads of v1, S. Zimath 2026-11-16), corner ~41 Hz; drop ~0.16 V.",
             (15.24, 142.24), size=(154.94, 25.4), style="calc")
     sh.note("Layout (v1 LEIA-ME 3): D1 at the DC jack; between D2 and Q1 only C1; copper area on the Q1 drain.",
             (15.24, 170.18), size=(154.94, 6.35))
@@ -586,9 +586,9 @@ def main():
                 "XL1509 +5V -> XC6206 +3.3V -> 3.3VA ; +5V -> display 5 V. ADC_NTC: 3 x ADS1115 on I2C. Display_RTC: display "
                 "connectors (the display's ESP32 is the master), PCF8563 + CR2032.", (220.98, 27.94), (63.5, 38.1)),
                ("REVISION 1.1 (2026-11-16): v1 of S. Zimath (schematic and placement, not fabricated) redrawn in the GapOne "
-                "style with the review changes: BAT54W SOD-123, DC jack slots (his fix), terminal outline 8.4 mm deep and terminals "
-                "3.8 mm toward the edge, FCH1040 maker's land, R6 fitted / D4 DNP, R1n1 4.7 k, power flags, TSSOP-10 links, test "
-                "pads 2.0 mm, part numbers as values, English names.", (220.98, 68.58), (63.5, 38.1))])
+                "style with the review changes: BAT54W SOD-123, DC jack slots (his fix), R6 fitted / D4 DNP, R1n1 4.7 k, power "
+                "flags, TSSOP-10 links, test pads 2.0 mm, part numbers as values, English names. Terminals J11-J18 (12.2 mm deep) "
+                "and the FCH1040 4.1 mm land kept as v1 (S. Zimath, measured on the parts).", (220.98, 68.58), (63.5, 38.1))])
     out = os.path.join(HERE, BOARD)
     sg.write(tree, os.path.join(out, f"{BOARD}.kicad_sch"))
     for sh in sheets:

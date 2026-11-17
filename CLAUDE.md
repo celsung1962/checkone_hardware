@@ -85,8 +85,9 @@ temperatures (third ADS1115, probe up to 150 °C), keeps time (PCF8563 + CR2032)
 - **O8 — Revision and date.** Done: rev 1.1, 2026-11-16 in every title block and on the board
   (`check_revision.py --rev 1.1` PASS); silkscreen "rev 1.1".
 - **O9 — Fit in the enclosure (C-14, G-8).** Outline 122.1 × 87.1 mm, holes on 115.00 × 80.00 mm (unchanged). The
-  terminals now sit with their front 0.95 mm beyond the board edge, as v1's 3D study assumed (pin rows 6.15 mm from
-  the long edges, owner choice 2026-11-16); confirm against the AK-P-08A drawing or Sergio's measurements.
+  terminals J11–J18 are on v1's pin rows (9.95 mm from the long edges): the KF2EDGRC body is 12.2 mm deep on the board
+  (S. Zimath measured it, 2026-11-16), so its front sits 0.95 mm beyond the edge, as v1's 3D study assumed. The rev 1.1
+  8.4 mm outline and 3.8 mm shift were wrong and are reverted. Confirm against the AK-P-08A drawing.
 - **O10 — Order with the AMP.** Owner's call, after routing and the routing audit.
 
 ## 4. KiCad project structure

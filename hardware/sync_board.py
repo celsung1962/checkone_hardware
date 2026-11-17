@@ -8,12 +8,13 @@ the netlist export:
 
 For every part of hardware/CheckOne/CheckOne.net (matched by reference, the references are v1's):
   - every footprint is reloaded from its library (KiCad 10 standard or the project library), at the same position,
-    rotation and side; that brings the rev 1.1 footprints in (D50 / D51 SOD-123, L1 / L2 maker's land, J11-J18
-    corrected outline, U2 / U4-U6 TSSOP-10, test pads 2.0 mm);
+    rotation and side; that brings the rev 1.1 footprints in (D50 / D51 SOD-123, U2 / U4-U6 TSSOP-10, test pads
+    2.0 mm; L1 / L2 4.1 mm land and J11-J18 12.2 mm outline as v1, S. Zimath 2026-11-16);
   - value, LCSC / Description fields, symbol path, sheet name and file, DNP / BOM / position-file attributes, pad nets.
-Board changes of the review (reports/CheckOne/review_2026-11-16.md): J11-J18 3.8 mm toward the board edge (terminal
-front 0.95 mm beyond the edge, owner 2026-11-16), LED1-LED4 1.0 mm away from the edge, J2 0.3 mm in x, title
-block rev 1.1 and the silkscreen revision text. The board is saved in the KiCad 10 format.
+Board changes of the review (reports/CheckOne/review_2026-11-16.md): LED1-LED4 1.0 mm away from the edge, J2 0.3 mm
+in x, title block rev 1.1 and the silkscreen revision text. The board is saved in the KiCad 10 format.
+J11-J18 stay on v1's pin rows: the 3.8 mm shift toward the edge (review item 2) was reverted on 2026-11-16 after
+S. Zimath measured the KF2EDGRC body at 12.2 mm deep on the board (TERMINAL_SHIFT = 0).
 """
 import argparse
 import os
@@ -29,7 +30,7 @@ NET = os.path.join(PRJ, "CheckOne.net")
 STD = os.path.join(os.path.dirname(os.path.dirname(sys.executable)), "share", "kicad", "footprints")
 TOK = re.compile(r'\(|\)|"(?:[^"\\]|\\.)*"|[^\s()"]+')
 REPLACE_ALWAYS = {"KF2EDGRC-5.08-4P"}          # project footprints whose library copy changed at rev 1.1
-TERMINAL_SHIFT = 3.8                            # mm toward the nearest long edge (review item 2, owner choice)
+TERMINAL_SHIFT = 0.0                            # mm toward the edge; was 3.8 (review item 2), reverted 2026-11-16
 LED_SHIFT = 1.0                                 # mm away from the edge (review item 8)
 J2_SHIFT_X = 0.3                                # mm, J2 (NTC1) courtyard clear of J18 after the terminal fix (item 9)
 
