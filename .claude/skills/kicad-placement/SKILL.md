@@ -3,7 +3,8 @@ name: kicad-placement
 description: >-
   Component placement on KiCad PCBs (KiCad 8-10) with Claude Code: survey the board and its mechanical notes,
   budget area per functional block, write a placement plan (zones, blocks, anchors, keep-outs), run a block-based
-  placer through KiCad's Python API (pcbnew), then prove the result with DRC, a placement rule check (spacing,
+  placer through KiCad's Python API (pcbnew) - or generate several candidate placements automatically and compare
+  them in a gallery - then prove the result with DRC, a placement rule check (spacing,
   edge clearance, decoupling distance, thermal separation) and a placement-only diff. ALWAYS use this skill when
   the user wants to place, re-place, floorplan or pack components on a .kicad_pcb, asks to "place the parts",
   "do the placement", "organise the footprints on the board", "get the board ready for routing", pastes a
@@ -17,7 +18,7 @@ description: >-
 
 | | |
 |---|---|
-| Skill version | 1.3.0 (see `CHANGELOG.md`) — analog signal passives: `signal_near.py` writes and measures proximity rules for the feedback / filter / detector parts of op-amps, switches and ADC inputs, `pack_passives.py` re-packs them (and the decoupling capacitors) around the pins after the IC floorplan is set. 1.2.0 — review against eight published placement guides: aluminium electrolytics heat-sensitive by default, test-point access and polarity-mark warnings in `verify_placement.py`, unnumbered plated holes are not THT pins. 1.1.1 — version field and changelog added, no change in behaviour. 1.1.0 — datasheet proximity rules (`near`): plan key checked by `verify_placement.py`, `_near_suggestions` written by `make_plan.py`. 1.0.0 — first release: survey, draft plan, block placer, rule check, placement-only diff, silkscreen helpers |
+| Skill version | 1.5.0 (see `CHANGELOG.md`) — local reachability: `local_reach.py` checks, IC by IC, that the local links still route on the IC's side, the other pins can escape, pin fronts are free, and reports which parts hold the spot of a far capacitor, crowded neighbouring pins, ground pads facing the pin and a better IC rotation (adapted from KiStack, MIT). 1.4.1 — candidate ordering: an overlap between two locked parts, inherited from the source board, no longer hides the candidates that have a defect of their own. 1.4.0 — placement candidates: `scripts/candidates/run_placement.py` generates complete placements by simulated annealing from the netlist, locked parts and the placement rule areas drawn on the board, scores them against the current placement and shows them in a gallery; `route_candidates.py` routes them on equal terms (reference `candidates.md`). 1.3.0 — analog signal passives: `signal_near.py` writes and measures proximity rules for the feedback / filter / detector parts of op-amps, switches and ADC inputs, `pack_passives.py` re-packs them (and the decoupling capacitors) around the pins after the IC floorplan is set. 1.2.0 — review against eight published placement guides: aluminium electrolytics heat-sensitive by default, test-point access and polarity-mark warnings in `verify_placement.py`, unnumbered plated holes are not THT pins. 1.1.1 — version field and changelog added, no change in behaviour. 1.1.0 — datasheet proximity rules (`near`): plan key checked by `verify_placement.py`, `_near_suggestions` written by `make_plan.py`. 1.0.0 — first release: survey, draft plan, block placer, rule check, placement-only diff, silkscreen helpers |
 
 Placement is where a correct schematic turns into a board someone can route, assemble and fit in its enclosure.
 Doing it by hand is slow; doing it with a naive script produces a pile of parts that ignores signal flow,
@@ -58,8 +59,13 @@ session has one, can replace the API calls — but the checks below still apply.
 | `dump_board.py` + `render_placement.py` | KiCad + any (matplotlib) | Picture of the placement by block, with regions and keep-outs |
 | `signal_near.py` | KiCad | Analog signal-passive proximity rules (op-amp / switch input and output pins, ADC inputs): measures them against targets, writes them to `near` |
 | `pack_passives.py` | KiCad | Re-packs signal passives and decoupling capacitors around their analog ICs (optional IC moves first), by wire length, per block region |
+| `local_reach.py` | KiCad | Local reachability per IC: local links routed on the IC's side (BLOCKED = fail), escapes out of a ring, blocked pin fronts, parts holding the spot of a far capacitor, crowded neighbouring pins, ground pad facing the pin, via sites, unbalanced two-pin parts, IC rotation score |
 | `find_clear_spot.py` | KiCad | Clear spot for a title / logo artwork on either side; places it |
 | `hide_silk_refs.py` | KiCad | Hides silkscreen designators (keeps the field) |
+| `candidates/run_placement.py` | KiCad | Placement candidates without a plan: annealing from the netlist, locked parts and placement rule areas; gallery, scores against the current placement, board copies |
+| `candidates/apply_placement.py` | KiCad | Writes one candidate into a bare copy of the board |
+| `candidates/route_candidates.py` | KiCad (+ kicad-routing skill) | Routes candidate copies and the current placement on equal terms; comparison only |
+| `candidates/via_room_report.py` | KiCad | Plane pads without room for their own via, per candidate |
 
 ## Phase 0 — Survey before touching anything
 
@@ -152,6 +158,33 @@ the one with the fewest misses (each run takes a minute or two). Finally `signal
 into `near`, at the accepted limits when the targets cannot all be met, so `verify_placement.py` holds them from then
 on.
 
+## Alternative — placement candidates (no plan)
+
+When the user wants several placements to choose from, a quick starting point, or a second opinion on a
+plan-based placement, use the candidate generator instead of (or beside) Phases 1-2. Read
+`references/candidates.md` first.
+
+1. Phase 0 still applies: survey, decide what is fixed, and have the fixed parts **locked** on the board — the
+   generator moves everything that is not locked.
+2. Regions are drawn on the board, not written in a plan: a rule area with the Placement tab (sheet, group or
+   component class). On the board it is a hard region; a name starting with `ISO_` makes it exclusive; drawn
+   outside the outline it only keeps its members together. Run `run_placement.py BOARD --out OUT --check` and
+   show the user what was read before generating.
+3. `run_placement.py BOARD --out OUT -n 12 --apply 3`. Give `--margin` on a board with no placement yet; with an
+   existing placement the default measures the gap that placement keeps. Show `OUT/gallery.html`.
+4. The engineer chooses. A candidate with pin pairs beyond their limit goes through `--repair` (with
+   `--keep-tight` and `--freeze-nets` as needed); say how many parts moved, the repaired board is not the one they
+   looked at.
+5. Phase 3 on the chosen copy, all of it. The generator's own scores are not a verification.
+
+Report its limits with the result: no row alignment, no change of side, and an index that estimates — it does
+not predict routing. Never write that a candidate "routes better" without a routed comparison
+(`route_candidates.py --baseline`), and never promise a finished board from it.
+Why: On GapOne CON (2026-11-14) candidates with index 76 (current = 100) were packed at 0.16 mm between
+neighbours where the engineer keeps 0.55 mm; at equal spacing the best legal candidates scored 102-104. One
+Freerouting pass routed 590-604 of 684 connections on every placement, the manual one included, at either
+spacing: the advantage on paper came from the squeeze, and routing completion did not follow the index.
+
 ## Phase 3 — Verify (all of it, every time)
 
 - Copy the project's `.kicad_pro` **and** `.kicad_dru` next to the new board under its name (`placed.kicad_pro`,
@@ -165,6 +198,16 @@ on.
   rule with its measured distance.
 - Boards with analog circuits: `signal_near.py ... --targets` → report the rules against their targets (count,
   sum of excess, worst), and the remaining misses part by part.
+- `local_reach.py placed.kicad_pcb --json reach.json` → no BLOCKED local link (exit 0). 40-90 s for the 20 ICs of
+  GapOne CON; `--ic` for the ones you changed. For every WARN (links that route alone but not together, escapes) look at the corridor
+  in the render; for every "far" pin move a part from the "held by" list - the one that tolerates distance - and
+  run it again; treat "crowded", "GROUND PAD FACES PIN" and the rotation hint as placement suggestions to report.
+  It routes with the net classes of the `.kicad_pro` (wider nets necked down to the Default width), ignores zones,
+  and lists `.kicad_dru` clearance rules it does not evaluate. A pass is feasibility, not a route.
+  Why: on GapOne CON (2026-11-14) one Freerouting pass completed 590-604 of 684 connections on every placement;
+  distance rules passed while pins were boxed in. Calibration (2026-11-19): the fabricated, routed layout passes
+  with no WARN and 3 blocked pin fronts; candidate 02 of the same study passes with WARNs at U5 and U6 and 6
+  blocked pin fronts.
 - `compare_boards.py original.kicad_pcb placed.kicad_pcb --plan plan.json` → placement-only PASS.
 - Render and look. Numbers do not show a block split in two or a capacitor on the wrong side of an IC.
 - At most three fix-and-rerun rounds on the same violation; then stop and list what remains.
@@ -182,7 +225,11 @@ Afterwards, if asked: `hide_silk_refs.py` for designators; `find_clear_spot.py` 
 
 ## References
 
-- `references/placement_rules.md` — spacing, edge, decoupling, thermal, orientation rules and STOP conditions.
+- `references/placement_rules.md` — spacing, edge, decoupling, local reachability, thermal, orientation rules and
+  STOP conditions.
 - `references/plan_format.md` — the plan JSON, field by field, with an example.
 - `references/pitfalls.md` — what went wrong on a real board and how the scripts now avoid it.
 - `references/prompt_template.md` — a placement prompt for Claude Code that uses this skill.
+- `references/third_party_kistack.md` — origin and licence of `local_reach.py` and the local reachability rules.
+- `references/candidates.md` — the candidate generator: what it reads from the board, commands, how to read the
+  gallery, routed comparison, limits.

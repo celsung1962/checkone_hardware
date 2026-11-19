@@ -100,6 +100,38 @@ last. Rail test points and stray parts near the core may be listed as movable wi
 old spot. Result accepted when every rule is within a few millimetres of its target; write the accepted limits to
 `near` (`signal_near.py --write`) so later changes cannot undo it.
 
+## Local reachability (`local_reach.py`, 1.5.0)
+
+Distance rules say how far a part is from its pin; they do not say whether the tracks can still get there. A pad no
+track can reach is a defect; a longer escape is a cost to accept. Rules, from KiStack's layout-placement (MIT, see
+`third_party_kistack.md`), checked by `local_reach.py` around each IC:
+
+- **Order of placement by how little distance a connection tolerates**: vendor-fixed and high-frequency parts
+  (switching loop), then decoupling and filter capacitors at their own pins, then clock parts, then bulk caps,
+  series resistors, ferrites and pull-ups, then everything that tolerates distance.
+- **When a close part cannot reach its pin, move the part that tolerates distance** (bulk cap, series resistor,
+  crystal, pull-up), not the decoupler or filter capacitor. `local_reach.py` lists, for each pin whose part is
+  farther than 2.6 mm, which courtyards hold the strip in front of the pin.
+- **Radial, not across the row**: a two-pad part in line with its pin leaves both neighbours' straight exits open.
+- **Neighbouring pins**: two parts side by side, each in line with its pin, fit only if their widths along the row
+  add up to no more than twice the pin pitch (two 0603s, about 1 mm courtyards, do not fit at 0.4 or 0.65 mm
+  pitch). Plan the pair: offset them sideways, move one outward by its length, or swap which pin gets the nearer
+  spot. `local_reach.py` reports the pairs where one part got the spot and the other was pushed out.
+- **Pin fronts**: keep about 2 mm in front of a fine-pitch row free for its escaping tracks (straight out or at
+  45 degrees), and a channel of one track plus two clearances (0.4 mm at 0.2 / 0.1 mm) wherever a track must pass
+  between parts.
+- **Pad orientation**: a decoupler's supply pad toward its pin, its ground pad away (`GROUND PAD FACES PIN`). On
+  boards with planes, every ground pad of a local part needs a via site next to it.
+- **Two-pad parts across two IC pins** (crystal, flying capacitor): nearly equal gaps; prefer the balanced
+  rotation when it costs little length.
+- **IC rotation**: score the four rotations by where the pins must go (local parts, fixed connectors, the other
+  ICs) before placing the passives; `local_reach.py` reports a rotation at least 10 % shorter (advisory).
+- **Verdict**: a local link that does not route even alone on the IC's side (no vias) is BLOCKED and fails the
+  check; one that routes alone but never with the others is a WARN to look at (the grid router is greedy). Supply
+  rails are checked only from each local capacitor to its IC pin: rail capacitors are joined through planes. On
+  GapOne CON the fabricated, routed layout passes with no WARN; an automatic candidate has WARNs at the ADC and the
+  loop op-amp.
+
 ## Thermal
 
 - Regulators, power switches and transistors, shunts and power resistors (> ~0.25 W): away from precision

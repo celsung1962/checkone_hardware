@@ -1,5 +1,72 @@
 # Changelog — kicad-placement skill
 
+## 1.5.0 - 2026-11-19
+
+Local reachability, adapted from KiStack's layout-placement (MIT, `references/third_party_kistack.md`), after a
+comparison of KiStack with this skill (owner C. Souza). Distance rules said how far a part was from its pin, not
+whether the tracks could still reach it.
+
+- **`scripts/local_reach.py`** (new, KiCad's Python, read-only): per IC, a grid router on the IC's side checks the
+  local links (signal nets as a spanning tree; supply rails only capacitor to pin) and the escapes of the other
+  pins out of a ring around the IC. Two start orders and re-ordering passes; a link that fails even alone on an
+  empty grid is BLOCKED (exit 1), one that never fits with the others is a WARN. Also: blocked pin fronts, the parts
+  holding the strip in front of a pin whose part is farther than 2.6 mm, crowded neighbouring pins (radial widths
+  over twice the pitch), ground pad facing the pin, ground pads without a via site, unbalanced two-pin parts across
+  two signal pins, and an IC rotation score (advisory).
+- Rules per net from the `.kicad_pro` net classes and the pads' resolved clearance, wider nets necked down to the
+  Default width near the IC (`--neck`, `--no-neck`); `.kicad_dru` clearance rules are listed, not evaluated.
+- Calibration on GapOne CON: the fabricated, routed layout passes with no WARN (39 s, 20 ICs); candidate 02 of the
+  1.4.0 study passes with WARNs at U5 and U6. Two earlier versions of the selection were wrong on the fabricated
+  board and were corrected before release: every part of four pads or fewer near the IC counted as local (a module
+  pulled in parts 20 mm away), and rail capacitors of different ICs were linked part to part (the real board joins
+  them through planes).
+- SKILL.md Phase 3: `local_reach.py` after `verify_placement.py`; `placement_rules.md`: section "Local
+  reachability" (placement order by tolerated distance, move the tolerant part, radial parts, neighbouring pins,
+  pin fronts, pad orientation, IC rotation).
+
+## 1.4.1 - 2026-11-15
+
+- `candidates/run_placement.py`: candidates without a defect of their own come first, then by index. Before, one
+  courtyard overlap between two locked parts (inherited from the source board, the same in every candidate) put
+  all candidates in the "has a defect" class, so the order was by index alone and `--apply 3` wrote two boards
+  with parts the engine had not legalised (GapOne CON: `08` and `06`, 2 parts each, ahead of the clean `02`).
+- `candidates/evaluate.py`: metric `ov_fixed` (overlapping pairs whose two parts are locked or frozen).
+- Gallery notes: "overlap" only for a candidate's own overlaps; a separate note for parts left without the
+  requested spacing or against forbidden ground; the inherited overlap is stated as inherited.
+- `candidates/route_candidates.py`: finds kicad-routing in `$KICAD_ROUTING_SCRIPTS`, then next to this skill (the
+  project's copy), then in `~/.claude/skills`, and prints which one it uses. Before, only `~/.claude/skills`: the
+  candidates were routed with whatever global copy was there (1.27.0 on the study machine), and the script failed in
+  a project that carries only its own copy.
+
+## 1.4.0 - 2026-11-15
+
+Placement candidates, from the autorouter study on GapOne CON (owner C. Souza): an engine that generates complete
+placements without a plan, so the engineer can compare several and choose.
+
+- **`scripts/candidates/run_placement.py`** (new, with `extract_model.py`, `place_core.py`, `evaluate.py`):
+  simulated annealing over position and 90° rotation of every unlocked footprint. Reads locked parts, the outline
+  (inset by the copper-to-edge rule), footprint keep-outs, KiCad 10 placement rule areas (sheet / group /
+  component class; on the board = hard region, name `ISO_*` = exclusive, outside the outline = grouping only),
+  schematic clusters (hub = part with 4+ connected pads) and the decoupling entries of
+  `kicad_golden.project.json` as pin pairs with a maximum distance. Weight profiles `balanced`, `wirelength`,
+  `blocks`, `decoupling`; `--check`, `--freeze`, `--freeze-nets`, `--keep-tight`, `--repair`. Writes a gallery
+  (HTML), a summary and the best candidates as bare board copies; the source board is never modified.
+- **`--margin auto`** (default): the gap between courtyards is measured from the source placement (lower quartile
+  of nearest-neighbour gaps, 0.15-0.6 mm). Before, a fixed 0.15 mm packed parts at a median 0.16 mm where the
+  engineer keeps 0.55 mm, and the index rewarded it.
+- New gallery rows: typical gap between neighbours, parts with a neighbour under 0.3 mm, plane pads without room
+  for their via (`via_room`, also `via_room_report.py`; one index point per percent lost against the baseline).
+- **`apply_placement.py`** (new): one candidate into a bare copy, with a pad-position proof of the rotation
+  convention. **`route_candidates.py`** (new): routes candidate copies and the current placement with the
+  kicad-routing skill on equal terms; strips placement-only rule areas first (KiCad's Specctra export writes them
+  as full keep-outs); one board at a time.
+- `references/candidates.md` (new); `SKILL.md`: section "Alternative — placement candidates", tools table;
+  `pitfalls.md`: six entries.
+
+Measured, and written into the skill so it is not oversold: at equal spacing the candidates tied with the manual
+placement (index 102-104 vs 100); one Freerouting pass routed 590-604 of 684 connections on every placement at
+either spacing. The index estimates; it does not predict routing completion.
+
 ## 1.3.0 - 2026-11-05
 
 Analog signal passives, from the GapOne CON placement (owner C. Souza, D-339). The block placer passed every rule
